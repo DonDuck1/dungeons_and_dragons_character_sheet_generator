@@ -1,7 +1,12 @@
 package domain
 
 type AbilityScoreList struct {
-	abilityScores [6]AbilityScore
+	strength     AbilityScore
+	dexterity    AbilityScore
+	constitution AbilityScore
+	intelligence AbilityScore
+	wisdom       AbilityScore
+	charisma     AbilityScore
 }
 
 func NewAbilityScoreList(
@@ -26,5 +31,12 @@ func NewAbilityScoreList(
 	charisma := NewAbilityScore(Charisma, abilityScoreValueList.charismaValue)
 	charisma.CalculateFinalvalue(abilityScoreImprovementList.charismaImprovements)
 
-	return AbilityScoreList{[6]AbilityScore{strength, dexterity, constitution, intelligence, wisdom, charisma}}
+	return AbilityScoreList{
+		strength:     strength,
+		dexterity:    dexterity,
+		constitution: constitution,
+		intelligence: intelligence,
+		wisdom:       wisdom,
+		charisma:     charisma,
+	}
 }

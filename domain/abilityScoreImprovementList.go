@@ -13,7 +13,7 @@ func getAbilityScoreImprovementsByAbilityScoreName(abilityScoreImprovements []Ab
 	foundAbilityScoreImprovements := []AbilityScoreImprovement{}
 
 	for _, abilityScoreImprovement := range abilityScoreImprovements {
-		if abilityScoreImprovement.GetAbilityScoreName() == abilityScoreName {
+		if abilityScoreImprovement.abilityScoreName == abilityScoreName {
 			foundAbilityScoreImprovements = append(foundAbilityScoreImprovements, abilityScoreImprovement)
 		}
 	}
@@ -23,11 +23,11 @@ func getAbilityScoreImprovementsByAbilityScoreName(abilityScoreImprovements []Ab
 
 func NewAbilityScoreImprovementList(abilityScoreImprovements []AbilityScoreImprovement) AbilityScoreImprovementList {
 	return AbilityScoreImprovementList{
-		getAbilityScoreImprovementsByAbilityScoreName(abilityScoreImprovements, Strength),
-		getAbilityScoreImprovementsByAbilityScoreName(abilityScoreImprovements, Dexterity),
-		getAbilityScoreImprovementsByAbilityScoreName(abilityScoreImprovements, Constitution),
-		getAbilityScoreImprovementsByAbilityScoreName(abilityScoreImprovements, Intelligence),
-		getAbilityScoreImprovementsByAbilityScoreName(abilityScoreImprovements, Wisdom),
-		getAbilityScoreImprovementsByAbilityScoreName(abilityScoreImprovements, Charisma),
+		strengthImprovements:     getAbilityScoreImprovementsByAbilityScoreName(abilityScoreImprovements, Strength),
+		dexterityImprovements:    getAbilityScoreImprovementsByAbilityScoreName(abilityScoreImprovements, Dexterity),
+		constitutionImprovements: getAbilityScoreImprovementsByAbilityScoreName(abilityScoreImprovements, Constitution),
+		intelligenceImprovements: getAbilityScoreImprovementsByAbilityScoreName(abilityScoreImprovements, Intelligence),
+		wisdomImprovements:       getAbilityScoreImprovementsByAbilityScoreName(abilityScoreImprovements, Wisdom),
+		charismaImprovements:     getAbilityScoreImprovementsByAbilityScoreName(abilityScoreImprovements, Charisma),
 	}
 }

@@ -18,11 +18,11 @@ func NewAbilityScoreValueList(
 	charismaValue int,
 ) AbilityScoreValueList {
 	return AbilityScoreValueList{
-		strengthValue,
-		dexterityValue,
-		constitutionValue,
-		intelligenceValue,
-		wisdomValue,
-		charismaValue,
+		strengthValue:     strengthValue,
+		dexterityValue:    dexterityValue,
+		constitutionValue: constitutionValue,
+		intelligenceValue: intelligenceValue,
+		wisdomValue:       wisdomValue,
+		charismaValue:     charismaValue,
 	}
 }
