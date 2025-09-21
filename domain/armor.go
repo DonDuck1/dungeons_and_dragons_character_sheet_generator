@@ -3,24 +3,26 @@ package domain
 type Armor struct {
 	name                   string
 	baseArmorClass         int
-	applyDexterityModifier bool
-	maxDexterityModifier   int
+	armorDexterityModifier *ArmorDexterityModifier
 }
 
-func NewArmor(name string, baseArmorClass int, applyDexterityModifier bool, maxDexterityModifier int) Armor {
-	return Armor{name: name, baseArmorClass: baseArmorClass, applyDexterityModifier: applyDexterityModifier, maxDexterityModifier: maxDexterityModifier}
+func NewArmor(name string, baseArmorClass int, armorDexterityModifier *ArmorDexterityModifier) Armor {
+	return Armor{name: name, baseArmorClass: baseArmorClass, armorDexterityModifier: armorDexterityModifier}
 }
 
 func (armor Armor) CalculateArmorClassModifierOfArmor(dexterityModifier int) int {
-	armorClassModifier := armor.baseArmorClass
-
-	if armor.applyDexterityModifier {
-		if dexterityModifier <= armor.maxDexterityModifier {
-			armorClassModifier += dexterityModifier
-		} else {
-			armorClassModifier += armor.maxDexterityModifier
-		}
+	if armor.armorDexterityModifier == nil {
+		return armor.baseArmorClass
 	}
 
-	return armorClassModifier
+	if armor.armorDexterityModifier.armorMaxDexterityModifier == nil {
+		return armor.baseArmorClass + dexterityModifier
+	}
+
+	armorMaxDexterityModifier := *armor.armorDexterityModifier.armorMaxDexterityModifier
+	if dexterityModifier <= armorMaxDexterityModifier {
+		return armor.baseArmorClass + dexterityModifier
+	}
+
+	return armor.baseArmorClass + armorMaxDexterityModifier
 }
