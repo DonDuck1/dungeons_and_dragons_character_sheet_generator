@@ -8,37 +8,37 @@ import (
 func TestCreateAbilityScoreListWithImprovements(t *testing.T) {
 	expected := AbilityScoreList{
 		strength: AbilityScore{
-			name:        Strength,
+			name:        STRENGTH,
 			base_value:  15,
 			final_value: 18,
 			modifier:    4,
 		},
 		dexterity: AbilityScore{
-			name:        Dexterity,
+			name:        DEXTERITY,
 			base_value:  14,
 			final_value: 14,
 			modifier:    2,
 		},
 		constitution: AbilityScore{
-			name:        Constitution,
+			name:        CONSTITUTION,
 			base_value:  13,
 			final_value: 14,
 			modifier:    2,
 		},
 		intelligence: AbilityScore{
-			name:        Intelligence,
+			name:        INTELLIGENCE,
 			base_value:  12,
 			final_value: 12,
 			modifier:    1,
 		},
 		wisdom: AbilityScore{
-			name:        Wisdom,
+			name:        WISDOM,
 			base_value:  10,
 			final_value: 15,
 			modifier:    2,
 		},
 		charisma: AbilityScore{
-			name:        Charisma,
+			name:        CHARISMA,
 			base_value:  8,
 			final_value: 7,
 			modifier:    -2,
@@ -47,11 +47,11 @@ func TestCreateAbilityScoreListWithImprovements(t *testing.T) {
 
 	abilityScoreValueList := NewAbilityScoreValueList(15, 14, 13, 12, 10, 8)
 	abilityScoreImprovements := []AbilityScoreImprovement{
-		NewAbilityScoreImprovement(Strength, 3),
-		NewAbilityScoreImprovement(Constitution, 1),
-		NewAbilityScoreImprovement(Wisdom, 2),
-		NewAbilityScoreImprovement(Wisdom, 3),
-		NewAbilityScoreImprovement(Charisma, -1),
+		NewAbilityScoreImprovement(STRENGTH, 3),
+		NewAbilityScoreImprovement(CONSTITUTION, 1),
+		NewAbilityScoreImprovement(WISDOM, 2),
+		NewAbilityScoreImprovement(WISDOM, 3),
+		NewAbilityScoreImprovement(CHARISMA, -1),
 	}
 	abilityScoreImprovementList := NewAbilityScoreImprovementList(abilityScoreImprovements)
 	abilityScoreList := NewAbilityScoreList(abilityScoreValueList, abilityScoreImprovementList)

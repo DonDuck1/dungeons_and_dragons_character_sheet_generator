@@ -23,11 +23,11 @@ func getAbilityScoreImprovementsByAbilityScoreName(abilityScoreImprovements []Ab
 
 func NewAbilityScoreImprovementList(abilityScoreImprovements []AbilityScoreImprovement) AbilityScoreImprovementList {
 	return AbilityScoreImprovementList{
-		strengthImprovements:     getAbilityScoreImprovementsByAbilityScoreName(abilityScoreImprovements, Strength),
-		dexterityImprovements:    getAbilityScoreImprovementsByAbilityScoreName(abilityScoreImprovements, Dexterity),
-		constitutionImprovements: getAbilityScoreImprovementsByAbilityScoreName(abilityScoreImprovements, Constitution),
-		intelligenceImprovements: getAbilityScoreImprovementsByAbilityScoreName(abilityScoreImprovements, Intelligence),
-		wisdomImprovements:       getAbilityScoreImprovementsByAbilityScoreName(abilityScoreImprovements, Wisdom),
-		charismaImprovements:     getAbilityScoreImprovementsByAbilityScoreName(abilityScoreImprovements, Charisma),
+		strengthImprovements:     getAbilityScoreImprovementsByAbilityScoreName(abilityScoreImprovements, STRENGTH),
+		dexterityImprovements:    getAbilityScoreImprovementsByAbilityScoreName(abilityScoreImprovements, DEXTERITY),
+		constitutionImprovements: getAbilityScoreImprovementsByAbilityScoreName(abilityScoreImprovements, CONSTITUTION),
+		intelligenceImprovements: getAbilityScoreImprovementsByAbilityScoreName(abilityScoreImprovements, INTELLIGENCE),
+		wisdomImprovements:       getAbilityScoreImprovementsByAbilityScoreName(abilityScoreImprovements, WISDOM),
+		charismaImprovements:     getAbilityScoreImprovementsByAbilityScoreName(abilityScoreImprovements, CHARISMA),
 	}
 }

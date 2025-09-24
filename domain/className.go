@@ -3,16 +3,16 @@ package domain
 type ClassName string
 
 const (
-	Barbarian ClassName = "Barbarian"
-	Bard      ClassName = "Bard"
-	Cleric    ClassName = "Cleric"
-	Druid     ClassName = "Druid"
-	Fighter   ClassName = "Fighter"
-	Monk      ClassName = "Monk"
-	Paladin   ClassName = "Paladin"
-	Ranger    ClassName = "Ranger"
-	Rogue     ClassName = "Rogue"
-	Sorcerer  ClassName = "Sorcerer"
-	Warlock   ClassName = "Warlock"
-	Wizard    ClassName = "Wizard"
+	BARBARIAN ClassName = "Barbarian"
+	BARD      ClassName = "Bard"
+	CLERIC    ClassName = "Cleric"
+	DRUID     ClassName = "Druid"
+	FIGHTER   ClassName = "Fighter"
+	MONK      ClassName = "Monk"
+	PALADIN   ClassName = "Paladin"
+	RANGER    ClassName = "Ranger"
+	ROGUE     ClassName = "Rogue"
+	SORCERER  ClassName = "Sorcerer"
+	WARLOCK   ClassName = "Warlock"
+	WIZARD    ClassName = "Wizard"
 )

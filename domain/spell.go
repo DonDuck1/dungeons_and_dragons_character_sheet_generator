@@ -6,4 +6,5 @@ type Spell struct {
 	classes    []ClassName
 	school     string
 	spellRange string
+	prepared   bool
 }

@@ -3,10 +3,10 @@ package domain
 type AbilityScoreName string
 
 const (
-	Strength     AbilityScoreName = "Strength"
-	Dexterity    AbilityScoreName = "Dexterity"
-	Constitution AbilityScoreName = "Constitution"
-	Intelligence AbilityScoreName = "Intelligence"
-	Wisdom       AbilityScoreName = "Wisdom"
-	Charisma     AbilityScoreName = "Charisma"
+	STRENGTH     AbilityScoreName = "Strength"
+	DEXTERITY    AbilityScoreName = "Dexterity"
+	CONSTITUTION AbilityScoreName = "Constitution"
+	INTELLIGENCE AbilityScoreName = "Intelligence"
+	WISDOM       AbilityScoreName = "Wisdom"
+	CHARISMA     AbilityScoreName = "Charisma"
 )
