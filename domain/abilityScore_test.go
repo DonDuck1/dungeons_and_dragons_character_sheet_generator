@@ -15,15 +15,15 @@ func TestCreateAbilityScoreListWithImprovements(t *testing.T) {
 		},
 		dexterity: AbilityScore{
 			name:        DEXTERITY,
-			base_value:  14,
-			final_value: 14,
-			modifier:    2,
+			base_value:  1,
+			final_value: 1,
+			modifier:    -5,
 		},
 		constitution: AbilityScore{
 			name:        CONSTITUTION,
-			base_value:  13,
-			final_value: 14,
-			modifier:    2,
+			base_value:  20,
+			final_value: 20,
+			modifier:    5,
 		},
 		intelligence: AbilityScore{
 			name:        INTELLIGENCE,
@@ -45,10 +45,11 @@ func TestCreateAbilityScoreListWithImprovements(t *testing.T) {
 		},
 	}
 
-	abilityScoreValueList := NewAbilityScoreValueList(15, 14, 13, 12, 10, 8)
+	abilityScoreValueList := NewAbilityScoreValueList(15, -6, 25, 12, 10, 8)
 	abilityScoreImprovements := []AbilityScoreImprovement{
 		NewAbilityScoreImprovement(STRENGTH, 3),
-		NewAbilityScoreImprovement(CONSTITUTION, 1),
+		NewAbilityScoreImprovement(DEXTERITY, -4),
+		NewAbilityScoreImprovement(CONSTITUTION, 4),
 		NewAbilityScoreImprovement(WISDOM, 2),
 		NewAbilityScoreImprovement(WISDOM, 3),
 		NewAbilityScoreImprovement(CHARISMA, -1),
