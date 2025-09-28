@@ -10,7 +10,7 @@ func NewArmor(name string, baseArmorClass int, armorDexterityModifier *ArmorDext
 	return Armor{name: name, baseArmorClass: baseArmorClass, armorDexterityModifier: armorDexterityModifier}
 }
 
-func (armor Armor) CalculateArmorClassModifierOfArmor(dexterityModifier int) int {
+func (armor Armor) GetArmorClassModifierOfArmor(dexterityModifier int) int {
 	if armor.armorDexterityModifier == nil {
 		return armor.baseArmorClass
 	}
