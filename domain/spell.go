@@ -3,7 +3,7 @@ package domain
 type Spell struct {
 	name       string
 	level      int
-	classes    []ClassName
+	classes    []string
 	school     string
 	spellRange string
 	prepared   bool

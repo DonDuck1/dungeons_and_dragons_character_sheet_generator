@@ -11,13 +11,15 @@ func usage() {
   %s create -name CHARACTER_NAME -race RACE -class CLASS -level N -str N -dex N -con N -int N -wis N -cha N
   %s view -name CHARACTER_NAME
   %s list
+  %s change-level -name CHARACTER_NAME -level LEVEL
   %s delete -name CHARACTER_NAME
   %s equip -name CHARACTER_NAME -weapon WEAPON_NAME -slot SLOT
   %s equip -name CHARACTER_NAME -armor ARMOR_NAME
   %s equip -name CHARACTER_NAME -shield SHIELD_NAME
   %s learn-spell -name CHARACTER_NAME -spell SPELL_NAME
+  %s forget-spell -name CHARACTER_NAME -spell SPELL_NAME
   %s prepare-spell -name CHARACTER_NAME -spell SPELL_NAME 
-`, os.Args[0], os.Args[0], os.Args[0], os.Args[0], os.Args[0], os.Args[0], os.Args[0], os.Args[0], os.Args[0])
+`, os.Args[0], os.Args[0], os.Args[0], os.Args[0], os.Args[0], os.Args[0], os.Args[0], os.Args[0], os.Args[0], os.Args[0], os.Args[0])
 }
 
 func main() {
@@ -44,11 +46,15 @@ func main() {
 
 	case "list":
 
+	case "change-level":
+
 	case "delete":
 
 	case "equip":
 
 	case "learn-spell":
+
+	case "forget-spell":
 
 	case "prepare-spell":
 
