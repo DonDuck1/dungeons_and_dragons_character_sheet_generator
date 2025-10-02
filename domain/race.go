@@ -1,11 +1,11 @@
 package domain
 
 type Race struct {
-	name                     string
-	abilityScoreImprovements []AbilityScoreImprovement
-	numberOfHandSlots        int
+	Name                     string
+	AbilityScoreImprovements []AbilityScoreImprovement
+	NumberOfHandSlots        int
 }
 
 func NewRace(name string, abilityScoreImprovements []AbilityScoreImprovement, numberOfHandSlots int) Race {
-	return Race{name: name, abilityScoreImprovements: abilityScoreImprovements, numberOfHandSlots: numberOfHandSlots}
+	return Race{Name: name, AbilityScoreImprovements: abilityScoreImprovements, NumberOfHandSlots: numberOfHandSlots}
 }

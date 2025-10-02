@@ -1,24 +1,24 @@
 package domain
 
 type ClassWarlockCastingInfo struct {
-	maxKnownSpells      int
-	spellList           SpellList
-	spellSlotAmount     int
-	spellSlotLevel      int
-	spellcastingAbility AbilityScoreName
-	spellSaveDC         int
-	spellAttackBonus    int
+	MaxKnownSpells      int
+	SpellList           SpellList
+	SpellSlotAmount     int
+	SpellSlotLevel      int
+	SpellcastingAbility AbilityScoreName
+	SpellSaveDC         int
+	SpellAttackBonus    int
 }
 
 func NewClassWarlockCastingInfo(maxKnownSpells int, spellList SpellList, spellSlotAmount int, spellSlotLevel int, spellcastingAbility AbilityScoreName, spellSaveDC int, spellAttackBonus int) ClassWarlockCastingInfo {
 	return ClassWarlockCastingInfo{
-		maxKnownSpells:      maxKnownSpells,
-		spellList:           spellList,
-		spellSlotAmount:     spellSlotAmount,
-		spellSlotLevel:      spellSlotLevel,
-		spellcastingAbility: spellcastingAbility,
-		spellSaveDC:         spellSaveDC,
-		spellAttackBonus:    spellAttackBonus,
+		MaxKnownSpells:      maxKnownSpells,
+		SpellList:           spellList,
+		SpellSlotAmount:     spellSlotAmount,
+		SpellSlotLevel:      spellSlotLevel,
+		SpellcastingAbility: spellcastingAbility,
+		SpellSaveDC:         spellSaveDC,
+		SpellAttackBonus:    spellAttackBonus,
 	}
 }
 

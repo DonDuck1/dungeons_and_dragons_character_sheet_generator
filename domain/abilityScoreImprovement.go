@@ -1,10 +1,10 @@
 package domain
 
 type AbilityScoreImprovement struct {
-	abilityScoreName AbilityScoreName
-	value            int
+	AbilityScoreName AbilityScoreName
+	Value            int
 }
 
 func NewAbilityScoreImprovement(abilityScoreName AbilityScoreName, value int) AbilityScoreImprovement {
-	return AbilityScoreImprovement{abilityScoreName: abilityScoreName, value: value}
+	return AbilityScoreImprovement{AbilityScoreName: abilityScoreName, Value: value}
 }

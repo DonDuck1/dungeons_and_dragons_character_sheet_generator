@@ -1,18 +1,18 @@
 package domain
 
 type Weapon struct {
-	name           string
-	weaponCategory string
-	normalRange    int
-	twoHanded      bool
+	Name           string
+	WeaponCategory string
+	NormalRange    int
+	TwoHanded      bool
 }
 
 func NewWeapon(name string, weaponCategory string, normalRange int, twoHanded bool) Weapon {
-	return Weapon{name: name, weaponCategory: weaponCategory, normalRange: normalRange, twoHanded: twoHanded}
+	return Weapon{Name: name, WeaponCategory: weaponCategory, NormalRange: normalRange, TwoHanded: twoHanded}
 }
 
 func (weapon Weapon) GetNumberOfOccupiedHandSlots() int {
-	if weapon.twoHanded {
+	if weapon.TwoHanded {
 		return 2
 	}
 

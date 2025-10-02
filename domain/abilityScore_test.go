@@ -7,41 +7,41 @@ import (
 
 func TestCreateAbilityScoreListWithImprovements(t *testing.T) {
 	expected := AbilityScoreList{
-		strength: AbilityScore{
-			name:        STRENGTH,
-			base_value:  15,
-			final_value: 18,
-			modifier:    4,
+		Strength: AbilityScore{
+			Name:        STRENGTH,
+			Base_value:  15,
+			Final_value: 18,
+			Modifier:    4,
 		},
-		dexterity: AbilityScore{
-			name:        DEXTERITY,
-			base_value:  1,
-			final_value: 1,
-			modifier:    -5,
+		Dexterity: AbilityScore{
+			Name:        DEXTERITY,
+			Base_value:  1,
+			Final_value: 1,
+			Modifier:    -5,
 		},
-		constitution: AbilityScore{
-			name:        CONSTITUTION,
-			base_value:  20,
-			final_value: 20,
-			modifier:    5,
+		Constitution: AbilityScore{
+			Name:        CONSTITUTION,
+			Base_value:  20,
+			Final_value: 20,
+			Modifier:    5,
 		},
-		intelligence: AbilityScore{
-			name:        INTELLIGENCE,
-			base_value:  12,
-			final_value: 12,
-			modifier:    1,
+		Intelligence: AbilityScore{
+			Name:        INTELLIGENCE,
+			Base_value:  12,
+			Final_value: 12,
+			Modifier:    1,
 		},
-		wisdom: AbilityScore{
-			name:        WISDOM,
-			base_value:  10,
-			final_value: 15,
-			modifier:    2,
+		Wisdom: AbilityScore{
+			Name:        WISDOM,
+			Base_value:  10,
+			Final_value: 15,
+			Modifier:    2,
 		},
-		charisma: AbilityScore{
-			name:        CHARISMA,
-			base_value:  8,
-			final_value: 7,
-			modifier:    -2,
+		Charisma: AbilityScore{
+			Name:        CHARISMA,
+			Base_value:  8,
+			Final_value: 7,
+			Modifier:    -2,
 		},
 	}
 

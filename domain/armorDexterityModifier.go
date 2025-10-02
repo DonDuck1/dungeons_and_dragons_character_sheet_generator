@@ -1,9 +1,9 @@
 package domain
 
 type ArmorDexterityModifier struct {
-	armorMaxDexterityModifier *int
+	ArmorMaxDexterityModifier *int
 }
 
 func NewArmorDexterityModifier(armorMaxDexterityModifier *int) *ArmorDexterityModifier {
-	return &ArmorDexterityModifier{armorMaxDexterityModifier: armorMaxDexterityModifier}
+	return &ArmorDexterityModifier{ArmorMaxDexterityModifier: armorMaxDexterityModifier}
 }

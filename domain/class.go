@@ -1,11 +1,11 @@
 package domain
 
 type Class struct {
-	name                    string
-	level                   int
-	skillProficiencies      []SkillProficiencyName
-	classSpellcastingInfo   *ClassSpellcastingInfo
-	classWarlockCastingInfo *ClassWarlockCastingInfo
+	Name                    string
+	Level                   int
+	SkillProficiencies      []SkillProficiencyName
+	ClassSpellcastingInfo   *ClassSpellcastingInfo
+	ClassWarlockCastingInfo *ClassWarlockCastingInfo
 }
 
 func NewClass(name string, level int, skillProficiencies []SkillProficiencyName, classSpellcastingInfo *ClassSpellcastingInfo, classWarlockCastingInfo *ClassWarlockCastingInfo) Class {
@@ -15,5 +15,5 @@ func NewClass(name string, level int, skillProficiencies []SkillProficiencyName,
 		level = 20
 	}
 
-	return Class{name: name, level: level, skillProficiencies: skillProficiencies, classSpellcastingInfo: classSpellcastingInfo, classWarlockCastingInfo: classWarlockCastingInfo}
+	return Class{Name: name, Level: level, SkillProficiencies: skillProficiencies, ClassSpellcastingInfo: classSpellcastingInfo, ClassWarlockCastingInfo: classWarlockCastingInfo}
 }

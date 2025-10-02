@@ -3,27 +3,27 @@ package domain
 import "fmt"
 
 type Inventory struct {
-	openHandSlots int
-	weapons       []Weapon
-	armor         *Armor
-	shield        *Shield
+	OpenHandSlots int
+	Weapons       []Weapon
+	Armor         *Armor
+	Shield        *Shield
 }
 
 func NewEmptyInventory(numberOfHandSlots int) Inventory {
-	return Inventory{openHandSlots: numberOfHandSlots, weapons: []Weapon{}, armor: nil, shield: nil}
+	return Inventory{OpenHandSlots: numberOfHandSlots, Weapons: []Weapon{}, Armor: nil, Shield: nil}
 }
 
 func (inventory Inventory) GetArmorClass(dexterityModifier int) int {
 	armorClass := 0
 
-	if inventory.armor == nil {
+	if inventory.Armor == nil {
 		armorClass = 10 + dexterityModifier
 	} else {
-		armorClass = inventory.armor.GetArmorClassModifierOfArmor(dexterityModifier)
+		armorClass = inventory.Armor.GetArmorClassModifierOfArmor(dexterityModifier)
 	}
 
-	if !(inventory.shield == nil) {
-		armorClass += inventory.shield.armorClassModifier
+	if !(inventory.Shield == nil) {
+		armorClass += inventory.Shield.ArmorClassModifier
 	}
 
 	return armorClass
@@ -32,23 +32,23 @@ func (inventory Inventory) GetArmorClass(dexterityModifier int) int {
 func (inventory *Inventory) AddWeapon(weapon Weapon) error {
 	requiredOpenHandSlots := weapon.GetNumberOfOccupiedHandSlots()
 
-	if inventory.openHandSlots >= requiredOpenHandSlots {
-		inventory.openHandSlots -= requiredOpenHandSlots
-		inventory.weapons = append(inventory.weapons, weapon)
+	if inventory.OpenHandSlots >= requiredOpenHandSlots {
+		inventory.OpenHandSlots -= requiredOpenHandSlots
+		inventory.Weapons = append(inventory.Weapons, weapon)
 
 		return nil
 	}
 
-	missingOpenHandSlots := requiredOpenHandSlots - inventory.openHandSlots
+	missingOpenHandSlots := requiredOpenHandSlots - inventory.OpenHandSlots
 	err := fmt.Errorf("Not enough open hand slots. %d more open hand slots are required.", missingOpenHandSlots)
 	return err
 }
 
 func (inventory *Inventory) RemoveWeapon(name string) error {
-	for index, weapon := range inventory.weapons {
-		if weapon.name == name {
-			inventory.openHandSlots += weapon.GetNumberOfOccupiedHandSlots()
-			inventory.weapons = append(inventory.weapons[:index], inventory.weapons[index+1:]...)
+	for index, weapon := range inventory.Weapons {
+		if weapon.Name == name {
+			inventory.OpenHandSlots += weapon.GetNumberOfOccupiedHandSlots()
+			inventory.Weapons = append(inventory.Weapons[:index], inventory.Weapons[index+1:]...)
 			return nil
 		}
 	}
@@ -58,33 +58,33 @@ func (inventory *Inventory) RemoveWeapon(name string) error {
 }
 
 func (inventory *Inventory) AddArmor(armor *Armor) error {
-	if inventory.armor == nil {
-		inventory.armor = armor
+	if inventory.Armor == nil {
+		inventory.Armor = armor
 		return nil
 	}
 
-	err := fmt.Errorf("Character already has armor ('%s') equipped. Please remove it first.", inventory.armor.name)
+	err := fmt.Errorf("Character already has armor ('%s') equipped. Please remove it first.", inventory.Armor.Name)
 	return err
 }
 
 func (inventory *Inventory) RemoveArmor() {
-	inventory.armor = nil
+	inventory.Armor = nil
 }
 
 func (inventory *Inventory) AddShield(shield *Shield) error {
-	if inventory.shield == nil {
-		inventory.openHandSlots -= shield.GetNumberOfOccupiedHandSlots()
-		inventory.shield = shield
+	if inventory.Shield == nil {
+		inventory.OpenHandSlots -= shield.GetNumberOfOccupiedHandSlots()
+		inventory.Shield = shield
 		return nil
 	}
 
-	err := fmt.Errorf("Character already has a shield ('%s') equipped. Please remove it first.", inventory.shield.name)
+	err := fmt.Errorf("Character already has a shield ('%s') equipped. Please remove it first.", inventory.Shield.Name)
 	return err
 }
 
 func (inventory *Inventory) RemoveShield() {
-	if !(inventory.shield == nil) {
-		inventory.openHandSlots += inventory.shield.GetNumberOfOccupiedHandSlots()
-		inventory.shield = nil
+	if !(inventory.Shield == nil) {
+		inventory.OpenHandSlots += inventory.Shield.GetNumberOfOccupiedHandSlots()
+		inventory.Shield = nil
 	}
 }

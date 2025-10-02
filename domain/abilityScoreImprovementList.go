@@ -13,7 +13,7 @@ func getAbilityScoreImprovementsByAbilityScoreName(abilityScoreImprovements []Ab
 	foundAbilityScoreImprovements := []AbilityScoreImprovement{}
 
 	for _, abilityScoreImprovement := range abilityScoreImprovements {
-		if abilityScoreImprovement.abilityScoreName == abilityScoreName {
+		if abilityScoreImprovement.AbilityScoreName == abilityScoreName {
 			foundAbilityScoreImprovements = append(foundAbilityScoreImprovements, abilityScoreImprovement)
 		}
 	}

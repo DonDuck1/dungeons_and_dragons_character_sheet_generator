@@ -1,12 +1,12 @@
 package domain
 
 type AbilityScoreValueList struct {
-	strengthValue     int
-	dexterityValue    int
-	constitutionValue int
-	intelligenceValue int
-	wisdomValue       int
-	charismaValue     int
+	StrengthValue     int
+	DexterityValue    int
+	ConstitutionValue int
+	IntelligenceValue int
+	WisdomValue       int
+	CharismaValue     int
 }
 
 func NewAbilityScoreValueList(
@@ -18,11 +18,11 @@ func NewAbilityScoreValueList(
 	charismaValue int,
 ) AbilityScoreValueList {
 	return AbilityScoreValueList{
-		strengthValue:     strengthValue,
-		dexterityValue:    dexterityValue,
-		constitutionValue: constitutionValue,
-		intelligenceValue: intelligenceValue,
-		wisdomValue:       wisdomValue,
-		charismaValue:     charismaValue,
+		StrengthValue:     strengthValue,
+		DexterityValue:    dexterityValue,
+		ConstitutionValue: constitutionValue,
+		IntelligenceValue: intelligenceValue,
+		WisdomValue:       wisdomValue,
+		CharismaValue:     charismaValue,
 	}
 }

@@ -5,10 +5,10 @@ import (
 )
 
 type AbilityScore struct {
-	name        AbilityScoreName
-	base_value  int
-	final_value int
-	modifier    int
+	Name        AbilityScoreName
+	Base_value  int
+	Final_value int
+	Modifier    int
 }
 
 func NewAbilityScore(name AbilityScoreName, value int) AbilityScore {
@@ -19,25 +19,25 @@ func NewAbilityScore(name AbilityScoreName, value int) AbilityScore {
 	}
 
 	return AbilityScore{
-		name:        name,
-		base_value:  value,
-		final_value: value,
-		modifier:    int(math.Floor((float64(value) - 10) / 2)),
+		Name:        name,
+		Base_value:  value,
+		Final_value: value,
+		Modifier:    int(math.Floor((float64(value) - 10) / 2)),
 	}
 }
 
 func (abilityScore *AbilityScore) CalculateFinalvalue(abilityScoreImprovements []AbilityScoreImprovement) {
-	abilityScore.final_value = abilityScore.base_value
+	abilityScore.Final_value = abilityScore.Base_value
 
 	for _, abilityScoreImprovement := range abilityScoreImprovements {
-		abilityScore.final_value += abilityScoreImprovement.value
+		abilityScore.Final_value += abilityScoreImprovement.Value
 	}
 
-	if abilityScore.final_value < 1 {
-		abilityScore.final_value = 1
-	} else if abilityScore.final_value > 20 {
-		abilityScore.final_value = 20
+	if abilityScore.Final_value < 1 {
+		abilityScore.Final_value = 1
+	} else if abilityScore.Final_value > 20 {
+		abilityScore.Final_value = 20
 	}
 
-	abilityScore.modifier = int(math.Floor((float64(abilityScore.final_value) - 10) / 2))
+	abilityScore.Modifier = int(math.Floor((float64(abilityScore.Final_value) - 10) / 2))
 }

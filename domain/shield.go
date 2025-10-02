@@ -1,12 +1,12 @@
 package domain
 
 type Shield struct {
-	name               string
-	armorClassModifier int
+	Name               string
+	ArmorClassModifier int
 }
 
 func NewShield(name string, armorClassModifier int) Shield {
-	return Shield{name: name, armorClassModifier: armorClassModifier}
+	return Shield{Name: name, ArmorClassModifier: armorClassModifier}
 }
 
 func (shield Shield) GetNumberOfOccupiedHandSlots() int {

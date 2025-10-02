@@ -1,24 +1,24 @@
 package domain
 
 type ClassSpellcastingInfo struct {
-	maxKnownSpells      *int
-	maxPreparedSpells   *int
-	spellList           SpellList
-	spellSlotAmount     [9]int
-	spellcastingAbility AbilityScoreName
-	spellSaveDC         int
-	spellAttackBonus    int
+	MaxKnownSpells      *int
+	MaxPreparedSpells   *int
+	SpellList           SpellList
+	SpellSlotAmount     [9]int
+	SpellcastingAbility AbilityScoreName
+	SpellSaveDC         int
+	SpellAttackBonus    int
 }
 
 func NewClassSpellcastingInfo(maxKnownSpells *int, maxPreparedSpells *int, spellList SpellList, spellSlotAmount [9]int, spellcastingAbility AbilityScoreName, spellSaveDC int, spellAttackBonus int) ClassSpellcastingInfo {
 	return ClassSpellcastingInfo{
-		maxKnownSpells:      maxKnownSpells,
-		maxPreparedSpells:   maxPreparedSpells,
-		spellList:           spellList,
-		spellSlotAmount:     spellSlotAmount,
-		spellcastingAbility: spellcastingAbility,
-		spellSaveDC:         spellSaveDC,
-		spellAttackBonus:    spellAttackBonus,
+		MaxKnownSpells:      maxKnownSpells,
+		MaxPreparedSpells:   maxPreparedSpells,
+		SpellList:           spellList,
+		SpellSlotAmount:     spellSlotAmount,
+		SpellcastingAbility: spellcastingAbility,
+		SpellSaveDC:         spellSaveDC,
+		SpellAttackBonus:    spellAttackBonus,
 	}
 }
 

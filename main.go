@@ -1,6 +1,8 @@
 package main
 
 import (
+	"dungeons_and_dragons_character_sheet_generator/infrastructure"
+	"encoding/json"
 	"flag"
 	"fmt"
 	"os"
@@ -30,6 +32,21 @@ func main() {
 	cmd := os.Args[1]
 
 	switch cmd {
+	case "test":
+		dndApiGateway := infrastructure.NewDndApiGateway("https://www.dnd5eapi.co/api/2014")
+		data, err := dndApiGateway.Get("/classes")
+		if !(err == nil) {
+			panic(err.Error())
+		}
+		fmt.Println(string(data))
+
+		fmt.Println("Go struct:")
+		var result map[string]string
+		err = json.Unmarshal(data, &result)
+		if !(err == nil) {
+			panic(err.Error())
+		}
+		// fmt.Println(result["ability-scores"])
 	case "create":
 		// You could use the Flag package like this
 		// But feel free to do it differently!
