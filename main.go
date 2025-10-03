@@ -5,11 +5,13 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
+	"log"
 	"os"
 )
 
 func usage() {
 	fmt.Printf(`Usage:
+  %s init
   %s create -name CHARACTER_NAME -race RACE -class CLASS -level N -str N -dex N -con N -int N -wis N -cha N
   %s view -name CHARACTER_NAME
   %s list
@@ -21,7 +23,7 @@ func usage() {
   %s learn-spell -name CHARACTER_NAME -spell SPELL_NAME
   %s forget-spell -name CHARACTER_NAME -spell SPELL_NAME
   %s prepare-spell -name CHARACTER_NAME -spell SPELL_NAME 
-`, os.Args[0], os.Args[0], os.Args[0], os.Args[0], os.Args[0], os.Args[0], os.Args[0], os.Args[0], os.Args[0], os.Args[0], os.Args[0])
+`, os.Args[0], os.Args[0], os.Args[0], os.Args[0], os.Args[0], os.Args[0], os.Args[0], os.Args[0], os.Args[0], os.Args[0], os.Args[0], os.Args[0])
 }
 
 func main() {
@@ -36,7 +38,7 @@ func main() {
 		dndApiGateway := infrastructure.NewDndApiGateway("https://www.dnd5eapi.co/api/2014")
 		data, err := dndApiGateway.Get("/classes")
 		if !(err == nil) {
-			panic(err.Error())
+			log.Fatal(err)
 		}
 		fmt.Println(string(data))
 
@@ -44,9 +46,21 @@ func main() {
 		var result map[string]string
 		err = json.Unmarshal(data, &result)
 		if !(err == nil) {
-			panic(err.Error())
+			log.Fatal(err)
 		}
 		// fmt.Println(result["ability-scores"])
+	case "init":
+		csvEquipmentRepository, err := infrastructure.NewCsvEquipmentRepository("./data/5e-SRD-Equipment.csv")
+		if !(err == nil) {
+			log.Fatal(err)
+		}
+
+		equipmentList, err := csvEquipmentRepository.GetByEquipmentType("Armor")
+		if !(err == nil) {
+			log.Fatal(err)
+		}
+		fmt.Println(equipmentList)
+
 	case "create":
 		// You could use the Flag package like this
 		// But feel free to do it differently!

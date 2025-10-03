@@ -3,8 +3,6 @@ package services
 import "dungeons_and_dragons_character_sheet_generator/infrastructure"
 
 type CharacterService struct {
-	equipmentRepository     infrastructure.CsvEquipmentRepository
-	spellRepository         infrastructure.CsvSpellRepository
 	dndApiGateway           infrastructure.DndApiGateway
 	jsonCharacterRepository infrastructure.JsonCharacterRepository
 }

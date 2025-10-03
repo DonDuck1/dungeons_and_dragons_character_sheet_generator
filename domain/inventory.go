@@ -40,7 +40,7 @@ func (inventory *Inventory) AddWeapon(weapon Weapon) error {
 	}
 
 	missingOpenHandSlots := requiredOpenHandSlots - inventory.OpenHandSlots
-	err := fmt.Errorf("Not enough open hand slots. %d more open hand slots are required.", missingOpenHandSlots)
+	err := fmt.Errorf("not enough open hand slots, %d more open hand slots are required", missingOpenHandSlots)
 	return err
 }
 
@@ -53,7 +53,7 @@ func (inventory *Inventory) RemoveWeapon(name string) error {
 		}
 	}
 
-	err := fmt.Errorf("No weapon found with name %s", name)
+	err := fmt.Errorf("no weapon found with name %s", name)
 	return err
 }
 
@@ -63,7 +63,7 @@ func (inventory *Inventory) AddArmor(armor *Armor) error {
 		return nil
 	}
 
-	err := fmt.Errorf("Character already has armor ('%s') equipped. Please remove it first.", inventory.Armor.Name)
+	err := fmt.Errorf("character already has armor ('%s') equipped, please remove it first", inventory.Armor.Name)
 	return err
 }
 
@@ -78,7 +78,7 @@ func (inventory *Inventory) AddShield(shield *Shield) error {
 		return nil
 	}
 
-	err := fmt.Errorf("Character already has a shield ('%s') equipped. Please remove it first.", inventory.Shield.Name)
+	err := fmt.Errorf("character already has a shield ('%s') equipped, please remove it first", inventory.Shield.Name)
 	return err
 }
 
