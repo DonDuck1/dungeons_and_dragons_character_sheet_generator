@@ -53,7 +53,12 @@ func (characterService CharacterService) CreateNewCharacter(
 		log.Fatal(err)
 	}
 
-	race, err := characterService.jsonRaceRepository.GetByName(potentialRaceName)
+	dndApiRaceWithSubraces, err := characterService.jsonRaceRepository.GetByName(potentialRaceName)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	race, err := dndApiRaceWithSubraces.AsRace(potentialRaceName)
 	if err != nil {
 		log.Fatal(err)
 	}

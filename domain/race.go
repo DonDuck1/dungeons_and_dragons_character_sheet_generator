@@ -1,21 +1,22 @@
 package domain
 
 type Race struct {
-	Name                                string
-	AbilityScoreImprovements            []AbilityScoreImprovement
-	OptionalAbilityScoreImprovementList *OptionalAbilityScoreImprovementList
-	NumberOfHandSlots                   int
+	Name                     string
+	AbilityScoreImprovements []AbilityScoreImprovement
+	SubRace                  *SubRace
+	NumberOfHandSlots        int
 }
 
-func NewRace(name string, abilityScoreImprovements []AbilityScoreImprovement, optionalAbilityScoreImprovementList *OptionalAbilityScoreImprovementList, numberOfHandSlots int) Race {
-	return Race{Name: name, AbilityScoreImprovements: abilityScoreImprovements, OptionalAbilityScoreImprovementList: optionalAbilityScoreImprovementList, NumberOfHandSlots: numberOfHandSlots}
+func NewRace(name string, abilityScoreImprovements []AbilityScoreImprovement, SubRace *SubRace, numberOfHandSlots int) Race {
+	return Race{Name: name, AbilityScoreImprovements: abilityScoreImprovements, SubRace: SubRace, NumberOfHandSlots: numberOfHandSlots}
 }
 
 func (race Race) GetChosenAbilityScoreImprovements() []AbilityScoreImprovement {
 	abilityScoreImprovements := []AbilityScoreImprovement{}
 	abilityScoreImprovements = append(abilityScoreImprovements, race.AbilityScoreImprovements...)
-	if race.OptionalAbilityScoreImprovementList != nil {
-		abilityScoreImprovements = append(abilityScoreImprovements, race.OptionalAbilityScoreImprovementList.ChooseRandomAbilityScoreImprovements()...)
+	if race.SubRace != nil {
+		abilityScoreImprovements = append(abilityScoreImprovements, race.SubRace.AbilityScoreImprovements...)
 	}
+
 	return abilityScoreImprovements
 }

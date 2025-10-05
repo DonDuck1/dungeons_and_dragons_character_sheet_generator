@@ -1,157 +1,369 @@
 [
   {
-    "Name": "Dragonborn",
-    "AbilityScoreImprovements": [
+    "index": "dragonborn",
+    "name": "Dragonborn",
+    "ability_bonuses": [
       {
-        "AbilityScoreName": "Strength",
-        "Value": 2
+        "ability_score": {
+          "index": "str",
+          "name": "STR",
+          "url": "/api/2014/ability-scores/str"
+        },
+        "bonus": 2
       },
       {
-        "AbilityScoreName": "Charisma",
-        "Value": 1
+        "ability_score": {
+          "index": "cha",
+          "name": "CHA",
+          "url": "/api/2014/ability-scores/cha"
+        },
+        "bonus": 1
       }
     ],
-    "OptionalAbilityScoreImprovementList": null,
-    "NumberOfHandSlots": 2
+    "ability_bonus_options": null,
+    "subrace_references": [],
+    "subraces": []
   },
   {
-    "Name": "Dwarf",
-    "AbilityScoreImprovements": [
+    "index": "dwarf",
+    "name": "Dwarf",
+    "ability_bonuses": [
       {
-        "AbilityScoreName": "Constitution",
-        "Value": 2
+        "ability_score": {
+          "index": "con",
+          "name": "CON",
+          "url": "/api/2014/ability-scores/con"
+        },
+        "bonus": 2
       }
     ],
-    "OptionalAbilityScoreImprovementList": null,
-    "NumberOfHandSlots": 2
+    "ability_bonus_options": null,
+    "subrace_references": [
+      {
+        "index": "hill-dwarf",
+        "name": "Hill Dwarf",
+        "url": "/api/2014/subraces/hill-dwarf"
+      }
+    ],
+    "subraces": [
+      {
+        "index": "hill-dwarf",
+        "name": "Hill Dwarf",
+        "race": {
+          "index": "dwarf",
+          "name": "Dwarf",
+          "url": "/api/2014/races/dwarf"
+        },
+        "ability_bonuses": [
+          {
+            "ability_score": {
+              "index": "wis",
+              "name": "WIS",
+              "url": "/api/2014/ability-scores/wis"
+            },
+            "bonus": 1
+          }
+        ]
+      }
+    ]
   },
   {
-    "Name": "Elf",
-    "AbilityScoreImprovements": [
+    "index": "elf",
+    "name": "Elf",
+    "ability_bonuses": [
       {
-        "AbilityScoreName": "Dexterity",
-        "Value": 2
+        "ability_score": {
+          "index": "dex",
+          "name": "DEX",
+          "url": "/api/2014/ability-scores/dex"
+        },
+        "bonus": 2
       }
     ],
-    "OptionalAbilityScoreImprovementList": null,
-    "NumberOfHandSlots": 2
+    "ability_bonus_options": null,
+    "subrace_references": [
+      {
+        "index": "high-elf",
+        "name": "High Elf",
+        "url": "/api/2014/subraces/high-elf"
+      }
+    ],
+    "subraces": [
+      {
+        "index": "high-elf",
+        "name": "High Elf",
+        "race": {
+          "index": "elf",
+          "name": "Elf",
+          "url": "/api/2014/races/elf"
+        },
+        "ability_bonuses": [
+          {
+            "ability_score": {
+              "index": "int",
+              "name": "INT",
+              "url": "/api/2014/ability-scores/int"
+            },
+            "bonus": 1
+          }
+        ]
+      }
+    ]
   },
   {
-    "Name": "Gnome",
-    "AbilityScoreImprovements": [
+    "index": "gnome",
+    "name": "Gnome",
+    "ability_bonuses": [
       {
-        "AbilityScoreName": "Intelligence",
-        "Value": 2
+        "ability_score": {
+          "index": "int",
+          "name": "INT",
+          "url": "/api/2014/ability-scores/int"
+        },
+        "bonus": 2
       }
     ],
-    "OptionalAbilityScoreImprovementList": null,
-    "NumberOfHandSlots": 2
+    "ability_bonus_options": null,
+    "subrace_references": [
+      {
+        "index": "rock-gnome",
+        "name": "Rock Gnome",
+        "url": "/api/2014/subraces/rock-gnome"
+      }
+    ],
+    "subraces": [
+      {
+        "index": "rock-gnome",
+        "name": "Rock Gnome",
+        "race": {
+          "index": "gnome",
+          "name": "Gnome",
+          "url": "/api/2014/races/gnome"
+        },
+        "ability_bonuses": [
+          {
+            "ability_score": {
+              "index": "con",
+              "name": "CON",
+              "url": "/api/2014/ability-scores/con"
+            },
+            "bonus": 1
+          }
+        ]
+      }
+    ]
   },
   {
-    "Name": "Half-Elf",
-    "AbilityScoreImprovements": [
+    "index": "half-elf",
+    "name": "Half-Elf",
+    "ability_bonuses": [
       {
-        "AbilityScoreName": "Charisma",
-        "Value": 2
+        "ability_score": {
+          "index": "cha",
+          "name": "CHA",
+          "url": "/api/2014/ability-scores/cha"
+        },
+        "bonus": 2
       }
     ],
-    "OptionalAbilityScoreImprovementList": {
-      "OptionalAbilityScoreImprovements": [
-        {
-          "AbilityScoreName": "Strength",
-          "Value": 1
-        },
-        {
-          "AbilityScoreName": "Dexterity",
-          "Value": 1
-        },
-        {
-          "AbilityScoreName": "Constitution",
-          "Value": 1
-        },
-        {
-          "AbilityScoreName": "Intelligence",
-          "Value": 1
-        },
-        {
-          "AbilityScoreName": "Wisdom",
-          "Value": 1
-        }
-      ],
-      "AmountOfChoices": 2
+    "ability_bonus_options": {
+      "choose": 2,
+      "from": {
+        "options": [
+          {
+            "ability_score": {
+              "index": "str",
+              "name": "STR",
+              "url": "/api/2014/ability-scores/str"
+            },
+            "bonus": 1
+          },
+          {
+            "ability_score": {
+              "index": "dex",
+              "name": "DEX",
+              "url": "/api/2014/ability-scores/dex"
+            },
+            "bonus": 1
+          },
+          {
+            "ability_score": {
+              "index": "con",
+              "name": "CON",
+              "url": "/api/2014/ability-scores/con"
+            },
+            "bonus": 1
+          },
+          {
+            "ability_score": {
+              "index": "int",
+              "name": "INT",
+              "url": "/api/2014/ability-scores/int"
+            },
+            "bonus": 1
+          },
+          {
+            "ability_score": {
+              "index": "wis",
+              "name": "WIS",
+              "url": "/api/2014/ability-scores/wis"
+            },
+            "bonus": 1
+          }
+        ]
+      }
     },
-    "NumberOfHandSlots": 2
+    "subrace_references": [],
+    "subraces": []
   },
   {
-    "Name": "Half-Orc",
-    "AbilityScoreImprovements": [
+    "index": "half-orc",
+    "name": "Half-Orc",
+    "ability_bonuses": [
       {
-        "AbilityScoreName": "Strength",
-        "Value": 2
+        "ability_score": {
+          "index": "str",
+          "name": "STR",
+          "url": "/api/2014/ability-scores/str"
+        },
+        "bonus": 2
       },
       {
-        "AbilityScoreName": "Constitution",
-        "Value": 1
+        "ability_score": {
+          "index": "con",
+          "name": "CON",
+          "url": "/api/2014/ability-scores/con"
+        },
+        "bonus": 1
       }
     ],
-    "OptionalAbilityScoreImprovementList": null,
-    "NumberOfHandSlots": 2
+    "ability_bonus_options": null,
+    "subrace_references": [],
+    "subraces": []
   },
   {
-    "Name": "Halfling",
-    "AbilityScoreImprovements": [
+    "index": "halfling",
+    "name": "Halfling",
+    "ability_bonuses": [
       {
-        "AbilityScoreName": "Dexterity",
-        "Value": 2
+        "ability_score": {
+          "index": "dex",
+          "name": "DEX",
+          "url": "/api/2014/ability-scores/dex"
+        },
+        "bonus": 2
       }
     ],
-    "OptionalAbilityScoreImprovementList": null,
-    "NumberOfHandSlots": 2
+    "ability_bonus_options": null,
+    "subrace_references": [
+      {
+        "index": "lightfoot-halfling",
+        "name": "Lightfoot Halfling",
+        "url": "/api/2014/subraces/lightfoot-halfling"
+      }
+    ],
+    "subraces": [
+      {
+        "index": "lightfoot-halfling",
+        "name": "Lightfoot Halfling",
+        "race": {
+          "index": "halfling",
+          "name": "Halfling",
+          "url": "/api/2014/races/halfling"
+        },
+        "ability_bonuses": [
+          {
+            "ability_score": {
+              "index": "cha",
+              "name": "CHA",
+              "url": "/api/2014/ability-scores/cha"
+            },
+            "bonus": 1
+          }
+        ]
+      }
+    ]
   },
   {
-    "Name": "Human",
-    "AbilityScoreImprovements": [
+    "index": "human",
+    "name": "Human",
+    "ability_bonuses": [
       {
-        "AbilityScoreName": "Strength",
-        "Value": 1
+        "ability_score": {
+          "index": "str",
+          "name": "STR",
+          "url": "/api/2014/ability-scores/str"
+        },
+        "bonus": 1
       },
       {
-        "AbilityScoreName": "Dexterity",
-        "Value": 1
+        "ability_score": {
+          "index": "dex",
+          "name": "DEX",
+          "url": "/api/2014/ability-scores/dex"
+        },
+        "bonus": 1
       },
       {
-        "AbilityScoreName": "Constitution",
-        "Value": 1
+        "ability_score": {
+          "index": "con",
+          "name": "CON",
+          "url": "/api/2014/ability-scores/con"
+        },
+        "bonus": 1
       },
       {
-        "AbilityScoreName": "Intelligence",
-        "Value": 1
+        "ability_score": {
+          "index": "int",
+          "name": "INT",
+          "url": "/api/2014/ability-scores/int"
+        },
+        "bonus": 1
       },
       {
-        "AbilityScoreName": "Wisdom",
-        "Value": 1
+        "ability_score": {
+          "index": "wis",
+          "name": "WIS",
+          "url": "/api/2014/ability-scores/wis"
+        },
+        "bonus": 1
       },
       {
-        "AbilityScoreName": "Charisma",
-        "Value": 1
+        "ability_score": {
+          "index": "cha",
+          "name": "CHA",
+          "url": "/api/2014/ability-scores/cha"
+        },
+        "bonus": 1
       }
     ],
-    "OptionalAbilityScoreImprovementList": null,
-    "NumberOfHandSlots": 2
+    "ability_bonus_options": null,
+    "subrace_references": [],
+    "subraces": []
   },
   {
-    "Name": "Tiefling",
-    "AbilityScoreImprovements": [
+    "index": "tiefling",
+    "name": "Tiefling",
+    "ability_bonuses": [
       {
-        "AbilityScoreName": "Intelligence",
-        "Value": 1
+        "ability_score": {
+          "index": "int",
+          "name": "INT",
+          "url": "/api/2014/ability-scores/int"
+        },
+        "bonus": 1
       },
       {
-        "AbilityScoreName": "Charisma",
-        "Value": 2
+        "ability_score": {
+          "index": "cha",
+          "name": "CHA",
+          "url": "/api/2014/ability-scores/cha"
+        },
+        "bonus": 2
       }
     ],
-    "OptionalAbilityScoreImprovementList": null,
-    "NumberOfHandSlots": 2
+    "ability_bonus_options": null,
+    "subrace_references": [],
+    "subraces": []
   }
 ]

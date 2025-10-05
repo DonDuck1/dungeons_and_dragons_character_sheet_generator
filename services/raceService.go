@@ -1,7 +1,6 @@
 package services
 
 import (
-	"dungeons_and_dragons_character_sheet_generator/domain"
 	"dungeons_and_dragons_character_sheet_generator/infrastructure"
 	"encoding/json"
 	"fmt"
@@ -32,7 +31,6 @@ func (raceService *RaceService) InitialiseRaces() {
 	for _, result := range dndApiReferenceList.Results {
 		endpoints = append(endpoints, result.Url)
 	}
-
 	bodies, errors := raceService.dndApiGateway.GetMultipleOrdered(endpoints)
 	if len(errors) != 0 {
 		for _, err := range errors {
@@ -40,21 +38,53 @@ func (raceService *RaceService) InitialiseRaces() {
 		}
 		os.Exit(1)
 	}
-
-	raceList := []domain.Race{}
+	dndApiRaceList := []infrastructure.DndApiRace{}
 	for _, body := range bodies {
 		var dndApiRace infrastructure.DndApiRace
-		err = json.Unmarshal(body, &dndApiRace)
-		if err != nil {
-			log.Fatal(err)
-		}
-		race, err := dndApiRace.AsRace()
+		err := json.Unmarshal(body, &dndApiRace)
 		if err != nil {
 			log.Fatal(err)
 		}
 
-		raceList = append(raceList, *race)
+		dndApiRaceList = append(dndApiRaceList, dndApiRace)
 	}
 
-	infrastructure.SaveRaceListAsJson("./data/races.json", &raceList)
+	dndApiRaceWithSubRacesList := []infrastructure.DndApiRaceWithSubRaces{}
+	for _, dndApiRace := range dndApiRaceList {
+		endpoints := []string{}
+		for _, subRaceReference := range *dndApiRace.SubRaceReferences {
+			endpoints = append(endpoints, subRaceReference.Url)
+		}
+
+		bodies, errors = raceService.dndApiGateway.GetMultipleOrdered(endpoints)
+		if len(errors) != 0 {
+			for _, err := range errors {
+				fmt.Println(err)
+			}
+			os.Exit(1)
+		}
+		dndApiSubRaceList := []infrastructure.DndApiSubRace{}
+		for _, body := range bodies {
+			var dndApiSubRace infrastructure.DndApiSubRace
+			err := json.Unmarshal(body, &dndApiSubRace)
+			if err != nil {
+				log.Fatal(err)
+			}
+
+			dndApiSubRaceList = append(dndApiSubRaceList, dndApiSubRace)
+		}
+
+		dndApiRaceWithSubRaces := infrastructure.NewDndApiRaceWithSubRaces(
+			dndApiRace.Index,
+			dndApiRace.Name,
+			dndApiRace.AbilityBonusList,
+			dndApiRace.AbilityBonusOptions,
+			dndApiRace.SubRaceReferences,
+			dndApiSubRaceList,
+		)
+
+		dndApiRaceWithSubRacesList = append(dndApiRaceWithSubRacesList, dndApiRaceWithSubRaces)
+	}
+
+	infrastructure.SaveRaceListAsJson("./data/races.json", &dndApiRaceWithSubRacesList)
 }
