@@ -1,0 +1,5337 @@
+[
+  {
+    "index": "barbarian",
+    "name": "Barbarian",
+    "proficiency_choices": [
+      {
+        "choose": 2,
+        "from": {
+          "options": [
+            {
+              "item": {
+                "index": "skill-animal-handling",
+                "name": "Skill: Animal Handling",
+                "url": "/api/2014/proficiencies/skill-animal-handling"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-athletics",
+                "name": "Skill: Athletics",
+                "url": "/api/2014/proficiencies/skill-athletics"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-intimidation",
+                "name": "Skill: Intimidation",
+                "url": "/api/2014/proficiencies/skill-intimidation"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-nature",
+                "name": "Skill: Nature",
+                "url": "/api/2014/proficiencies/skill-nature"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-perception",
+                "name": "Skill: Perception",
+                "url": "/api/2014/proficiencies/skill-perception"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-survival",
+                "name": "Skill: Survival",
+                "url": "/api/2014/proficiencies/skill-survival"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "class_levels_url": "/api/2014/classes/barbarian/levels",
+    "class_level_list": [
+      {
+        "level": 1,
+        "spellcasting": null,
+        "index": "barbarian-1",
+        "class": {
+          "index": "barbarian",
+          "name": "Barbarian",
+          "url": "/api/2014/classes/barbarian"
+        }
+      },
+      {
+        "level": 2,
+        "spellcasting": null,
+        "index": "barbarian-2",
+        "class": {
+          "index": "barbarian",
+          "name": "Barbarian",
+          "url": "/api/2014/classes/barbarian"
+        }
+      },
+      {
+        "level": 3,
+        "spellcasting": null,
+        "index": "barbarian-3",
+        "class": {
+          "index": "barbarian",
+          "name": "Barbarian",
+          "url": "/api/2014/classes/barbarian"
+        }
+      },
+      {
+        "level": 4,
+        "spellcasting": null,
+        "index": "barbarian-4",
+        "class": {
+          "index": "barbarian",
+          "name": "Barbarian",
+          "url": "/api/2014/classes/barbarian"
+        }
+      },
+      {
+        "level": 5,
+        "spellcasting": null,
+        "index": "barbarian-5",
+        "class": {
+          "index": "barbarian",
+          "name": "Barbarian",
+          "url": "/api/2014/classes/barbarian"
+        }
+      },
+      {
+        "level": 6,
+        "spellcasting": null,
+        "index": "barbarian-6",
+        "class": {
+          "index": "barbarian",
+          "name": "Barbarian",
+          "url": "/api/2014/classes/barbarian"
+        }
+      },
+      {
+        "level": 7,
+        "spellcasting": null,
+        "index": "barbarian-7",
+        "class": {
+          "index": "barbarian",
+          "name": "Barbarian",
+          "url": "/api/2014/classes/barbarian"
+        }
+      },
+      {
+        "level": 8,
+        "spellcasting": null,
+        "index": "barbarian-8",
+        "class": {
+          "index": "barbarian",
+          "name": "Barbarian",
+          "url": "/api/2014/classes/barbarian"
+        }
+      },
+      {
+        "level": 9,
+        "spellcasting": null,
+        "index": "barbarian-9",
+        "class": {
+          "index": "barbarian",
+          "name": "Barbarian",
+          "url": "/api/2014/classes/barbarian"
+        }
+      },
+      {
+        "level": 10,
+        "spellcasting": null,
+        "index": "barbarian-10",
+        "class": {
+          "index": "barbarian",
+          "name": "Barbarian",
+          "url": "/api/2014/classes/barbarian"
+        }
+      },
+      {
+        "level": 11,
+        "spellcasting": null,
+        "index": "barbarian-11",
+        "class": {
+          "index": "barbarian",
+          "name": "Barbarian",
+          "url": "/api/2014/classes/barbarian"
+        }
+      },
+      {
+        "level": 12,
+        "spellcasting": null,
+        "index": "barbarian-12",
+        "class": {
+          "index": "barbarian",
+          "name": "Barbarian",
+          "url": "/api/2014/classes/barbarian"
+        }
+      },
+      {
+        "level": 13,
+        "spellcasting": null,
+        "index": "barbarian-13",
+        "class": {
+          "index": "barbarian",
+          "name": "Barbarian",
+          "url": "/api/2014/classes/barbarian"
+        }
+      },
+      {
+        "level": 14,
+        "spellcasting": null,
+        "index": "barbarian-14",
+        "class": {
+          "index": "barbarian",
+          "name": "Barbarian",
+          "url": "/api/2014/classes/barbarian"
+        }
+      },
+      {
+        "level": 15,
+        "spellcasting": null,
+        "index": "barbarian-15",
+        "class": {
+          "index": "barbarian",
+          "name": "Barbarian",
+          "url": "/api/2014/classes/barbarian"
+        }
+      },
+      {
+        "level": 16,
+        "spellcasting": null,
+        "index": "barbarian-16",
+        "class": {
+          "index": "barbarian",
+          "name": "Barbarian",
+          "url": "/api/2014/classes/barbarian"
+        }
+      },
+      {
+        "level": 17,
+        "spellcasting": null,
+        "index": "barbarian-17",
+        "class": {
+          "index": "barbarian",
+          "name": "Barbarian",
+          "url": "/api/2014/classes/barbarian"
+        }
+      },
+      {
+        "level": 18,
+        "spellcasting": null,
+        "index": "barbarian-18",
+        "class": {
+          "index": "barbarian",
+          "name": "Barbarian",
+          "url": "/api/2014/classes/barbarian"
+        }
+      },
+      {
+        "level": 19,
+        "spellcasting": null,
+        "index": "barbarian-19",
+        "class": {
+          "index": "barbarian",
+          "name": "Barbarian",
+          "url": "/api/2014/classes/barbarian"
+        }
+      },
+      {
+        "level": 20,
+        "spellcasting": null,
+        "index": "barbarian-20",
+        "class": {
+          "index": "barbarian",
+          "name": "Barbarian",
+          "url": "/api/2014/classes/barbarian"
+        }
+      }
+    ],
+    "spellcasting": null
+  },
+  {
+    "index": "bard",
+    "name": "Bard",
+    "proficiency_choices": [
+      {
+        "choose": 3,
+        "from": {
+          "options": [
+            {
+              "item": {
+                "index": "skill-acrobatics",
+                "name": "Skill: Acrobatics",
+                "url": "/api/2014/proficiencies/skill-acrobatics"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-animal-handling",
+                "name": "Skill: Animal Handling",
+                "url": "/api/2014/proficiencies/skill-animal-handling"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-arcana",
+                "name": "Skill: Arcana",
+                "url": "/api/2014/proficiencies/skill-arcana"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-athletics",
+                "name": "Skill: Athletics",
+                "url": "/api/2014/proficiencies/skill-athletics"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-deception",
+                "name": "Skill: Deception",
+                "url": "/api/2014/proficiencies/skill-deception"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-history",
+                "name": "Skill: History",
+                "url": "/api/2014/proficiencies/skill-history"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-insight",
+                "name": "Skill: Insight",
+                "url": "/api/2014/proficiencies/skill-insight"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-intimidation",
+                "name": "Skill: Intimidation",
+                "url": "/api/2014/proficiencies/skill-intimidation"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-investigation",
+                "name": "Skill: Investigation",
+                "url": "/api/2014/proficiencies/skill-investigation"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-medicine",
+                "name": "Skill: Medicine",
+                "url": "/api/2014/proficiencies/skill-medicine"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-nature",
+                "name": "Skill: Nature",
+                "url": "/api/2014/proficiencies/skill-nature"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-perception",
+                "name": "Skill: Perception",
+                "url": "/api/2014/proficiencies/skill-perception"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-performance",
+                "name": "Skill: Performance",
+                "url": "/api/2014/proficiencies/skill-performance"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-persuasion",
+                "name": "Skill: Persuasion",
+                "url": "/api/2014/proficiencies/skill-persuasion"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-religion",
+                "name": "Skill: Religion",
+                "url": "/api/2014/proficiencies/skill-religion"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-sleight-of-hand",
+                "name": "Skill: Sleight of Hand",
+                "url": "/api/2014/proficiencies/skill-sleight-of-hand"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-stealth",
+                "name": "Skill: Stealth",
+                "url": "/api/2014/proficiencies/skill-stealth"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-survival",
+                "name": "Skill: Survival",
+                "url": "/api/2014/proficiencies/skill-survival"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "choose": 3,
+        "from": {
+          "options": [
+            {
+              "item": {
+                "index": "bagpipes",
+                "name": "Bagpipes",
+                "url": "/api/2014/proficiencies/bagpipes"
+              }
+            },
+            {
+              "item": {
+                "index": "drum",
+                "name": "Drum",
+                "url": "/api/2014/proficiencies/drum"
+              }
+            },
+            {
+              "item": {
+                "index": "dulcimer",
+                "name": "Dulcimer",
+                "url": "/api/2014/proficiencies/dulcimer"
+              }
+            },
+            {
+              "item": {
+                "index": "flute",
+                "name": "Flute",
+                "url": "/api/2014/proficiencies/flute"
+              }
+            },
+            {
+              "item": {
+                "index": "lute",
+                "name": "Lute",
+                "url": "/api/2014/proficiencies/lute"
+              }
+            },
+            {
+              "item": {
+                "index": "lyre",
+                "name": "Lyre",
+                "url": "/api/2014/proficiencies/lyre"
+              }
+            },
+            {
+              "item": {
+                "index": "horn",
+                "name": "Horn",
+                "url": "/api/2014/proficiencies/horn"
+              }
+            },
+            {
+              "item": {
+                "index": "pan-flute",
+                "name": "Pan flute",
+                "url": "/api/2014/proficiencies/pan-flute"
+              }
+            },
+            {
+              "item": {
+                "index": "shawm",
+                "name": "Shawm",
+                "url": "/api/2014/proficiencies/shawm"
+              }
+            },
+            {
+              "item": {
+                "index": "viol",
+                "name": "Viol",
+                "url": "/api/2014/proficiencies/viol"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "class_levels_url": "/api/2014/classes/bard/levels",
+    "class_level_list": [
+      {
+        "level": 1,
+        "spellcasting": {
+          "cantrips_known": 2,
+          "spells_known": 4,
+          "spell_slots_level_1": 2,
+          "spell_slots_level_2": 0,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "bard-1",
+        "class": {
+          "index": "bard",
+          "name": "Bard",
+          "url": "/api/2014/classes/bard"
+        }
+      },
+      {
+        "level": 2,
+        "spellcasting": {
+          "cantrips_known": 2,
+          "spells_known": 5,
+          "spell_slots_level_1": 3,
+          "spell_slots_level_2": 0,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "bard-2",
+        "class": {
+          "index": "bard",
+          "name": "Bard",
+          "url": "/api/2014/classes/bard"
+        }
+      },
+      {
+        "level": 3,
+        "spellcasting": {
+          "cantrips_known": 2,
+          "spells_known": 6,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 2,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "bard-3",
+        "class": {
+          "index": "bard",
+          "name": "Bard",
+          "url": "/api/2014/classes/bard"
+        }
+      },
+      {
+        "level": 4,
+        "spellcasting": {
+          "cantrips_known": 3,
+          "spells_known": 7,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "bard-4",
+        "class": {
+          "index": "bard",
+          "name": "Bard",
+          "url": "/api/2014/classes/bard"
+        }
+      },
+      {
+        "level": 5,
+        "spellcasting": {
+          "cantrips_known": 3,
+          "spells_known": 8,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 2,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "bard-5",
+        "class": {
+          "index": "bard",
+          "name": "Bard",
+          "url": "/api/2014/classes/bard"
+        }
+      },
+      {
+        "level": 6,
+        "spellcasting": {
+          "cantrips_known": 3,
+          "spells_known": 9,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "bard-6",
+        "class": {
+          "index": "bard",
+          "name": "Bard",
+          "url": "/api/2014/classes/bard"
+        }
+      },
+      {
+        "level": 7,
+        "spellcasting": {
+          "cantrips_known": 3,
+          "spells_known": 10,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 1,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "bard-7",
+        "class": {
+          "index": "bard",
+          "name": "Bard",
+          "url": "/api/2014/classes/bard"
+        }
+      },
+      {
+        "level": 8,
+        "spellcasting": {
+          "cantrips_known": 3,
+          "spells_known": 11,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 2,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "bard-8",
+        "class": {
+          "index": "bard",
+          "name": "Bard",
+          "url": "/api/2014/classes/bard"
+        }
+      },
+      {
+        "level": 9,
+        "spellcasting": {
+          "cantrips_known": 3,
+          "spells_known": 12,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 1,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "bard-9",
+        "class": {
+          "index": "bard",
+          "name": "Bard",
+          "url": "/api/2014/classes/bard"
+        }
+      },
+      {
+        "level": 10,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": 14,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "bard-10",
+        "class": {
+          "index": "bard",
+          "name": "Bard",
+          "url": "/api/2014/classes/bard"
+        }
+      },
+      {
+        "level": 11,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": 15,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 1,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "bard-11",
+        "class": {
+          "index": "bard",
+          "name": "Bard",
+          "url": "/api/2014/classes/bard"
+        }
+      },
+      {
+        "level": 12,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": 15,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 1,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "bard-12",
+        "class": {
+          "index": "bard",
+          "name": "Bard",
+          "url": "/api/2014/classes/bard"
+        }
+      },
+      {
+        "level": 13,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": 16,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 1,
+          "spell_slots_level_7": 1,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "bard-13",
+        "class": {
+          "index": "bard",
+          "name": "Bard",
+          "url": "/api/2014/classes/bard"
+        }
+      },
+      {
+        "level": 14,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": 18,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 1,
+          "spell_slots_level_7": 1,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "bard-14",
+        "class": {
+          "index": "bard",
+          "name": "Bard",
+          "url": "/api/2014/classes/bard"
+        }
+      },
+      {
+        "level": 15,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": 19,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 1,
+          "spell_slots_level_7": 1,
+          "spell_slots_level_8": 1,
+          "spell_slots_level_9": 0
+        },
+        "index": "bard-15",
+        "class": {
+          "index": "bard",
+          "name": "Bard",
+          "url": "/api/2014/classes/bard"
+        }
+      },
+      {
+        "level": 16,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": 19,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 1,
+          "spell_slots_level_7": 1,
+          "spell_slots_level_8": 1,
+          "spell_slots_level_9": 0
+        },
+        "index": "bard-16",
+        "class": {
+          "index": "bard",
+          "name": "Bard",
+          "url": "/api/2014/classes/bard"
+        }
+      },
+      {
+        "level": 17,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": 20,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 1,
+          "spell_slots_level_7": 1,
+          "spell_slots_level_8": 1,
+          "spell_slots_level_9": 1
+        },
+        "index": "bard-17",
+        "class": {
+          "index": "bard",
+          "name": "Bard",
+          "url": "/api/2014/classes/bard"
+        }
+      },
+      {
+        "level": 18,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": 22,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 3,
+          "spell_slots_level_6": 1,
+          "spell_slots_level_7": 1,
+          "spell_slots_level_8": 1,
+          "spell_slots_level_9": 1
+        },
+        "index": "bard-18",
+        "class": {
+          "index": "bard",
+          "name": "Bard",
+          "url": "/api/2014/classes/bard"
+        }
+      },
+      {
+        "level": 19,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": 22,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 3,
+          "spell_slots_level_6": 2,
+          "spell_slots_level_7": 1,
+          "spell_slots_level_8": 1,
+          "spell_slots_level_9": 1
+        },
+        "index": "bard-19",
+        "class": {
+          "index": "bard",
+          "name": "Bard",
+          "url": "/api/2014/classes/bard"
+        }
+      },
+      {
+        "level": 20,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": 22,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 3,
+          "spell_slots_level_6": 2,
+          "spell_slots_level_7": 2,
+          "spell_slots_level_8": 1,
+          "spell_slots_level_9": 1
+        },
+        "index": "bard-20",
+        "class": {
+          "index": "bard",
+          "name": "Bard",
+          "url": "/api/2014/classes/bard"
+        }
+      }
+    ],
+    "spellcasting": {
+      "spellcasting_ability": {
+        "index": "cha",
+        "name": "CHA",
+        "url": "/api/2014/ability-scores/cha"
+      }
+    }
+  },
+  {
+    "index": "cleric",
+    "name": "Cleric",
+    "proficiency_choices": [
+      {
+        "choose": 2,
+        "from": {
+          "options": [
+            {
+              "item": {
+                "index": "skill-history",
+                "name": "Skill: History",
+                "url": "/api/2014/proficiencies/skill-history"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-insight",
+                "name": "Skill: Insight",
+                "url": "/api/2014/proficiencies/skill-insight"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-medicine",
+                "name": "Skill: Medicine",
+                "url": "/api/2014/proficiencies/skill-medicine"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-persuasion",
+                "name": "Skill: Persuasion",
+                "url": "/api/2014/proficiencies/skill-persuasion"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-religion",
+                "name": "Skill: Religion",
+                "url": "/api/2014/proficiencies/skill-religion"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "class_levels_url": "/api/2014/classes/cleric/levels",
+    "class_level_list": [
+      {
+        "level": 1,
+        "spellcasting": {
+          "cantrips_known": 3,
+          "spells_known": null,
+          "spell_slots_level_1": 2,
+          "spell_slots_level_2": 0,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "cleric-1",
+        "class": {
+          "index": "cleric",
+          "name": "Cleric",
+          "url": "/api/2014/classes/cleric"
+        }
+      },
+      {
+        "level": 2,
+        "spellcasting": {
+          "cantrips_known": 3,
+          "spells_known": null,
+          "spell_slots_level_1": 3,
+          "spell_slots_level_2": 0,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "cleric-2",
+        "class": {
+          "index": "cleric",
+          "name": "Cleric",
+          "url": "/api/2014/classes/cleric"
+        }
+      },
+      {
+        "level": 3,
+        "spellcasting": {
+          "cantrips_known": 3,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 2,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "cleric-3",
+        "class": {
+          "index": "cleric",
+          "name": "Cleric",
+          "url": "/api/2014/classes/cleric"
+        }
+      },
+      {
+        "level": 4,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "cleric-4",
+        "class": {
+          "index": "cleric",
+          "name": "Cleric",
+          "url": "/api/2014/classes/cleric"
+        }
+      },
+      {
+        "level": 5,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 2,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "cleric-5",
+        "class": {
+          "index": "cleric",
+          "name": "Cleric",
+          "url": "/api/2014/classes/cleric"
+        }
+      },
+      {
+        "level": 6,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "cleric-6",
+        "class": {
+          "index": "cleric",
+          "name": "Cleric",
+          "url": "/api/2014/classes/cleric"
+        }
+      },
+      {
+        "level": 7,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 1,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "cleric-7",
+        "class": {
+          "index": "cleric",
+          "name": "Cleric",
+          "url": "/api/2014/classes/cleric"
+        }
+      },
+      {
+        "level": 8,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 2,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "cleric-8",
+        "class": {
+          "index": "cleric",
+          "name": "Cleric",
+          "url": "/api/2014/classes/cleric"
+        }
+      },
+      {
+        "level": 9,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 1,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "cleric-9",
+        "class": {
+          "index": "cleric",
+          "name": "Cleric",
+          "url": "/api/2014/classes/cleric"
+        }
+      },
+      {
+        "level": 10,
+        "spellcasting": {
+          "cantrips_known": 5,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "cleric-10",
+        "class": {
+          "index": "cleric",
+          "name": "Cleric",
+          "url": "/api/2014/classes/cleric"
+        }
+      },
+      {
+        "level": 11,
+        "spellcasting": {
+          "cantrips_known": 5,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 1,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "cleric-11",
+        "class": {
+          "index": "cleric",
+          "name": "Cleric",
+          "url": "/api/2014/classes/cleric"
+        }
+      },
+      {
+        "level": 12,
+        "spellcasting": {
+          "cantrips_known": 5,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 1,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "cleric-12",
+        "class": {
+          "index": "cleric",
+          "name": "Cleric",
+          "url": "/api/2014/classes/cleric"
+        }
+      },
+      {
+        "level": 13,
+        "spellcasting": {
+          "cantrips_known": 5,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 1,
+          "spell_slots_level_7": 1,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "cleric-13",
+        "class": {
+          "index": "cleric",
+          "name": "Cleric",
+          "url": "/api/2014/classes/cleric"
+        }
+      },
+      {
+        "level": 14,
+        "spellcasting": {
+          "cantrips_known": 5,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 1,
+          "spell_slots_level_7": 1,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "cleric-14",
+        "class": {
+          "index": "cleric",
+          "name": "Cleric",
+          "url": "/api/2014/classes/cleric"
+        }
+      },
+      {
+        "level": 15,
+        "spellcasting": {
+          "cantrips_known": 5,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 1,
+          "spell_slots_level_7": 1,
+          "spell_slots_level_8": 1,
+          "spell_slots_level_9": 0
+        },
+        "index": "cleric-15",
+        "class": {
+          "index": "cleric",
+          "name": "Cleric",
+          "url": "/api/2014/classes/cleric"
+        }
+      },
+      {
+        "level": 16,
+        "spellcasting": {
+          "cantrips_known": 5,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 1,
+          "spell_slots_level_7": 1,
+          "spell_slots_level_8": 1,
+          "spell_slots_level_9": 0
+        },
+        "index": "cleric-16",
+        "class": {
+          "index": "cleric",
+          "name": "Cleric",
+          "url": "/api/2014/classes/cleric"
+        }
+      },
+      {
+        "level": 17,
+        "spellcasting": {
+          "cantrips_known": 5,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 1,
+          "spell_slots_level_7": 1,
+          "spell_slots_level_8": 1,
+          "spell_slots_level_9": 1
+        },
+        "index": "cleric-17",
+        "class": {
+          "index": "cleric",
+          "name": "Cleric",
+          "url": "/api/2014/classes/cleric"
+        }
+      },
+      {
+        "level": 18,
+        "spellcasting": {
+          "cantrips_known": 5,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 3,
+          "spell_slots_level_6": 1,
+          "spell_slots_level_7": 1,
+          "spell_slots_level_8": 1,
+          "spell_slots_level_9": 1
+        },
+        "index": "cleric-18",
+        "class": {
+          "index": "cleric",
+          "name": "Cleric",
+          "url": "/api/2014/classes/cleric"
+        }
+      },
+      {
+        "level": 19,
+        "spellcasting": {
+          "cantrips_known": 5,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 3,
+          "spell_slots_level_6": 2,
+          "spell_slots_level_7": 1,
+          "spell_slots_level_8": 1,
+          "spell_slots_level_9": 1
+        },
+        "index": "cleric-19",
+        "class": {
+          "index": "cleric",
+          "name": "Cleric",
+          "url": "/api/2014/classes/cleric"
+        }
+      },
+      {
+        "level": 20,
+        "spellcasting": {
+          "cantrips_known": 5,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 3,
+          "spell_slots_level_6": 2,
+          "spell_slots_level_7": 2,
+          "spell_slots_level_8": 1,
+          "spell_slots_level_9": 1
+        },
+        "index": "cleric-20",
+        "class": {
+          "index": "cleric",
+          "name": "Cleric",
+          "url": "/api/2014/classes/cleric"
+        }
+      }
+    ],
+    "spellcasting": {
+      "spellcasting_ability": {
+        "index": "wis",
+        "name": "WIS",
+        "url": "/api/2014/ability-scores/wis"
+      }
+    }
+  },
+  {
+    "index": "druid",
+    "name": "Druid",
+    "proficiency_choices": [
+      {
+        "choose": 2,
+        "from": {
+          "options": [
+            {
+              "item": {
+                "index": "skill-arcana",
+                "name": "Skill: Arcana",
+                "url": "/api/2014/proficiencies/skill-arcana"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-animal-handling",
+                "name": "Skill: Animal Handling",
+                "url": "/api/2014/proficiencies/skill-animal-handling"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-insight",
+                "name": "Skill: Insight",
+                "url": "/api/2014/proficiencies/skill-insight"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-medicine",
+                "name": "Skill: Medicine",
+                "url": "/api/2014/proficiencies/skill-medicine"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-nature",
+                "name": "Skill: Nature",
+                "url": "/api/2014/proficiencies/skill-nature"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-perception",
+                "name": "Skill: Perception",
+                "url": "/api/2014/proficiencies/skill-perception"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-religion",
+                "name": "Skill: Religion",
+                "url": "/api/2014/proficiencies/skill-religion"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-survival",
+                "name": "Skill: Survival",
+                "url": "/api/2014/proficiencies/skill-survival"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "class_levels_url": "/api/2014/classes/druid/levels",
+    "class_level_list": [
+      {
+        "level": 1,
+        "spellcasting": {
+          "cantrips_known": 2,
+          "spells_known": null,
+          "spell_slots_level_1": 2,
+          "spell_slots_level_2": 0,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "druid-1",
+        "class": {
+          "index": "druid",
+          "name": "Druid",
+          "url": "/api/2014/classes/druid"
+        }
+      },
+      {
+        "level": 2,
+        "spellcasting": {
+          "cantrips_known": 2,
+          "spells_known": null,
+          "spell_slots_level_1": 3,
+          "spell_slots_level_2": 0,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "druid-2",
+        "class": {
+          "index": "druid",
+          "name": "Druid",
+          "url": "/api/2014/classes/druid"
+        }
+      },
+      {
+        "level": 3,
+        "spellcasting": {
+          "cantrips_known": 2,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 2,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "druid-3",
+        "class": {
+          "index": "druid",
+          "name": "Druid",
+          "url": "/api/2014/classes/druid"
+        }
+      },
+      {
+        "level": 4,
+        "spellcasting": {
+          "cantrips_known": 3,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "druid-4",
+        "class": {
+          "index": "druid",
+          "name": "Druid",
+          "url": "/api/2014/classes/druid"
+        }
+      },
+      {
+        "level": 5,
+        "spellcasting": {
+          "cantrips_known": 3,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 2,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "druid-5",
+        "class": {
+          "index": "druid",
+          "name": "Druid",
+          "url": "/api/2014/classes/druid"
+        }
+      },
+      {
+        "level": 6,
+        "spellcasting": {
+          "cantrips_known": 3,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "druid-6",
+        "class": {
+          "index": "druid",
+          "name": "Druid",
+          "url": "/api/2014/classes/druid"
+        }
+      },
+      {
+        "level": 7,
+        "spellcasting": {
+          "cantrips_known": 3,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 1,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "druid-7",
+        "class": {
+          "index": "druid",
+          "name": "Druid",
+          "url": "/api/2014/classes/druid"
+        }
+      },
+      {
+        "level": 8,
+        "spellcasting": {
+          "cantrips_known": 3,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 2,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "druid-8",
+        "class": {
+          "index": "druid",
+          "name": "Druid",
+          "url": "/api/2014/classes/druid"
+        }
+      },
+      {
+        "level": 9,
+        "spellcasting": {
+          "cantrips_known": 3,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 1,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "druid-9",
+        "class": {
+          "index": "druid",
+          "name": "Druid",
+          "url": "/api/2014/classes/druid"
+        }
+      },
+      {
+        "level": 10,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "druid-10",
+        "class": {
+          "index": "druid",
+          "name": "Druid",
+          "url": "/api/2014/classes/druid"
+        }
+      },
+      {
+        "level": 11,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 1,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "druid-11",
+        "class": {
+          "index": "druid",
+          "name": "Druid",
+          "url": "/api/2014/classes/druid"
+        }
+      },
+      {
+        "level": 12,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 1,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "druid-12",
+        "class": {
+          "index": "druid",
+          "name": "Druid",
+          "url": "/api/2014/classes/druid"
+        }
+      },
+      {
+        "level": 13,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 1,
+          "spell_slots_level_7": 1,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "druid-13",
+        "class": {
+          "index": "druid",
+          "name": "Druid",
+          "url": "/api/2014/classes/druid"
+        }
+      },
+      {
+        "level": 14,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 1,
+          "spell_slots_level_7": 1,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "druid-14",
+        "class": {
+          "index": "druid",
+          "name": "Druid",
+          "url": "/api/2014/classes/druid"
+        }
+      },
+      {
+        "level": 15,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 1,
+          "spell_slots_level_7": 1,
+          "spell_slots_level_8": 1,
+          "spell_slots_level_9": 0
+        },
+        "index": "druid-15",
+        "class": {
+          "index": "druid",
+          "name": "Druid",
+          "url": "/api/2014/classes/druid"
+        }
+      },
+      {
+        "level": 16,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 1,
+          "spell_slots_level_7": 1,
+          "spell_slots_level_8": 1,
+          "spell_slots_level_9": 0
+        },
+        "index": "druid-16",
+        "class": {
+          "index": "druid",
+          "name": "Druid",
+          "url": "/api/2014/classes/druid"
+        }
+      },
+      {
+        "level": 17,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 1,
+          "spell_slots_level_7": 1,
+          "spell_slots_level_8": 1,
+          "spell_slots_level_9": 1
+        },
+        "index": "druid-17",
+        "class": {
+          "index": "druid",
+          "name": "Druid",
+          "url": "/api/2014/classes/druid"
+        }
+      },
+      {
+        "level": 18,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 3,
+          "spell_slots_level_6": 1,
+          "spell_slots_level_7": 1,
+          "spell_slots_level_8": 1,
+          "spell_slots_level_9": 1
+        },
+        "index": "druid-18",
+        "class": {
+          "index": "druid",
+          "name": "Druid",
+          "url": "/api/2014/classes/druid"
+        }
+      },
+      {
+        "level": 19,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 3,
+          "spell_slots_level_6": 2,
+          "spell_slots_level_7": 1,
+          "spell_slots_level_8": 1,
+          "spell_slots_level_9": 1
+        },
+        "index": "druid-19",
+        "class": {
+          "index": "druid",
+          "name": "Druid",
+          "url": "/api/2014/classes/druid"
+        }
+      },
+      {
+        "level": 20,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 3,
+          "spell_slots_level_6": 2,
+          "spell_slots_level_7": 2,
+          "spell_slots_level_8": 1,
+          "spell_slots_level_9": 1
+        },
+        "index": "druid-20",
+        "class": {
+          "index": "druid",
+          "name": "Druid",
+          "url": "/api/2014/classes/druid"
+        }
+      }
+    ],
+    "spellcasting": {
+      "spellcasting_ability": {
+        "index": "wis",
+        "name": "WIS",
+        "url": "/api/2014/ability-scores/wis"
+      }
+    }
+  },
+  {
+    "index": "fighter",
+    "name": "Fighter",
+    "proficiency_choices": [
+      {
+        "choose": 2,
+        "from": {
+          "options": [
+            {
+              "item": {
+                "index": "skill-acrobatics",
+                "name": "Skill: Acrobatics",
+                "url": "/api/2014/proficiencies/skill-acrobatics"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-animal-handling",
+                "name": "Skill: Animal Handling",
+                "url": "/api/2014/proficiencies/skill-animal-handling"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-athletics",
+                "name": "Skill: Athletics",
+                "url": "/api/2014/proficiencies/skill-athletics"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-history",
+                "name": "Skill: History",
+                "url": "/api/2014/proficiencies/skill-history"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-insight",
+                "name": "Skill: Insight",
+                "url": "/api/2014/proficiencies/skill-insight"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-intimidation",
+                "name": "Skill: Intimidation",
+                "url": "/api/2014/proficiencies/skill-intimidation"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-perception",
+                "name": "Skill: Perception",
+                "url": "/api/2014/proficiencies/skill-perception"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-survival",
+                "name": "Skill: Survival",
+                "url": "/api/2014/proficiencies/skill-survival"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "class_levels_url": "/api/2014/classes/fighter/levels",
+    "class_level_list": [
+      {
+        "level": 1,
+        "spellcasting": null,
+        "index": "fighter-1",
+        "class": {
+          "index": "fighter",
+          "name": "Fighter",
+          "url": "/api/2014/classes/fighter"
+        }
+      },
+      {
+        "level": 2,
+        "spellcasting": null,
+        "index": "fighter-2",
+        "class": {
+          "index": "fighter",
+          "name": "Fighter",
+          "url": "/api/2014/classes/fighter"
+        }
+      },
+      {
+        "level": 3,
+        "spellcasting": null,
+        "index": "fighter-3",
+        "class": {
+          "index": "fighter",
+          "name": "Fighter",
+          "url": "/api/2014/classes/fighter"
+        }
+      },
+      {
+        "level": 4,
+        "spellcasting": null,
+        "index": "fighter-4",
+        "class": {
+          "index": "fighter",
+          "name": "Fighter",
+          "url": "/api/2014/classes/fighter"
+        }
+      },
+      {
+        "level": 5,
+        "spellcasting": null,
+        "index": "fighter-5",
+        "class": {
+          "index": "fighter",
+          "name": "Fighter",
+          "url": "/api/2014/classes/fighter"
+        }
+      },
+      {
+        "level": 6,
+        "spellcasting": null,
+        "index": "fighter-6",
+        "class": {
+          "index": "fighter",
+          "name": "Fighter",
+          "url": "/api/2014/classes/fighter"
+        }
+      },
+      {
+        "level": 7,
+        "spellcasting": null,
+        "index": "fighter-7",
+        "class": {
+          "index": "fighter",
+          "name": "Fighter",
+          "url": "/api/2014/classes/fighter"
+        }
+      },
+      {
+        "level": 8,
+        "spellcasting": null,
+        "index": "fighter-8",
+        "class": {
+          "index": "fighter",
+          "name": "Fighter",
+          "url": "/api/2014/classes/fighter"
+        }
+      },
+      {
+        "level": 9,
+        "spellcasting": null,
+        "index": "fighter-9",
+        "class": {
+          "index": "fighter",
+          "name": "Fighter",
+          "url": "/api/2014/classes/fighter"
+        }
+      },
+      {
+        "level": 10,
+        "spellcasting": null,
+        "index": "fighter-10",
+        "class": {
+          "index": "fighter",
+          "name": "Fighter",
+          "url": "/api/2014/classes/fighter"
+        }
+      },
+      {
+        "level": 11,
+        "spellcasting": null,
+        "index": "fighter-11",
+        "class": {
+          "index": "fighter",
+          "name": "Fighter",
+          "url": "/api/2014/classes/fighter"
+        }
+      },
+      {
+        "level": 12,
+        "spellcasting": null,
+        "index": "fighter-12",
+        "class": {
+          "index": "fighter",
+          "name": "Fighter",
+          "url": "/api/2014/classes/fighter"
+        }
+      },
+      {
+        "level": 13,
+        "spellcasting": null,
+        "index": "fighter-13",
+        "class": {
+          "index": "fighter",
+          "name": "Fighter",
+          "url": "/api/2014/classes/fighter"
+        }
+      },
+      {
+        "level": 14,
+        "spellcasting": null,
+        "index": "fighter-14",
+        "class": {
+          "index": "fighter",
+          "name": "Fighter",
+          "url": "/api/2014/classes/fighter"
+        }
+      },
+      {
+        "level": 15,
+        "spellcasting": null,
+        "index": "fighter-15",
+        "class": {
+          "index": "fighter",
+          "name": "Fighter",
+          "url": "/api/2014/classes/fighter"
+        }
+      },
+      {
+        "level": 16,
+        "spellcasting": null,
+        "index": "fighter-16",
+        "class": {
+          "index": "fighter",
+          "name": "Fighter",
+          "url": "/api/2014/classes/fighter"
+        }
+      },
+      {
+        "level": 17,
+        "spellcasting": null,
+        "index": "fighter-17",
+        "class": {
+          "index": "fighter",
+          "name": "Fighter",
+          "url": "/api/2014/classes/fighter"
+        }
+      },
+      {
+        "level": 18,
+        "spellcasting": null,
+        "index": "fighter-18",
+        "class": {
+          "index": "fighter",
+          "name": "Fighter",
+          "url": "/api/2014/classes/fighter"
+        }
+      },
+      {
+        "level": 19,
+        "spellcasting": null,
+        "index": "fighter-19",
+        "class": {
+          "index": "fighter",
+          "name": "Fighter",
+          "url": "/api/2014/classes/fighter"
+        }
+      },
+      {
+        "level": 20,
+        "spellcasting": null,
+        "index": "fighter-20",
+        "class": {
+          "index": "fighter",
+          "name": "Fighter",
+          "url": "/api/2014/classes/fighter"
+        }
+      }
+    ],
+    "spellcasting": null
+  },
+  {
+    "index": "monk",
+    "name": "Monk",
+    "proficiency_choices": [
+      {
+        "choose": 2,
+        "from": {
+          "options": [
+            {
+              "item": {
+                "index": "skill-acrobatics",
+                "name": "Skill: Acrobatics",
+                "url": "/api/2014/proficiencies/skill-acrobatics"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-athletics",
+                "name": "Skill: Athletics",
+                "url": "/api/2014/proficiencies/skill-athletics"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-history",
+                "name": "Skill: History",
+                "url": "/api/2014/proficiencies/skill-history"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-insight",
+                "name": "Skill: Insight",
+                "url": "/api/2014/proficiencies/skill-insight"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-religion",
+                "name": "Skill: Religion",
+                "url": "/api/2014/proficiencies/skill-religion"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-stealth",
+                "name": "Skill: Stealth",
+                "url": "/api/2014/proficiencies/skill-stealth"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "choose": 1,
+        "from": {
+          "options": [
+            {
+              "item": {
+                "index": "",
+                "name": "",
+                "url": ""
+              }
+            },
+            {
+              "item": {
+                "index": "",
+                "name": "",
+                "url": ""
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "class_levels_url": "/api/2014/classes/monk/levels",
+    "class_level_list": [
+      {
+        "level": 1,
+        "spellcasting": null,
+        "index": "monk-1",
+        "class": {
+          "index": "monk",
+          "name": "Monk",
+          "url": "/api/2014/classes/monk"
+        }
+      },
+      {
+        "level": 2,
+        "spellcasting": null,
+        "index": "monk-2",
+        "class": {
+          "index": "monk",
+          "name": "Monk",
+          "url": "/api/2014/classes/monk"
+        }
+      },
+      {
+        "level": 3,
+        "spellcasting": null,
+        "index": "monk-3",
+        "class": {
+          "index": "monk",
+          "name": "Monk",
+          "url": "/api/2014/classes/monk"
+        }
+      },
+      {
+        "level": 4,
+        "spellcasting": null,
+        "index": "monk-4",
+        "class": {
+          "index": "monk",
+          "name": "Monk",
+          "url": "/api/2014/classes/monk"
+        }
+      },
+      {
+        "level": 5,
+        "spellcasting": null,
+        "index": "monk-5",
+        "class": {
+          "index": "monk",
+          "name": "Monk",
+          "url": "/api/2014/classes/monk"
+        }
+      },
+      {
+        "level": 6,
+        "spellcasting": null,
+        "index": "monk-6",
+        "class": {
+          "index": "monk",
+          "name": "Monk",
+          "url": "/api/2014/classes/monk"
+        }
+      },
+      {
+        "level": 7,
+        "spellcasting": null,
+        "index": "monk-7",
+        "class": {
+          "index": "monk",
+          "name": "Monk",
+          "url": "/api/2014/classes/monk"
+        }
+      },
+      {
+        "level": 8,
+        "spellcasting": null,
+        "index": "monk-8",
+        "class": {
+          "index": "monk",
+          "name": "Monk",
+          "url": "/api/2014/classes/monk"
+        }
+      },
+      {
+        "level": 9,
+        "spellcasting": null,
+        "index": "monk-9",
+        "class": {
+          "index": "monk",
+          "name": "Monk",
+          "url": "/api/2014/classes/monk"
+        }
+      },
+      {
+        "level": 10,
+        "spellcasting": null,
+        "index": "monk-10",
+        "class": {
+          "index": "monk",
+          "name": "Monk",
+          "url": "/api/2014/classes/monk"
+        }
+      },
+      {
+        "level": 11,
+        "spellcasting": null,
+        "index": "monk-11",
+        "class": {
+          "index": "monk",
+          "name": "Monk",
+          "url": "/api/2014/classes/monk"
+        }
+      },
+      {
+        "level": 12,
+        "spellcasting": null,
+        "index": "monk-12",
+        "class": {
+          "index": "monk",
+          "name": "Monk",
+          "url": "/api/2014/classes/monk"
+        }
+      },
+      {
+        "level": 13,
+        "spellcasting": null,
+        "index": "monk-13",
+        "class": {
+          "index": "monk",
+          "name": "Monk",
+          "url": "/api/2014/classes/monk"
+        }
+      },
+      {
+        "level": 14,
+        "spellcasting": null,
+        "index": "monk-14",
+        "class": {
+          "index": "monk",
+          "name": "Monk",
+          "url": "/api/2014/classes/monk"
+        }
+      },
+      {
+        "level": 15,
+        "spellcasting": null,
+        "index": "monk-15",
+        "class": {
+          "index": "monk",
+          "name": "Monk",
+          "url": "/api/2014/classes/monk"
+        }
+      },
+      {
+        "level": 16,
+        "spellcasting": null,
+        "index": "monk-16",
+        "class": {
+          "index": "monk",
+          "name": "Monk",
+          "url": "/api/2014/classes/monk"
+        }
+      },
+      {
+        "level": 17,
+        "spellcasting": null,
+        "index": "monk-17",
+        "class": {
+          "index": "monk",
+          "name": "Monk",
+          "url": "/api/2014/classes/monk"
+        }
+      },
+      {
+        "level": 18,
+        "spellcasting": null,
+        "index": "monk-18",
+        "class": {
+          "index": "monk",
+          "name": "Monk",
+          "url": "/api/2014/classes/monk"
+        }
+      },
+      {
+        "level": 19,
+        "spellcasting": null,
+        "index": "monk-19",
+        "class": {
+          "index": "monk",
+          "name": "Monk",
+          "url": "/api/2014/classes/monk"
+        }
+      },
+      {
+        "level": 20,
+        "spellcasting": null,
+        "index": "monk-20",
+        "class": {
+          "index": "monk",
+          "name": "Monk",
+          "url": "/api/2014/classes/monk"
+        }
+      }
+    ],
+    "spellcasting": null
+  },
+  {
+    "index": "paladin",
+    "name": "Paladin",
+    "proficiency_choices": [
+      {
+        "choose": 2,
+        "from": {
+          "options": [
+            {
+              "item": {
+                "index": "skill-athletics",
+                "name": "Skill: Athletics",
+                "url": "/api/2014/proficiencies/skill-athletics"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-insight",
+                "name": "Skill: Insight",
+                "url": "/api/2014/proficiencies/skill-insight"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-intimidation",
+                "name": "Skill: Intimidation",
+                "url": "/api/2014/proficiencies/skill-intimidation"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-medicine",
+                "name": "Skill: Medicine",
+                "url": "/api/2014/proficiencies/skill-medicine"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-persuasion",
+                "name": "Skill: Persuasion",
+                "url": "/api/2014/proficiencies/skill-persuasion"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-religion",
+                "name": "Skill: Religion",
+                "url": "/api/2014/proficiencies/skill-religion"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "class_levels_url": "/api/2014/classes/paladin/levels",
+    "class_level_list": [
+      {
+        "level": 1,
+        "spellcasting": {
+          "cantrips_known": null,
+          "spells_known": null,
+          "spell_slots_level_1": 0,
+          "spell_slots_level_2": 0,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": null,
+          "spell_slots_level_7": null,
+          "spell_slots_level_8": null,
+          "spell_slots_level_9": null
+        },
+        "index": "paladin-1",
+        "class": {
+          "index": "paladin",
+          "name": "Paladin",
+          "url": "/api/2014/classes/paladin"
+        }
+      },
+      {
+        "level": 2,
+        "spellcasting": {
+          "cantrips_known": null,
+          "spells_known": null,
+          "spell_slots_level_1": 2,
+          "spell_slots_level_2": 0,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": null,
+          "spell_slots_level_7": null,
+          "spell_slots_level_8": null,
+          "spell_slots_level_9": null
+        },
+        "index": "paladin-2",
+        "class": {
+          "index": "paladin",
+          "name": "Paladin",
+          "url": "/api/2014/classes/paladin"
+        }
+      },
+      {
+        "level": 3,
+        "spellcasting": {
+          "cantrips_known": null,
+          "spells_known": null,
+          "spell_slots_level_1": 3,
+          "spell_slots_level_2": 0,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": null,
+          "spell_slots_level_7": null,
+          "spell_slots_level_8": null,
+          "spell_slots_level_9": null
+        },
+        "index": "paladin-3",
+        "class": {
+          "index": "paladin",
+          "name": "Paladin",
+          "url": "/api/2014/classes/paladin"
+        }
+      },
+      {
+        "level": 4,
+        "spellcasting": {
+          "cantrips_known": null,
+          "spells_known": null,
+          "spell_slots_level_1": 3,
+          "spell_slots_level_2": 0,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": null,
+          "spell_slots_level_7": null,
+          "spell_slots_level_8": null,
+          "spell_slots_level_9": null
+        },
+        "index": "paladin-4",
+        "class": {
+          "index": "paladin",
+          "name": "Paladin",
+          "url": "/api/2014/classes/paladin"
+        }
+      },
+      {
+        "level": 5,
+        "spellcasting": {
+          "cantrips_known": null,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 2,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": null,
+          "spell_slots_level_7": null,
+          "spell_slots_level_8": null,
+          "spell_slots_level_9": null
+        },
+        "index": "paladin-5",
+        "class": {
+          "index": "paladin",
+          "name": "Paladin",
+          "url": "/api/2014/classes/paladin"
+        }
+      },
+      {
+        "level": 6,
+        "spellcasting": {
+          "cantrips_known": null,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 2,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": null,
+          "spell_slots_level_7": null,
+          "spell_slots_level_8": null,
+          "spell_slots_level_9": null
+        },
+        "index": "paladin-6",
+        "class": {
+          "index": "paladin",
+          "name": "Paladin",
+          "url": "/api/2014/classes/paladin"
+        }
+      },
+      {
+        "level": 7,
+        "spellcasting": {
+          "cantrips_known": null,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": null,
+          "spell_slots_level_7": null,
+          "spell_slots_level_8": null,
+          "spell_slots_level_9": null
+        },
+        "index": "paladin-7",
+        "class": {
+          "index": "paladin",
+          "name": "Paladin",
+          "url": "/api/2014/classes/paladin"
+        }
+      },
+      {
+        "level": 8,
+        "spellcasting": {
+          "cantrips_known": null,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": null,
+          "spell_slots_level_7": null,
+          "spell_slots_level_8": null,
+          "spell_slots_level_9": null
+        },
+        "index": "paladin-8",
+        "class": {
+          "index": "paladin",
+          "name": "Paladin",
+          "url": "/api/2014/classes/paladin"
+        }
+      },
+      {
+        "level": 9,
+        "spellcasting": {
+          "cantrips_known": null,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 2,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": null,
+          "spell_slots_level_7": null,
+          "spell_slots_level_8": null,
+          "spell_slots_level_9": null
+        },
+        "index": "paladin-9",
+        "class": {
+          "index": "paladin",
+          "name": "Paladin",
+          "url": "/api/2014/classes/paladin"
+        }
+      },
+      {
+        "level": 10,
+        "spellcasting": {
+          "cantrips_known": null,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 2,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": null,
+          "spell_slots_level_7": null,
+          "spell_slots_level_8": null,
+          "spell_slots_level_9": null
+        },
+        "index": "paladin-10",
+        "class": {
+          "index": "paladin",
+          "name": "Paladin",
+          "url": "/api/2014/classes/paladin"
+        }
+      },
+      {
+        "level": 11,
+        "spellcasting": {
+          "cantrips_known": null,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": null,
+          "spell_slots_level_7": null,
+          "spell_slots_level_8": null,
+          "spell_slots_level_9": null
+        },
+        "index": "paladin-11",
+        "class": {
+          "index": "paladin",
+          "name": "Paladin",
+          "url": "/api/2014/classes/paladin"
+        }
+      },
+      {
+        "level": 12,
+        "spellcasting": {
+          "cantrips_known": null,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": null,
+          "spell_slots_level_7": null,
+          "spell_slots_level_8": null,
+          "spell_slots_level_9": null
+        },
+        "index": "paladin-12",
+        "class": {
+          "index": "paladin",
+          "name": "Paladin",
+          "url": "/api/2014/classes/paladin"
+        }
+      },
+      {
+        "level": 13,
+        "spellcasting": {
+          "cantrips_known": null,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 1,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": null,
+          "spell_slots_level_7": null,
+          "spell_slots_level_8": null,
+          "spell_slots_level_9": null
+        },
+        "index": "paladin-13",
+        "class": {
+          "index": "paladin",
+          "name": "Paladin",
+          "url": "/api/2014/classes/paladin"
+        }
+      },
+      {
+        "level": 14,
+        "spellcasting": {
+          "cantrips_known": null,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 1,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": null,
+          "spell_slots_level_7": null,
+          "spell_slots_level_8": null,
+          "spell_slots_level_9": null
+        },
+        "index": "paladin-14",
+        "class": {
+          "index": "paladin",
+          "name": "Paladin",
+          "url": "/api/2014/classes/paladin"
+        }
+      },
+      {
+        "level": 15,
+        "spellcasting": {
+          "cantrips_known": null,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 2,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": null,
+          "spell_slots_level_7": null,
+          "spell_slots_level_8": null,
+          "spell_slots_level_9": null
+        },
+        "index": "paladin-15",
+        "class": {
+          "index": "paladin",
+          "name": "Paladin",
+          "url": "/api/2014/classes/paladin"
+        }
+      },
+      {
+        "level": 16,
+        "spellcasting": {
+          "cantrips_known": null,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 2,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": null,
+          "spell_slots_level_7": null,
+          "spell_slots_level_8": null,
+          "spell_slots_level_9": null
+        },
+        "index": "paladin-16",
+        "class": {
+          "index": "paladin",
+          "name": "Paladin",
+          "url": "/api/2014/classes/paladin"
+        }
+      },
+      {
+        "level": 17,
+        "spellcasting": {
+          "cantrips_known": null,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 1,
+          "spell_slots_level_6": null,
+          "spell_slots_level_7": null,
+          "spell_slots_level_8": null,
+          "spell_slots_level_9": null
+        },
+        "index": "paladin-17",
+        "class": {
+          "index": "paladin",
+          "name": "Paladin",
+          "url": "/api/2014/classes/paladin"
+        }
+      },
+      {
+        "level": 18,
+        "spellcasting": {
+          "cantrips_known": null,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 1,
+          "spell_slots_level_6": null,
+          "spell_slots_level_7": null,
+          "spell_slots_level_8": null,
+          "spell_slots_level_9": null
+        },
+        "index": "paladin-18",
+        "class": {
+          "index": "paladin",
+          "name": "Paladin",
+          "url": "/api/2014/classes/paladin"
+        }
+      },
+      {
+        "level": 19,
+        "spellcasting": {
+          "cantrips_known": null,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": null,
+          "spell_slots_level_7": null,
+          "spell_slots_level_8": null,
+          "spell_slots_level_9": null
+        },
+        "index": "paladin-19",
+        "class": {
+          "index": "paladin",
+          "name": "Paladin",
+          "url": "/api/2014/classes/paladin"
+        }
+      },
+      {
+        "level": 20,
+        "spellcasting": {
+          "cantrips_known": null,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": null,
+          "spell_slots_level_7": null,
+          "spell_slots_level_8": null,
+          "spell_slots_level_9": null
+        },
+        "index": "paladin-20",
+        "class": {
+          "index": "paladin",
+          "name": "Paladin",
+          "url": "/api/2014/classes/paladin"
+        }
+      }
+    ],
+    "spellcasting": {
+      "spellcasting_ability": {
+        "index": "cha",
+        "name": "CHA",
+        "url": "/api/2014/ability-scores/cha"
+      }
+    }
+  },
+  {
+    "index": "ranger",
+    "name": "Ranger",
+    "proficiency_choices": [
+      {
+        "choose": 3,
+        "from": {
+          "options": [
+            {
+              "item": {
+                "index": "skill-animal-handling",
+                "name": "Skill: Animal Handling",
+                "url": "/api/2014/proficiencies/skill-animal-handling"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-athletics",
+                "name": "Skill: Athletics",
+                "url": "/api/2014/proficiencies/skill-athletics"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-insight",
+                "name": "Skill: Insight",
+                "url": "/api/2014/proficiencies/skill-insight"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-investigation",
+                "name": "Skill: Investigation",
+                "url": "/api/2014/proficiencies/skill-investigation"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-nature",
+                "name": "Skill: Nature",
+                "url": "/api/2014/proficiencies/skill-nature"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-perception",
+                "name": "Skill: Perception",
+                "url": "/api/2014/proficiencies/skill-perception"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-stealth",
+                "name": "Skill: Stealth",
+                "url": "/api/2014/proficiencies/skill-stealth"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-survival",
+                "name": "Skill: Survival",
+                "url": "/api/2014/proficiencies/skill-survival"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "class_levels_url": "/api/2014/classes/ranger/levels",
+    "class_level_list": [
+      {
+        "level": 1,
+        "spellcasting": {
+          "cantrips_known": null,
+          "spells_known": 0,
+          "spell_slots_level_1": 0,
+          "spell_slots_level_2": 0,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": null,
+          "spell_slots_level_7": null,
+          "spell_slots_level_8": null,
+          "spell_slots_level_9": null
+        },
+        "index": "ranger-1",
+        "class": {
+          "index": "ranger",
+          "name": "Ranger",
+          "url": "/api/2014/classes/ranger"
+        }
+      },
+      {
+        "level": 2,
+        "spellcasting": {
+          "cantrips_known": null,
+          "spells_known": 2,
+          "spell_slots_level_1": 2,
+          "spell_slots_level_2": 0,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": null,
+          "spell_slots_level_7": null,
+          "spell_slots_level_8": null,
+          "spell_slots_level_9": null
+        },
+        "index": "ranger-2",
+        "class": {
+          "index": "ranger",
+          "name": "Ranger",
+          "url": "/api/2014/classes/ranger"
+        }
+      },
+      {
+        "level": 3,
+        "spellcasting": {
+          "cantrips_known": null,
+          "spells_known": 3,
+          "spell_slots_level_1": 3,
+          "spell_slots_level_2": 0,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": null,
+          "spell_slots_level_7": null,
+          "spell_slots_level_8": null,
+          "spell_slots_level_9": null
+        },
+        "index": "ranger-3",
+        "class": {
+          "index": "ranger",
+          "name": "Ranger",
+          "url": "/api/2014/classes/ranger"
+        }
+      },
+      {
+        "level": 4,
+        "spellcasting": {
+          "cantrips_known": null,
+          "spells_known": 3,
+          "spell_slots_level_1": 3,
+          "spell_slots_level_2": 0,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": null,
+          "spell_slots_level_7": null,
+          "spell_slots_level_8": null,
+          "spell_slots_level_9": null
+        },
+        "index": "ranger-4",
+        "class": {
+          "index": "ranger",
+          "name": "Ranger",
+          "url": "/api/2014/classes/ranger"
+        }
+      },
+      {
+        "level": 5,
+        "spellcasting": {
+          "cantrips_known": null,
+          "spells_known": 4,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 2,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": null,
+          "spell_slots_level_7": null,
+          "spell_slots_level_8": null,
+          "spell_slots_level_9": null
+        },
+        "index": "ranger-5",
+        "class": {
+          "index": "ranger",
+          "name": "Ranger",
+          "url": "/api/2014/classes/ranger"
+        }
+      },
+      {
+        "level": 6,
+        "spellcasting": {
+          "cantrips_known": null,
+          "spells_known": 4,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 2,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": null,
+          "spell_slots_level_7": null,
+          "spell_slots_level_8": null,
+          "spell_slots_level_9": null
+        },
+        "index": "ranger-6",
+        "class": {
+          "index": "ranger",
+          "name": "Ranger",
+          "url": "/api/2014/classes/ranger"
+        }
+      },
+      {
+        "level": 7,
+        "spellcasting": {
+          "cantrips_known": null,
+          "spells_known": 5,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": null,
+          "spell_slots_level_7": null,
+          "spell_slots_level_8": null,
+          "spell_slots_level_9": null
+        },
+        "index": "ranger-7",
+        "class": {
+          "index": "ranger",
+          "name": "Ranger",
+          "url": "/api/2014/classes/ranger"
+        }
+      },
+      {
+        "level": 8,
+        "spellcasting": {
+          "cantrips_known": null,
+          "spells_known": 5,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": null,
+          "spell_slots_level_7": null,
+          "spell_slots_level_8": null,
+          "spell_slots_level_9": null
+        },
+        "index": "ranger-8",
+        "class": {
+          "index": "ranger",
+          "name": "Ranger",
+          "url": "/api/2014/classes/ranger"
+        }
+      },
+      {
+        "level": 9,
+        "spellcasting": {
+          "cantrips_known": null,
+          "spells_known": 6,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 2,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": null,
+          "spell_slots_level_7": null,
+          "spell_slots_level_8": null,
+          "spell_slots_level_9": null
+        },
+        "index": "ranger-9",
+        "class": {
+          "index": "ranger",
+          "name": "Ranger",
+          "url": "/api/2014/classes/ranger"
+        }
+      },
+      {
+        "level": 10,
+        "spellcasting": {
+          "cantrips_known": null,
+          "spells_known": 6,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 2,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": null,
+          "spell_slots_level_7": null,
+          "spell_slots_level_8": null,
+          "spell_slots_level_9": null
+        },
+        "index": "ranger-10",
+        "class": {
+          "index": "ranger",
+          "name": "Ranger",
+          "url": "/api/2014/classes/ranger"
+        }
+      },
+      {
+        "level": 11,
+        "spellcasting": {
+          "cantrips_known": null,
+          "spells_known": 7,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": null,
+          "spell_slots_level_7": null,
+          "spell_slots_level_8": null,
+          "spell_slots_level_9": null
+        },
+        "index": "ranger-11",
+        "class": {
+          "index": "ranger",
+          "name": "Ranger",
+          "url": "/api/2014/classes/ranger"
+        }
+      },
+      {
+        "level": 12,
+        "spellcasting": {
+          "cantrips_known": null,
+          "spells_known": 7,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": null,
+          "spell_slots_level_7": null,
+          "spell_slots_level_8": null,
+          "spell_slots_level_9": null
+        },
+        "index": "ranger-12",
+        "class": {
+          "index": "ranger",
+          "name": "Ranger",
+          "url": "/api/2014/classes/ranger"
+        }
+      },
+      {
+        "level": 13,
+        "spellcasting": {
+          "cantrips_known": null,
+          "spells_known": 8,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 1,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": null,
+          "spell_slots_level_7": null,
+          "spell_slots_level_8": null,
+          "spell_slots_level_9": null
+        },
+        "index": "ranger-13",
+        "class": {
+          "index": "ranger",
+          "name": "Ranger",
+          "url": "/api/2014/classes/ranger"
+        }
+      },
+      {
+        "level": 14,
+        "spellcasting": {
+          "cantrips_known": null,
+          "spells_known": 8,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 1,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": null,
+          "spell_slots_level_7": null,
+          "spell_slots_level_8": null,
+          "spell_slots_level_9": null
+        },
+        "index": "ranger-14",
+        "class": {
+          "index": "ranger",
+          "name": "Ranger",
+          "url": "/api/2014/classes/ranger"
+        }
+      },
+      {
+        "level": 15,
+        "spellcasting": {
+          "cantrips_known": null,
+          "spells_known": 9,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 2,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": null,
+          "spell_slots_level_7": null,
+          "spell_slots_level_8": null,
+          "spell_slots_level_9": null
+        },
+        "index": "ranger-15",
+        "class": {
+          "index": "ranger",
+          "name": "Ranger",
+          "url": "/api/2014/classes/ranger"
+        }
+      },
+      {
+        "level": 16,
+        "spellcasting": {
+          "cantrips_known": null,
+          "spells_known": 9,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 2,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": null,
+          "spell_slots_level_7": null,
+          "spell_slots_level_8": null,
+          "spell_slots_level_9": null
+        },
+        "index": "ranger-16",
+        "class": {
+          "index": "ranger",
+          "name": "Ranger",
+          "url": "/api/2014/classes/ranger"
+        }
+      },
+      {
+        "level": 17,
+        "spellcasting": {
+          "cantrips_known": null,
+          "spells_known": 10,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 1,
+          "spell_slots_level_6": null,
+          "spell_slots_level_7": null,
+          "spell_slots_level_8": null,
+          "spell_slots_level_9": null
+        },
+        "index": "ranger-17",
+        "class": {
+          "index": "ranger",
+          "name": "Ranger",
+          "url": "/api/2014/classes/ranger"
+        }
+      },
+      {
+        "level": 18,
+        "spellcasting": {
+          "cantrips_known": null,
+          "spells_known": 10,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 1,
+          "spell_slots_level_6": null,
+          "spell_slots_level_7": null,
+          "spell_slots_level_8": null,
+          "spell_slots_level_9": null
+        },
+        "index": "ranger-18",
+        "class": {
+          "index": "ranger",
+          "name": "Ranger",
+          "url": "/api/2014/classes/ranger"
+        }
+      },
+      {
+        "level": 19,
+        "spellcasting": {
+          "cantrips_known": null,
+          "spells_known": 11,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": null,
+          "spell_slots_level_7": null,
+          "spell_slots_level_8": null,
+          "spell_slots_level_9": null
+        },
+        "index": "ranger-19",
+        "class": {
+          "index": "ranger",
+          "name": "Ranger",
+          "url": "/api/2014/classes/ranger"
+        }
+      },
+      {
+        "level": 20,
+        "spellcasting": {
+          "cantrips_known": null,
+          "spells_known": 11,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": null,
+          "spell_slots_level_7": null,
+          "spell_slots_level_8": null,
+          "spell_slots_level_9": null
+        },
+        "index": "ranger-20",
+        "class": {
+          "index": "ranger",
+          "name": "Ranger",
+          "url": "/api/2014/classes/ranger"
+        }
+      }
+    ],
+    "spellcasting": {
+      "spellcasting_ability": {
+        "index": "wis",
+        "name": "WIS",
+        "url": "/api/2014/ability-scores/wis"
+      }
+    }
+  },
+  {
+    "index": "rogue",
+    "name": "Rogue",
+    "proficiency_choices": [
+      {
+        "choose": 4,
+        "from": {
+          "options": [
+            {
+              "item": {
+                "index": "skill-acrobatics",
+                "name": "Skill: Acrobatics",
+                "url": "/api/2014/proficiencies/skill-acrobatics"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-athletics",
+                "name": "Skill: Athletics",
+                "url": "/api/2014/proficiencies/skill-athletics"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-deception",
+                "name": "Skill: Deception",
+                "url": "/api/2014/proficiencies/skill-deception"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-insight",
+                "name": "Skill: Insight",
+                "url": "/api/2014/proficiencies/skill-insight"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-intimidation",
+                "name": "Skill: Intimidation",
+                "url": "/api/2014/proficiencies/skill-intimidation"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-investigation",
+                "name": "Skill: Investigation",
+                "url": "/api/2014/proficiencies/skill-investigation"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-perception",
+                "name": "Skill: Perception",
+                "url": "/api/2014/proficiencies/skill-perception"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-performance",
+                "name": "Skill: Performance",
+                "url": "/api/2014/proficiencies/skill-performance"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-persuasion",
+                "name": "Skill: Persuasion",
+                "url": "/api/2014/proficiencies/skill-persuasion"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-sleight-of-hand",
+                "name": "Skill: Sleight of Hand",
+                "url": "/api/2014/proficiencies/skill-sleight-of-hand"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-stealth",
+                "name": "Skill: Stealth",
+                "url": "/api/2014/proficiencies/skill-stealth"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "class_levels_url": "/api/2014/classes/rogue/levels",
+    "class_level_list": [
+      {
+        "level": 1,
+        "spellcasting": null,
+        "index": "rogue-1",
+        "class": {
+          "index": "rogue",
+          "name": "Rogue",
+          "url": "/api/2014/classes/rogue"
+        }
+      },
+      {
+        "level": 2,
+        "spellcasting": null,
+        "index": "rogue-2",
+        "class": {
+          "index": "rogue",
+          "name": "Rogue",
+          "url": "/api/2014/classes/rogue"
+        }
+      },
+      {
+        "level": 3,
+        "spellcasting": null,
+        "index": "rogue-3",
+        "class": {
+          "index": "rogue",
+          "name": "Rogue",
+          "url": "/api/2014/classes/rogue"
+        }
+      },
+      {
+        "level": 4,
+        "spellcasting": null,
+        "index": "rogue-4",
+        "class": {
+          "index": "rogue",
+          "name": "Rogue",
+          "url": "/api/2014/classes/rogue"
+        }
+      },
+      {
+        "level": 5,
+        "spellcasting": null,
+        "index": "rogue-5",
+        "class": {
+          "index": "rogue",
+          "name": "Rogue",
+          "url": "/api/2014/classes/rogue"
+        }
+      },
+      {
+        "level": 6,
+        "spellcasting": null,
+        "index": "rogue-6",
+        "class": {
+          "index": "rogue",
+          "name": "Rogue",
+          "url": "/api/2014/classes/rogue"
+        }
+      },
+      {
+        "level": 7,
+        "spellcasting": null,
+        "index": "rogue-7",
+        "class": {
+          "index": "rogue",
+          "name": "Rogue",
+          "url": "/api/2014/classes/rogue"
+        }
+      },
+      {
+        "level": 8,
+        "spellcasting": null,
+        "index": "rogue-8",
+        "class": {
+          "index": "rogue",
+          "name": "Rogue",
+          "url": "/api/2014/classes/rogue"
+        }
+      },
+      {
+        "level": 9,
+        "spellcasting": null,
+        "index": "rogue-9",
+        "class": {
+          "index": "rogue",
+          "name": "Rogue",
+          "url": "/api/2014/classes/rogue"
+        }
+      },
+      {
+        "level": 10,
+        "spellcasting": null,
+        "index": "rogue-10",
+        "class": {
+          "index": "rogue",
+          "name": "Rogue",
+          "url": "/api/2014/classes/rogue"
+        }
+      },
+      {
+        "level": 11,
+        "spellcasting": null,
+        "index": "rogue-11",
+        "class": {
+          "index": "rogue",
+          "name": "Rogue",
+          "url": "/api/2014/classes/rogue"
+        }
+      },
+      {
+        "level": 12,
+        "spellcasting": null,
+        "index": "rogue-12",
+        "class": {
+          "index": "rogue",
+          "name": "Rogue",
+          "url": "/api/2014/classes/rogue"
+        }
+      },
+      {
+        "level": 13,
+        "spellcasting": null,
+        "index": "rogue-13",
+        "class": {
+          "index": "rogue",
+          "name": "Rogue",
+          "url": "/api/2014/classes/rogue"
+        }
+      },
+      {
+        "level": 14,
+        "spellcasting": null,
+        "index": "rogue-14",
+        "class": {
+          "index": "rogue",
+          "name": "Rogue",
+          "url": "/api/2014/classes/rogue"
+        }
+      },
+      {
+        "level": 15,
+        "spellcasting": null,
+        "index": "rogue-15",
+        "class": {
+          "index": "rogue",
+          "name": "Rogue",
+          "url": "/api/2014/classes/rogue"
+        }
+      },
+      {
+        "level": 16,
+        "spellcasting": null,
+        "index": "rogue-16",
+        "class": {
+          "index": "rogue",
+          "name": "Rogue",
+          "url": "/api/2014/classes/rogue"
+        }
+      },
+      {
+        "level": 17,
+        "spellcasting": null,
+        "index": "rogue-17",
+        "class": {
+          "index": "rogue",
+          "name": "Rogue",
+          "url": "/api/2014/classes/rogue"
+        }
+      },
+      {
+        "level": 18,
+        "spellcasting": null,
+        "index": "rogue-18",
+        "class": {
+          "index": "rogue",
+          "name": "Rogue",
+          "url": "/api/2014/classes/rogue"
+        }
+      },
+      {
+        "level": 19,
+        "spellcasting": null,
+        "index": "rogue-19",
+        "class": {
+          "index": "rogue",
+          "name": "Rogue",
+          "url": "/api/2014/classes/rogue"
+        }
+      },
+      {
+        "level": 20,
+        "spellcasting": null,
+        "index": "rogue-20",
+        "class": {
+          "index": "rogue",
+          "name": "Rogue",
+          "url": "/api/2014/classes/rogue"
+        }
+      }
+    ],
+    "spellcasting": null
+  },
+  {
+    "index": "sorcerer",
+    "name": "Sorcerer",
+    "proficiency_choices": [
+      {
+        "choose": 2,
+        "from": {
+          "options": [
+            {
+              "item": {
+                "index": "skill-arcana",
+                "name": "Skill: Arcana",
+                "url": "/api/2014/proficiencies/skill-arcana"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-deception",
+                "name": "Skill: Deception",
+                "url": "/api/2014/proficiencies/skill-deception"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-insight",
+                "name": "Skill: Insight",
+                "url": "/api/2014/proficiencies/skill-insight"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-intimidation",
+                "name": "Skill: Intimidation",
+                "url": "/api/2014/proficiencies/skill-intimidation"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-persuasion",
+                "name": "Skill: Persuasion",
+                "url": "/api/2014/proficiencies/skill-persuasion"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-religion",
+                "name": "Skill: Religion",
+                "url": "/api/2014/proficiencies/skill-religion"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "class_levels_url": "/api/2014/classes/sorcerer/levels",
+    "class_level_list": [
+      {
+        "level": 1,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": 2,
+          "spell_slots_level_1": 2,
+          "spell_slots_level_2": 0,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "sorcerer-1",
+        "class": {
+          "index": "sorcerer",
+          "name": "Sorcerer",
+          "url": "/api/2014/classes/sorcerer"
+        }
+      },
+      {
+        "level": 2,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": 3,
+          "spell_slots_level_1": 3,
+          "spell_slots_level_2": 0,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "sorcerer-2",
+        "class": {
+          "index": "sorcerer",
+          "name": "Sorcerer",
+          "url": "/api/2014/classes/sorcerer"
+        }
+      },
+      {
+        "level": 3,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": 4,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 2,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "sorcerer-3",
+        "class": {
+          "index": "sorcerer",
+          "name": "Sorcerer",
+          "url": "/api/2014/classes/sorcerer"
+        }
+      },
+      {
+        "level": 4,
+        "spellcasting": {
+          "cantrips_known": 5,
+          "spells_known": 5,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "sorcerer-4",
+        "class": {
+          "index": "sorcerer",
+          "name": "Sorcerer",
+          "url": "/api/2014/classes/sorcerer"
+        }
+      },
+      {
+        "level": 5,
+        "spellcasting": {
+          "cantrips_known": 5,
+          "spells_known": 6,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 2,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "sorcerer-5",
+        "class": {
+          "index": "sorcerer",
+          "name": "Sorcerer",
+          "url": "/api/2014/classes/sorcerer"
+        }
+      },
+      {
+        "level": 6,
+        "spellcasting": {
+          "cantrips_known": 5,
+          "spells_known": 7,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "sorcerer-6",
+        "class": {
+          "index": "sorcerer",
+          "name": "Sorcerer",
+          "url": "/api/2014/classes/sorcerer"
+        }
+      },
+      {
+        "level": 7,
+        "spellcasting": {
+          "cantrips_known": 5,
+          "spells_known": 8,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 1,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "sorcerer-7",
+        "class": {
+          "index": "sorcerer",
+          "name": "Sorcerer",
+          "url": "/api/2014/classes/sorcerer"
+        }
+      },
+      {
+        "level": 8,
+        "spellcasting": {
+          "cantrips_known": 5,
+          "spells_known": 9,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 2,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "sorcerer-8",
+        "class": {
+          "index": "sorcerer",
+          "name": "Sorcerer",
+          "url": "/api/2014/classes/sorcerer"
+        }
+      },
+      {
+        "level": 9,
+        "spellcasting": {
+          "cantrips_known": 5,
+          "spells_known": 10,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 1,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "sorcerer-9",
+        "class": {
+          "index": "sorcerer",
+          "name": "Sorcerer",
+          "url": "/api/2014/classes/sorcerer"
+        }
+      },
+      {
+        "level": 10,
+        "spellcasting": {
+          "cantrips_known": 6,
+          "spells_known": 11,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "sorcerer-10",
+        "class": {
+          "index": "sorcerer",
+          "name": "Sorcerer",
+          "url": "/api/2014/classes/sorcerer"
+        }
+      },
+      {
+        "level": 11,
+        "spellcasting": {
+          "cantrips_known": 6,
+          "spells_known": 12,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 1,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "sorcerer-11",
+        "class": {
+          "index": "sorcerer",
+          "name": "Sorcerer",
+          "url": "/api/2014/classes/sorcerer"
+        }
+      },
+      {
+        "level": 12,
+        "spellcasting": {
+          "cantrips_known": 6,
+          "spells_known": 12,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 1,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "sorcerer-12",
+        "class": {
+          "index": "sorcerer",
+          "name": "Sorcerer",
+          "url": "/api/2014/classes/sorcerer"
+        }
+      },
+      {
+        "level": 13,
+        "spellcasting": {
+          "cantrips_known": 6,
+          "spells_known": 13,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 1,
+          "spell_slots_level_7": 1,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "sorcerer-13",
+        "class": {
+          "index": "sorcerer",
+          "name": "Sorcerer",
+          "url": "/api/2014/classes/sorcerer"
+        }
+      },
+      {
+        "level": 14,
+        "spellcasting": {
+          "cantrips_known": 6,
+          "spells_known": 13,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 1,
+          "spell_slots_level_7": 1,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "sorcerer-14",
+        "class": {
+          "index": "sorcerer",
+          "name": "Sorcerer",
+          "url": "/api/2014/classes/sorcerer"
+        }
+      },
+      {
+        "level": 15,
+        "spellcasting": {
+          "cantrips_known": 6,
+          "spells_known": 14,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 1,
+          "spell_slots_level_7": 1,
+          "spell_slots_level_8": 1,
+          "spell_slots_level_9": 0
+        },
+        "index": "sorcerer-15",
+        "class": {
+          "index": "sorcerer",
+          "name": "Sorcerer",
+          "url": "/api/2014/classes/sorcerer"
+        }
+      },
+      {
+        "level": 16,
+        "spellcasting": {
+          "cantrips_known": 6,
+          "spells_known": 14,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 1,
+          "spell_slots_level_7": 1,
+          "spell_slots_level_8": 1,
+          "spell_slots_level_9": 0
+        },
+        "index": "sorcerer-16",
+        "class": {
+          "index": "sorcerer",
+          "name": "Sorcerer",
+          "url": "/api/2014/classes/sorcerer"
+        }
+      },
+      {
+        "level": 17,
+        "spellcasting": {
+          "cantrips_known": 6,
+          "spells_known": 15,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 1,
+          "spell_slots_level_7": 1,
+          "spell_slots_level_8": 1,
+          "spell_slots_level_9": 1
+        },
+        "index": "sorcerer-17",
+        "class": {
+          "index": "sorcerer",
+          "name": "Sorcerer",
+          "url": "/api/2014/classes/sorcerer"
+        }
+      },
+      {
+        "level": 18,
+        "spellcasting": {
+          "cantrips_known": 6,
+          "spells_known": 15,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 3,
+          "spell_slots_level_6": 1,
+          "spell_slots_level_7": 1,
+          "spell_slots_level_8": 1,
+          "spell_slots_level_9": 1
+        },
+        "index": "sorcerer-18",
+        "class": {
+          "index": "sorcerer",
+          "name": "Sorcerer",
+          "url": "/api/2014/classes/sorcerer"
+        }
+      },
+      {
+        "level": 19,
+        "spellcasting": {
+          "cantrips_known": 6,
+          "spells_known": 15,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 3,
+          "spell_slots_level_6": 2,
+          "spell_slots_level_7": 1,
+          "spell_slots_level_8": 1,
+          "spell_slots_level_9": 1
+        },
+        "index": "sorcerer-19",
+        "class": {
+          "index": "sorcerer",
+          "name": "Sorcerer",
+          "url": "/api/2014/classes/sorcerer"
+        }
+      },
+      {
+        "level": 20,
+        "spellcasting": {
+          "cantrips_known": 6,
+          "spells_known": 15,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 3,
+          "spell_slots_level_6": 2,
+          "spell_slots_level_7": 2,
+          "spell_slots_level_8": 1,
+          "spell_slots_level_9": 1
+        },
+        "index": "sorcerer-20",
+        "class": {
+          "index": "sorcerer",
+          "name": "Sorcerer",
+          "url": "/api/2014/classes/sorcerer"
+        }
+      }
+    ],
+    "spellcasting": {
+      "spellcasting_ability": {
+        "index": "cha",
+        "name": "CHA",
+        "url": "/api/2014/ability-scores/cha"
+      }
+    }
+  },
+  {
+    "index": "warlock",
+    "name": "Warlock",
+    "proficiency_choices": [
+      {
+        "choose": 2,
+        "from": {
+          "options": [
+            {
+              "item": {
+                "index": "skill-arcana",
+                "name": "Skill: Arcana",
+                "url": "/api/2014/proficiencies/skill-arcana"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-deception",
+                "name": "Skill: Deception",
+                "url": "/api/2014/proficiencies/skill-deception"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-history",
+                "name": "Skill: History",
+                "url": "/api/2014/proficiencies/skill-history"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-intimidation",
+                "name": "Skill: Intimidation",
+                "url": "/api/2014/proficiencies/skill-intimidation"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-investigation",
+                "name": "Skill: Investigation",
+                "url": "/api/2014/proficiencies/skill-investigation"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-nature",
+                "name": "Skill: Nature",
+                "url": "/api/2014/proficiencies/skill-nature"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-religion",
+                "name": "Skill: Religion",
+                "url": "/api/2014/proficiencies/skill-religion"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "class_levels_url": "/api/2014/classes/warlock/levels",
+    "class_level_list": [
+      {
+        "level": 1,
+        "spellcasting": {
+          "cantrips_known": 2,
+          "spells_known": 2,
+          "spell_slots_level_1": 1,
+          "spell_slots_level_2": 0,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "warlock-1",
+        "class": {
+          "index": "warlock",
+          "name": "Warlock",
+          "url": "/api/2014/classes/warlock"
+        }
+      },
+      {
+        "level": 2,
+        "spellcasting": {
+          "cantrips_known": 2,
+          "spells_known": 3,
+          "spell_slots_level_1": 2,
+          "spell_slots_level_2": 0,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "warlock-2",
+        "class": {
+          "index": "warlock",
+          "name": "Warlock",
+          "url": "/api/2014/classes/warlock"
+        }
+      },
+      {
+        "level": 3,
+        "spellcasting": {
+          "cantrips_known": 2,
+          "spells_known": 4,
+          "spell_slots_level_1": 0,
+          "spell_slots_level_2": 2,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "warlock-3",
+        "class": {
+          "index": "warlock",
+          "name": "Warlock",
+          "url": "/api/2014/classes/warlock"
+        }
+      },
+      {
+        "level": 4,
+        "spellcasting": {
+          "cantrips_known": 3,
+          "spells_known": 5,
+          "spell_slots_level_1": 0,
+          "spell_slots_level_2": 2,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "warlock-4",
+        "class": {
+          "index": "warlock",
+          "name": "Warlock",
+          "url": "/api/2014/classes/warlock"
+        }
+      },
+      {
+        "level": 5,
+        "spellcasting": {
+          "cantrips_known": 3,
+          "spells_known": 6,
+          "spell_slots_level_1": 0,
+          "spell_slots_level_2": 0,
+          "spell_slots_level_3": 2,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "warlock-5",
+        "class": {
+          "index": "warlock",
+          "name": "Warlock",
+          "url": "/api/2014/classes/warlock"
+        }
+      },
+      {
+        "level": 6,
+        "spellcasting": {
+          "cantrips_known": 3,
+          "spells_known": 7,
+          "spell_slots_level_1": 0,
+          "spell_slots_level_2": 0,
+          "spell_slots_level_3": 2,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "warlock-6",
+        "class": {
+          "index": "warlock",
+          "name": "Warlock",
+          "url": "/api/2014/classes/warlock"
+        }
+      },
+      {
+        "level": 7,
+        "spellcasting": {
+          "cantrips_known": 3,
+          "spells_known": 8,
+          "spell_slots_level_1": 0,
+          "spell_slots_level_2": 0,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 2,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "warlock-7",
+        "class": {
+          "index": "warlock",
+          "name": "Warlock",
+          "url": "/api/2014/classes/warlock"
+        }
+      },
+      {
+        "level": 8,
+        "spellcasting": {
+          "cantrips_known": 3,
+          "spells_known": 9,
+          "spell_slots_level_1": 0,
+          "spell_slots_level_2": 0,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 2,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "warlock-8",
+        "class": {
+          "index": "warlock",
+          "name": "Warlock",
+          "url": "/api/2014/classes/warlock"
+        }
+      },
+      {
+        "level": 9,
+        "spellcasting": {
+          "cantrips_known": 3,
+          "spells_known": 10,
+          "spell_slots_level_1": 0,
+          "spell_slots_level_2": 0,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "warlock-9",
+        "class": {
+          "index": "warlock",
+          "name": "Warlock",
+          "url": "/api/2014/classes/warlock"
+        }
+      },
+      {
+        "level": 10,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": 10,
+          "spell_slots_level_1": 0,
+          "spell_slots_level_2": 0,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "warlock-10",
+        "class": {
+          "index": "warlock",
+          "name": "Warlock",
+          "url": "/api/2014/classes/warlock"
+        }
+      },
+      {
+        "level": 11,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": 11,
+          "spell_slots_level_1": 0,
+          "spell_slots_level_2": 0,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 3,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "warlock-11",
+        "class": {
+          "index": "warlock",
+          "name": "Warlock",
+          "url": "/api/2014/classes/warlock"
+        }
+      },
+      {
+        "level": 12,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": 11,
+          "spell_slots_level_1": 0,
+          "spell_slots_level_2": 0,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 3,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "warlock-12",
+        "class": {
+          "index": "warlock",
+          "name": "Warlock",
+          "url": "/api/2014/classes/warlock"
+        }
+      },
+      {
+        "level": 13,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": 12,
+          "spell_slots_level_1": 0,
+          "spell_slots_level_2": 0,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 3,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "warlock-13",
+        "class": {
+          "index": "warlock",
+          "name": "Warlock",
+          "url": "/api/2014/classes/warlock"
+        }
+      },
+      {
+        "level": 14,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": 12,
+          "spell_slots_level_1": 0,
+          "spell_slots_level_2": 0,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 3,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "warlock-14",
+        "class": {
+          "index": "warlock",
+          "name": "Warlock",
+          "url": "/api/2014/classes/warlock"
+        }
+      },
+      {
+        "level": 15,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": 13,
+          "spell_slots_level_1": 0,
+          "spell_slots_level_2": 0,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 3,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "warlock-15",
+        "class": {
+          "index": "warlock",
+          "name": "Warlock",
+          "url": "/api/2014/classes/warlock"
+        }
+      },
+      {
+        "level": 16,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": 13,
+          "spell_slots_level_1": 0,
+          "spell_slots_level_2": 0,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 3,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "warlock-16",
+        "class": {
+          "index": "warlock",
+          "name": "Warlock",
+          "url": "/api/2014/classes/warlock"
+        }
+      },
+      {
+        "level": 17,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": 14,
+          "spell_slots_level_1": 0,
+          "spell_slots_level_2": 0,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 4,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "warlock-17",
+        "class": {
+          "index": "warlock",
+          "name": "Warlock",
+          "url": "/api/2014/classes/warlock"
+        }
+      },
+      {
+        "level": 18,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": 14,
+          "spell_slots_level_1": 0,
+          "spell_slots_level_2": 0,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 4,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "warlock-18",
+        "class": {
+          "index": "warlock",
+          "name": "Warlock",
+          "url": "/api/2014/classes/warlock"
+        }
+      },
+      {
+        "level": 19,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": 15,
+          "spell_slots_level_1": 0,
+          "spell_slots_level_2": 0,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 4,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "warlock-19",
+        "class": {
+          "index": "warlock",
+          "name": "Warlock",
+          "url": "/api/2014/classes/warlock"
+        }
+      },
+      {
+        "level": 20,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": 15,
+          "spell_slots_level_1": 0,
+          "spell_slots_level_2": 0,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 4,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "warlock-20",
+        "class": {
+          "index": "warlock",
+          "name": "Warlock",
+          "url": "/api/2014/classes/warlock"
+        }
+      }
+    ],
+    "spellcasting": {
+      "spellcasting_ability": {
+        "index": "cha",
+        "name": "CHA",
+        "url": "/api/2014/ability-scores/cha"
+      }
+    }
+  },
+  {
+    "index": "wizard",
+    "name": "Wizard",
+    "proficiency_choices": [
+      {
+        "choose": 2,
+        "from": {
+          "options": [
+            {
+              "item": {
+                "index": "skill-arcana",
+                "name": "Skill: Arcana",
+                "url": "/api/2014/proficiencies/skill-arcana"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-history",
+                "name": "Skill: History",
+                "url": "/api/2014/proficiencies/skill-history"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-insight",
+                "name": "Skill: Insight",
+                "url": "/api/2014/proficiencies/skill-insight"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-investigation",
+                "name": "Skill: Investigation",
+                "url": "/api/2014/proficiencies/skill-investigation"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-medicine",
+                "name": "Skill: Medicine",
+                "url": "/api/2014/proficiencies/skill-medicine"
+              }
+            },
+            {
+              "item": {
+                "index": "skill-religion",
+                "name": "Skill: Religion",
+                "url": "/api/2014/proficiencies/skill-religion"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "class_levels_url": "/api/2014/classes/wizard/levels",
+    "class_level_list": [
+      {
+        "level": 1,
+        "spellcasting": {
+          "cantrips_known": 3,
+          "spells_known": null,
+          "spell_slots_level_1": 2,
+          "spell_slots_level_2": 0,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "wizard-1",
+        "class": {
+          "index": "wizard",
+          "name": "Wizard",
+          "url": "/api/2014/classes/wizard"
+        }
+      },
+      {
+        "level": 2,
+        "spellcasting": {
+          "cantrips_known": 3,
+          "spells_known": null,
+          "spell_slots_level_1": 3,
+          "spell_slots_level_2": 0,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "wizard-2",
+        "class": {
+          "index": "wizard",
+          "name": "Wizard",
+          "url": "/api/2014/classes/wizard"
+        }
+      },
+      {
+        "level": 3,
+        "spellcasting": {
+          "cantrips_known": 3,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 2,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "wizard-3",
+        "class": {
+          "index": "wizard",
+          "name": "Wizard",
+          "url": "/api/2014/classes/wizard"
+        }
+      },
+      {
+        "level": 4,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 0,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "wizard-4",
+        "class": {
+          "index": "wizard",
+          "name": "Wizard",
+          "url": "/api/2014/classes/wizard"
+        }
+      },
+      {
+        "level": 5,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 2,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "wizard-5",
+        "class": {
+          "index": "wizard",
+          "name": "Wizard",
+          "url": "/api/2014/classes/wizard"
+        }
+      },
+      {
+        "level": 6,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 0,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "wizard-6",
+        "class": {
+          "index": "wizard",
+          "name": "Wizard",
+          "url": "/api/2014/classes/wizard"
+        }
+      },
+      {
+        "level": 7,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 1,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "wizard-7",
+        "class": {
+          "index": "wizard",
+          "name": "Wizard",
+          "url": "/api/2014/classes/wizard"
+        }
+      },
+      {
+        "level": 8,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 2,
+          "spell_slots_level_5": 0,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "wizard-8",
+        "class": {
+          "index": "wizard",
+          "name": "Wizard",
+          "url": "/api/2014/classes/wizard"
+        }
+      },
+      {
+        "level": 9,
+        "spellcasting": {
+          "cantrips_known": 4,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 1,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "wizard-9",
+        "class": {
+          "index": "wizard",
+          "name": "Wizard",
+          "url": "/api/2014/classes/wizard"
+        }
+      },
+      {
+        "level": 10,
+        "spellcasting": {
+          "cantrips_known": 5,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 0,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "wizard-10",
+        "class": {
+          "index": "wizard",
+          "name": "Wizard",
+          "url": "/api/2014/classes/wizard"
+        }
+      },
+      {
+        "level": 11,
+        "spellcasting": {
+          "cantrips_known": 5,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 1,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "wizard-11",
+        "class": {
+          "index": "wizard",
+          "name": "Wizard",
+          "url": "/api/2014/classes/wizard"
+        }
+      },
+      {
+        "level": 12,
+        "spellcasting": {
+          "cantrips_known": 5,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 1,
+          "spell_slots_level_7": 0,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "wizard-12",
+        "class": {
+          "index": "wizard",
+          "name": "Wizard",
+          "url": "/api/2014/classes/wizard"
+        }
+      },
+      {
+        "level": 13,
+        "spellcasting": {
+          "cantrips_known": 5,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 1,
+          "spell_slots_level_7": 1,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "wizard-13",
+        "class": {
+          "index": "wizard",
+          "name": "Wizard",
+          "url": "/api/2014/classes/wizard"
+        }
+      },
+      {
+        "level": 14,
+        "spellcasting": {
+          "cantrips_known": 5,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 1,
+          "spell_slots_level_7": 1,
+          "spell_slots_level_8": 0,
+          "spell_slots_level_9": 0
+        },
+        "index": "wizard-14",
+        "class": {
+          "index": "wizard",
+          "name": "Wizard",
+          "url": "/api/2014/classes/wizard"
+        }
+      },
+      {
+        "level": 15,
+        "spellcasting": {
+          "cantrips_known": 5,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 1,
+          "spell_slots_level_7": 1,
+          "spell_slots_level_8": 1,
+          "spell_slots_level_9": 0
+        },
+        "index": "wizard-15",
+        "class": {
+          "index": "wizard",
+          "name": "Wizard",
+          "url": "/api/2014/classes/wizard"
+        }
+      },
+      {
+        "level": 16,
+        "spellcasting": {
+          "cantrips_known": 5,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 1,
+          "spell_slots_level_7": 1,
+          "spell_slots_level_8": 1,
+          "spell_slots_level_9": 0
+        },
+        "index": "wizard-16",
+        "class": {
+          "index": "wizard",
+          "name": "Wizard",
+          "url": "/api/2014/classes/wizard"
+        }
+      },
+      {
+        "level": 17,
+        "spellcasting": {
+          "cantrips_known": 5,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 2,
+          "spell_slots_level_6": 1,
+          "spell_slots_level_7": 1,
+          "spell_slots_level_8": 1,
+          "spell_slots_level_9": 1
+        },
+        "index": "wizard-17",
+        "class": {
+          "index": "wizard",
+          "name": "Wizard",
+          "url": "/api/2014/classes/wizard"
+        }
+      },
+      {
+        "level": 18,
+        "spellcasting": {
+          "cantrips_known": 5,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 3,
+          "spell_slots_level_6": 1,
+          "spell_slots_level_7": 1,
+          "spell_slots_level_8": 1,
+          "spell_slots_level_9": 1
+        },
+        "index": "wizard-18",
+        "class": {
+          "index": "wizard",
+          "name": "Wizard",
+          "url": "/api/2014/classes/wizard"
+        }
+      },
+      {
+        "level": 19,
+        "spellcasting": {
+          "cantrips_known": 5,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 3,
+          "spell_slots_level_6": 2,
+          "spell_slots_level_7": 1,
+          "spell_slots_level_8": 1,
+          "spell_slots_level_9": 1
+        },
+        "index": "wizard-19",
+        "class": {
+          "index": "wizard",
+          "name": "Wizard",
+          "url": "/api/2014/classes/wizard"
+        }
+      },
+      {
+        "level": 20,
+        "spellcasting": {
+          "cantrips_known": 5,
+          "spells_known": null,
+          "spell_slots_level_1": 4,
+          "spell_slots_level_2": 3,
+          "spell_slots_level_3": 3,
+          "spell_slots_level_4": 3,
+          "spell_slots_level_5": 3,
+          "spell_slots_level_6": 2,
+          "spell_slots_level_7": 2,
+          "spell_slots_level_8": 1,
+          "spell_slots_level_9": 1
+        },
+        "index": "wizard-20",
+        "class": {
+          "index": "wizard",
+          "name": "Wizard",
+          "url": "/api/2014/classes/wizard"
+        }
+      }
+    ],
+    "spellcasting": {
+      "spellcasting_ability": {
+        "index": "int",
+        "name": "INT",
+        "url": "/api/2014/ability-scores/int"
+      }
+    }
+  }
+]

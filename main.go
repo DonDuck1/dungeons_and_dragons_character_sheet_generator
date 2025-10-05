@@ -47,20 +47,24 @@ func main() {
 
 		InitialiseArmorAndShields(*csvEquipmentRepository, *dndApiGateway)
 		InitialiseBackgrounds(*dndApiGateway)
+		InitialiseClasses(*dndApiGateway)
 		InitialiseRaces(*dndApiGateway)
 		InitialiseSpells(*dndApiGateway)
 		InitialiseWeapons(*csvEquipmentRepository, *dndApiGateway)
 
 		os.Exit(0)
 	case "create":
-		dndApiGateway := infrastructure.NewDndApiGateway("https://www.dnd5eapi.co")
-
 		jsonBackgroundRepository, err := infrastructure.NewJsonBackgroundRepository("./data/backgrounds.json")
 		if err != nil {
 			log.Fatal(err)
 		}
 
 		jsonCharacterRepository, err := infrastructure.NewJsonCharacterRepository("./data/characters.json")
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		jsonClassRepository, err := infrastructure.NewJsonClassRepository("./data/classes.json")
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -198,6 +202,11 @@ func main() {
 			*charismaValue = 20
 		}
 
+		dndApiClassWithLevels, err := jsonClassRepository.GetByName(*potentialMainClassName)
+		if err != nil {
+			log.Fatal(err)
+		}
+
 		proficiencyBonus := int(math.Ceil(float64(*level)/4)) + 1
 
 		abilityScoreImprovements := race.GetChosenAbilityScoreImprovements()
@@ -205,7 +214,7 @@ func main() {
 		abilityScoreValueList := domain.NewAbilityScoreValueList(*strengthValue, *dexterityValue, *constitutionValue, *intelligenceValue, *wisdomValue, *charismaValue)
 		abilityScoreList := domain.NewAbilityScoreList(abilityScoreValueList, abilityScoreImprovementList)
 
-		mainClass := CreateClassUsingApi(mainClassName, *level, proficiencyBonus, abilityScoreList, dndApiGateway)
+		mainClass := CreateClass(mainClassName, *level, proficiencyBonus, abilityScoreList, dndApiClassWithLevels)
 
 		background, err := jsonBackgroundRepository.GetRandom()
 		if err != nil {
@@ -295,9 +304,12 @@ func main() {
 		}
 		os.Exit(0)
 	case "change-level":
-		dndApiGateway := infrastructure.NewDndApiGateway("https://www.dnd5eapi.co")
-
 		jsonCharacterRepository, err := infrastructure.NewJsonCharacterRepository("./data/characters.json")
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		jsonClassRepository, err := infrastructure.NewJsonClassRepository("./data/classes.json")
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -335,10 +347,15 @@ func main() {
 			log.Fatal(err)
 		}
 
+		dndApiClassWithLevels, err := jsonClassRepository.GetByName(string(character.MainClass.Name))
+		if err != nil {
+			log.Fatal(err)
+		}
+
 		proficiencyBonus := int(math.Ceil(float64(*level)/4)) + 1
 		character.ProficiencyBonus = proficiencyBonus
 
-		EditClassUsingApi(&character.MainClass, *level, proficiencyBonus, &character.AbilityScoreList, dndApiGateway)
+		EditClass(&character.MainClass, *level, proficiencyBonus, &character.AbilityScoreList, dndApiClassWithLevels)
 
 		character.SkillProficiencyList.UpdateSkillProficiencies(proficiencyBonus)
 

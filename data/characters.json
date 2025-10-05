@@ -1,1 +1,331 @@
-[]
+[
+  {
+    "Name": "Gandalf",
+    "Race": {
+      "Name": "Half-Elf",
+      "AbilityScoreImprovements": [
+        {
+          "AbilityScoreName": "Charisma",
+          "Value": 2
+        }
+      ],
+      "OptionalAbilityScoreImprovementList": {
+        "OptionalAbilityScoreImprovements": [
+          {
+            "AbilityScoreName": "Strength",
+            "Value": 1
+          },
+          {
+            "AbilityScoreName": "Dexterity",
+            "Value": 1
+          },
+          {
+            "AbilityScoreName": "Constitution",
+            "Value": 1
+          },
+          {
+            "AbilityScoreName": "Intelligence",
+            "Value": 1
+          },
+          {
+            "AbilityScoreName": "Wisdom",
+            "Value": 1
+          }
+        ],
+        "AmountOfChoices": 2
+      },
+      "NumberOfHandSlots": 2
+    },
+    "MainClass": {
+      "Name": "Wizard",
+      "Level": 20,
+      "SkillProficiencies": [
+        "Arcana",
+        "History"
+      ],
+      "ClassSpellcastingInfo": {
+        "MaxKnownCantrips": 5,
+        "MaxKnownSpells": null,
+        "MaxPreparedSpells": 23,
+        "SpellList": {
+          "Spells": []
+        },
+        "SpellSlotAmount": [
+          4,
+          3,
+          3,
+          3,
+          3,
+          2,
+          2,
+          1,
+          1
+        ],
+        "SpellcastingAbility": {
+          "Name": "Intelligence",
+          "Base_value": 16,
+          "Final_value": 16,
+          "Modifier": 3
+        },
+        "SpellSaveDC": 17,
+        "SpellAttackBonus": 9
+      },
+      "ClassWarlockCastingInfo": null
+    },
+    "Background": {
+      "Name": "Acolyte",
+      "SkillProficiencies": [
+        "Insight",
+        "Religion"
+      ]
+    },
+    "ProficiencyBonus": 6,
+    "AbilityScoreList": {
+      "Strength": {
+        "Name": "Strength",
+        "Base_value": 10,
+        "Final_value": 10,
+        "Modifier": 0
+      },
+      "Dexterity": {
+        "Name": "Dexterity",
+        "Base_value": 10,
+        "Final_value": 10,
+        "Modifier": 0
+      },
+      "Constitution": {
+        "Name": "Constitution",
+        "Base_value": 10,
+        "Final_value": 11,
+        "Modifier": 0
+      },
+      "Intelligence": {
+        "Name": "Intelligence",
+        "Base_value": 16,
+        "Final_value": 16,
+        "Modifier": 3
+      },
+      "Wisdom": {
+        "Name": "Wisdom",
+        "Base_value": 18,
+        "Final_value": 19,
+        "Modifier": 4
+      },
+      "Charisma": {
+        "Name": "Charisma",
+        "Base_value": 14,
+        "Final_value": 16,
+        "Modifier": 3
+      }
+    },
+    "SkillProficiencyList": {
+      "Acrobatics": {
+        "Name": "Acrobatics",
+        "Proficient": false,
+        "RelatedAbilityScore": {
+          "Name": "Dexterity",
+          "Base_value": 10,
+          "Final_value": 10,
+          "Modifier": 0
+        },
+        "Modifier": 0
+      },
+      "AnimalHandling": {
+        "Name": "Animal Handling",
+        "Proficient": false,
+        "RelatedAbilityScore": {
+          "Name": "Wisdom",
+          "Base_value": 18,
+          "Final_value": 19,
+          "Modifier": 4
+        },
+        "Modifier": 4
+      },
+      "Arcana": {
+        "Name": "Arcana",
+        "Proficient": true,
+        "RelatedAbilityScore": {
+          "Name": "Intelligence",
+          "Base_value": 16,
+          "Final_value": 16,
+          "Modifier": 3
+        },
+        "Modifier": 9
+      },
+      "Athletics": {
+        "Name": "Athletics",
+        "Proficient": false,
+        "RelatedAbilityScore": {
+          "Name": "Strength",
+          "Base_value": 10,
+          "Final_value": 10,
+          "Modifier": 0
+        },
+        "Modifier": 0
+      },
+      "Deception": {
+        "Name": "Deception",
+        "Proficient": false,
+        "RelatedAbilityScore": {
+          "Name": "Charisma",
+          "Base_value": 14,
+          "Final_value": 16,
+          "Modifier": 3
+        },
+        "Modifier": 3
+      },
+      "History": {
+        "Name": "History",
+        "Proficient": true,
+        "RelatedAbilityScore": {
+          "Name": "Intelligence",
+          "Base_value": 16,
+          "Final_value": 16,
+          "Modifier": 3
+        },
+        "Modifier": 9
+      },
+      "Insight": {
+        "Name": "Insight",
+        "Proficient": true,
+        "RelatedAbilityScore": {
+          "Name": "Wisdom",
+          "Base_value": 18,
+          "Final_value": 19,
+          "Modifier": 4
+        },
+        "Modifier": 10
+      },
+      "Intimidation": {
+        "Name": "Intimidation",
+        "Proficient": false,
+        "RelatedAbilityScore": {
+          "Name": "Charisma",
+          "Base_value": 14,
+          "Final_value": 16,
+          "Modifier": 3
+        },
+        "Modifier": 3
+      },
+      "Investigation": {
+        "Name": "Investigation",
+        "Proficient": false,
+        "RelatedAbilityScore": {
+          "Name": "Intelligence",
+          "Base_value": 16,
+          "Final_value": 16,
+          "Modifier": 3
+        },
+        "Modifier": 3
+      },
+      "Medicine": {
+        "Name": "Medicine",
+        "Proficient": false,
+        "RelatedAbilityScore": {
+          "Name": "Wisdom",
+          "Base_value": 18,
+          "Final_value": 19,
+          "Modifier": 4
+        },
+        "Modifier": 4
+      },
+      "Nature": {
+        "Name": "Nature",
+        "Proficient": false,
+        "RelatedAbilityScore": {
+          "Name": "Intelligence",
+          "Base_value": 16,
+          "Final_value": 16,
+          "Modifier": 3
+        },
+        "Modifier": 3
+      },
+      "Perception": {
+        "Name": "Perception",
+        "Proficient": false,
+        "RelatedAbilityScore": {
+          "Name": "Wisdom",
+          "Base_value": 18,
+          "Final_value": 19,
+          "Modifier": 4
+        },
+        "Modifier": 4
+      },
+      "Performance": {
+        "Name": "Performance",
+        "Proficient": false,
+        "RelatedAbilityScore": {
+          "Name": "Charisma",
+          "Base_value": 14,
+          "Final_value": 16,
+          "Modifier": 3
+        },
+        "Modifier": 3
+      },
+      "Persuasion": {
+        "Name": "Persuasion",
+        "Proficient": false,
+        "RelatedAbilityScore": {
+          "Name": "Charisma",
+          "Base_value": 14,
+          "Final_value": 16,
+          "Modifier": 3
+        },
+        "Modifier": 3
+      },
+      "Religion": {
+        "Name": "Religion",
+        "Proficient": true,
+        "RelatedAbilityScore": {
+          "Name": "Intelligence",
+          "Base_value": 16,
+          "Final_value": 16,
+          "Modifier": 3
+        },
+        "Modifier": 9
+      },
+      "SleightOfHand": {
+        "Name": "Sleight of Hand",
+        "Proficient": false,
+        "RelatedAbilityScore": {
+          "Name": "Dexterity",
+          "Base_value": 10,
+          "Final_value": 10,
+          "Modifier": 0
+        },
+        "Modifier": 0
+      },
+      "Stealth": {
+        "Name": "Stealth",
+        "Proficient": false,
+        "RelatedAbilityScore": {
+          "Name": "Dexterity",
+          "Base_value": 10,
+          "Final_value": 10,
+          "Modifier": 0
+        },
+        "Modifier": 0
+      },
+      "Survival": {
+        "Name": "Survival",
+        "Proficient": false,
+        "RelatedAbilityScore": {
+          "Name": "Wisdom",
+          "Base_value": 18,
+          "Final_value": 19,
+          "Modifier": 4
+        },
+        "Modifier": 4
+      }
+    },
+    "ArmorClass": 10,
+    "Initiative": 0,
+    "PassivePerception": 14,
+    "Inventory": {
+      "OpenHandSlots": 2,
+      "Weapons": [],
+      "Armor": null,
+      "Shield": null
+    }
+  }
+]

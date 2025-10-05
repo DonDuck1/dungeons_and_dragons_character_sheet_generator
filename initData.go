@@ -122,6 +122,78 @@ func InitialiseBackgrounds(dndApiGateway infrastructure.DndApiGateway) {
 	infrastructure.SaveBackgroundListAsJson("./data/backgrounds.json", &backgroundList)
 }
 
+func InitialiseClasses(dndApiGateway infrastructure.DndApiGateway) {
+	body, err := dndApiGateway.Get("/api/2014/classes")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	endpoints := []string{}
+	var dndApiReferenceList infrastructure.DndApiReferenceList
+	err = json.Unmarshal(body, &dndApiReferenceList)
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, result := range dndApiReferenceList.Results {
+		endpoints = append(endpoints, result.Url)
+	}
+	bodies, errors := dndApiGateway.GetMultipleOrdered(endpoints)
+	if len(errors) != 0 {
+		for _, err := range errors {
+			fmt.Println(err)
+		}
+		os.Exit(1)
+	}
+	dndApiClassList := []infrastructure.DndApiClass{}
+	for _, body := range bodies {
+		var dndApiClass infrastructure.DndApiClass
+		err = json.Unmarshal(body, &dndApiClass)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		dndApiClassList = append(dndApiClassList, dndApiClass)
+	}
+
+	endpoints = []string{}
+	for _, dndApiClass := range dndApiClassList {
+		endpoints = append(endpoints, dndApiClass.ClassLevelsUrl)
+	}
+	bodies, errors = dndApiGateway.GetMultipleOrdered(endpoints)
+	if len(errors) != 0 {
+		for _, err := range errors {
+			fmt.Println(err)
+		}
+		os.Exit(1)
+	}
+	dndApiClassLevelsList := [][]infrastructure.DndApiClassLevel{}
+	for _, body := range bodies {
+		var dndApiClassLevels []infrastructure.DndApiClassLevel
+		err = json.Unmarshal(body, &dndApiClassLevels)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		dndApiClassLevelsList = append(dndApiClassLevelsList, dndApiClassLevels)
+	}
+
+	dndApiClassWithLevelsList := []infrastructure.DndApiClassWithLevels{}
+	for i, dndApiClass := range dndApiClassList {
+		dndApiClassWithLevels := infrastructure.NewDndApiClassWithLevels(
+			dndApiClass.Index,
+			dndApiClass.Name,
+			dndApiClass.ProficiencyChoices,
+			dndApiClass.ClassLevelsUrl,
+			dndApiClassLevelsList[i],
+			dndApiClass.Spellcasting,
+		)
+
+		dndApiClassWithLevelsList = append(dndApiClassWithLevelsList, dndApiClassWithLevels)
+	}
+
+	infrastructure.SaveDndApiClassWithLevelsListAsJson("./data/classes.json", &dndApiClassWithLevelsList)
+}
+
 func InitialiseRaces(dndApiGateway infrastructure.DndApiGateway) {
 	body, err := dndApiGateway.Get("/api/2014/races")
 	if err != nil {

@@ -3,57 +3,18 @@ package main
 import (
 	"dungeons_and_dragons_character_sheet_generator/domain"
 	"dungeons_and_dragons_character_sheet_generator/infrastructure"
-	"encoding/json"
 	"fmt"
 	"log"
-	"net/url"
-	"strconv"
-	"strings"
 )
 
-func CreateClassUsingApi(name domain.ClassName, level int, proficiencyBonus int, abilityScoreList domain.AbilityScoreList, dndApiGateway *infrastructure.DndApiGateway) domain.Class {
-	body, err := dndApiGateway.Get("/api/2014/classes?name=" + url.QueryEscape(string(name)))
-	if err != nil {
-		log.Fatal(err)
-	}
-	endpoints := []string{}
-	var dndApiReferenceList infrastructure.DndApiReferenceList
-	err = json.Unmarshal(body, &dndApiReferenceList)
-	if err != nil {
-		log.Fatal(err)
-	}
-	for _, result := range dndApiReferenceList.Results {
-		if strings.EqualFold(string(name), result.Name) {
-			endpoints = append(endpoints, result.Url)
-		}
-	}
-	if len(endpoints) > 1 {
-		fmt.Printf("something went wrong: the API provided %d classes with the exact same name", len(endpoints))
-		fmt.Println("The first occurence of the class will be used")
-	}
-
-	body, err = dndApiGateway.Get(endpoints[0])
-	if err != nil {
-		log.Fatal(err)
-	}
-	var dndApiClass infrastructure.DndApiClass
-	err = json.Unmarshal(body, &dndApiClass)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	body, err = dndApiGateway.Get(dndApiClass.ClassLevelsUrl + "/" + strconv.Itoa(level))
-	if err != nil {
-		log.Fatal(err)
-	}
-	var dndApiClassLevel infrastructure.DndApiClassLevel
-	err = json.Unmarshal(body, &dndApiClassLevel)
+func CreateClass(name domain.ClassName, level int, proficiencyBonus int, abilityScoreList domain.AbilityScoreList, dndApiClassWithLevels *infrastructure.DndApiClassWithLevels) domain.Class {
+	dndApiClassLevel, err := dndApiClassWithLevels.GetClassLevelByLevel(level)
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	skillProficiencies := []domain.SkillProficiencyName{}
-	skillProficiencyChoices := dndApiClass.GetSkillProficiencyChoices()
+	skillProficiencyChoices := dndApiClassWithLevels.GetSkillProficiencyChoices()
 	for i := 0; i < skillProficiencyChoices.Choose; i++ {
 		skillProficiencyName, err := domain.SkillProficiencyNameFromApiIndex(skillProficiencyChoices.From.Options[i].Item.Index)
 		if err != nil {
@@ -65,7 +26,7 @@ func CreateClassUsingApi(name domain.ClassName, level int, proficiencyBonus int,
 
 	var classSpellcastingInfo *domain.ClassSpellcastingInfo
 	var classWarlockCastingInfo *domain.ClassWarlockCastingInfo
-	if dndApiClass.Spellcasting != nil && dndApiClassLevel.Spellcasting != nil {
+	if dndApiClassWithLevels.Spellcasting != nil && dndApiClassLevel.Spellcasting != nil {
 		maxKnownCantrips := 0
 		if dndApiClassLevel.Spellcasting.CantripsKnown != nil {
 			maxKnownCantrips = *dndApiClassLevel.Spellcasting.CantripsKnown
@@ -97,7 +58,7 @@ func CreateClassUsingApi(name domain.ClassName, level int, proficiencyBonus int,
 			spellSlotAmount[8] = *dndApiClassLevel.Spellcasting.SpellSlotsLevel9
 		}
 
-		spellcastingAbilityScoreName, err := dndApiClass.Spellcasting.GetSpellcastingAbilityAsAbilityScoreName()
+		spellcastingAbilityScoreName, err := dndApiClassWithLevels.Spellcasting.GetSpellcastingAbilityAsAbilityScoreName()
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -232,7 +193,7 @@ func CreateClassUsingApi(name domain.ClassName, level int, proficiencyBonus int,
 			err = fmt.Errorf("unknown class (with spellcasting) detected, character creation cannot continue")
 			log.Fatal(err)
 		}
-	} else if dndApiClass.Spellcasting != nil {
+	} else if dndApiClassWithLevels.Spellcasting != nil {
 		err = fmt.Errorf("according to the API, the class has spellcasting, but the spellcasting is not defined per level; character creation cannot continue")
 		log.Fatal(err)
 	} else if dndApiClassLevel.Spellcasting != nil {
@@ -249,15 +210,10 @@ func CreateClassUsingApi(name domain.ClassName, level int, proficiencyBonus int,
 	)
 }
 
-func EditClassUsingApi(class *domain.Class, level int, proficiencyBonus int, abilityScoreList *domain.AbilityScoreList, dndApiGateway *infrastructure.DndApiGateway) {
+func EditClass(class *domain.Class, level int, proficiencyBonus int, abilityScoreList *domain.AbilityScoreList, dndApiClassWithLevels *infrastructure.DndApiClassWithLevels) {
 	class.Level = level
 
-	body, err := dndApiGateway.Get("/api/2014/classes/" + strings.ToLower(string(class.Name)) + "/levels/" + strconv.Itoa(level))
-	if err != nil {
-		log.Fatal(err)
-	}
-	var dndApiClassLevel infrastructure.DndApiClassLevel
-	err = json.Unmarshal(body, &dndApiClassLevel)
+	dndApiClassLevel, err := dndApiClassWithLevels.GetClassLevelByLevel(level)
 	if err != nil {
 		log.Fatal(err)
 	}
