@@ -84,7 +84,7 @@ func (jsonCharacterRepository *JsonCharacterRepository) GetByName(name string) (
 		}
 	}
 
-	err := fmt.Errorf("could not find character with name '%s'", name)
+	err := fmt.Errorf("character \"%s\" not found", name)
 	return nil, err
 }
 

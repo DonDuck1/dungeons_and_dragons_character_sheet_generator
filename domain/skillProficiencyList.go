@@ -142,3 +142,64 @@ func (skillProficiencyList *SkillProficiencyList) UpdateSkillProficiencies(profi
 	skillProficiencyList.Stealth.CalculateModifier(proficiencyBonus)
 	skillProficiencyList.Survival.CalculateModifier(proficiencyBonus)
 }
+
+func (skillProficiencyList *SkillProficiencyList) GetSkillProficienciesThatAreProficient() *[]SkillProficiency {
+	proficientSkillProficiencies := []SkillProficiency{}
+
+	if skillProficiencyList.Acrobatics.Proficient {
+		proficientSkillProficiencies = append(proficientSkillProficiencies, skillProficiencyList.Acrobatics)
+	}
+	if skillProficiencyList.AnimalHandling.Proficient {
+		proficientSkillProficiencies = append(proficientSkillProficiencies, skillProficiencyList.AnimalHandling)
+	}
+	if skillProficiencyList.Arcana.Proficient {
+		proficientSkillProficiencies = append(proficientSkillProficiencies, skillProficiencyList.Arcana)
+	}
+	if skillProficiencyList.Athletics.Proficient {
+		proficientSkillProficiencies = append(proficientSkillProficiencies, skillProficiencyList.Athletics)
+	}
+	if skillProficiencyList.Deception.Proficient {
+		proficientSkillProficiencies = append(proficientSkillProficiencies, skillProficiencyList.Deception)
+	}
+	if skillProficiencyList.History.Proficient {
+		proficientSkillProficiencies = append(proficientSkillProficiencies, skillProficiencyList.History)
+	}
+	if skillProficiencyList.Insight.Proficient {
+		proficientSkillProficiencies = append(proficientSkillProficiencies, skillProficiencyList.Insight)
+	}
+	if skillProficiencyList.Intimidation.Proficient {
+		proficientSkillProficiencies = append(proficientSkillProficiencies, skillProficiencyList.Intimidation)
+	}
+	if skillProficiencyList.Investigation.Proficient {
+		proficientSkillProficiencies = append(proficientSkillProficiencies, skillProficiencyList.Investigation)
+	}
+	if skillProficiencyList.Medicine.Proficient {
+		proficientSkillProficiencies = append(proficientSkillProficiencies, skillProficiencyList.Medicine)
+	}
+	if skillProficiencyList.Nature.Proficient {
+		proficientSkillProficiencies = append(proficientSkillProficiencies, skillProficiencyList.Nature)
+	}
+	if skillProficiencyList.Perception.Proficient {
+		proficientSkillProficiencies = append(proficientSkillProficiencies, skillProficiencyList.Perception)
+	}
+	if skillProficiencyList.Performance.Proficient {
+		proficientSkillProficiencies = append(proficientSkillProficiencies, skillProficiencyList.Performance)
+	}
+	if skillProficiencyList.Persuasion.Proficient {
+		proficientSkillProficiencies = append(proficientSkillProficiencies, skillProficiencyList.Persuasion)
+	}
+	if skillProficiencyList.Religion.Proficient {
+		proficientSkillProficiencies = append(proficientSkillProficiencies, skillProficiencyList.Religion)
+	}
+	if skillProficiencyList.SleightOfHand.Proficient {
+		proficientSkillProficiencies = append(proficientSkillProficiencies, skillProficiencyList.SleightOfHand)
+	}
+	if skillProficiencyList.Stealth.Proficient {
+		proficientSkillProficiencies = append(proficientSkillProficiencies, skillProficiencyList.Stealth)
+	}
+	if skillProficiencyList.Survival.Proficient {
+		proficientSkillProficiencies = append(proficientSkillProficiencies, skillProficiencyList.Survival)
+	}
+
+	return &proficientSkillProficiencies
+}

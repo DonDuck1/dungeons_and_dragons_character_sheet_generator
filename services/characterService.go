@@ -7,6 +7,7 @@ import (
 	"log"
 	"math"
 	"os"
+	"strings"
 )
 
 type CharacterService struct {
@@ -114,7 +115,7 @@ func (characterService CharacterService) CreateNewCharacter(
 		log.Fatal(err)
 	}
 
-	fmt.Println("Character succesfully created!")
+	fmt.Printf("Saved character %s\n", characterName)
 	os.Exit(0)
 }
 
@@ -168,7 +169,7 @@ func (characterService CharacterService) DeleteCharacter(characterName string) {
 		log.Fatal(err)
 	}
 
-	fmt.Println("Character succesfully deleted!")
+	fmt.Printf("deleted %s\n", characterName)
 	os.Exit(0)
 }
 
@@ -183,7 +184,26 @@ func (characterService CharacterService) ViewCharacter(characterName string) {
 		log.Fatal(err)
 	}
 
-	fmt.Println(character)
+	proficientSkillProficiencies := character.SkillProficiencyList.GetSkillProficienciesThatAreProficient()
+	proficientSkillProficiencyNames := []string{}
+	for _, proficientSkillproficiency := range *proficientSkillProficiencies {
+		proficientSkillProficiencyNames = append(proficientSkillProficiencyNames, string(proficientSkillproficiency.Name))
+	}
+
+	fmt.Printf("Name: %s\n", characterName)
+	fmt.Printf("Class: %s\n", character.MainClass.Name)
+	fmt.Printf("Race: %s\n", character.Race.Name)
+	fmt.Printf("Background: %s\n", character.Background.Name)
+	fmt.Printf("Level: %d\n", character.MainClass.Level)
+	fmt.Println("Ability scores:")
+	fmt.Printf("  STR: %d (%+d)\n", character.AbilityScoreList.Strength.Final_value, character.AbilityScoreList.Strength.Modifier)
+	fmt.Printf("  DEX: %d (%+d)\n", character.AbilityScoreList.Dexterity.Final_value, character.AbilityScoreList.Dexterity.Modifier)
+	fmt.Printf("  CON: %d (%+d)\n", character.AbilityScoreList.Constitution.Final_value, character.AbilityScoreList.Constitution.Modifier)
+	fmt.Printf("  INT: %d (%+d)\n", character.AbilityScoreList.Intelligence.Final_value, character.AbilityScoreList.Intelligence.Modifier)
+	fmt.Printf("  WIS: %d (%+d)\n", character.AbilityScoreList.Wisdom.Final_value, character.AbilityScoreList.Wisdom.Modifier)
+	fmt.Printf("  CHA: %d (%+d)\n", character.AbilityScoreList.Charisma.Final_value, character.AbilityScoreList.Charisma.Modifier)
+	fmt.Printf("Proficiency bonus: %+d\n", character.ProficiencyBonus)
+	fmt.Printf("Skill proficiencies: %s\n", strings.Join(proficientSkillProficiencyNames, ", "))
 
 	os.Exit(0)
 }

@@ -220,10 +220,6 @@ func main() {
 			*wisdomValue,
 			*charismaValue,
 		)
-
-		fmt.Println("Character succesfully created!")
-
-		os.Exit(0)
 	case "view":
 		createCmd := flag.NewFlagSet("view", flag.ExitOnError)
 

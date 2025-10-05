@@ -36,6 +36,6 @@ func (characterList *CharacterList) DeleteCharacter(name string) error {
 		}
 	}
 
-	err := fmt.Errorf("could not find character with name %s", name)
+	err := fmt.Errorf("character \"%s\" not found", name)
 	return err
 }
