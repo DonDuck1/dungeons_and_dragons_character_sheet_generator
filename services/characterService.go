@@ -189,6 +189,11 @@ func (characterService CharacterService) ViewCharacter(characterName string) {
 		log.Fatal(err)
 	}
 
+	relevantRaceName := character.Race.Name
+	if character.Race.SubRace != nil {
+		relevantRaceName = character.Race.SubRace.Name
+	}
+
 	proficientSkillProficiencies := character.SkillProficiencyList.GetSkillProficienciesThatAreProficient()
 	proficientSkillProficiencyNames := []string{}
 	for _, proficientSkillProficiency := range *proficientSkillProficiencies {
@@ -199,7 +204,7 @@ func (characterService CharacterService) ViewCharacter(characterName string) {
 
 	fmt.Printf("Name: %s\n", characterName)
 	fmt.Printf("Class: %s\n", strings.ToLower(string(character.MainClass.Name)))
-	fmt.Printf("Race: %s\n", strings.ToLower(character.Race.Name))
+	fmt.Printf("Race: %s\n", strings.ToLower(relevantRaceName))
 	fmt.Printf("Background: %s\n", strings.ToLower(character.Background.Name))
 	fmt.Printf("Level: %d\n", character.MainClass.Level)
 	fmt.Println("Ability scores:")
@@ -229,7 +234,11 @@ func (characterService CharacterService) ListCharacters() {
 
 	fmt.Println("all characters:")
 	for _, character := range *characters {
-		fmt.Printf("%s, Lv%d %s, %s, %s\n", character.Name, character.MainClass.Level, character.MainClass.Name, character.Race.Name, character.Background.Name)
+		if character.Race.SubRace != nil {
+			fmt.Printf("%s, Lv%d %s, %s, %s\n", character.Name, character.MainClass.Level, character.MainClass.Name, character.Race.SubRace.Name, character.Background.Name)
+		} else {
+			fmt.Printf("%s, Lv%d %s, %s, %s\n", character.Name, character.MainClass.Level, character.MainClass.Name, character.Race.Name, character.Background.Name)
+		}
 	}
 
 	os.Exit(0)
