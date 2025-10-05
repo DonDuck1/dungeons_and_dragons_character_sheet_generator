@@ -1,26 +1,209 @@
 package services
 
-import "dungeons_and_dragons_character_sheet_generator/infrastructure"
+import (
+	"dungeons_and_dragons_character_sheet_generator/domain"
+	"dungeons_and_dragons_character_sheet_generator/infrastructure"
+	"fmt"
+	"log"
+	"math"
+	"os"
+)
 
 type CharacterService struct {
-	dndApiGateway           infrastructure.DndApiGateway
-	jsonCharacterRepository infrastructure.JsonCharacterRepository
+	jsonBackgroundRepository *infrastructure.JsonBackgroundRepository
+	jsonCharacterRepository  *infrastructure.JsonCharacterRepository
+	jsonClassRepository      *infrastructure.JsonClassRepository
+	jsonRaceRepository       *infrastructure.JsonRaceRepository
 }
 
-// func NewCharacterService(
-// 	equipmentCsvFilepath string,
-// 	spellCsvFilepath string,
-// 	dndApiUrl string,
-// 	characterJsonFilepath string,
-// ) CharacterService {
-// 	return CharacterService{
-// 		equipmentRepository:     equipmentRepository,
-// 		spellRepository:         spellRepository,
-// 		dndApiGateway:           dndApiGateway,
-// 		jsonCharacterRepository: jsonCharacterRepository,
-// 	}
-// }
+func NewCharacterService(
+	jsonBackgroundRepository *infrastructure.JsonBackgroundRepository,
+	jsonCharacterRepository *infrastructure.JsonCharacterRepository,
+	jsonClassRepository *infrastructure.JsonClassRepository,
+	jsonRaceRepository *infrastructure.JsonRaceRepository,
+) *CharacterService {
+	return &CharacterService{
+		jsonBackgroundRepository: jsonBackgroundRepository,
+		jsonCharacterRepository:  jsonCharacterRepository,
+		jsonClassRepository:      jsonClassRepository,
+		jsonRaceRepository:       jsonRaceRepository,
+	}
+}
 
-// func (characterService CharacterService) NewCharacter() {
-// 	characterService.jsonCharacterRepository.NewCharacter()
-// }
+func (characterService CharacterService) CreateNewCharacter(
+	characterName string,
+	potentialRaceName string,
+	potentialMainClassName string,
+	level int,
+	strengthValue int,
+	dexterityValue int,
+	constitutionValue int,
+	intelligenceValue int,
+	wisdomValue int,
+	charismaValue int,
+) {
+	if characterService.jsonBackgroundRepository == nil || characterService.jsonCharacterRepository == nil || characterService.jsonClassRepository == nil || characterService.jsonRaceRepository == nil {
+		err := fmt.Errorf("the character service has been created uncorrectly, as a required repository is missing")
+		log.Fatal(err)
+	}
+
+	if !characterService.jsonCharacterRepository.IsCharacterNameUnique(characterName) {
+		err := fmt.Errorf("another character with the same name already exists")
+		log.Fatal(err)
+	}
+
+	race, err := characterService.jsonRaceRepository.GetByName(potentialRaceName)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	dndApiClassWithLevels, err := characterService.jsonClassRepository.GetByName(potentialMainClassName)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	mainClassTypedName, err := domain.ClassNameFromUntypedPotentialClassName(dndApiClassWithLevels.Name)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	proficiencyBonus := int(math.Ceil(float64(level)/4)) + 1
+
+	abilityScoreImprovements := race.GetChosenAbilityScoreImprovements()
+	abilityScoreImprovementList := domain.NewAbilityScoreImprovementList(abilityScoreImprovements)
+	abilityScoreValueList := domain.NewAbilityScoreValueList(strengthValue, dexterityValue, constitutionValue, intelligenceValue, wisdomValue, charismaValue)
+	abilityScoreList := domain.NewAbilityScoreList(abilityScoreValueList, abilityScoreImprovementList)
+
+	mainClass := CreateClass(mainClassTypedName, level, proficiencyBonus, abilityScoreList, dndApiClassWithLevels)
+
+	background, err := characterService.jsonBackgroundRepository.GetRandom()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	skillProficiencies := []domain.SkillProficiencyName{}
+	skillProficiencies = append(skillProficiencies, mainClass.SkillProficiencies...)
+	skillProficiencies = append(skillProficiencies, background.SkillProficiencies...)
+	skillProficiencyList := domain.NewSkillProficiencyList(&abilityScoreList, skillProficiencies, proficiencyBonus)
+
+	inventory := domain.NewEmptyInventory(race.NumberOfHandSlots)
+
+	armorClass := inventory.GetArmorClass(abilityScoreList.Dexterity.Modifier)
+
+	initiative := abilityScoreList.Dexterity.Modifier
+
+	passivePerception := 10 + skillProficiencyList.Perception.Modifier
+
+	character := domain.NewCharacter(
+		characterName,
+		*race,
+		mainClass,
+		*background,
+		proficiencyBonus,
+		abilityScoreList,
+		skillProficiencyList,
+		armorClass,
+		initiative,
+		passivePerception,
+		inventory,
+	)
+
+	characterService.jsonCharacterRepository.AddCharacter(character)
+	err = characterService.jsonCharacterRepository.SaveCharacterList()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println("Character succesfully created!")
+	os.Exit(0)
+}
+
+func (characterService CharacterService) ChangeLevelOfCharacter(characterName string, level int) {
+	if characterService.jsonCharacterRepository == nil || characterService.jsonClassRepository == nil {
+		err := fmt.Errorf("the character service has been created uncorrectly, as a required repository is missing")
+		log.Fatal(err)
+	}
+
+	character, err := characterService.jsonCharacterRepository.GetByName(characterName)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	dndApiClassWithLevels, err := characterService.jsonClassRepository.GetByName(string(character.MainClass.Name))
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	proficiencyBonus := int(math.Ceil(float64(level)/4)) + 1
+	character.ProficiencyBonus = proficiencyBonus
+
+	EditClass(&character.MainClass, level, proficiencyBonus, &character.AbilityScoreList, dndApiClassWithLevels)
+
+	character.SkillProficiencyList.UpdateSkillProficiencies(proficiencyBonus)
+
+	character.PassivePerception = 10 + character.SkillProficiencyList.Perception.Modifier
+
+	err = characterService.jsonCharacterRepository.SaveCharacterList()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("Character succesfully updated to level %d!\n", level)
+	os.Exit(0)
+}
+
+func (characterService CharacterService) DeleteCharacter(characterName string) {
+	if characterService.jsonCharacterRepository == nil {
+		err := fmt.Errorf("the character service has been created uncorrectly, as a required repository is missing")
+		log.Fatal(err)
+	}
+
+	err := characterService.jsonCharacterRepository.DeleteCharacter(characterName)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	err = characterService.jsonCharacterRepository.SaveCharacterList()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println("Character succesfully deleted!")
+	os.Exit(0)
+}
+
+func (characterService CharacterService) ViewCharacter(characterName string) {
+	if characterService.jsonCharacterRepository == nil {
+		err := fmt.Errorf("the character service has been created uncorrectly, as a required repository is missing")
+		log.Fatal(err)
+	}
+
+	character, err := characterService.jsonCharacterRepository.GetByName(characterName)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println(character)
+
+	os.Exit(0)
+}
+
+func (characterService CharacterService) ListCharacters() {
+	if characterService.jsonCharacterRepository == nil {
+		err := fmt.Errorf("the character service has been created uncorrectly, as a required repository is missing")
+		log.Fatal(err)
+	}
+
+	characters := characterService.jsonCharacterRepository.GetAll()
+	if len(*characters) <= 0 {
+		fmt.Println("There are no characters yet!")
+		os.Exit(0)
+	}
+
+	fmt.Println("All characters:")
+	for _, character := range *characters {
+		fmt.Printf("%s, Lv%d %s, %s, %s\n", character.Name, character.MainClass.Level, character.MainClass.Name, character.Race.Name, character.Background.Name)
+	}
+
+	os.Exit(0)
+}

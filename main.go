@@ -1,12 +1,11 @@
 package main
 
 import (
-	"dungeons_and_dragons_character_sheet_generator/domain"
 	"dungeons_and_dragons_character_sheet_generator/infrastructure"
+	"dungeons_and_dragons_character_sheet_generator/services"
 	"flag"
 	"fmt"
 	"log"
-	"math"
 	"os"
 )
 
@@ -36,44 +35,63 @@ func main() {
 	}
 	cmd := os.Args[1]
 
-	switch cmd {
-	case "init":
+	if cmd == "init" {
 		csvEquipmentRepository, err := infrastructure.NewCsvEquipmentRepository("./data/5e-SRD-Equipment.csv")
 		if err != nil {
 			log.Fatal(err)
 		}
-
 		dndApiGateway := infrastructure.NewDndApiGateway("https://www.dnd5eapi.co")
 
-		InitialiseArmorAndShields(*csvEquipmentRepository, *dndApiGateway)
-		InitialiseBackgrounds(*dndApiGateway)
-		InitialiseClasses(*dndApiGateway)
-		InitialiseRaces(*dndApiGateway)
-		InitialiseSpells(*dndApiGateway)
-		InitialiseWeapons(*csvEquipmentRepository, *dndApiGateway)
+		armorAndShieldService := services.NewArmorAndShieldService(csvEquipmentRepository, dndApiGateway)
+		armorAndShieldService.InitialiseArmorAndShields()
+
+		backgroundService := services.NewBackgroundService(dndApiGateway)
+		backgroundService.InitialiseBackgrounds()
+
+		classService := services.NewClassService(dndApiGateway)
+		classService.InitialiseClasses()
+
+		raceService := services.NewRaceService(dndApiGateway)
+		raceService.InitialiseRaces()
+
+		spellService := services.NewSpellService(dndApiGateway)
+		spellService.InitialiseSpells()
+
+		weaponService := services.NewWeaponService(csvEquipmentRepository, dndApiGateway)
+		weaponService.InitialiseWeapons()
 
 		os.Exit(0)
+	}
+
+	jsonBackgroundRepository, err := infrastructure.NewJsonBackgroundRepository("./data/backgrounds.json")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	jsonCharacterRepository, err := infrastructure.NewJsonCharacterRepository("./data/characters.json")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	jsonClassRepository, err := infrastructure.NewJsonClassRepository("./data/classes.json")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	jsonRaceRepository, err := infrastructure.NewJsonRaceRepository("./data/races.json")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	characterService := services.NewCharacterService(
+		jsonBackgroundRepository,
+		jsonCharacterRepository,
+		jsonClassRepository,
+		jsonRaceRepository,
+	)
+
+	switch cmd {
 	case "create":
-		jsonBackgroundRepository, err := infrastructure.NewJsonBackgroundRepository("./data/backgrounds.json")
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		jsonCharacterRepository, err := infrastructure.NewJsonCharacterRepository("./data/characters.json")
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		jsonClassRepository, err := infrastructure.NewJsonClassRepository("./data/classes.json")
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		jsonRaceRepository, err := infrastructure.NewJsonRaceRepository("./data/races.json")
-		if err != nil {
-			log.Fatal(err)
-		}
-
 		createCmd := flag.NewFlagSet("create", flag.ExitOnError)
 
 		characterName := createCmd.String("name", "", "character name (required)")
@@ -98,10 +116,6 @@ func main() {
 			createCmd.Usage()
 			os.Exit(2)
 		}
-		if !jsonCharacterRepository.IsCharacterNameUnique(*characterName) {
-			fmt.Println("Another character with the same name already exists")
-			os.Exit(2)
-		}
 
 		if *potentialRaceName == "" {
 			fmt.Println("Race name is required")
@@ -109,20 +123,12 @@ func main() {
 			createCmd.Usage()
 			os.Exit(2)
 		}
-		race, err := jsonRaceRepository.GetByName(*potentialRaceName)
-		if err != nil {
-			log.Fatal(err)
-		}
 
 		if *potentialMainClassName == "" {
 			fmt.Println("Class name is required")
 			fmt.Println("")
 			createCmd.Usage()
 			os.Exit(2)
-		}
-		mainClassName, err := domain.ClassNameFromUntypedPotentialClassName(*potentialMainClassName)
-		if err != nil {
-			log.Fatal(err)
 		}
 
 		if *level == -999 {
@@ -202,67 +208,23 @@ func main() {
 			*charismaValue = 20
 		}
 
-		dndApiClassWithLevels, err := jsonClassRepository.GetByName(*potentialMainClassName)
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		proficiencyBonus := int(math.Ceil(float64(*level)/4)) + 1
-
-		abilityScoreImprovements := race.GetChosenAbilityScoreImprovements()
-		abilityScoreImprovementList := domain.NewAbilityScoreImprovementList(abilityScoreImprovements)
-		abilityScoreValueList := domain.NewAbilityScoreValueList(*strengthValue, *dexterityValue, *constitutionValue, *intelligenceValue, *wisdomValue, *charismaValue)
-		abilityScoreList := domain.NewAbilityScoreList(abilityScoreValueList, abilityScoreImprovementList)
-
-		mainClass := CreateClass(mainClassName, *level, proficiencyBonus, abilityScoreList, dndApiClassWithLevels)
-
-		background, err := jsonBackgroundRepository.GetRandom()
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		skillProficiencies := []domain.SkillProficiencyName{}
-		skillProficiencies = append(skillProficiencies, mainClass.SkillProficiencies...)
-		skillProficiencies = append(skillProficiencies, background.SkillProficiencies...)
-		skillProficiencyList := domain.NewSkillProficiencyList(&abilityScoreList, skillProficiencies, proficiencyBonus)
-
-		inventory := domain.NewEmptyInventory(race.NumberOfHandSlots)
-
-		armorClass := inventory.GetArmorClass(abilityScoreList.Dexterity.Modifier)
-
-		initiative := abilityScoreList.Dexterity.Modifier
-
-		passivePerception := 10 + skillProficiencyList.Perception.Modifier
-
-		character := domain.NewCharacter(
+		characterService.CreateNewCharacter(
 			*characterName,
-			*race,
-			mainClass,
-			*background,
-			proficiencyBonus,
-			abilityScoreList,
-			skillProficiencyList,
-			armorClass,
-			initiative,
-			passivePerception,
-			inventory,
+			*potentialRaceName,
+			*potentialMainClassName,
+			*level,
+			*strengthValue,
+			*dexterityValue,
+			*constitutionValue,
+			*intelligenceValue,
+			*wisdomValue,
+			*charismaValue,
 		)
-
-		jsonCharacterRepository.AddCharacter(character)
-		err = jsonCharacterRepository.SaveCharacterList()
-		if err != nil {
-			log.Fatal(err)
-		}
 
 		fmt.Println("Character succesfully created!")
 
 		os.Exit(0)
 	case "view":
-		jsonCharacterRepository, err := infrastructure.NewJsonCharacterRepository("./data/characters.json")
-		if err != nil {
-			log.Fatal(err)
-		}
-
 		createCmd := flag.NewFlagSet("view", flag.ExitOnError)
 
 		characterName := createCmd.String("name", "", "character name (required)")
@@ -279,41 +241,10 @@ func main() {
 			os.Exit(2)
 		}
 
-		character, err := jsonCharacterRepository.GetByName(*characterName)
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		fmt.Println(character)
-		os.Exit(0)
+		characterService.ViewCharacter(*characterName)
 	case "list":
-		jsonCharacterRepository, err := infrastructure.NewJsonCharacterRepository("./data/characters.json")
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		characters := jsonCharacterRepository.GetAll()
-		if len(*characters) <= 0 {
-			fmt.Println("There are no characters yet!")
-			os.Exit(0)
-		}
-
-		fmt.Println("All characters:")
-		for _, character := range *characters {
-			fmt.Printf("%s, Lv%d %s, %s, %s\n", character.Name, character.MainClass.Level, character.MainClass.Name, character.Race.Name, character.Background.Name)
-		}
-		os.Exit(0)
+		characterService.ListCharacters()
 	case "change-level":
-		jsonCharacterRepository, err := infrastructure.NewJsonCharacterRepository("./data/characters.json")
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		jsonClassRepository, err := infrastructure.NewJsonClassRepository("./data/classes.json")
-		if err != nil {
-			log.Fatal(err)
-		}
-
 		createCmd := flag.NewFlagSet("change-level", flag.ExitOnError)
 
 		characterName := createCmd.String("name", "", "character name (required)")
@@ -342,38 +273,8 @@ func main() {
 			*level = 20
 		}
 
-		character, err := jsonCharacterRepository.GetByName(*characterName)
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		dndApiClassWithLevels, err := jsonClassRepository.GetByName(string(character.MainClass.Name))
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		proficiencyBonus := int(math.Ceil(float64(*level)/4)) + 1
-		character.ProficiencyBonus = proficiencyBonus
-
-		EditClass(&character.MainClass, *level, proficiencyBonus, &character.AbilityScoreList, dndApiClassWithLevels)
-
-		character.SkillProficiencyList.UpdateSkillProficiencies(proficiencyBonus)
-
-		character.PassivePerception = 10 + character.SkillProficiencyList.Perception.Modifier
-
-		err = jsonCharacterRepository.SaveCharacterList()
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		fmt.Printf("Character succesfully updated to level %d!\n", *level)
-		os.Exit(0)
+		characterService.ChangeLevelOfCharacter(*characterName, *level)
 	case "delete":
-		jsonCharacterRepository, err := infrastructure.NewJsonCharacterRepository("./data/characters.json")
-		if err != nil {
-			log.Fatal(err)
-		}
-
 		createCmd := flag.NewFlagSet("delete", flag.ExitOnError)
 
 		characterName := createCmd.String("name", "", "character name (required)")
@@ -390,18 +291,7 @@ func main() {
 			os.Exit(2)
 		}
 
-		err = jsonCharacterRepository.DeleteCharacter(*characterName)
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		err = jsonCharacterRepository.SaveCharacterList()
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		fmt.Println("Character succesfully deleted!")
-		os.Exit(0)
+		characterService.DeleteCharacter(*characterName)
 	case "equip":
 
 	case "learn-spell":
