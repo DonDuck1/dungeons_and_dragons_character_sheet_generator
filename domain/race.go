@@ -14,6 +14,8 @@ func NewRace(name string, abilityScoreImprovements []AbilityScoreImprovement, op
 func (race Race) GetChosenAbilityScoreImprovements() []AbilityScoreImprovement {
 	abilityScoreImprovements := []AbilityScoreImprovement{}
 	abilityScoreImprovements = append(abilityScoreImprovements, race.AbilityScoreImprovements...)
-	abilityScoreImprovements = append(abilityScoreImprovements, race.OptionalAbilityScoreImprovementList.ChooseRandomAbilityScoreImprovements()...)
+	if race.OptionalAbilityScoreImprovementList != nil {
+		abilityScoreImprovements = append(abilityScoreImprovements, race.OptionalAbilityScoreImprovementList.ChooseRandomAbilityScoreImprovements()...)
+	}
 	return abilityScoreImprovements
 }

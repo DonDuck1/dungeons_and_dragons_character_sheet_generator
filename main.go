@@ -13,17 +13,17 @@ import (
 func usage() {
 	fmt.Printf(`Usage:
   go run . init
-  go run . create -name CHARACTER_NAME -race RACE -class CLASS -level N -str N -dex N -con N -int N -wis N -cha N
-  go run . view -name CHARACTER_NAME
+  go run . create -name "CHARACTER_NAME" -race "RACE" -class "CLASS" -level N -str N -dex N -con N -int N -wis N -cha N
+  go run . view -name "CHARACTER_NAME"
   go run . list
-  go run . change-level -name CHARACTER_NAME -level LEVEL
-  go run . delete -name CHARACTER_NAME
-  go run . equip -name CHARACTER_NAME -weapon WEAPON_NAME -slot SLOT
-  go run . equip -name CHARACTER_NAME -armor ARMOR_NAME
-  go run . equip -name CHARACTER_NAME -shield SHIELD_NAME
-  go run . learn-spell -name CHARACTER_NAME -spell SPELL_NAME
-  go run . forget-spell -name CHARACTER_NAME -spell SPELL_NAME
-  go run . prepare-spell -name CHARACTER_NAME -spell SPELL_NAME
+  go run . change-level -name "CHARACTER_NAME" -level LEVEL
+  go run . delete -name "CHARACTER_NAME"
+  go run . equip -name "CHARACTER_NAME" -weapon "WEAPON_NAME" -slot SLOT
+  go run . equip -name "CHARACTER_NAME" -armor "ARMOR_NAME"
+  go run . equip -name "CHARACTER_NAME" -shield "SHIELD_NAME"
+  go run . learn-spell -name "CHARACTER_NAME" -spell "SPELL_NAME"
+  go run . forget-spell -name "CHARACTER_NAME" -spell "SPELL_NAME"
+  go run . prepare-spell -name "CHARACTER_NAME" -spell "SPELL_NAME"
 
   Location: %s
 `, os.Args[0])
@@ -240,7 +240,10 @@ func main() {
 		)
 
 		jsonCharacterRepository.AddCharacter(character)
-		jsonCharacterRepository.SaveCharacterList()
+		err = jsonCharacterRepository.SaveCharacterList()
+		if err != nil {
+			log.Fatal(err)
+		}
 
 		fmt.Println("Character succesfully created!")
 
@@ -248,11 +251,58 @@ func main() {
 	case "view":
 
 	case "list":
+		jsonCharacterRepository, err := infrastructure.NewJsonCharacterRepository("./data/characters.json")
+		if err != nil {
+			log.Fatal(err)
+		}
 
+		characters := jsonCharacterRepository.GetAll()
+		if len(*characters) <= 0 {
+			fmt.Println("There are no characters yet!")
+			os.Exit(0)
+		}
+
+		fmt.Println("All characters:")
+		for _, character := range *characters {
+			fmt.Printf("%s, Lv%d %s, %s, %s\n", character.Name, character.MainClass.Level, character.MainClass.Name, character.Race.Name, character.Background.Name)
+		}
+		os.Exit(0)
 	case "change-level":
 
 	case "delete":
+		jsonCharacterRepository, err := infrastructure.NewJsonCharacterRepository("./data/characters.json")
+		if err != nil {
+			log.Fatal(err)
+		}
 
+		createCmd := flag.NewFlagSet("create", flag.ExitOnError)
+
+		characterName := createCmd.String("name", "", "character name (required)")
+
+		err = createCmd.Parse(os.Args[2:])
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		if *characterName == "" {
+			fmt.Println("Character name is required")
+			fmt.Println("")
+			createCmd.Usage()
+			os.Exit(2)
+		}
+
+		err = jsonCharacterRepository.DeleteCharacter(*characterName)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		err = jsonCharacterRepository.SaveCharacterList()
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		fmt.Println("Character succesfully deleted!")
+		os.Exit(0)
 	case "equip":
 
 	case "learn-spell":

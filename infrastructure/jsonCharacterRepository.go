@@ -3,7 +3,9 @@ package infrastructure
 import (
 	"dungeons_and_dragons_character_sheet_generator/domain"
 	"encoding/json"
+	"fmt"
 	"os"
+	"strings"
 )
 
 type JsonCharacterRepository struct {
@@ -64,4 +66,23 @@ func (jsonCharacterRepository *JsonCharacterRepository) SaveCharacterList() erro
 	}
 
 	return nil
+}
+
+func (jsonCharacterRepository *JsonCharacterRepository) GetAll() *[]domain.Character {
+	return &jsonCharacterRepository.characterList.Characters
+}
+
+func (jsonCharacterRepository *JsonCharacterRepository) GetByName(name string) (*domain.Character, error) {
+	for _, character := range jsonCharacterRepository.characterList.Characters {
+		if strings.EqualFold(character.Name, name) {
+			return &character, nil
+		}
+	}
+
+	err := fmt.Errorf("could not find character with name '%s'", name)
+	return nil, err
+}
+
+func (jsonCharacterRepository *JsonCharacterRepository) DeleteCharacter(name string) error {
+	return jsonCharacterRepository.characterList.DeleteCharacter(name)
 }

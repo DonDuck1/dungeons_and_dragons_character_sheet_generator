@@ -210,8 +210,9 @@ func CreateClassUsingApi(name domain.ClassName, level int, proficiencyBonus int,
 			for i, levelSpellSlotAmount := range spellSlotAmount {
 				if levelSpellSlotAmount != 0 {
 					warlockSpellSlotAmount = levelSpellSlotAmount
+					warlockSpellSlotLevel = i + 1
+					break
 				}
-				warlockSpellSlotLevel = i + 1
 			}
 
 			classWarlockCastingInfoValue := domain.NewClassWarlockCastingInfo(
