@@ -15,12 +15,12 @@ type JsonShieldRepository struct {
 
 func NewJsonShieldRepository(filepath string) (*JsonShieldRepository, error) {
 	_, err := os.Stat(filepath)
-	if !(err == nil) {
+	if err != nil {
 		return nil, err
 	}
 
 	fileBytes, err := os.ReadFile(filepath)
-	if !(err == nil) {
+	if err != nil {
 		return nil, err
 	}
 
@@ -30,7 +30,7 @@ func NewJsonShieldRepository(filepath string) (*JsonShieldRepository, error) {
 	}
 
 	var shieldList []domain.Shield
-	if err := json.Unmarshal(fileBytes, &shieldList); !(err == nil) {
+	if err := json.Unmarshal(fileBytes, &shieldList); err != nil {
 		return nil, err
 	}
 

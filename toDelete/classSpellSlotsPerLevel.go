@@ -1,4 +1,4 @@
-package domain
+package toDelete
 
 // type ClassSpellSlotsPerLevel [20][9]int
 

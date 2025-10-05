@@ -1,0 +1,224 @@
+[
+  {
+    "Name": "Club",
+    "WeaponCategory": "Simple",
+    "NormalRange": 5,
+    "TwoHanded": false
+  },
+  {
+    "Name": "Dagger",
+    "WeaponCategory": "Simple",
+    "NormalRange": 5,
+    "TwoHanded": false
+  },
+  {
+    "Name": "Greatclub",
+    "WeaponCategory": "Simple",
+    "NormalRange": 5,
+    "TwoHanded": true
+  },
+  {
+    "Name": "Handaxe",
+    "WeaponCategory": "Simple",
+    "NormalRange": 5,
+    "TwoHanded": false
+  },
+  {
+    "Name": "Javelin",
+    "WeaponCategory": "Simple",
+    "NormalRange": 5,
+    "TwoHanded": false
+  },
+  {
+    "Name": "Light hammer",
+    "WeaponCategory": "Simple",
+    "NormalRange": 5,
+    "TwoHanded": false
+  },
+  {
+    "Name": "Mace",
+    "WeaponCategory": "Simple",
+    "NormalRange": 5,
+    "TwoHanded": false
+  },
+  {
+    "Name": "Quarterstaff",
+    "WeaponCategory": "Simple",
+    "NormalRange": 5,
+    "TwoHanded": false
+  },
+  {
+    "Name": "Sickle",
+    "WeaponCategory": "Simple",
+    "NormalRange": 5,
+    "TwoHanded": false
+  },
+  {
+    "Name": "Spear",
+    "WeaponCategory": "Simple",
+    "NormalRange": 5,
+    "TwoHanded": false
+  },
+  {
+    "Name": "Crossbow, light",
+    "WeaponCategory": "Simple",
+    "NormalRange": 80,
+    "TwoHanded": true
+  },
+  {
+    "Name": "Dart",
+    "WeaponCategory": "Simple",
+    "NormalRange": 20,
+    "TwoHanded": false
+  },
+  {
+    "Name": "Shortbow",
+    "WeaponCategory": "Simple",
+    "NormalRange": 80,
+    "TwoHanded": true
+  },
+  {
+    "Name": "Sling",
+    "WeaponCategory": "Simple",
+    "NormalRange": 30,
+    "TwoHanded": false
+  },
+  {
+    "Name": "Battleaxe",
+    "WeaponCategory": "Martial",
+    "NormalRange": 5,
+    "TwoHanded": false
+  },
+  {
+    "Name": "Flail",
+    "WeaponCategory": "Martial",
+    "NormalRange": 5,
+    "TwoHanded": false
+  },
+  {
+    "Name": "Glaive",
+    "WeaponCategory": "Martial",
+    "NormalRange": 5,
+    "TwoHanded": true
+  },
+  {
+    "Name": "Greataxe",
+    "WeaponCategory": "Martial",
+    "NormalRange": 5,
+    "TwoHanded": true
+  },
+  {
+    "Name": "Greatsword",
+    "WeaponCategory": "Martial",
+    "NormalRange": 5,
+    "TwoHanded": true
+  },
+  {
+    "Name": "Halberd",
+    "WeaponCategory": "Martial",
+    "NormalRange": 5,
+    "TwoHanded": true
+  },
+  {
+    "Name": "Lance",
+    "WeaponCategory": "Martial",
+    "NormalRange": 5,
+    "TwoHanded": false
+  },
+  {
+    "Name": "Longsword",
+    "WeaponCategory": "Martial",
+    "NormalRange": 5,
+    "TwoHanded": false
+  },
+  {
+    "Name": "Maul",
+    "WeaponCategory": "Martial",
+    "NormalRange": 5,
+    "TwoHanded": true
+  },
+  {
+    "Name": "Morningstar",
+    "WeaponCategory": "Martial",
+    "NormalRange": 5,
+    "TwoHanded": false
+  },
+  {
+    "Name": "Pike",
+    "WeaponCategory": "Martial",
+    "NormalRange": 5,
+    "TwoHanded": true
+  },
+  {
+    "Name": "Rapier",
+    "WeaponCategory": "Martial",
+    "NormalRange": 5,
+    "TwoHanded": false
+  },
+  {
+    "Name": "Scimitar",
+    "WeaponCategory": "Martial",
+    "NormalRange": 5,
+    "TwoHanded": false
+  },
+  {
+    "Name": "Shortsword",
+    "WeaponCategory": "Martial",
+    "NormalRange": 5,
+    "TwoHanded": false
+  },
+  {
+    "Name": "Trident",
+    "WeaponCategory": "Martial",
+    "NormalRange": 5,
+    "TwoHanded": false
+  },
+  {
+    "Name": "War pick",
+    "WeaponCategory": "Martial",
+    "NormalRange": 5,
+    "TwoHanded": false
+  },
+  {
+    "Name": "Warhammer",
+    "WeaponCategory": "Martial",
+    "NormalRange": 5,
+    "TwoHanded": false
+  },
+  {
+    "Name": "Whip",
+    "WeaponCategory": "Martial",
+    "NormalRange": 5,
+    "TwoHanded": false
+  },
+  {
+    "Name": "Blowgun",
+    "WeaponCategory": "Martial",
+    "NormalRange": 25,
+    "TwoHanded": false
+  },
+  {
+    "Name": "Crossbow, hand",
+    "WeaponCategory": "Martial",
+    "NormalRange": 30,
+    "TwoHanded": false
+  },
+  {
+    "Name": "Crossbow, heavy",
+    "WeaponCategory": "Martial",
+    "NormalRange": 100,
+    "TwoHanded": true
+  },
+  {
+    "Name": "Longbow",
+    "WeaponCategory": "Martial",
+    "NormalRange": 150,
+    "TwoHanded": true
+  },
+  {
+    "Name": "Net",
+    "WeaponCategory": "Martial",
+    "NormalRange": 5,
+    "TwoHanded": false
+  }
+]

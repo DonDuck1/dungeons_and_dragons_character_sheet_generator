@@ -15,12 +15,12 @@ type JsonBackgroundRepository struct {
 
 func NewJsonBackgroundRepository(filepath string) (*JsonBackgroundRepository, error) {
 	_, err := os.Stat(filepath)
-	if !(err == nil) {
+	if err != nil {
 		return nil, err
 	}
 
 	fileBytes, err := os.ReadFile(filepath)
-	if !(err == nil) {
+	if err != nil {
 		return nil, err
 	}
 
@@ -30,7 +30,7 @@ func NewJsonBackgroundRepository(filepath string) (*JsonBackgroundRepository, er
 	}
 
 	var backgroundList []domain.Background
-	if err := json.Unmarshal(fileBytes, &backgroundList); !(err == nil) {
+	if err := json.Unmarshal(fileBytes, &backgroundList); err != nil {
 		return nil, err
 	}
 

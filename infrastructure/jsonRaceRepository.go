@@ -15,12 +15,12 @@ type JsonRaceRepository struct {
 
 func NewJsonRaceRepository(filepath string) (*JsonRaceRepository, error) {
 	_, err := os.Stat(filepath)
-	if !(err == nil) {
+	if err != nil {
 		return nil, err
 	}
 
 	fileBytes, err := os.ReadFile(filepath)
-	if !(err == nil) {
+	if err != nil {
 		return nil, err
 	}
 
@@ -30,7 +30,7 @@ func NewJsonRaceRepository(filepath string) (*JsonRaceRepository, error) {
 	}
 
 	var raceList []domain.Race
-	if err := json.Unmarshal(fileBytes, &raceList); !(err == nil) {
+	if err := json.Unmarshal(fileBytes, &raceList); err != nil {
 		return nil, err
 	}
 

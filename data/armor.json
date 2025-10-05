@@ -1,0 +1,78 @@
+[
+  {
+    "Name": "Padded Armor",
+    "BaseArmorClass": 11,
+    "ArmorDexterityModifier": {
+      "ArmorMaxDexterityModifier": null
+    }
+  },
+  {
+    "Name": "Leather Armor",
+    "BaseArmorClass": 11,
+    "ArmorDexterityModifier": {
+      "ArmorMaxDexterityModifier": null
+    }
+  },
+  {
+    "Name": "Studded Leather Armor",
+    "BaseArmorClass": 12,
+    "ArmorDexterityModifier": {
+      "ArmorMaxDexterityModifier": null
+    }
+  },
+  {
+    "Name": "Hide Armor",
+    "BaseArmorClass": 12,
+    "ArmorDexterityModifier": {
+      "ArmorMaxDexterityModifier": 2
+    }
+  },
+  {
+    "Name": "Chain Shirt",
+    "BaseArmorClass": 13,
+    "ArmorDexterityModifier": {
+      "ArmorMaxDexterityModifier": 2
+    }
+  },
+  {
+    "Name": "Scale Mail",
+    "BaseArmorClass": 14,
+    "ArmorDexterityModifier": {
+      "ArmorMaxDexterityModifier": 2
+    }
+  },
+  {
+    "Name": "Breastplate",
+    "BaseArmorClass": 14,
+    "ArmorDexterityModifier": {
+      "ArmorMaxDexterityModifier": 2
+    }
+  },
+  {
+    "Name": "Half Plate Armor",
+    "BaseArmorClass": 15,
+    "ArmorDexterityModifier": {
+      "ArmorMaxDexterityModifier": 2
+    }
+  },
+  {
+    "Name": "Ring Mail",
+    "BaseArmorClass": 14,
+    "ArmorDexterityModifier": null
+  },
+  {
+    "Name": "Chain Mail",
+    "BaseArmorClass": 16,
+    "ArmorDexterityModifier": null
+  },
+  {
+    "Name": "Splint Armor",
+    "BaseArmorClass": 17,
+    "ArmorDexterityModifier": null
+  },
+  {
+    "Name": "Plate Armor",
+    "BaseArmorClass": 18,
+    "ArmorDexterityModifier": null
+  }
+]

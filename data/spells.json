@@ -1,0 +1,3651 @@
+[
+  {
+    "Name": "Acid Arrow",
+    "Level": 2,
+    "Classes": [
+      "Wizard"
+    ],
+    "School": "Evocation",
+    "SpellRange": "90 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Acid Splash",
+    "Level": 0,
+    "Classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Aid",
+    "Level": 2,
+    "Classes": [
+      "Cleric",
+      "Paladin"
+    ],
+    "School": "Abjuration",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Alarm",
+    "Level": 1,
+    "Classes": [
+      "Ranger",
+      "Wizard"
+    ],
+    "School": "Abjuration",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Alter Self",
+    "Level": 2,
+    "Classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Animal Friendship",
+    "Level": 1,
+    "Classes": [
+      "Bard",
+      "Druid",
+      "Ranger"
+    ],
+    "School": "Enchantment",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Animal Messenger",
+    "Level": 2,
+    "Classes": [
+      "Bard",
+      "Druid",
+      "Ranger"
+    ],
+    "School": "Enchantment",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Animal Shapes",
+    "Level": 8,
+    "Classes": [
+      "Druid"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Animate Dead",
+    "Level": 3,
+    "Classes": [
+      "Cleric",
+      "Wizard"
+    ],
+    "School": "Necromancy",
+    "SpellRange": "10 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Animate Objects",
+    "Level": 5,
+    "Classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "120 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Antilife Shell",
+    "Level": 5,
+    "Classes": [
+      "Druid"
+    ],
+    "School": "Abjuration",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Antimagic Field",
+    "Level": 8,
+    "Classes": [
+      "Cleric",
+      "Wizard"
+    ],
+    "School": "Abjuration",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Antipathy/Sympathy",
+    "Level": 8,
+    "Classes": [
+      "Druid",
+      "Wizard"
+    ],
+    "School": "Enchantment",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Arcane Eye",
+    "Level": 4,
+    "Classes": [
+      "Cleric",
+      "Wizard"
+    ],
+    "School": "Divination",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Arcane Hand",
+    "Level": 5,
+    "Classes": [
+      "Wizard"
+    ],
+    "School": "Evocation",
+    "SpellRange": "120 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Arcane Lock",
+    "Level": 2,
+    "Classes": [
+      "Wizard"
+    ],
+    "School": "Abjuration",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Arcane Sword",
+    "Level": 7,
+    "Classes": [
+      "Bard",
+      "Wizard"
+    ],
+    "School": "Evocation",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Arcanist's Magic Aura",
+    "Level": 2,
+    "Classes": [
+      "Wizard"
+    ],
+    "School": "Illusion",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Astral Projection",
+    "Level": 9,
+    "Classes": [
+      "Cleric",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Necromancy",
+    "SpellRange": "10 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Augury",
+    "Level": 2,
+    "Classes": [
+      "Cleric"
+    ],
+    "School": "Divination",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Awaken",
+    "Level": 5,
+    "Classes": [
+      "Bard",
+      "Druid"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Bane",
+    "Level": 1,
+    "Classes": [
+      "Bard",
+      "Cleric"
+    ],
+    "School": "Enchantment",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Banishment",
+    "Level": 4,
+    "Classes": [
+      "Cleric",
+      "Paladin",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Abjuration",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Barkskin",
+    "Level": 2,
+    "Classes": [
+      "Druid",
+      "Ranger"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Beacon of Hope",
+    "Level": 3,
+    "Classes": [
+      "Cleric"
+    ],
+    "School": "Abjuration",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Bestow Curse",
+    "Level": 3,
+    "Classes": [
+      "Bard",
+      "Cleric",
+      "Wizard"
+    ],
+    "School": "Necromancy",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Black Tentacles",
+    "Level": 4,
+    "Classes": [
+      "Wizard"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "90 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Blade Barrier",
+    "Level": 6,
+    "Classes": [
+      "Cleric"
+    ],
+    "School": "Evocation",
+    "SpellRange": "90 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Bless",
+    "Level": 1,
+    "Classes": [
+      "Cleric",
+      "Paladin"
+    ],
+    "School": "Enchantment",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Blight",
+    "Level": 4,
+    "Classes": [
+      "Druid",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Necromancy",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Blindness/Deafness",
+    "Level": 2,
+    "Classes": [
+      "Bard",
+      "Cleric",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Necromancy",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Blink",
+    "Level": 3,
+    "Classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Blur",
+    "Level": 2,
+    "Classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Illusion",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Branding Smite",
+    "Level": 2,
+    "Classes": [
+      "Paladin"
+    ],
+    "School": "Evocation",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Burning Hands",
+    "Level": 1,
+    "Classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Evocation",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Call Lightning",
+    "Level": 3,
+    "Classes": [
+      "Druid"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "120 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Calm Emotions",
+    "Level": 2,
+    "Classes": [
+      "Bard",
+      "Cleric"
+    ],
+    "School": "Enchantment",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Chain Lightning",
+    "Level": 6,
+    "Classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Evocation",
+    "SpellRange": "150 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Charm Person",
+    "Level": 1,
+    "Classes": [
+      "Bard",
+      "Druid",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Enchantment",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Chill Touch",
+    "Level": 0,
+    "Classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Necromancy",
+    "SpellRange": "120 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Circle of Death",
+    "Level": 6,
+    "Classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Necromancy",
+    "SpellRange": "150 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Clairvoyance",
+    "Level": 3,
+    "Classes": [
+      "Bard",
+      "Cleric",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Divination",
+    "SpellRange": "1 mile",
+    "Prepared": false
+  },
+  {
+    "Name": "Clone",
+    "Level": 8,
+    "Classes": [
+      "Wizard"
+    ],
+    "School": "Necromancy",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Cloudkill",
+    "Level": 5,
+    "Classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "120 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Color Spray",
+    "Level": 1,
+    "Classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Illusion",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Command",
+    "Level": 1,
+    "Classes": [
+      "Cleric",
+      "Paladin"
+    ],
+    "School": "Enchantment",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Commune",
+    "Level": 5,
+    "Classes": [
+      "Cleric"
+    ],
+    "School": "Divination",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Commune With Nature",
+    "Level": 5,
+    "Classes": [
+      "Druid",
+      "Ranger"
+    ],
+    "School": "Divination",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Comprehend Languages",
+    "Level": 1,
+    "Classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Divination",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Compulsion",
+    "Level": 4,
+    "Classes": [
+      "Bard"
+    ],
+    "School": "Enchantment",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Cone of Cold",
+    "Level": 5,
+    "Classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Evocation",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Confusion",
+    "Level": 4,
+    "Classes": [
+      "Bard",
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Enchantment",
+    "SpellRange": "90 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Conjure Animals",
+    "Level": 3,
+    "Classes": [
+      "Druid",
+      "Ranger"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Conjure Celestial",
+    "Level": 7,
+    "Classes": [
+      "Cleric"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "90 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Conjure Elemental",
+    "Level": 5,
+    "Classes": [
+      "Druid",
+      "Wizard"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "90 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Conjure Fey",
+    "Level": 6,
+    "Classes": [
+      "Druid",
+      "Warlock"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "90 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Conjure Minor Elementals",
+    "Level": 4,
+    "Classes": [
+      "Druid",
+      "Wizard"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "90 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Conjure Woodland Beings",
+    "Level": 4,
+    "Classes": [
+      "Druid",
+      "Ranger"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Contact Other Plane",
+    "Level": 5,
+    "Classes": [
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Divination",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Contagion",
+    "Level": 5,
+    "Classes": [
+      "Cleric",
+      "Druid"
+    ],
+    "School": "Necromancy",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Contingency",
+    "Level": 6,
+    "Classes": [
+      "Wizard"
+    ],
+    "School": "Evocation",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Continual Flame",
+    "Level": 2,
+    "Classes": [
+      "Cleric",
+      "Wizard"
+    ],
+    "School": "Evocation",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Control Water",
+    "Level": 4,
+    "Classes": [
+      "Cleric",
+      "Druid",
+      "Wizard"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "300 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Control Weather",
+    "Level": 8,
+    "Classes": [
+      "Cleric",
+      "Druid",
+      "Wizard"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Counterspell",
+    "Level": 3,
+    "Classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Abjuration",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Create Food and Water",
+    "Level": 3,
+    "Classes": [
+      "Cleric",
+      "Druid",
+      "Paladin"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Create or Destroy Water",
+    "Level": 1,
+    "Classes": [
+      "Cleric",
+      "Druid"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Create Undead",
+    "Level": 6,
+    "Classes": [
+      "Cleric",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Necromancy",
+    "SpellRange": "10 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Creation",
+    "Level": 5,
+    "Classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Illusion",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Cure Wounds",
+    "Level": 1,
+    "Classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Paladin",
+      "Ranger"
+    ],
+    "School": "Evocation",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Dancing Lights",
+    "Level": 0,
+    "Classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Evocation",
+    "SpellRange": "120 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Darkness",
+    "Level": 2,
+    "Classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Evocation",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Darkvision",
+    "Level": 2,
+    "Classes": [
+      "Druid",
+      "Ranger",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Daylight",
+    "Level": 3,
+    "Classes": [
+      "Cleric",
+      "Druid",
+      "Paladin",
+      "Ranger",
+      "Sorcerer"
+    ],
+    "School": "Evocation",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Death Ward",
+    "Level": 4,
+    "Classes": [
+      "Cleric",
+      "Paladin"
+    ],
+    "School": "Abjuration",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Delayed Blast Fireball",
+    "Level": 7,
+    "Classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Evocation",
+    "SpellRange": "150 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Demiplane",
+    "Level": 8,
+    "Classes": [
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Detect Evil and Good",
+    "Level": 1,
+    "Classes": [
+      "Cleric",
+      "Paladin"
+    ],
+    "School": "Divination",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Detect Magic",
+    "Level": 1,
+    "Classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Paladin",
+      "Ranger",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Divination",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Detect Poison and Disease",
+    "Level": 1,
+    "Classes": [
+      "Cleric",
+      "Druid",
+      "Paladin",
+      "Ranger"
+    ],
+    "School": "Divination",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Detect Thoughts",
+    "Level": 2,
+    "Classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Divination",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Dimension Door",
+    "Level": 4,
+    "Classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "500 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Disguise Self",
+    "Level": 1,
+    "Classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Illusion",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Disintegrate",
+    "Level": 6,
+    "Classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Dispel Evil and Good",
+    "Level": 5,
+    "Classes": [
+      "Cleric",
+      "Paladin"
+    ],
+    "School": "Abjuration",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Dispel Magic",
+    "Level": 3,
+    "Classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Paladin",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Abjuration",
+    "SpellRange": "120 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Divination",
+    "Level": 4,
+    "Classes": [
+      "Druid"
+    ],
+    "School": "Divination",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Divine Favor",
+    "Level": 1,
+    "Classes": [
+      "Paladin"
+    ],
+    "School": "Evocation",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Divine Word",
+    "Level": 7,
+    "Classes": [
+      "Cleric"
+    ],
+    "School": "Evocation",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Dominate Beast",
+    "Level": 4,
+    "Classes": [
+      "Druid",
+      "Sorcerer"
+    ],
+    "School": "Enchantment",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Dominate Monster",
+    "Level": 8,
+    "Classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Enchantment",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Dominate Person",
+    "Level": 5,
+    "Classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Enchantment",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Dream",
+    "Level": 5,
+    "Classes": [
+      "Bard",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Illusion",
+    "SpellRange": "Special",
+    "Prepared": false
+  },
+  {
+    "Name": "Druidcraft",
+    "Level": 0,
+    "Classes": [
+      "Druid"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Earthquake",
+    "Level": 8,
+    "Classes": [
+      "Cleric",
+      "Druid",
+      "Sorcerer"
+    ],
+    "School": "Evocation",
+    "SpellRange": "500 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Eldritch Blast",
+    "Level": 0,
+    "Classes": [
+      "Warlock"
+    ],
+    "School": "Evocation",
+    "SpellRange": "120 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Enhance Ability",
+    "Level": 2,
+    "Classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Sorcerer"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Enlarge/Reduce",
+    "Level": 2,
+    "Classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Entangle",
+    "Level": 1,
+    "Classes": [
+      "Druid"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "90 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Enthrall",
+    "Level": 2,
+    "Classes": [
+      "Bard",
+      "Warlock"
+    ],
+    "School": "Enchantment",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Etherealness",
+    "Level": 7,
+    "Classes": [
+      "Bard",
+      "Cleric",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Expeditious Retreat",
+    "Level": 1,
+    "Classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Eyebite",
+    "Level": 6,
+    "Classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Necromancy",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Fabricate",
+    "Level": 4,
+    "Classes": [
+      "Wizard"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "120 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Faerie Fire",
+    "Level": 1,
+    "Classes": [
+      "Druid"
+    ],
+    "School": "Evocation",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Faithful Hound",
+    "Level": 4,
+    "Classes": [
+      "Wizard"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "False Life",
+    "Level": 1,
+    "Classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Necromancy",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Fear",
+    "Level": 3,
+    "Classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Illusion",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Feather Fall",
+    "Level": 1,
+    "Classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Feeblemind",
+    "Level": 8,
+    "Classes": [
+      "Bard",
+      "Druid",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Enchantment",
+    "SpellRange": "150 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Find Familiar",
+    "Level": 1,
+    "Classes": [
+      "Wizard"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "10 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Find Steed",
+    "Level": 2,
+    "Classes": [
+      "Paladin"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Find the Path",
+    "Level": 6,
+    "Classes": [
+      "Bard",
+      "Cleric",
+      "Druid"
+    ],
+    "School": "Divination",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Find Traps",
+    "Level": 2,
+    "Classes": [
+      "Cleric",
+      "Druid",
+      "Ranger"
+    ],
+    "School": "Divination",
+    "SpellRange": "120 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Finger of Death",
+    "Level": 7,
+    "Classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Necromancy",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Fire Bolt",
+    "Level": 0,
+    "Classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Evocation",
+    "SpellRange": "120 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Fire Shield",
+    "Level": 4,
+    "Classes": [
+      "Wizard"
+    ],
+    "School": "Evocation",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Fire Storm",
+    "Level": 7,
+    "Classes": [
+      "Cleric",
+      "Druid",
+      "Sorcerer"
+    ],
+    "School": "Evocation",
+    "SpellRange": "150 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Fireball",
+    "Level": 3,
+    "Classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Evocation",
+    "SpellRange": "150 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Flame Blade",
+    "Level": 2,
+    "Classes": [
+      "Druid"
+    ],
+    "School": "Evocation",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Flame Strike",
+    "Level": 5,
+    "Classes": [
+      "Cleric"
+    ],
+    "School": "Evocation",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Flaming Sphere",
+    "Level": 2,
+    "Classes": [
+      "Druid",
+      "Wizard"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Flesh to Stone",
+    "Level": 6,
+    "Classes": [
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Floating Disk",
+    "Level": 1,
+    "Classes": [
+      "Wizard"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Fly",
+    "Level": 3,
+    "Classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Fog Cloud",
+    "Level": 1,
+    "Classes": [
+      "Druid",
+      "Ranger",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "120 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Forbiddance",
+    "Level": 6,
+    "Classes": [
+      "Cleric"
+    ],
+    "School": "Abjuration",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Forcecage",
+    "Level": 7,
+    "Classes": [
+      "Bard",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Evocation",
+    "SpellRange": "100 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Foresight",
+    "Level": 9,
+    "Classes": [
+      "Bard",
+      "Druid",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Divination",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Freedom of Movement",
+    "Level": 4,
+    "Classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Ranger"
+    ],
+    "School": "Abjuration",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Freezing Sphere",
+    "Level": 6,
+    "Classes": [
+      "Wizard"
+    ],
+    "School": "Evocation",
+    "SpellRange": "300 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Gaseous Form",
+    "Level": 3,
+    "Classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Gate",
+    "Level": 9,
+    "Classes": [
+      "Cleric",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Geas",
+    "Level": 5,
+    "Classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Paladin",
+      "Wizard"
+    ],
+    "School": "Enchantment",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Gentle Repose",
+    "Level": 2,
+    "Classes": [
+      "Cleric",
+      "Wizard"
+    ],
+    "School": "Necromancy",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Giant Insect",
+    "Level": 4,
+    "Classes": [
+      "Druid"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Glibness",
+    "Level": 8,
+    "Classes": [
+      "Bard",
+      "Warlock"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Globe of Invulnerability",
+    "Level": 6,
+    "Classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Abjuration",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Glyph of Warding",
+    "Level": 3,
+    "Classes": [
+      "Bard",
+      "Cleric",
+      "Wizard"
+    ],
+    "School": "Abjuration",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Goodberry",
+    "Level": 1,
+    "Classes": [
+      "Druid",
+      "Ranger"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Grease",
+    "Level": 1,
+    "Classes": [
+      "Wizard"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Greater Invisibility",
+    "Level": 4,
+    "Classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Illusion",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Greater Restoration",
+    "Level": 5,
+    "Classes": [
+      "Bard",
+      "Cleric",
+      "Druid"
+    ],
+    "School": "Abjuration",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Guardian of Faith",
+    "Level": 4,
+    "Classes": [
+      "Cleric"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Guards and Wards",
+    "Level": 6,
+    "Classes": [
+      "Bard",
+      "Wizard"
+    ],
+    "School": "Abjuration",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Guidance",
+    "Level": 0,
+    "Classes": [
+      "Cleric",
+      "Druid"
+    ],
+    "School": "Divination",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Guiding Bolt",
+    "Level": 1,
+    "Classes": [
+      "Cleric"
+    ],
+    "School": "Evocation",
+    "SpellRange": "120 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Gust of Wind",
+    "Level": 2,
+    "Classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Evocation",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Hallow",
+    "Level": 5,
+    "Classes": [
+      "Cleric"
+    ],
+    "School": "Evocation",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Hallucinatory Terrain",
+    "Level": 4,
+    "Classes": [
+      "Bard",
+      "Druid",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Illusion",
+    "SpellRange": "300 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Harm",
+    "Level": 6,
+    "Classes": [
+      "Cleric"
+    ],
+    "School": "Necromancy",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Haste",
+    "Level": 3,
+    "Classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Heal",
+    "Level": 6,
+    "Classes": [
+      "Cleric",
+      "Druid"
+    ],
+    "School": "Evocation",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Healing Word",
+    "Level": 1,
+    "Classes": [
+      "Bard",
+      "Cleric",
+      "Druid"
+    ],
+    "School": "Evocation",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Heat Metal",
+    "Level": 2,
+    "Classes": [
+      "Bard",
+      "Druid"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Hellish Rebuke",
+    "Level": 1,
+    "Classes": [
+      "Warlock"
+    ],
+    "School": "Evocation",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Heroes' Feast",
+    "Level": 6,
+    "Classes": [
+      "Cleric",
+      "Druid"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Heroism",
+    "Level": 1,
+    "Classes": [
+      "Bard",
+      "Paladin"
+    ],
+    "School": "Enchantment",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Hideous Laughter",
+    "Level": 1,
+    "Classes": [
+      "Bard",
+      "Wizard"
+    ],
+    "School": "Enchantment",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Hold Monster",
+    "Level": 5,
+    "Classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Enchantment",
+    "SpellRange": "90 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Hold Person",
+    "Level": 2,
+    "Classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Enchantment",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Holy Aura",
+    "Level": 8,
+    "Classes": [
+      "Cleric"
+    ],
+    "School": "Abjuration",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Hunter's Mark",
+    "Level": 1,
+    "Classes": [
+      "Ranger"
+    ],
+    "School": "Divination",
+    "SpellRange": "90 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Hypnotic Pattern",
+    "Level": 3,
+    "Classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Illusion",
+    "SpellRange": "120 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Ice Storm",
+    "Level": 4,
+    "Classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Evocation",
+    "SpellRange": "300 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Identify",
+    "Level": 1,
+    "Classes": [
+      "Bard",
+      "Wizard"
+    ],
+    "School": "Divination",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Illusory Script",
+    "Level": 1,
+    "Classes": [
+      "Bard",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Illusion",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Imprisonment",
+    "Level": 9,
+    "Classes": [
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Abjuration",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Incendiary Cloud",
+    "Level": 8,
+    "Classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "150 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Inflict Wounds",
+    "Level": 1,
+    "Classes": [
+      "Cleric"
+    ],
+    "School": "Necromancy",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Insect Plague",
+    "Level": 5,
+    "Classes": [
+      "Cleric",
+      "Druid",
+      "Sorcerer"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "300 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Instant Summons",
+    "Level": 6,
+    "Classes": [
+      "Wizard"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Invisibility",
+    "Level": 2,
+    "Classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Illusion",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Irresistible Dance",
+    "Level": 6,
+    "Classes": [
+      "Bard",
+      "Wizard"
+    ],
+    "School": "Enchantment",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Jump",
+    "Level": 1,
+    "Classes": [
+      "Druid",
+      "Ranger",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Knock",
+    "Level": 2,
+    "Classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Legend Lore",
+    "Level": 5,
+    "Classes": [
+      "Bard",
+      "Cleric",
+      "Wizard"
+    ],
+    "School": "Divination",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Lesser Restoration",
+    "Level": 2,
+    "Classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Paladin",
+      "Ranger"
+    ],
+    "School": "Abjuration",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Levitate",
+    "Level": 2,
+    "Classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Light",
+    "Level": 0,
+    "Classes": [
+      "Bard",
+      "Cleric",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Evocation",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Lightning Bolt",
+    "Level": 3,
+    "Classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Evocation",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Locate Animals or Plants",
+    "Level": 2,
+    "Classes": [
+      "Bard",
+      "Druid",
+      "Ranger"
+    ],
+    "School": "Divination",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Locate Creature",
+    "Level": 4,
+    "Classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Paladin",
+      "Ranger",
+      "Wizard"
+    ],
+    "School": "Divination",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Locate Object",
+    "Level": 2,
+    "Classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Paladin",
+      "Ranger",
+      "Wizard"
+    ],
+    "School": "Divination",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Longstrider",
+    "Level": 1,
+    "Classes": [
+      "Bard",
+      "Druid",
+      "Ranger",
+      "Wizard"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Mage Armor",
+    "Level": 1,
+    "Classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Abjuration",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Mage Hand",
+    "Level": 0,
+    "Classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Magic Circle",
+    "Level": 3,
+    "Classes": [
+      "Cleric",
+      "Paladin",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Abjuration",
+    "SpellRange": "10 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Magic Jar",
+    "Level": 6,
+    "Classes": [
+      "Wizard"
+    ],
+    "School": "Necromancy",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Magic Missile",
+    "Level": 1,
+    "Classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Evocation",
+    "SpellRange": "120 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Magic Mouth",
+    "Level": 2,
+    "Classes": [
+      "Bard",
+      "Wizard"
+    ],
+    "School": "Illusion",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Magic Weapon",
+    "Level": 2,
+    "Classes": [
+      "Paladin",
+      "Wizard"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Magnificent Mansion",
+    "Level": 7,
+    "Classes": [
+      "Bard",
+      "Wizard"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "300 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Major Image",
+    "Level": 3,
+    "Classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Illusion",
+    "SpellRange": "120 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Mass Cure Wounds",
+    "Level": 5,
+    "Classes": [
+      "Bard",
+      "Cleric",
+      "Druid"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Mass Heal",
+    "Level": 9,
+    "Classes": [
+      "Cleric"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Mass Healing Word",
+    "Level": 3,
+    "Classes": [
+      "Cleric"
+    ],
+    "School": "Evocation",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Mass Suggestion",
+    "Level": 6,
+    "Classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Enchantment",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Maze",
+    "Level": 8,
+    "Classes": [
+      "Wizard"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Meld Into Stone",
+    "Level": 3,
+    "Classes": [
+      "Cleric"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Mending",
+    "Level": 0,
+    "Classes": [
+      "Cleric",
+      "Bard",
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Message",
+    "Level": 0,
+    "Classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "120 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Meteor Swarm",
+    "Level": 9,
+    "Classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Evocation",
+    "SpellRange": "1 mile",
+    "Prepared": false
+  },
+  {
+    "Name": "Mind Blank",
+    "Level": 8,
+    "Classes": [
+      "Bard",
+      "Wizard"
+    ],
+    "School": "Abjuration",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Minor Illusion",
+    "Level": 0,
+    "Classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Illusion",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Mirage Arcane",
+    "Level": 7,
+    "Classes": [
+      "Bard",
+      "Druid",
+      "Wizard"
+    ],
+    "School": "Illusion",
+    "SpellRange": "Sight",
+    "Prepared": false
+  },
+  {
+    "Name": "Mirror Image",
+    "Level": 2,
+    "Classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Illusion",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Mislead",
+    "Level": 5,
+    "Classes": [
+      "Bard",
+      "Wizard"
+    ],
+    "School": "Illusion",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Misty Step",
+    "Level": 2,
+    "Classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Modify Memory",
+    "Level": 5,
+    "Classes": [
+      "Bard",
+      "Wizard"
+    ],
+    "School": "Enchantment",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Moonbeam",
+    "Level": 2,
+    "Classes": [
+      "Druid"
+    ],
+    "School": "Evocation",
+    "SpellRange": "120 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Move Earth",
+    "Level": 6,
+    "Classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "120 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Nondetection",
+    "Level": 3,
+    "Classes": [
+      "Bard",
+      "Ranger",
+      "Wizard"
+    ],
+    "School": "Abjuration",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Pass Without Trace",
+    "Level": 2,
+    "Classes": [
+      "Druid",
+      "Ranger"
+    ],
+    "School": "Abjuration",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Passwall",
+    "Level": 5,
+    "Classes": [
+      "Wizard"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Phantasmal Killer",
+    "Level": 4,
+    "Classes": [
+      "Wizard"
+    ],
+    "School": "Illusion",
+    "SpellRange": "120 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Phantom Steed",
+    "Level": 3,
+    "Classes": [
+      "Wizard"
+    ],
+    "School": "Illusion",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Planar Ally",
+    "Level": 6,
+    "Classes": [
+      "Cleric"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Planar Binding",
+    "Level": 5,
+    "Classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Wizard"
+    ],
+    "School": "Abjuration",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Plane Shift",
+    "Level": 7,
+    "Classes": [
+      "Cleric",
+      "Druid",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Plant Growth",
+    "Level": 3,
+    "Classes": [
+      "Bard",
+      "Druid",
+      "Ranger"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "150 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Poison Spray",
+    "Level": 0,
+    "Classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard",
+      "Druid"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "10 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Polymorph",
+    "Level": 4,
+    "Classes": [
+      "Bard",
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Power Word Kill",
+    "Level": 9,
+    "Classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Enchantment",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Power Word Stun",
+    "Level": 8,
+    "Classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Enchantment",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Prayer of Healing",
+    "Level": 2,
+    "Classes": [
+      "Cleric"
+    ],
+    "School": "Evocation",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Prestidigitation",
+    "Level": 0,
+    "Classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "10 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Prismatic Spray",
+    "Level": 7,
+    "Classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Evocation",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Prismatic Wall",
+    "Level": 9,
+    "Classes": [
+      "Wizard"
+    ],
+    "School": "Abjuration",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Private Sanctum",
+    "Level": 4,
+    "Classes": [
+      "Wizard"
+    ],
+    "School": "Abjuration",
+    "SpellRange": "120 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Produce Flame",
+    "Level": 0,
+    "Classes": [
+      "Druid"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Programmed Illusion",
+    "Level": 6,
+    "Classes": [
+      "Bard",
+      "Wizard"
+    ],
+    "School": "Illusion",
+    "SpellRange": "120 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Project Image",
+    "Level": 7,
+    "Classes": [
+      "Bard",
+      "Wizard"
+    ],
+    "School": "Illusion",
+    "SpellRange": "500 miles",
+    "Prepared": false
+  },
+  {
+    "Name": "Protection From Energy",
+    "Level": 3,
+    "Classes": [
+      "Cleric",
+      "Druid",
+      "Ranger",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Abjuration",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Protection from Evil and Good",
+    "Level": 1,
+    "Classes": [
+      "Cleric",
+      "Paladin",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Abjuration",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Protection from Poison",
+    "Level": 2,
+    "Classes": [
+      "Cleric",
+      "Druid",
+      "Paladin",
+      "Ranger"
+    ],
+    "School": "Abjuration",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Purify Food and Drink",
+    "Level": 1,
+    "Classes": [
+      "Cleric",
+      "Druid",
+      "Paladin"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "10 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Raise Dead",
+    "Level": 5,
+    "Classes": [
+      "Bard",
+      "Cleric",
+      "Paladin"
+    ],
+    "School": "Necromancy",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Ray of Enfeeblement",
+    "Level": 2,
+    "Classes": [
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Necromancy",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Ray of Frost",
+    "Level": 0,
+    "Classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Evocation",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Regenerate",
+    "Level": 7,
+    "Classes": [
+      "Bard",
+      "Cleric",
+      "Druid"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Reincarnate",
+    "Level": 5,
+    "Classes": [
+      "Druid"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Remove Curse",
+    "Level": 3,
+    "Classes": [
+      "Cleric",
+      "Paladin",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Abjuration",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Resilient Sphere",
+    "Level": 4,
+    "Classes": [
+      "Wizard"
+    ],
+    "School": "Evocation",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Resistance",
+    "Level": 0,
+    "Classes": [
+      "Cleric",
+      "Druid"
+    ],
+    "School": "Abjuration",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Resurrection",
+    "Level": 7,
+    "Classes": [
+      "Bard",
+      "Cleric"
+    ],
+    "School": "Necromancy",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Reverse Gravity",
+    "Level": 7,
+    "Classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "100 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Revivify",
+    "Level": 3,
+    "Classes": [
+      "Cleric",
+      "Paladin"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Rope Trick",
+    "Level": 2,
+    "Classes": [
+      "Wizard"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Sacred Flame",
+    "Level": 0,
+    "Classes": [
+      "Cleric"
+    ],
+    "School": "Evocation",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Sanctuary",
+    "Level": 1,
+    "Classes": [
+      "Cleric"
+    ],
+    "School": "Abjuration",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Scorching Ray",
+    "Level": 2,
+    "Classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Evocation",
+    "SpellRange": "120 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Scrying",
+    "Level": 5,
+    "Classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Divination",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Secret Chest",
+    "Level": 4,
+    "Classes": [
+      "Wizard"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "See Invisibility",
+    "Level": 2,
+    "Classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Divination",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Seeming",
+    "Level": 5,
+    "Classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Illusion",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Sending",
+    "Level": 3,
+    "Classes": [
+      "Bard",
+      "Cleric",
+      "Wizard"
+    ],
+    "School": "Evocation",
+    "SpellRange": "Unlimited",
+    "Prepared": false
+  },
+  {
+    "Name": "Sequester",
+    "Level": 7,
+    "Classes": [
+      "Wizard"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Shapechange",
+    "Level": 9,
+    "Classes": [
+      "Druid",
+      "Wizard"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Shatter",
+    "Level": 2,
+    "Classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Evocation",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Shield",
+    "Level": 1,
+    "Classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Abjuration",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Shield of Faith",
+    "Level": 1,
+    "Classes": [
+      "Cleric",
+      "Paladin"
+    ],
+    "School": "Abjuration",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Shillelagh",
+    "Level": 0,
+    "Classes": [
+      "Druid"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Shocking Grasp",
+    "Level": 0,
+    "Classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Evocation",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Silence",
+    "Level": 2,
+    "Classes": [
+      "Bard",
+      "Cleric",
+      "Ranger"
+    ],
+    "School": "Illusion",
+    "SpellRange": "120 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Silent Image",
+    "Level": 1,
+    "Classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Illusion",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Simulacrum",
+    "Level": 7,
+    "Classes": [
+      "Wizard"
+    ],
+    "School": "Illusion",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Sleep",
+    "Level": 1,
+    "Classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Enchantment",
+    "SpellRange": "90 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Sleet Storm",
+    "Level": 3,
+    "Classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "150 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Slow",
+    "Level": 3,
+    "Classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "120 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Spare the Dying",
+    "Level": 0,
+    "Classes": [
+      "Cleric"
+    ],
+    "School": "Necromancy",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Speak with Animals",
+    "Level": 1,
+    "Classes": [
+      "Bard",
+      "Druid",
+      "Ranger"
+    ],
+    "School": "Divination",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Speak with Dead",
+    "Level": 3,
+    "Classes": [
+      "Bard",
+      "Cleric"
+    ],
+    "School": "Necromancy",
+    "SpellRange": "10 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Speak with Plants",
+    "Level": 3,
+    "Classes": [
+      "Bard",
+      "Druid",
+      "Ranger"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Spider Climb",
+    "Level": 2,
+    "Classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Spike Growth",
+    "Level": 2,
+    "Classes": [
+      "Druid",
+      "Ranger"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "150 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Spirit Guardians",
+    "Level": 3,
+    "Classes": [
+      "Cleric"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Spiritual Weapon",
+    "Level": 2,
+    "Classes": [
+      "Cleric"
+    ],
+    "School": "Evocation",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Stinking Cloud",
+    "Level": 3,
+    "Classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "90 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Stone Shape",
+    "Level": 4,
+    "Classes": [
+      "Cleric",
+      "Druid",
+      "Wizard"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Stoneskin",
+    "Level": 4,
+    "Classes": [
+      "Druid",
+      "Ranger",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Abjuration",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Storm of Vengeance",
+    "Level": 9,
+    "Classes": [
+      "Druid"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "Sight",
+    "Prepared": false
+  },
+  {
+    "Name": "Suggestion",
+    "Level": 2,
+    "Classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Enchantment",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Sunbeam",
+    "Level": 6,
+    "Classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Evocation",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Sunburst",
+    "Level": 8,
+    "Classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Evocation",
+    "SpellRange": "150 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Symbol",
+    "Level": 7,
+    "Classes": [
+      "Bard",
+      "Cleric",
+      "Wizard"
+    ],
+    "School": "Abjuration",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Telekinesis",
+    "Level": 5,
+    "Classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Telepathic Bond",
+    "Level": 5,
+    "Classes": [
+      "Wizard"
+    ],
+    "School": "Divination",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Teleport",
+    "Level": 7,
+    "Classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "10 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Teleportation Circle",
+    "Level": 5,
+    "Classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "10 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Thaumaturgy",
+    "Level": 0,
+    "Classes": [
+      "Cleric"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Thunderwave",
+    "Level": 1,
+    "Classes": [
+      "Bard",
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Evocation",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Time Stop",
+    "Level": 9,
+    "Classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Tiny Hut",
+    "Level": 3,
+    "Classes": [
+      "Bard",
+      "Wizard"
+    ],
+    "School": "Evocation",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Tongues",
+    "Level": 3,
+    "Classes": [
+      "Bard",
+      "Cleric",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Divination",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Transport via Plants",
+    "Level": 6,
+    "Classes": [
+      "Druid"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "10 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Tree Stride",
+    "Level": 5,
+    "Classes": [
+      "Druid",
+      "Ranger"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "True Polymorph",
+    "Level": 9,
+    "Classes": [
+      "Bard",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "True Resurrection",
+    "Level": 9,
+    "Classes": [
+      "Cleric",
+      "Druid"
+    ],
+    "School": "Necromancy",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "True Seeing",
+    "Level": 6,
+    "Classes": [
+      "Bard",
+      "Cleric",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Divination",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "True Strike",
+    "Level": 0,
+    "Classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Divination",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Unseen Servant",
+    "Level": 1,
+    "Classes": [
+      "Bard",
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Vampiric Touch",
+    "Level": 3,
+    "Classes": [
+      "Warlock",
+      "Wizard"
+    ],
+    "School": "Necromancy",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Vicious Mockery",
+    "Level": 0,
+    "Classes": [
+      "Bard"
+    ],
+    "School": "Enchantment",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Wall of Fire",
+    "Level": 4,
+    "Classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Evocation",
+    "SpellRange": "120 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Wall of Force",
+    "Level": 5,
+    "Classes": [
+      "Wizard"
+    ],
+    "School": "Evocation",
+    "SpellRange": "120 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Wall of Ice",
+    "Level": 6,
+    "Classes": [
+      "Wizard"
+    ],
+    "School": "Evocation",
+    "SpellRange": "120 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Wall of Stone",
+    "Level": 5,
+    "Classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Evocation",
+    "SpellRange": "120 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Wall of Thorns",
+    "Level": 6,
+    "Classes": [
+      "Druid"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "120 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Warding Bond",
+    "Level": 2,
+    "Classes": [
+      "Cleric"
+    ],
+    "School": "Abjuration",
+    "SpellRange": "Touch",
+    "Prepared": false
+  },
+  {
+    "Name": "Water Breathing",
+    "Level": 3,
+    "Classes": [
+      "Druid",
+      "Ranger",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Water Walk",
+    "Level": 3,
+    "Classes": [
+      "Cleric",
+      "Druid",
+      "Ranger",
+      "Sorcerer"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Web",
+    "Level": 2,
+    "Classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Weird",
+    "Level": 9,
+    "Classes": [
+      "Wizard"
+    ],
+    "School": "Illusion",
+    "SpellRange": "120 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Wind Walk",
+    "Level": 6,
+    "Classes": [
+      "Druid"
+    ],
+    "School": "Transmutation",
+    "SpellRange": "30 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Wind Wall",
+    "Level": 3,
+    "Classes": [
+      "Druid",
+      "Ranger"
+    ],
+    "School": "Evocation",
+    "SpellRange": "120 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Wish",
+    "Level": 9,
+    "Classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "Self",
+    "Prepared": false
+  },
+  {
+    "Name": "Word of Recall",
+    "Level": 6,
+    "Classes": [
+      "Cleric"
+    ],
+    "School": "Conjuration",
+    "SpellRange": "5 feet",
+    "Prepared": false
+  },
+  {
+    "Name": "Zone of Truth",
+    "Level": 2,
+    "Classes": [
+      "Bard",
+      "Cleric",
+      "Paladin"
+    ],
+    "School": "Enchantment",
+    "SpellRange": "60 feet",
+    "Prepared": false
+  }
+]

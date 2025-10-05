@@ -1,7 +1,6 @@
 package infrastructure
 
 import (
-	"dungeons_and_dragons_character_sheet_generator/domain"
 	"encoding/csv"
 	"fmt"
 	"os"
@@ -10,32 +9,32 @@ import (
 
 type CsvEquipmentRepository struct {
 	filepath      string
-	equipmentList *[]domain.CsvEquipment
+	equipmentList *[]CsvEquipment
 }
 
 func NewCsvEquipmentRepository(filepath string) (*CsvEquipmentRepository, error) {
 	_, err := os.Stat(filepath)
-	if !(err == nil) {
+	if err != nil {
 		return nil, err
 	}
 
 	file, err := os.Open(filepath)
-	if !(err == nil) {
+	if err != nil {
 		return nil, err
 	}
 	defer file.Close()
 
 	reader := csv.NewReader(file)
-	equipmentList := []domain.CsvEquipment{}
+	equipmentList := []CsvEquipment{}
 
 	_, err = reader.Read()
-	if !(err == nil) {
+	if err != nil {
 		return nil, err
 	}
 
 	for {
 		record, err := reader.Read()
-		if !(err == nil) {
+		if err != nil {
 			if err.Error() == "EOF" {
 				break
 			}
@@ -46,7 +45,7 @@ func NewCsvEquipmentRepository(filepath string) (*CsvEquipmentRepository, error)
 			continue
 		}
 
-		equipment := domain.NewCsvEquipment(strings.TrimSpace(record[0]), strings.TrimSpace(record[1]))
+		equipment := NewCsvEquipment(strings.TrimSpace(record[0]), strings.TrimSpace(record[1]))
 		equipmentList = append(equipmentList, equipment)
 	}
 
@@ -56,12 +55,12 @@ func NewCsvEquipmentRepository(filepath string) (*CsvEquipmentRepository, error)
 	}, nil
 }
 
-func (csvEquipmentRepository CsvEquipmentRepository) GetAll() *[]domain.CsvEquipment {
+func (csvEquipmentRepository CsvEquipmentRepository) GetAll() *[]CsvEquipment {
 	return csvEquipmentRepository.equipmentList
 }
 
-func (csvEquipmentRepository CsvEquipmentRepository) GetByEquipmentType(equipmentType string) (*[]domain.CsvEquipment, error) {
-	relevantEquipmentList := []domain.CsvEquipment{}
+func (csvEquipmentRepository CsvEquipmentRepository) GetByEquipmentType(equipmentType string) (*[]CsvEquipment, error) {
+	relevantEquipmentList := []CsvEquipment{}
 
 	for _, equipment := range *csvEquipmentRepository.equipmentList {
 		if strings.EqualFold(equipment.EquipmentType, equipmentType) {

@@ -13,12 +13,12 @@ type JsonCharacterRepository struct {
 
 func NewJsonCharacterRepository(filepath string) (*JsonCharacterRepository, error) {
 	_, err := os.Stat(filepath)
-	if !(err == nil) {
+	if err != nil {
 		return nil, err
 	}
 
 	fileBytes, err := os.ReadFile(filepath)
-	if !(err == nil) {
+	if err != nil {
 		return nil, err
 	}
 
@@ -31,7 +31,7 @@ func NewJsonCharacterRepository(filepath string) (*JsonCharacterRepository, erro
 	}
 
 	var characters []domain.Character
-	if err := json.Unmarshal(fileBytes, &characters); !(err == nil) {
+	if err := json.Unmarshal(fileBytes, &characters); err != nil {
 		return nil, err
 	}
 

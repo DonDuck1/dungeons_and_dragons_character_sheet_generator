@@ -1,0 +1,157 @@
+[
+  {
+    "Name": "Dragonborn",
+    "AbilityScoreImprovements": [
+      {
+        "AbilityScoreName": "Strength",
+        "Value": 2
+      },
+      {
+        "AbilityScoreName": "Charisma",
+        "Value": 1
+      }
+    ],
+    "OptionalAbilityScoreImprovementList": null,
+    "NumberOfHandSlots": 2
+  },
+  {
+    "Name": "Dwarf",
+    "AbilityScoreImprovements": [
+      {
+        "AbilityScoreName": "Constitution",
+        "Value": 2
+      }
+    ],
+    "OptionalAbilityScoreImprovementList": null,
+    "NumberOfHandSlots": 2
+  },
+  {
+    "Name": "Elf",
+    "AbilityScoreImprovements": [
+      {
+        "AbilityScoreName": "Dexterity",
+        "Value": 2
+      }
+    ],
+    "OptionalAbilityScoreImprovementList": null,
+    "NumberOfHandSlots": 2
+  },
+  {
+    "Name": "Gnome",
+    "AbilityScoreImprovements": [
+      {
+        "AbilityScoreName": "Intelligence",
+        "Value": 2
+      }
+    ],
+    "OptionalAbilityScoreImprovementList": null,
+    "NumberOfHandSlots": 2
+  },
+  {
+    "Name": "Half-Elf",
+    "AbilityScoreImprovements": [
+      {
+        "AbilityScoreName": "Charisma",
+        "Value": 2
+      }
+    ],
+    "OptionalAbilityScoreImprovementList": {
+      "OptionalAbilityScoreImprovements": [
+        {
+          "AbilityScoreName": "Strength",
+          "Value": 1
+        },
+        {
+          "AbilityScoreName": "Dexterity",
+          "Value": 1
+        },
+        {
+          "AbilityScoreName": "Constitution",
+          "Value": 1
+        },
+        {
+          "AbilityScoreName": "Intelligence",
+          "Value": 1
+        },
+        {
+          "AbilityScoreName": "Wisdom",
+          "Value": 1
+        }
+      ],
+      "AmountOfChoices": 2
+    },
+    "NumberOfHandSlots": 2
+  },
+  {
+    "Name": "Half-Orc",
+    "AbilityScoreImprovements": [
+      {
+        "AbilityScoreName": "Strength",
+        "Value": 2
+      },
+      {
+        "AbilityScoreName": "Constitution",
+        "Value": 1
+      }
+    ],
+    "OptionalAbilityScoreImprovementList": null,
+    "NumberOfHandSlots": 2
+  },
+  {
+    "Name": "Halfling",
+    "AbilityScoreImprovements": [
+      {
+        "AbilityScoreName": "Dexterity",
+        "Value": 2
+      }
+    ],
+    "OptionalAbilityScoreImprovementList": null,
+    "NumberOfHandSlots": 2
+  },
+  {
+    "Name": "Human",
+    "AbilityScoreImprovements": [
+      {
+        "AbilityScoreName": "Strength",
+        "Value": 1
+      },
+      {
+        "AbilityScoreName": "Dexterity",
+        "Value": 1
+      },
+      {
+        "AbilityScoreName": "Constitution",
+        "Value": 1
+      },
+      {
+        "AbilityScoreName": "Intelligence",
+        "Value": 1
+      },
+      {
+        "AbilityScoreName": "Wisdom",
+        "Value": 1
+      },
+      {
+        "AbilityScoreName": "Charisma",
+        "Value": 1
+      }
+    ],
+    "OptionalAbilityScoreImprovementList": null,
+    "NumberOfHandSlots": 2
+  },
+  {
+    "Name": "Tiefling",
+    "AbilityScoreImprovements": [
+      {
+        "AbilityScoreName": "Intelligence",
+        "Value": 1
+      },
+      {
+        "AbilityScoreName": "Charisma",
+        "Value": 2
+      }
+    ],
+    "OptionalAbilityScoreImprovementList": null,
+    "NumberOfHandSlots": 2
+  }
+]

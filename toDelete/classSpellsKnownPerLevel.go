@@ -1,4 +1,4 @@
-package domain
+package toDelete
 
 // type ClassSpellsKnownPerLevel [20]int
 

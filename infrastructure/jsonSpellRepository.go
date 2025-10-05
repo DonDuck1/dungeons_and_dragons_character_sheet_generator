@@ -13,14 +13,14 @@ type JsonSpellRepository struct {
 	spells   *[]domain.Spell
 }
 
-func NewJsonArmSpellRepository(filepath string) (*JsonSpellRepository, error) {
+func NewJsonSpellRepository(filepath string) (*JsonSpellRepository, error) {
 	_, err := os.Stat(filepath)
-	if !(err == nil) {
+	if err != nil {
 		return nil, err
 	}
 
 	fileBytes, err := os.ReadFile(filepath)
-	if !(err == nil) {
+	if err != nil {
 		return nil, err
 	}
 
@@ -30,7 +30,7 @@ func NewJsonArmSpellRepository(filepath string) (*JsonSpellRepository, error) {
 	}
 
 	var spells []domain.Spell
-	if err := json.Unmarshal(fileBytes, &spells); !(err == nil) {
+	if err := json.Unmarshal(fileBytes, &spells); err != nil {
 		return nil, err
 	}
 
@@ -40,7 +40,7 @@ func NewJsonArmSpellRepository(filepath string) (*JsonSpellRepository, error) {
 	}, nil
 }
 
-func SaveSpellListAsJson(filepath string, spells *[]domain.Spell) error {
+func SaveSpellsAsJson(filepath string, spells *[]domain.Spell) error {
 	jsonBytes, err := json.MarshalIndent(spells, "", "  ")
 	if err != nil {
 		return err

@@ -1,6 +1,7 @@
 package domain
 
 type ClassSpellcastingInfo struct {
+	MaxKnownCantrips    int
 	MaxKnownSpells      *int
 	MaxPreparedSpells   *int
 	SpellList           SpellList
@@ -10,8 +11,9 @@ type ClassSpellcastingInfo struct {
 	SpellAttackBonus    int
 }
 
-func NewClassSpellcastingInfo(maxKnownSpells *int, maxPreparedSpells *int, spellList SpellList, spellSlotAmount [9]int, spellcastingAbility AbilityScoreName, spellSaveDC int, spellAttackBonus int) ClassSpellcastingInfo {
+func NewClassSpellcastingInfo(maxKnownCantrips int, maxKnownSpells *int, maxPreparedSpells *int, spellList SpellList, spellSlotAmount [9]int, spellcastingAbility AbilityScoreName, spellSaveDC int, spellAttackBonus int) ClassSpellcastingInfo {
 	return ClassSpellcastingInfo{
+		MaxKnownCantrips:    maxKnownCantrips,
 		MaxKnownSpells:      maxKnownSpells,
 		MaxPreparedSpells:   maxPreparedSpells,
 		SpellList:           spellList,

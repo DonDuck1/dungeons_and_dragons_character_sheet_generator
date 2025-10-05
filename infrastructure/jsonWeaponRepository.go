@@ -15,12 +15,12 @@ type JsonWeaponRepository struct {
 
 func NewJsonWeaponRepository(filepath string) (*JsonWeaponRepository, error) {
 	_, err := os.Stat(filepath)
-	if !(err == nil) {
+	if err != nil {
 		return nil, err
 	}
 
 	fileBytes, err := os.ReadFile(filepath)
-	if !(err == nil) {
+	if err != nil {
 		return nil, err
 	}
 
@@ -30,7 +30,7 @@ func NewJsonWeaponRepository(filepath string) (*JsonWeaponRepository, error) {
 	}
 
 	var weaponList []domain.Weapon
-	if err := json.Unmarshal(fileBytes, &weaponList); !(err == nil) {
+	if err := json.Unmarshal(fileBytes, &weaponList); err != nil {
 		return nil, err
 	}
 

@@ -1,4 +1,4 @@
-package domain
+package infrastructure
 
 type CsvEquipment struct {
 	Name          string

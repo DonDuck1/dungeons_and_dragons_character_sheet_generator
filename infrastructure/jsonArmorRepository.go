@@ -15,12 +15,12 @@ type JsonArmorRepository struct {
 
 func NewJsonArmorRepository(filepath string) (*JsonArmorRepository, error) {
 	_, err := os.Stat(filepath)
-	if !(err == nil) {
+	if err != nil {
 		return nil, err
 	}
 
 	fileBytes, err := os.ReadFile(filepath)
-	if !(err == nil) {
+	if err != nil {
 		return nil, err
 	}
 
@@ -30,7 +30,7 @@ func NewJsonArmorRepository(filepath string) (*JsonArmorRepository, error) {
 	}
 
 	var armorList []domain.Armor
-	if err := json.Unmarshal(fileBytes, &armorList); !(err == nil) {
+	if err := json.Unmarshal(fileBytes, &armorList); err != nil {
 		return nil, err
 	}
 

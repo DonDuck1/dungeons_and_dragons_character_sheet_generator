@@ -1,14 +1,14 @@
 package domain
 
 type Class struct {
-	Name                    string
+	Name                    ClassName
 	Level                   int
 	SkillProficiencies      []SkillProficiencyName
 	ClassSpellcastingInfo   *ClassSpellcastingInfo
 	ClassWarlockCastingInfo *ClassWarlockCastingInfo
 }
 
-func NewClass(name string, level int, skillProficiencies []SkillProficiencyName, classSpellcastingInfo *ClassSpellcastingInfo, classWarlockCastingInfo *ClassWarlockCastingInfo) Class {
+func NewClass(name ClassName, level int, skillProficiencies []SkillProficiencyName, classSpellcastingInfo *ClassSpellcastingInfo, classWarlockCastingInfo *ClassWarlockCastingInfo) Class {
 	if level < 1 {
 		level = 1
 	} else if level > 20 {

@@ -2,7 +2,6 @@ package main
 
 import (
 	"dungeons_and_dragons_character_sheet_generator/infrastructure"
-	"encoding/json"
 	"flag"
 	"fmt"
 	"log"
@@ -35,32 +34,29 @@ func main() {
 
 	switch cmd {
 	case "test":
-		dndApiGateway := infrastructure.NewDndApiGateway("https://www.dnd5eapi.co/api/2014")
-		data, err := dndApiGateway.Get("/classes")
-		if !(err == nil) {
-			log.Fatal(err)
-		}
-		fmt.Println(string(data))
+		// csvEquipmentRepository, err := infrastructure.NewCsvEquipmentRepository("./data/5e-SRD-Equipment.csv")
+		// if err != nil {
+		// 	log.Fatal(err)
+		// }
 
-		fmt.Println("Go struct:")
-		var result map[string]string
-		err = json.Unmarshal(data, &result)
-		if !(err == nil) {
-			log.Fatal(err)
-		}
-		// fmt.Println(result["ability-scores"])
+		dndApiGateway := infrastructure.NewDndApiGateway("https://www.dnd5eapi.co")
+
+		InitialiseBackgrounds(*dndApiGateway)
 	case "init":
 		csvEquipmentRepository, err := infrastructure.NewCsvEquipmentRepository("./data/5e-SRD-Equipment.csv")
-		if !(err == nil) {
+		if err != nil {
 			log.Fatal(err)
 		}
 
-		equipmentList, err := csvEquipmentRepository.GetByEquipmentType("Armor")
-		if !(err == nil) {
-			log.Fatal(err)
-		}
-		fmt.Println(equipmentList)
+		dndApiGateway := infrastructure.NewDndApiGateway("https://www.dnd5eapi.co")
 
+		InitialiseArmorAndShields(*csvEquipmentRepository, *dndApiGateway)
+		InitialiseBackgrounds(*dndApiGateway)
+		InitialiseRaces(*dndApiGateway)
+		InitialiseSpells(*dndApiGateway)
+		InitialiseWeapons(*csvEquipmentRepository, *dndApiGateway)
+
+		os.Exit(0)
 	case "create":
 		// You could use the Flag package like this
 		// But feel free to do it differently!
