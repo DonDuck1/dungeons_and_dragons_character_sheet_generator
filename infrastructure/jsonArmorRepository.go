@@ -59,9 +59,15 @@ func (jsonArmorRepository JsonArmorRepository) GetAll() *[]domain.Armor {
 }
 
 func (jsonArmorRepository JsonArmorRepository) GetByName(name string) (*domain.Armor, error) {
-	for _, armor := range *jsonArmorRepository.armorList {
+	if jsonArmorRepository.armorList == nil {
+		err := fmt.Errorf("no armor has been found, please run the init command first")
+		return nil, err
+	}
+
+	armorList := *jsonArmorRepository.armorList
+	for i, armor := range armorList {
 		if strings.EqualFold(armor.Name, name) {
-			return &armor, nil
+			return &armorList[i], nil // Use index to point to actual object, not the temporary copy of the loop
 		}
 	}
 

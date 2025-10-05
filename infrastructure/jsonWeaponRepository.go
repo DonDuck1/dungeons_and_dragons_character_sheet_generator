@@ -59,9 +59,15 @@ func (jsonWeaponRepository JsonWeaponRepository) GetAll() *[]domain.Weapon {
 }
 
 func (jsonWeaponRepository JsonWeaponRepository) GetByName(name string) (*domain.Weapon, error) {
-	for _, weapon := range *jsonWeaponRepository.weaponList {
+	if jsonWeaponRepository.weaponList == nil {
+		err := fmt.Errorf("no weapons have been found, please run the init command first")
+		return nil, err
+	}
+
+	weaponList := *jsonWeaponRepository.weaponList
+	for i, weapon := range weaponList {
 		if strings.EqualFold(weapon.Name, name) {
-			return &weapon, nil
+			return &weaponList[i], nil // Use index to point to actual object, not the temporary copy of the loop
 		}
 	}
 

@@ -59,9 +59,15 @@ func (jsonShieldRepository JsonShieldRepository) GetAll() *[]domain.Shield {
 }
 
 func (jsonShieldRepository JsonShieldRepository) GetByName(name string) (*domain.Shield, error) {
-	for _, shield := range *jsonShieldRepository.shieldList {
+	if jsonShieldRepository.shieldList == nil {
+		err := fmt.Errorf("no shields have been found, please run the init command first")
+		return nil, err
+	}
+
+	shieldList := *jsonShieldRepository.shieldList
+	for i, shield := range shieldList {
 		if strings.EqualFold(shield.Name, name) {
-			return &shield, nil
+			return &shieldList[i], nil // Use index to point to actual object, not the temporary copy of the loop
 		}
 	}
 

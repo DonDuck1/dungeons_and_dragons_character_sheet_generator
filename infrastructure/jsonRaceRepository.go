@@ -59,9 +59,15 @@ func (jsonRaceRepository JsonRaceRepository) GetAll() *[]domain.Race {
 }
 
 func (jsonRaceRepository JsonRaceRepository) GetByName(name string) (*domain.Race, error) {
-	for _, race := range *jsonRaceRepository.raceList {
+	if jsonRaceRepository.raceList == nil {
+		err := fmt.Errorf("no races have been found, please run the init command first")
+		return nil, err
+	}
+
+	raceList := *jsonRaceRepository.raceList
+	for i, race := range raceList {
 		if strings.EqualFold(race.Name, name) {
-			return &race, nil
+			return &raceList[i], nil // Use index to point to actual object, not the temporary copy of the loop
 		}
 	}
 

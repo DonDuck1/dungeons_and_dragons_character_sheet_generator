@@ -249,7 +249,34 @@ func main() {
 
 		os.Exit(0)
 	case "view":
+		jsonCharacterRepository, err := infrastructure.NewJsonCharacterRepository("./data/characters.json")
+		if err != nil {
+			log.Fatal(err)
+		}
 
+		createCmd := flag.NewFlagSet("view", flag.ExitOnError)
+
+		characterName := createCmd.String("name", "", "character name (required)")
+
+		err = createCmd.Parse(os.Args[2:])
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		if *characterName == "" {
+			fmt.Println("Character name is required")
+			fmt.Println("")
+			createCmd.Usage()
+			os.Exit(2)
+		}
+
+		character, err := jsonCharacterRepository.GetByName(*characterName)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		fmt.Println(character)
+		os.Exit(0)
 	case "list":
 		jsonCharacterRepository, err := infrastructure.NewJsonCharacterRepository("./data/characters.json")
 		if err != nil {
@@ -268,14 +295,69 @@ func main() {
 		}
 		os.Exit(0)
 	case "change-level":
+		dndApiGateway := infrastructure.NewDndApiGateway("https://www.dnd5eapi.co")
 
+		jsonCharacterRepository, err := infrastructure.NewJsonCharacterRepository("./data/characters.json")
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		createCmd := flag.NewFlagSet("change-level", flag.ExitOnError)
+
+		characterName := createCmd.String("name", "", "character name (required)")
+		level := createCmd.Int("level", -999, "main class level")
+
+		err = createCmd.Parse(os.Args[2:])
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		if *characterName == "" {
+			fmt.Println("Character name is required")
+			fmt.Println("")
+			createCmd.Usage()
+			os.Exit(2)
+		}
+
+		if *level == -999 {
+			fmt.Println("No level was provided, level has been set to 1")
+			*level = 1
+		} else if *level < 1 {
+			fmt.Printf("Provided level (%d) is too low, level has been set to 1 instead\n", *level)
+			*level = 1
+		} else if *level > 20 {
+			fmt.Printf("Provided level (%d) is too high, level has been set to 20 instead\n", *level)
+			*level = 20
+		}
+
+		character, err := jsonCharacterRepository.GetByName(*characterName)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		proficiencyBonus := int(math.Ceil(float64(*level)/4)) + 1
+		character.ProficiencyBonus = proficiencyBonus
+
+		EditClassUsingApi(&character.MainClass, *level, proficiencyBonus, &character.AbilityScoreList, dndApiGateway)
+
+		character.SkillProficiencyList.UpdateSkillProficiencies(proficiencyBonus)
+
+		character.PassivePerception = 10 + character.SkillProficiencyList.Perception.Modifier
+
+		err = jsonCharacterRepository.SaveCharacterList()
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		fmt.Printf("Character succesfully updated to level %d!\n", *level)
+		os.Exit(0)
 	case "delete":
 		jsonCharacterRepository, err := infrastructure.NewJsonCharacterRepository("./data/characters.json")
 		if err != nil {
 			log.Fatal(err)
 		}
 
-		createCmd := flag.NewFlagSet("create", flag.ExitOnError)
+		createCmd := flag.NewFlagSet("delete", flag.ExitOnError)
 
 		characterName := createCmd.String("name", "", "character name (required)")
 

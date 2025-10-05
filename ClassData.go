@@ -248,3 +248,95 @@ func CreateClassUsingApi(name domain.ClassName, level int, proficiencyBonus int,
 		classWarlockCastingInfo,
 	)
 }
+
+func EditClassUsingApi(class *domain.Class, level int, proficiencyBonus int, abilityScoreList *domain.AbilityScoreList, dndApiGateway *infrastructure.DndApiGateway) {
+	class.Level = level
+
+	body, err := dndApiGateway.Get("/api/2014/classes/" + strings.ToLower(string(class.Name)) + "/levels/" + strconv.Itoa(level))
+	if err != nil {
+		log.Fatal(err)
+	}
+	var dndApiClassLevel infrastructure.DndApiClassLevel
+	err = json.Unmarshal(body, &dndApiClassLevel)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if dndApiClassLevel.Spellcasting != nil {
+		maxKnownCantrips := 0
+		if dndApiClassLevel.Spellcasting.CantripsKnown != nil {
+			maxKnownCantrips = *dndApiClassLevel.Spellcasting.CantripsKnown
+		}
+
+		spellSlotAmount := [9]int{
+			dndApiClassLevel.Spellcasting.SpellSlotsLevel1,
+			dndApiClassLevel.Spellcasting.SpellSlotsLevel2,
+			dndApiClassLevel.Spellcasting.SpellSlotsLevel3,
+			dndApiClassLevel.Spellcasting.SpellSlotsLevel4,
+			dndApiClassLevel.Spellcasting.SpellSlotsLevel5,
+			0,
+			0,
+			0,
+			0,
+		}
+		if dndApiClassLevel.Spellcasting.SpellSlotsLevel6 != nil {
+			spellSlotAmount[5] = *dndApiClassLevel.Spellcasting.SpellSlotsLevel6
+		}
+		if dndApiClassLevel.Spellcasting.SpellSlotsLevel7 != nil {
+			spellSlotAmount[6] = *dndApiClassLevel.Spellcasting.SpellSlotsLevel7
+		}
+		if dndApiClassLevel.Spellcasting.SpellSlotsLevel8 != nil {
+			spellSlotAmount[7] = *dndApiClassLevel.Spellcasting.SpellSlotsLevel8
+		}
+		if dndApiClassLevel.Spellcasting.SpellSlotsLevel9 != nil {
+			spellSlotAmount[8] = *dndApiClassLevel.Spellcasting.SpellSlotsLevel9
+		}
+
+		if class.ClassSpellcastingInfo != nil {
+			spellcastingAbilityModifier := class.ClassSpellcastingInfo.SpellcastingAbility.Modifier
+
+			var maxPreparedSpells *int
+			if class.ClassSpellcastingInfo.MaxPreparedSpells != nil {
+				maxPreparedSpellsValue := max(1, spellcastingAbilityModifier+level)
+				maxPreparedSpells = &maxPreparedSpellsValue
+			}
+
+			spellSaveDC := 8 + proficiencyBonus + spellcastingAbilityModifier
+
+			spellAttackBonus := proficiencyBonus + spellcastingAbilityModifier
+
+			class.ClassSpellcastingInfo.MaxKnownCantrips = maxKnownCantrips
+			class.ClassSpellcastingInfo.MaxKnownSpells = dndApiClassLevel.Spellcasting.SpellsKnown
+			class.ClassSpellcastingInfo.MaxPreparedSpells = maxPreparedSpells
+			class.ClassSpellcastingInfo.SpellSlotAmount = spellSlotAmount
+			class.ClassSpellcastingInfo.SpellSaveDC = spellSaveDC
+			class.ClassSpellcastingInfo.SpellAttackBonus = spellAttackBonus
+		} else if class.ClassWarlockCastingInfo != nil {
+			spellcastingAbilityModifier := class.ClassWarlockCastingInfo.SpellcastingAbility.Modifier
+
+			warlockSpellSlotAmount := 0
+			warlockSpellSlotLevel := 0
+
+			for i, levelSpellSlotAmount := range spellSlotAmount {
+				if levelSpellSlotAmount != 0 {
+					warlockSpellSlotAmount = levelSpellSlotAmount
+					warlockSpellSlotLevel = i + 1
+					break
+				}
+			}
+
+			spellSaveDC := 8 + proficiencyBonus + spellcastingAbilityModifier
+
+			spellAttackBonus := proficiencyBonus + spellcastingAbilityModifier
+
+			class.ClassWarlockCastingInfo.MaxKnownCantrips = maxKnownCantrips
+			class.ClassWarlockCastingInfo.MaxKnownSpells = *dndApiClassLevel.Spellcasting.SpellsKnown
+			class.ClassWarlockCastingInfo.SpellSlotAmount = warlockSpellSlotAmount
+			class.ClassWarlockCastingInfo.SpellSlotLevel = warlockSpellSlotLevel
+			class.ClassWarlockCastingInfo.SpellSaveDC = spellSaveDC
+			class.ClassWarlockCastingInfo.SpellAttackBonus = spellAttackBonus
+		} else {
+			fmt.Println("according to the API, the class has spellcasting, but the spellcasting is not already defined; API ignored in this case")
+		}
+	}
+}

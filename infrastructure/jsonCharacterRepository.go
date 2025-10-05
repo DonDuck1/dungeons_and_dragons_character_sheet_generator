@@ -73,9 +73,14 @@ func (jsonCharacterRepository *JsonCharacterRepository) GetAll() *[]domain.Chara
 }
 
 func (jsonCharacterRepository *JsonCharacterRepository) GetByName(name string) (*domain.Character, error) {
-	for _, character := range jsonCharacterRepository.characterList.Characters {
+	if jsonCharacterRepository.characterList == nil {
+		err := fmt.Errorf("no characters have been found, please create one first")
+		return nil, err
+	}
+
+	for i, character := range jsonCharacterRepository.characterList.Characters {
 		if strings.EqualFold(character.Name, name) {
-			return &character, nil
+			return &jsonCharacterRepository.characterList.Characters[i], nil // Use index to point to actual object, not the temporary copy of the loop
 		}
 	}
 

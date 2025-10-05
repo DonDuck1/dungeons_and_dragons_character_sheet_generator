@@ -65,9 +65,10 @@ func (jsonBackgroundRepository JsonBackgroundRepository) GetByName(name string) 
 		return nil, err
 	}
 
-	for _, background := range *jsonBackgroundRepository.backgroundList {
+	backgroundList := *jsonBackgroundRepository.backgroundList
+	for i, background := range backgroundList {
 		if strings.EqualFold(background.Name, name) {
-			return &background, nil
+			return &backgroundList[i], nil // Use index to point to actual object, not the temporary copy of the loop
 		}
 	}
 

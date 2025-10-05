@@ -59,9 +59,15 @@ func (jsonSpellRepository JsonSpellRepository) GetAll() *[]domain.Spell {
 }
 
 func (jsonSpellRepository JsonSpellRepository) GetByName(name string) (*domain.Spell, error) {
-	for _, spell := range *jsonSpellRepository.spells {
+	if jsonSpellRepository.spells == nil {
+		err := fmt.Errorf("no spells have been found, please run the init command first")
+		return nil, err
+	}
+
+	spells := *jsonSpellRepository.spells
+	for i, spell := range spells {
 		if strings.EqualFold(spell.Name, name) {
-			return &spell, nil
+			return &spells[i], nil // Use index to point to actual object, not the temporary copy of the loop
 		}
 	}
 

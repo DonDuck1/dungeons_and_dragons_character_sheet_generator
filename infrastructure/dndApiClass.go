@@ -11,9 +11,9 @@ type DndApiClass struct {
 }
 
 func (dndApiClass DndApiClass) GetSkillProficiencyChoices() *DndApiClassProficiencyChoice {
-	for _, dndApiClassProficiencyChoice := range dndApiClass.ProficiencyChoices {
+	for i, dndApiClassProficiencyChoice := range dndApiClass.ProficiencyChoices {
 		if strings.HasPrefix(dndApiClassProficiencyChoice.From.Options[0].Item.Index, "skill-") {
-			return &dndApiClassProficiencyChoice
+			return &dndApiClass.ProficiencyChoices[i] // Use index to point to actual object, not the temporary copy of the loop
 		}
 	}
 

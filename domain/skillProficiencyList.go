@@ -121,3 +121,24 @@ func NewSkillProficiencyList(abilityScoreList *AbilityScoreList, skillProficienc
 		Survival:       survival,
 	}
 }
+
+func (skillProficiencyList *SkillProficiencyList) UpdateSkillProficiencies(proficiencyBonus int) {
+	skillProficiencyList.Acrobatics.CalculateModifier(proficiencyBonus)
+	skillProficiencyList.AnimalHandling.CalculateModifier(proficiencyBonus)
+	skillProficiencyList.Arcana.CalculateModifier(proficiencyBonus)
+	skillProficiencyList.Athletics.CalculateModifier(proficiencyBonus)
+	skillProficiencyList.Deception.CalculateModifier(proficiencyBonus)
+	skillProficiencyList.History.CalculateModifier(proficiencyBonus)
+	skillProficiencyList.Insight.CalculateModifier(proficiencyBonus)
+	skillProficiencyList.Intimidation.CalculateModifier(proficiencyBonus)
+	skillProficiencyList.Investigation.CalculateModifier(proficiencyBonus)
+	skillProficiencyList.Medicine.CalculateModifier(proficiencyBonus)
+	skillProficiencyList.Nature.CalculateModifier(proficiencyBonus)
+	skillProficiencyList.Perception.CalculateModifier(proficiencyBonus)
+	skillProficiencyList.Performance.CalculateModifier(proficiencyBonus)
+	skillProficiencyList.Persuasion.CalculateModifier(proficiencyBonus)
+	skillProficiencyList.Religion.CalculateModifier(proficiencyBonus)
+	skillProficiencyList.SleightOfHand.CalculateModifier(proficiencyBonus)
+	skillProficiencyList.Stealth.CalculateModifier(proficiencyBonus)
+	skillProficiencyList.Survival.CalculateModifier(proficiencyBonus)
+}
