@@ -1,7 +1,5 @@
 package domain
 
-import "math"
-
 type Character struct {
 	Name                 string
 	Race                 Race
@@ -21,27 +19,15 @@ func NewCharacter(
 	race Race,
 	mainClass Class,
 	background Background,
-	abilityScoreValueList AbilityScoreValueList,
-) Character {
-	proficiencyBonus := int(math.Ceil(float64(mainClass.Level)/4)) + 1
-
-	abilityScoreImprovementList := NewAbilityScoreImprovementList(race.AbilityScoreImprovements)
-	abilityScoreList := NewAbilityScoreList(abilityScoreValueList, abilityScoreImprovementList)
-
-	skillProficiencies := []SkillProficiencyName{}
-	skillProficiencies = append(skillProficiencies, mainClass.SkillProficiencies...)
-	skillProficiencies = append(skillProficiencies, background.SkillProficiencies...)
-	skillProficiencyList := NewSkillProficiencyList(&abilityScoreList, skillProficiencies, proficiencyBonus)
-
-	inventory := NewEmptyInventory(race.NumberOfHandSlots)
-
-	armorClass := inventory.GetArmorClass(abilityScoreList.Dexterity.Modifier)
-
-	initiative := abilityScoreList.Dexterity.Modifier
-
-	passivePerception := 10 + skillProficiencyList.Perception.Modifier
-
-	return Character{
+	proficiencyBonus int,
+	abilityScoreList AbilityScoreList,
+	skillProficiencyList SkillProficiencyList,
+	armorClass int,
+	initiative int,
+	passivePerception int,
+	inventory Inventory,
+) *Character {
+	character := Character{
 		Name:                 name,
 		Race:                 race,
 		MainClass:            mainClass,
@@ -54,4 +40,6 @@ func NewCharacter(
 		PassivePerception:    passivePerception,
 		Inventory:            inventory,
 	}
+
+	return &character
 }

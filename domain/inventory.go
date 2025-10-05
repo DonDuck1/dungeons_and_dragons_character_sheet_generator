@@ -45,10 +45,10 @@ func (inventory *Inventory) AddWeapon(weapon Weapon) error {
 }
 
 func (inventory *Inventory) RemoveWeapon(name string) error {
-	for index, weapon := range inventory.Weapons {
+	for i, weapon := range inventory.Weapons {
 		if weapon.Name == name {
 			inventory.OpenHandSlots += weapon.GetNumberOfOccupiedHandSlots()
-			inventory.Weapons = append(inventory.Weapons[:index], inventory.Weapons[index+1:]...)
+			inventory.Weapons = append(inventory.Weapons[:i], inventory.Weapons[i+1:]...)
 			return nil
 		}
 	}

@@ -59,10 +59,10 @@ func (dndApiGateway *DndApiGateway) GetMultipleOrdered(endpoints []string) ([][]
 	bodies := make([][]byte, len(endpoints))
 	errors := []error{}
 
-	for index, endpoint := range endpoints {
+	for i, endpoint := range endpoints {
 		wg.Add(1)
 
-		go func(index int, endpoint string) {
+		go func(i int, endpoint string) {
 			defer wg.Done()
 
 			body, err := dndApiGateway.Get(endpoint)
@@ -73,8 +73,8 @@ func (dndApiGateway *DndApiGateway) GetMultipleOrdered(endpoints []string) ([][]
 				return
 			}
 
-			bodies[index] = body
-		}(index, endpoint)
+			bodies[i] = body
+		}(i, endpoint)
 	}
 
 	wg.Wait()

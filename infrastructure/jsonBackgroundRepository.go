@@ -4,6 +4,7 @@ import (
 	"dungeons_and_dragons_character_sheet_generator/domain"
 	"encoding/json"
 	"fmt"
+	"math/rand/v2"
 	"os"
 	"strings"
 )
@@ -59,6 +60,11 @@ func (jsonBackgroundRepository JsonBackgroundRepository) GetAll() *[]domain.Back
 }
 
 func (jsonBackgroundRepository JsonBackgroundRepository) GetByName(name string) (*domain.Background, error) {
+	if jsonBackgroundRepository.backgroundList == nil {
+		err := fmt.Errorf("no backgrounds have been found, please run the init command first")
+		return nil, err
+	}
+
 	for _, background := range *jsonBackgroundRepository.backgroundList {
 		if strings.EqualFold(background.Name, name) {
 			return &background, nil
@@ -67,4 +73,25 @@ func (jsonBackgroundRepository JsonBackgroundRepository) GetByName(name string) 
 
 	err := fmt.Errorf("could not find background with name '%s'", name)
 	return nil, err
+}
+
+func (jsonBackgroundRepository JsonBackgroundRepository) GetRandom() (*domain.Background, error) {
+	if jsonBackgroundRepository.backgroundList == nil {
+		err := fmt.Errorf("no backgrounds have been found, please run the init command first")
+		return nil, err
+	} else if len(*jsonBackgroundRepository.backgroundList) == 0 {
+		err := fmt.Errorf("no backgrounds have been found, please re-run the init command")
+		return nil, err
+	}
+
+	amountOfBackgrounds := len(*jsonBackgroundRepository.backgroundList)
+
+	shuffledList := make([]domain.Background, amountOfBackgrounds)
+	copy(shuffledList, *jsonBackgroundRepository.backgroundList)
+
+	rand.Shuffle(amountOfBackgrounds, func(i, j int) {
+		shuffledList[i], shuffledList[j] = shuffledList[j], shuffledList[i]
+	})
+
+	return &shuffledList[0], nil
 }

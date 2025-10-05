@@ -42,8 +42,12 @@ func NewJsonCharacterRepository(filepath string) (*JsonCharacterRepository, erro
 	}, nil
 }
 
-func (jsonCharacterRepository *JsonCharacterRepository) NewCharacter(name string, raceName string) {
-	// character := domain.NewCharacter(name, race, mainClass, background, abilityScoreValueList)
+func (jsonCharacterRepository *JsonCharacterRepository) IsCharacterNameUnique(name string) bool {
+	return jsonCharacterRepository.characterList.IsCharacterNameUnique(name)
+}
+
+func (jsonCharacterRepository *JsonCharacterRepository) AddCharacter(character *domain.Character) {
+	jsonCharacterRepository.characterList.AddCharacter(character)
 }
 
 func (jsonCharacterRepository *JsonCharacterRepository) SaveCharacterList() error {

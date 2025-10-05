@@ -1,5 +1,7 @@
 package domain
 
+import "fmt"
+
 type AbilityScoreList struct {
 	Strength     AbilityScore
 	Dexterity    AbilityScore
@@ -38,5 +40,25 @@ func NewAbilityScoreList(
 		Intelligence: intelligence,
 		Wisdom:       wisdom,
 		Charisma:     charisma,
+	}
+}
+
+func (abilityScoreList *AbilityScoreList) GetByName(abilityScoreName AbilityScoreName) (*AbilityScore, error) {
+	switch abilityScoreName {
+	case STRENGTH:
+		return &abilityScoreList.Strength, nil
+	case DEXTERITY:
+		return &abilityScoreList.Dexterity, nil
+	case CONSTITUTION:
+		return &abilityScoreList.Constitution, nil
+	case INTELLIGENCE:
+		return &abilityScoreList.Intelligence, nil
+	case WISDOM:
+		return &abilityScoreList.Wisdom, nil
+	case CHARISMA:
+		return &abilityScoreList.Charisma, nil
+	default:
+		err := fmt.Errorf("no ability score with name '%s' found", abilityScoreName)
+		return nil, err
 	}
 }

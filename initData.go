@@ -32,14 +32,14 @@ func InitialiseArmorAndShields(csvEquipmentRepository infrastructure.CsvEquipmen
 	}
 
 	endpoints = []string{}
-	for index, body := range bodies {
+	for i, body := range bodies {
 		var dndApiReferenceList infrastructure.DndApiReferenceList
 		err = json.Unmarshal(body, &dndApiReferenceList)
 		if err != nil {
 			log.Fatal(err)
 		}
 		for _, result := range dndApiReferenceList.Results {
-			if strings.EqualFold((*csvArmorAndShieldList)[index].Name, result.Name) {
+			if strings.EqualFold((*csvArmorAndShieldList)[i].Name, result.Name) {
 				endpoints = append(endpoints, result.Url)
 			}
 		}
@@ -227,14 +227,14 @@ func InitialiseWeapons(csvEquipmentRepository infrastructure.CsvEquipmentReposit
 	}
 
 	endpoints = []string{}
-	for index, body := range bodies {
+	for i, body := range bodies {
 		var dndApiReferenceList infrastructure.DndApiReferenceList
 		err = json.Unmarshal(body, &dndApiReferenceList)
 		if err != nil {
 			log.Fatal(err)
 		}
 		for _, result := range dndApiReferenceList.Results {
-			if strings.EqualFold((*csvWeaponList)[index].Name, result.Name) {
+			if strings.EqualFold((*csvWeaponList)[i].Name, result.Name) {
 				endpoints = append(endpoints, result.Url)
 			}
 		}
