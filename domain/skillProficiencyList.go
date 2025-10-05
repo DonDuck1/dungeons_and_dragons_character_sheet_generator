@@ -22,80 +22,80 @@ type SkillProficiencyList struct {
 }
 
 func NewSkillProficiencyList(abilityScoreList *AbilityScoreList, skillProficiencies []SkillProficiencyName, proficiencyBonus int) SkillProficiencyList {
-	acrobatics := NewSkillProficiency(ACROBATICS, false, &abilityScoreList.Dexterity, proficiencyBonus)
-	animalHandling := NewSkillProficiency(ANIMAL_HANDLING, false, &abilityScoreList.Wisdom, proficiencyBonus)
-	arcana := NewSkillProficiency(ARCANA, false, &abilityScoreList.Intelligence, proficiencyBonus)
-	athletics := NewSkillProficiency(ATHLETICS, false, &abilityScoreList.Strength, proficiencyBonus)
-	deception := NewSkillProficiency(DECEPTION, false, &abilityScoreList.Charisma, proficiencyBonus)
-	history := NewSkillProficiency(HISTORY, false, &abilityScoreList.Intelligence, proficiencyBonus)
-	insight := NewSkillProficiency(INSIGHT, false, &abilityScoreList.Wisdom, proficiencyBonus)
-	intimidation := NewSkillProficiency(INTIMIDATION, false, &abilityScoreList.Charisma, proficiencyBonus)
-	investigation := NewSkillProficiency(INVESTIGATION, false, &abilityScoreList.Intelligence, proficiencyBonus)
-	medicine := NewSkillProficiency(MEDICINE, false, &abilityScoreList.Wisdom, proficiencyBonus)
-	nature := NewSkillProficiency(NATURE, false, &abilityScoreList.Intelligence, proficiencyBonus)
-	perception := NewSkillProficiency(PERCEPTION, false, &abilityScoreList.Wisdom, proficiencyBonus)
-	performance := NewSkillProficiency(PERFORMANCE, false, &abilityScoreList.Charisma, proficiencyBonus)
-	persuasion := NewSkillProficiency(PERSUASION, false, &abilityScoreList.Charisma, proficiencyBonus)
-	religion := NewSkillProficiency(RELIGION, false, &abilityScoreList.Intelligence, proficiencyBonus)
-	sleightOfHand := NewSkillProficiency(SLEIGHT_OF_HAND, false, &abilityScoreList.Dexterity, proficiencyBonus)
-	stealth := NewSkillProficiency(STEALTH, false, &abilityScoreList.Dexterity, proficiencyBonus)
-	survival := NewSkillProficiency(SURVIVAL, false, &abilityScoreList.Wisdom, proficiencyBonus)
+	acrobatics := NewSkillProficiency(ACROBATICS, false, 0, &abilityScoreList.Dexterity, proficiencyBonus)
+	animalHandling := NewSkillProficiency(ANIMAL_HANDLING, false, 0, &abilityScoreList.Wisdom, proficiencyBonus)
+	arcana := NewSkillProficiency(ARCANA, false, 0, &abilityScoreList.Intelligence, proficiencyBonus)
+	athletics := NewSkillProficiency(ATHLETICS, false, 0, &abilityScoreList.Strength, proficiencyBonus)
+	deception := NewSkillProficiency(DECEPTION, false, 0, &abilityScoreList.Charisma, proficiencyBonus)
+	history := NewSkillProficiency(HISTORY, false, 0, &abilityScoreList.Intelligence, proficiencyBonus)
+	insight := NewSkillProficiency(INSIGHT, false, 0, &abilityScoreList.Wisdom, proficiencyBonus)
+	intimidation := NewSkillProficiency(INTIMIDATION, false, 0, &abilityScoreList.Charisma, proficiencyBonus)
+	investigation := NewSkillProficiency(INVESTIGATION, false, 0, &abilityScoreList.Intelligence, proficiencyBonus)
+	medicine := NewSkillProficiency(MEDICINE, false, 0, &abilityScoreList.Wisdom, proficiencyBonus)
+	nature := NewSkillProficiency(NATURE, false, 0, &abilityScoreList.Intelligence, proficiencyBonus)
+	perception := NewSkillProficiency(PERCEPTION, false, 0, &abilityScoreList.Wisdom, proficiencyBonus)
+	performance := NewSkillProficiency(PERFORMANCE, false, 0, &abilityScoreList.Charisma, proficiencyBonus)
+	persuasion := NewSkillProficiency(PERSUASION, false, 0, &abilityScoreList.Charisma, proficiencyBonus)
+	religion := NewSkillProficiency(RELIGION, false, 0, &abilityScoreList.Intelligence, proficiencyBonus)
+	sleightOfHand := NewSkillProficiency(SLEIGHT_OF_HAND, false, 0, &abilityScoreList.Dexterity, proficiencyBonus)
+	stealth := NewSkillProficiency(STEALTH, false, 0, &abilityScoreList.Dexterity, proficiencyBonus)
+	survival := NewSkillProficiency(SURVIVAL, false, 0, &abilityScoreList.Wisdom, proficiencyBonus)
 
 	for _, skillProficiency := range skillProficiencies {
 		switch skillProficiency {
 		case ACROBATICS:
-			acrobatics.Proficient = true
+			acrobatics.MakeProficient()
 			acrobatics.CalculateModifier(proficiencyBonus)
 		case ANIMAL_HANDLING:
-			animalHandling.Proficient = true
+			animalHandling.MakeProficient()
 			animalHandling.CalculateModifier(proficiencyBonus)
 		case ARCANA:
-			arcana.Proficient = true
+			arcana.MakeProficient()
 			arcana.CalculateModifier(proficiencyBonus)
 		case ATHLETICS:
-			athletics.Proficient = true
+			athletics.MakeProficient()
 			athletics.CalculateModifier(proficiencyBonus)
 		case DECEPTION:
-			deception.Proficient = true
+			deception.MakeProficient()
 			deception.CalculateModifier(proficiencyBonus)
 		case HISTORY:
-			history.Proficient = true
+			history.MakeProficient()
 			history.CalculateModifier(proficiencyBonus)
 		case INSIGHT:
-			insight.Proficient = true
+			insight.MakeProficient()
 			insight.CalculateModifier(proficiencyBonus)
 		case INTIMIDATION:
-			intimidation.Proficient = true
+			intimidation.MakeProficient()
 			intimidation.CalculateModifier(proficiencyBonus)
 		case INVESTIGATION:
-			investigation.Proficient = true
+			investigation.MakeProficient()
 			investigation.CalculateModifier(proficiencyBonus)
 		case MEDICINE:
-			medicine.Proficient = true
+			medicine.MakeProficient()
 			medicine.CalculateModifier(proficiencyBonus)
 		case NATURE:
-			nature.Proficient = true
+			nature.MakeProficient()
 			nature.CalculateModifier(proficiencyBonus)
 		case PERCEPTION:
-			perception.Proficient = true
+			perception.MakeProficient()
 			perception.CalculateModifier(proficiencyBonus)
 		case PERFORMANCE:
-			performance.Proficient = true
+			performance.MakeProficient()
 			performance.CalculateModifier(proficiencyBonus)
 		case PERSUASION:
-			persuasion.Proficient = true
+			persuasion.MakeProficient()
 			persuasion.CalculateModifier(proficiencyBonus)
 		case RELIGION:
-			religion.Proficient = true
+			religion.MakeProficient()
 			religion.CalculateModifier(proficiencyBonus)
 		case SLEIGHT_OF_HAND:
-			sleightOfHand.Proficient = true
+			sleightOfHand.MakeProficient()
 			sleightOfHand.CalculateModifier(proficiencyBonus)
 		case STEALTH:
-			stealth.Proficient = true
+			stealth.MakeProficient()
 			stealth.CalculateModifier(proficiencyBonus)
 		case SURVIVAL:
-			survival.Proficient = true
+			survival.MakeProficient()
 			survival.CalculateModifier(proficiencyBonus)
 		}
 	}

@@ -198,7 +198,7 @@ func CreateClass(name domain.ClassName, level int, proficiencyBonus int, ability
 			)
 			classWarlockCastingInfo = &classWarlockCastingInfoValue
 		case domain.BARBARIAN, domain.FIGHTER, domain.MONK, domain.ROGUE:
-			fmt.Println("Class should not have spellcasting, but it does according to the API. The API will be ignored in this case")
+			fmt.Println("class should not have spellcasting, but it does according to the API. The API will be ignored in this case")
 		default:
 			err = fmt.Errorf("unknown class (with spellcasting) detected, character creation cannot continue")
 			log.Fatal(err)

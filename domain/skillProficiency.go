@@ -1,13 +1,14 @@
 package domain
 
 type SkillProficiency struct {
-	Name                SkillProficiencyName
-	Proficient          bool
-	RelatedAbilityScore *AbilityScore
-	Modifier            int
+	Name                      SkillProficiencyName
+	Proficient                bool
+	TimesProficiencyIsApplied int
+	RelatedAbilityScore       *AbilityScore
+	Modifier                  int
 }
 
-func NewSkillProficiency(name SkillProficiencyName, proficient bool, relatedAbilityScore *AbilityScore, proficiencyBonus int) SkillProficiency {
+func NewSkillProficiency(name SkillProficiencyName, proficient bool, TimesProficiencyIsApplied int, relatedAbilityScore *AbilityScore, proficiencyBonus int) SkillProficiency {
 	modifier := 0
 
 	if proficient {
@@ -16,6 +17,11 @@ func NewSkillProficiency(name SkillProficiencyName, proficient bool, relatedAbil
 
 	modifier += relatedAbilityScore.Modifier
 	return SkillProficiency{Name: name, Proficient: proficient, RelatedAbilityScore: relatedAbilityScore, Modifier: modifier}
+}
+
+func (skillProficiency *SkillProficiency) MakeProficient() {
+	skillProficiency.Proficient = true
+	skillProficiency.TimesProficiencyIsApplied += 1
 }
 
 func (skillProficiency *SkillProficiency) CalculateModifier(proficiencyBonus int) {

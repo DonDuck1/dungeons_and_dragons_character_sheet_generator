@@ -10,7 +10,7 @@ import (
 )
 
 func usage() {
-	fmt.Printf(`Usage:
+	fmt.Printf(`usage:
   go run . init
   go run . create -name "CHARACTER_NAME" -race "RACE" -class "CLASS" -level N -str N -dex N -con N -int N -wis N -cha N
   go run . view -name "CHARACTER_NAME"
@@ -24,7 +24,7 @@ func usage() {
   go run . forget-spell -name "CHARACTER_NAME" -spell "SPELL_NAME"
   go run . prepare-spell -name "CHARACTER_NAME" -spell "SPELL_NAME"
 
-  Location: %s
+  location: %s
 `, os.Args[0])
 }
 
@@ -111,100 +111,100 @@ func main() {
 		}
 
 		if *characterName == "" {
-			fmt.Println("Character name is required")
+			fmt.Println("character name is required")
 			fmt.Println("")
 			createCmd.Usage()
 			os.Exit(2)
 		}
 
 		if *potentialRaceName == "" {
-			fmt.Println("Race name is required")
+			fmt.Println("race name is required")
 			fmt.Println("")
 			createCmd.Usage()
 			os.Exit(2)
 		}
 
 		if *potentialMainClassName == "" {
-			fmt.Println("Class name is required")
+			fmt.Println("class name is required")
 			fmt.Println("")
 			createCmd.Usage()
 			os.Exit(2)
 		}
 
 		if *level == -999 {
-			fmt.Println("No level was provided, level has been set to 1")
+			// fmt.Println("no level was provided, level has been set to 1")
 			*level = 1
 		} else if *level < 1 {
-			fmt.Printf("Provided level (%d) is too low, level has been set to 1 instead\n", *level)
+			fmt.Printf("provided level (%d) is too low, level has been set to 1 instead\n", *level)
 			*level = 1
 		} else if *level > 20 {
-			fmt.Printf("Provided level (%d) is too high, level has been set to 20 instead\n", *level)
+			fmt.Printf("provided level (%d) is too high, level has been set to 20 instead\n", *level)
 			*level = 20
 		}
 
 		if *strengthValue == -999 {
-			fmt.Println("No strength score was provided, strength score has been set to 10")
+			// fmt.Println("no strength score was provided, strength score has been set to 10")
 			*strengthValue = 10
 		} else if *strengthValue < 1 {
-			fmt.Printf("Provided strength score (%d) is too low, strength score has been set to 1 instead\n", *strengthValue)
+			fmt.Printf("provided strength score (%d) is too low, strength score has been set to 1 instead\n", *strengthValue)
 			*strengthValue = 1
 		} else if *strengthValue > 20 {
-			fmt.Printf("Provided strength score (%d) is too high, strength score has been set to 20 instead\n", *strengthValue)
+			fmt.Printf("provided strength score (%d) is too high, strength score has been set to 20 instead\n", *strengthValue)
 			*strengthValue = 20
 		}
 
 		if *dexterityValue == -999 {
-			fmt.Println("No dexterity score was provided, dexterity score has been set to 10")
+			// fmt.Println("no dexterity score was provided, dexterity score has been set to 10")
 			*dexterityValue = 10
 		} else if *dexterityValue < 1 {
-			fmt.Printf("Provided dexterity score (%d) is too low, dexterity score has been set to 1 instead\n", *dexterityValue)
+			fmt.Printf("provided dexterity score (%d) is too low, dexterity score has been set to 1 instead\n", *dexterityValue)
 			*dexterityValue = 1
 		} else if *dexterityValue > 20 {
-			fmt.Printf("Provided dexterity score (%d) is too high, dexterity score has been set to 20 instead\n", *dexterityValue)
+			fmt.Printf("provided dexterity score (%d) is too high, dexterity score has been set to 20 instead\n", *dexterityValue)
 			*dexterityValue = 20
 		}
 
 		if *constitutionValue == -999 {
-			fmt.Println("No constitution score was provided, constitution score has been set to 10")
+			// fmt.Println("no constitution score was provided, constitution score has been set to 10")
 			*constitutionValue = 10
 		} else if *constitutionValue < 1 {
-			fmt.Printf("Provided constitution score (%d) is too low, constitution score has been set to 1 instead\n", *constitutionValue)
+			fmt.Printf("provided constitution score (%d) is too low, constitution score has been set to 1 instead\n", *constitutionValue)
 			*constitutionValue = 1
 		} else if *constitutionValue > 20 {
-			fmt.Printf("Provided constitution score (%d) is too high, constitution score has been set to 20 instead\n", *constitutionValue)
+			fmt.Printf("provided constitution score (%d) is too high, constitution score has been set to 20 instead\n", *constitutionValue)
 			*constitutionValue = 20
 		}
 
 		if *intelligenceValue == -999 {
-			fmt.Println("No intelligence score was provided, intelligence score has been set to 10")
+			// fmt.Println("no intelligence score was provided, intelligence score has been set to 10")
 			*intelligenceValue = 10
 		} else if *intelligenceValue < 1 {
-			fmt.Printf("Provided intelligence score (%d) is too low, intelligence score has been set to 1 instead\n", *intelligenceValue)
+			fmt.Printf("provided intelligence score (%d) is too low, intelligence score has been set to 1 instead\n", *intelligenceValue)
 			*intelligenceValue = 1
 		} else if *intelligenceValue > 20 {
-			fmt.Printf("Provided intelligence score (%d) is too high, intelligence score has been set to 20 instead\n", *intelligenceValue)
+			fmt.Printf("provided intelligence score (%d) is too high, intelligence score has been set to 20 instead\n", *intelligenceValue)
 			*intelligenceValue = 20
 		}
 
 		if *wisdomValue == -999 {
-			fmt.Println("No wisdom score was provided, wisdom score has been set to 10")
+			// fmt.Println("no wisdom score was provided, wisdom score has been set to 10")
 			*wisdomValue = 10
 		} else if *wisdomValue < 1 {
-			fmt.Printf("Provided wisdom score (%d) is too low, wisdom score has been set to 1 instead\n", *wisdomValue)
+			fmt.Printf("provided wisdom score (%d) is too low, wisdom score has been set to 1 instead\n", *wisdomValue)
 			*wisdomValue = 1
 		} else if *wisdomValue > 20 {
-			fmt.Printf("Provided wisdom score (%d) is too high, wisdom score has been set to 20 instead\n", *wisdomValue)
+			fmt.Printf("provided wisdom score (%d) is too high, wisdom score has been set to 20 instead\n", *wisdomValue)
 			*wisdomValue = 20
 		}
 
 		if *charismaValue == -999 {
-			fmt.Println("No charisma score was provided, charisma score has been set to 10")
+			// fmt.Println("no charisma score was provided, charisma score has been set to 10")
 			*charismaValue = 10
 		} else if *charismaValue < 1 {
-			fmt.Printf("Provided charisma score (%d) is too low, charisma score has been set to 1 instead\n", *charismaValue)
+			fmt.Printf("provided charisma score (%d) is too low, charisma score has been set to 1 instead\n", *charismaValue)
 			*charismaValue = 1
 		} else if *charismaValue > 20 {
-			fmt.Printf("Provided charisma score (%d) is too high, charisma score has been set to 20 instead\n", *charismaValue)
+			fmt.Printf("provided charisma score (%d) is too high, charisma score has been set to 20 instead\n", *charismaValue)
 			*charismaValue = 20
 		}
 
@@ -231,7 +231,7 @@ func main() {
 		}
 
 		if *characterName == "" {
-			fmt.Println("Character name is required")
+			fmt.Println("character name is required")
 			fmt.Println("")
 			createCmd.Usage()
 			os.Exit(2)
@@ -252,20 +252,20 @@ func main() {
 		}
 
 		if *characterName == "" {
-			fmt.Println("Character name is required")
+			fmt.Println("character name is required")
 			fmt.Println("")
 			createCmd.Usage()
 			os.Exit(2)
 		}
 
 		if *level == -999 {
-			fmt.Println("No level was provided, level has been set to 1")
+			// fmt.Println("no level was provided, level has been set to 1")
 			*level = 1
 		} else if *level < 1 {
-			fmt.Printf("Provided level (%d) is too low, level has been set to 1 instead\n", *level)
+			fmt.Printf("provided level (%d) is too low, level has been set to 1 instead\n", *level)
 			*level = 1
 		} else if *level > 20 {
-			fmt.Printf("Provided level (%d) is too high, level has been set to 20 instead\n", *level)
+			fmt.Printf("provided level (%d) is too high, level has been set to 20 instead\n", *level)
 			*level = 20
 		}
 
@@ -281,7 +281,7 @@ func main() {
 		}
 
 		if *characterName == "" {
-			fmt.Println("Character name is required")
+			fmt.Println("character name is required")
 			fmt.Println("")
 			createCmd.Usage()
 			os.Exit(2)

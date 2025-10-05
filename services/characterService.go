@@ -115,7 +115,7 @@ func (characterService CharacterService) CreateNewCharacter(
 		log.Fatal(err)
 	}
 
-	fmt.Printf("Saved character %s\n", characterName)
+	fmt.Printf("saved character %s\n", characterName)
 	os.Exit(0)
 }
 
@@ -149,7 +149,7 @@ func (characterService CharacterService) ChangeLevelOfCharacter(characterName st
 		log.Fatal(err)
 	}
 
-	fmt.Printf("Character succesfully updated to level %d!\n", level)
+	fmt.Printf("character succesfully updated to level %d!\n", level)
 	os.Exit(0)
 }
 
@@ -186,14 +186,16 @@ func (characterService CharacterService) ViewCharacter(characterName string) {
 
 	proficientSkillProficiencies := character.SkillProficiencyList.GetSkillProficienciesThatAreProficient()
 	proficientSkillProficiencyNames := []string{}
-	for _, proficientSkillproficiency := range *proficientSkillProficiencies {
-		proficientSkillProficiencyNames = append(proficientSkillProficiencyNames, string(proficientSkillproficiency.Name))
+	for _, proficientSkillProficiency := range *proficientSkillProficiencies {
+		for i := 0; i < proficientSkillProficiency.TimesProficiencyIsApplied; i++ {
+			proficientSkillProficiencyNames = append(proficientSkillProficiencyNames, strings.ToLower(string(proficientSkillProficiency.Name)))
+		}
 	}
 
 	fmt.Printf("Name: %s\n", characterName)
-	fmt.Printf("Class: %s\n", character.MainClass.Name)
-	fmt.Printf("Race: %s\n", character.Race.Name)
-	fmt.Printf("Background: %s\n", character.Background.Name)
+	fmt.Printf("Class: %s\n", strings.ToLower(string(character.MainClass.Name)))
+	fmt.Printf("Race: %s\n", strings.ToLower(character.Race.Name))
+	fmt.Printf("Background: %s\n", strings.ToLower(character.Background.Name))
 	fmt.Printf("Level: %d\n", character.MainClass.Level)
 	fmt.Println("Ability scores:")
 	fmt.Printf("  STR: %d (%+d)\n", character.AbilityScoreList.Strength.Final_value, character.AbilityScoreList.Strength.Modifier)
@@ -216,11 +218,11 @@ func (characterService CharacterService) ListCharacters() {
 
 	characters := characterService.jsonCharacterRepository.GetAll()
 	if len(*characters) <= 0 {
-		fmt.Println("There are no characters yet!")
+		fmt.Println("there are no characters yet!")
 		os.Exit(0)
 	}
 
-	fmt.Println("All characters:")
+	fmt.Println("all characters:")
 	for _, character := range *characters {
 		fmt.Printf("%s, Lv%d %s, %s, %s\n", character.Name, character.MainClass.Level, character.MainClass.Name, character.Race.Name, character.Background.Name)
 	}

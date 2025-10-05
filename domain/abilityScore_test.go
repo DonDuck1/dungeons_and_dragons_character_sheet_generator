@@ -58,6 +58,6 @@ func TestCreateAbilityScoreListWithImprovements(t *testing.T) {
 	abilityScoreList := NewAbilityScoreList(abilityScoreValueList, abilityScoreImprovementList)
 
 	if !reflect.DeepEqual(expected, abilityScoreList) {
-		t.Errorf("Expected %+v, got %+v", expected, abilityScoreList)
+		t.Errorf("expected %+v, got %+v", expected, abilityScoreList)
 	}
 }
