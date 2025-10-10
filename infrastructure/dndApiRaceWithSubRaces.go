@@ -43,11 +43,9 @@ func (dndApiRaceWithSubRaces DndApiRaceWithSubRaces) AsRace(chosenRaceName strin
 	}
 
 	var chosenDndApiSubRace *DndApiSubRace
-	if strings.EqualFold(dndApiRaceWithSubRaces.Name, chosenRaceName) {
-		for i, subRace := range dndApiRaceWithSubRaces.SubRaceList {
-			if strings.EqualFold(subRace.Name, chosenRaceName) {
-				chosenDndApiSubRace = &dndApiRaceWithSubRaces.SubRaceList[i] // Use index to point to actual object, not the temporary copy of the loop
-			}
+	for i, subRace := range dndApiRaceWithSubRaces.SubRaceList {
+		if strings.EqualFold(subRace.Name, chosenRaceName) {
+			chosenDndApiSubRace = &dndApiRaceWithSubRaces.SubRaceList[i] // Use index to point to actual object, not the temporary copy of the loop
 		}
 	}
 
