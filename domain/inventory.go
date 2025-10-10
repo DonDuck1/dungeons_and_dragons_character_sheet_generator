@@ -32,24 +32,31 @@ func (inventory Inventory) GetArmorClass(dexterityModifier int) int {
 func (inventory *Inventory) AddWeapon(weapon *Weapon, inventoryWeaponSlotName InventoryWeaponSlotName) error {
 	requiredOpenHandSlots := weapon.GetNumberOfOccupiedHandSlots()
 
-	if inventory.OpenHandSlots >= requiredOpenHandSlots {
-		inventory.OpenHandSlots -= requiredOpenHandSlots
-		switch inventoryWeaponSlotName {
-		case MAIN_HAND:
-			if inventory.WeaponSlots.MainHand != nil {
-				err := fmt.Errorf("main hand already occupied")
-				return err
-			}
-			inventory.WeaponSlots.MainHand = weapon
-		case OFF_HAND:
-			if inventory.WeaponSlots.OffHand != nil {
-				err := fmt.Errorf("off hand already occupied")
-				return err
-			}
-			inventory.WeaponSlots.OffHand = weapon
+	switch inventoryWeaponSlotName {
+	case MAIN_HAND:
+		if inventory.WeaponSlots.MainHand != nil {
+			err := fmt.Errorf("main hand already occupied")
+			return err
 		}
 
-		return nil
+		if inventory.OpenHandSlots >= requiredOpenHandSlots {
+			inventory.OpenHandSlots -= requiredOpenHandSlots
+			inventory.WeaponSlots.MainHand = weapon
+
+			return nil
+		}
+	case OFF_HAND:
+		if inventory.WeaponSlots.OffHand != nil {
+			err := fmt.Errorf("off hand already occupied")
+			return err
+		}
+
+		if inventory.OpenHandSlots >= requiredOpenHandSlots {
+			inventory.OpenHandSlots -= requiredOpenHandSlots
+			inventory.WeaponSlots.OffHand = weapon
+
+			return nil
+		}
 	}
 
 	missingOpenHandSlots := requiredOpenHandSlots - inventory.OpenHandSlots
