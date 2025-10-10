@@ -230,23 +230,23 @@ func (characterService CharacterService) ViewCharacter(characterName string) {
 	fmt.Printf("Skill proficiencies: %s\n", strings.Join(proficientSkillProficiencyNames, ", "))
 	if character.Inventory.WeaponSlots.MainHand != nil {
 		if character.Inventory.WeaponSlots.MainHand.TwoHanded {
-			fmt.Printf("Main hand: %+s (two-handed)\n", character.Inventory.WeaponSlots.MainHand.Name)
+			fmt.Printf("Main hand: %+s (two-handed)\n", strings.ToLower(character.Inventory.WeaponSlots.MainHand.Name))
 		} else {
-			fmt.Printf("Main hand: %+s\n", character.Inventory.WeaponSlots.MainHand.Name)
+			fmt.Printf("Main hand: %+s\n", strings.ToLower(character.Inventory.WeaponSlots.MainHand.Name))
 		}
 	}
 	if character.Inventory.WeaponSlots.OffHand != nil {
 		if character.Inventory.WeaponSlots.OffHand.TwoHanded {
-			fmt.Printf("Off hand: %+s (two-handed)\n", character.Inventory.WeaponSlots.OffHand.Name)
+			fmt.Printf("Off hand: %+s (two-handed)\n", strings.ToLower(character.Inventory.WeaponSlots.OffHand.Name))
 		} else {
-			fmt.Printf("Off hand: %+s\n", character.Inventory.WeaponSlots.OffHand.Name)
+			fmt.Printf("Off hand: %+s\n", strings.ToLower(character.Inventory.WeaponSlots.OffHand.Name))
 		}
 	}
 	if character.Inventory.Armor != nil {
-		fmt.Printf("Armor: %+s\n", character.Inventory.Armor.Name)
+		fmt.Printf("Armor: %+s\n", strings.ToLower(character.Inventory.Armor.Name))
 	}
 	if character.Inventory.Shield != nil {
-		fmt.Printf("Shield: %+s\n", character.Inventory.Shield.Name)
+		fmt.Printf("Shield: %+s\n", strings.ToLower(character.Inventory.Shield.Name))
 	}
 
 	os.Exit(0)
@@ -297,14 +297,17 @@ func (characterService CharacterService) EquipWeaponToCharacter(characterName st
 		log.Fatal(err)
 	}
 
-	character.Inventory.AddWeapon(weapon, inventoryWeaponSlotName)
+	err = character.Inventory.AddWeapon(weapon, inventoryWeaponSlotName)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	err = characterService.jsonCharacterRepository.SaveCharacterList()
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	fmt.Printf("Equipped weapon %s to %s\n", weaponName, inventoryWeaponSlotName)
+	fmt.Printf("Equipped weapon %s to %s\n", weaponName, potentialInventoryWeaponSlotName)
 	os.Exit(0)
 }
 
