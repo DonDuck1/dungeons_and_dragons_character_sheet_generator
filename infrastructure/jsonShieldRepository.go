@@ -10,7 +10,7 @@ import (
 
 type JsonShieldRepository struct {
 	filepath   string
-	shieldList *[]domain.Shield
+	shieldList []domain.Shield
 }
 
 func NewJsonShieldRepository(filepath string) (*JsonShieldRepository, error) {
@@ -36,7 +36,7 @@ func NewJsonShieldRepository(filepath string) (*JsonShieldRepository, error) {
 
 	return &JsonShieldRepository{
 		filepath:   filepath,
-		shieldList: &shieldList,
+		shieldList: shieldList,
 	}, nil
 }
 
@@ -54,20 +54,20 @@ func SaveShieldListAsJson(filepath string, shieldList *[]domain.Shield) error {
 	return nil
 }
 
-func (jsonShieldRepository JsonShieldRepository) GetAll() *[]domain.Shield {
-	return jsonShieldRepository.shieldList
+func (jsonShieldRepository JsonShieldRepository) GetCopiesOfAll() *[]domain.Shield {
+	copiedShieldList := jsonShieldRepository.shieldList
+	return &copiedShieldList
 }
 
-func (jsonShieldRepository JsonShieldRepository) GetByName(name string) (*domain.Shield, error) {
+func (jsonShieldRepository JsonShieldRepository) GetCopyByName(name string) (*domain.Shield, error) {
 	if jsonShieldRepository.shieldList == nil {
 		err := fmt.Errorf("no shields have been found, please run the init command first")
 		return nil, err
 	}
 
-	shieldList := *jsonShieldRepository.shieldList
-	for i, shield := range shieldList {
+	for _, shield := range jsonShieldRepository.shieldList {
 		if strings.EqualFold(shield.Name, name) {
-			return &shieldList[i], nil // Use index to point to actual object, not the temporary copy of the loop
+			return &shield, nil
 		}
 	}
 

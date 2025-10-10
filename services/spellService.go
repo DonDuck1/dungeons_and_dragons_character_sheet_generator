@@ -17,6 +17,29 @@ func NewSpellService(dndApiGateway *infrastructure.DndApiGateway) *SpellService 
 	return &SpellService{dndApiGateway: dndApiGateway}
 }
 
+func CreateSpellFromDndApiSpell(dndApiSpell infrastructure.DndApiSpell) (*domain.Spell, error) {
+	classNameList := []domain.ClassName{}
+	for _, dndApiClass := range dndApiSpell.Classes {
+		className, err := domain.ClassNameFromApiIndex(dndApiClass.Index)
+		if err != nil {
+			return nil, err
+		}
+
+		classNameList = append(classNameList, className)
+	}
+
+	spell := domain.NewSpell(
+		dndApiSpell.Name,
+		dndApiSpell.Level,
+		classNameList,
+		dndApiSpell.School.Name,
+		dndApiSpell.SpellRange,
+		false,
+	)
+
+	return &spell, nil
+}
+
 func (spellService *SpellService) InitialiseSpells() {
 	body, err := spellService.dndApiGateway.Get("/api/2014/spells")
 	if err != nil {
@@ -41,20 +64,16 @@ func (spellService *SpellService) InitialiseSpells() {
 		os.Exit(1)
 	}
 
-	spells := []domain.Spell{}
+	dndApiSpells := []infrastructure.DndApiSpell{}
 	for _, body := range bodies {
 		var dndApiSpell infrastructure.DndApiSpell
 		err = json.Unmarshal(body, &dndApiSpell)
 		if err != nil {
 			log.Fatal(err)
 		}
-		spell, err := dndApiSpell.AsSpell()
-		if err != nil {
-			log.Fatal(err)
-		}
 
-		spells = append(spells, *spell)
+		dndApiSpells = append(dndApiSpells, dndApiSpell)
 	}
 
-	infrastructure.SaveSpellsAsJson("./data/spells.json", &spells)
+	infrastructure.SaveSpellsAsJson("./data/spells.json", &dndApiSpells)
 }

@@ -9,7 +9,7 @@ import (
 
 type JsonClassRepository struct {
 	filepath                  string
-	dndApiClassWithLevelsList *[]DndApiClassWithLevels
+	dndApiClassWithLevelsList []DndApiClassWithLevels
 }
 
 func NewJsonClassRepository(filepath string) (*JsonClassRepository, error) {
@@ -35,7 +35,7 @@ func NewJsonClassRepository(filepath string) (*JsonClassRepository, error) {
 
 	return &JsonClassRepository{
 		filepath:                  filepath,
-		dndApiClassWithLevelsList: &dndApiClassWithLevelsList,
+		dndApiClassWithLevelsList: dndApiClassWithLevelsList,
 	}, nil
 }
 
@@ -53,20 +53,26 @@ func SaveDndApiClassWithLevelsListAsJson(filepath string, dndApiClassWithLevelsL
 	return nil
 }
 
-func (jsonClassRepository JsonClassRepository) GetAll() *[]DndApiClassWithLevels {
-	return jsonClassRepository.dndApiClassWithLevelsList
+func (jsonClassRepository JsonClassRepository) GetCopiesOfAll() *[]DndApiClassWithLevels {
+	deepCopiedDndApiClassWithLevelsList := make([]DndApiClassWithLevels, len(jsonClassRepository.dndApiClassWithLevelsList))
+	for i, dndApiClassWithlevels := range jsonClassRepository.dndApiClassWithLevelsList {
+		deepCopiedDndApiClassWithLevelsList[i] = dndApiClassWithlevels.GetDeepCopy()
+	}
+
+	return &deepCopiedDndApiClassWithLevelsList
 }
 
-func (jsonClassRepository JsonClassRepository) GetByName(name string) (*DndApiClassWithLevels, error) {
+func (jsonClassRepository JsonClassRepository) GetCopyByName(name string) (*DndApiClassWithLevels, error) {
 	if jsonClassRepository.dndApiClassWithLevelsList == nil {
 		err := fmt.Errorf("no class has been found, please run the init command first")
 		return nil, err
 	}
 
-	dndApiClassWithLevelsList := *jsonClassRepository.dndApiClassWithLevelsList
-	for i, dndApiClassWithLevels := range dndApiClassWithLevelsList {
+	for _, dndApiClassWithLevels := range jsonClassRepository.dndApiClassWithLevelsList {
 		if strings.EqualFold(dndApiClassWithLevels.Name, name) {
-			return &dndApiClassWithLevelsList[i], nil // Use index to point to actual object, not the temporary copy of the loop
+			deepCopiedDndApiClassWithLevels := dndApiClassWithLevels.GetDeepCopy()
+
+			return &deepCopiedDndApiClassWithLevels, nil
 		}
 	}
 

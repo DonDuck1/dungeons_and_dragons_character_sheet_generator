@@ -9,7 +9,7 @@ import (
 
 type JsonRaceRepository struct {
 	filepath                   string
-	dndApiRaceWithSubRacesList *[]DndApiRaceWithSubRaces
+	dndApiRaceWithSubRacesList []DndApiRaceWithSubRaces
 }
 
 func NewJsonRaceRepository(filepath string) (*JsonRaceRepository, error) {
@@ -35,7 +35,7 @@ func NewJsonRaceRepository(filepath string) (*JsonRaceRepository, error) {
 
 	return &JsonRaceRepository{
 		filepath:                   filepath,
-		dndApiRaceWithSubRacesList: &dndApiRaceWithSubRacesList,
+		dndApiRaceWithSubRacesList: dndApiRaceWithSubRacesList,
 	}, nil
 }
 
@@ -53,24 +53,30 @@ func SaveRaceListAsJson(filepath string, dndApiRaceWithSubRacesList *[]DndApiRac
 	return nil
 }
 
-func (jsonRaceRepository JsonRaceRepository) GetAll() *[]DndApiRaceWithSubRaces {
-	return jsonRaceRepository.dndApiRaceWithSubRacesList
+func (jsonRaceRepository JsonRaceRepository) GetCopiesOfAll() *[]DndApiRaceWithSubRaces {
+	deepCopiedDndApiRaceWithSubRacesList := make([]DndApiRaceWithSubRaces, len(jsonRaceRepository.dndApiRaceWithSubRacesList))
+	for i, dndApiRaceWithSubRaces := range jsonRaceRepository.dndApiRaceWithSubRacesList {
+		deepCopiedDndApiRaceWithSubRacesList[i] = dndApiRaceWithSubRaces.GetDeepCopy()
+	}
+
+	return &deepCopiedDndApiRaceWithSubRacesList
 }
 
-func (jsonRaceRepository JsonRaceRepository) GetByName(name string) (*DndApiRaceWithSubRaces, error) {
+func (jsonRaceRepository JsonRaceRepository) GetCopyByName(name string) (*DndApiRaceWithSubRaces, error) {
 	if jsonRaceRepository.dndApiRaceWithSubRacesList == nil {
 		err := fmt.Errorf("no races have been found, please run the init command first")
 		return nil, err
 	}
 
-	dndApiRaceWithSubRacesList := *jsonRaceRepository.dndApiRaceWithSubRacesList
-	for i, race := range dndApiRaceWithSubRacesList {
+	for _, race := range jsonRaceRepository.dndApiRaceWithSubRacesList {
 		if strings.EqualFold(race.Name, name) {
-			return &dndApiRaceWithSubRacesList[i], nil // Use index to point to actual object, not the temporary copy of the loop
+			deepCopiedRace := race.GetDeepCopy()
+			return &deepCopiedRace, nil
 		}
-		for _, subRace := range dndApiRaceWithSubRacesList[i].SubRaceList {
+		for _, subRace := range race.SubRaceList {
 			if strings.EqualFold(subRace.Name, name) {
-				return &dndApiRaceWithSubRacesList[i], nil // Use index to point to actual object, not the temporary copy of the loop
+				deepCopiedRace := race.GetDeepCopy()
+				return &deepCopiedRace, nil
 			}
 		}
 	}

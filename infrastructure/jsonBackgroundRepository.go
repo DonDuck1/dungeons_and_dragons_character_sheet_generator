@@ -11,7 +11,7 @@ import (
 
 type JsonBackgroundRepository struct {
 	filepath       string
-	backgroundList *[]domain.Background
+	backgroundList []domain.Background
 }
 
 func NewJsonBackgroundRepository(filepath string) (*JsonBackgroundRepository, error) {
@@ -37,7 +37,7 @@ func NewJsonBackgroundRepository(filepath string) (*JsonBackgroundRepository, er
 
 	return &JsonBackgroundRepository{
 		filepath:       filepath,
-		backgroundList: &backgroundList,
+		backgroundList: backgroundList,
 	}, nil
 }
 
@@ -55,20 +55,20 @@ func SaveBackgroundListAsJson(filepath string, backgroundList *[]domain.Backgrou
 	return nil
 }
 
-func (jsonBackgroundRepository JsonBackgroundRepository) GetAll() *[]domain.Background {
-	return jsonBackgroundRepository.backgroundList
+func (jsonBackgroundRepository JsonBackgroundRepository) GetCopiesOfAll() *[]domain.Background {
+	copiedBackgroundList := jsonBackgroundRepository.backgroundList
+	return &copiedBackgroundList
 }
 
-func (jsonBackgroundRepository JsonBackgroundRepository) GetByName(name string) (*domain.Background, error) {
+func (jsonBackgroundRepository JsonBackgroundRepository) GetCopyByName(name string) (*domain.Background, error) {
 	if jsonBackgroundRepository.backgroundList == nil {
 		err := fmt.Errorf("no backgrounds have been found, please run the init command first")
 		return nil, err
 	}
 
-	backgroundList := *jsonBackgroundRepository.backgroundList
-	for i, background := range backgroundList {
+	for _, background := range jsonBackgroundRepository.backgroundList {
 		if strings.EqualFold(background.Name, name) {
-			return &backgroundList[i], nil // Use index to point to actual object, not the temporary copy of the loop
+			return &background, nil
 		}
 	}
 
@@ -76,19 +76,19 @@ func (jsonBackgroundRepository JsonBackgroundRepository) GetByName(name string) 
 	return nil, err
 }
 
-func (jsonBackgroundRepository JsonBackgroundRepository) GetRandom() (*domain.Background, error) {
+func (jsonBackgroundRepository JsonBackgroundRepository) GetRandomCopy() (*domain.Background, error) {
 	if jsonBackgroundRepository.backgroundList == nil {
 		err := fmt.Errorf("no backgrounds have been found, please run the init command first")
 		return nil, err
-	} else if len(*jsonBackgroundRepository.backgroundList) == 0 {
+	} else if len(jsonBackgroundRepository.backgroundList) == 0 {
 		err := fmt.Errorf("no backgrounds have been found, please re-run the init command")
 		return nil, err
 	}
 
-	amountOfBackgrounds := len(*jsonBackgroundRepository.backgroundList)
+	amountOfBackgrounds := len(jsonBackgroundRepository.backgroundList)
 
 	shuffledList := make([]domain.Background, amountOfBackgrounds)
-	copy(shuffledList, *jsonBackgroundRepository.backgroundList)
+	copy(shuffledList, jsonBackgroundRepository.backgroundList)
 
 	rand.Shuffle(amountOfBackgrounds, func(i, j int) {
 		shuffledList[i], shuffledList[j] = shuffledList[j], shuffledList[i]

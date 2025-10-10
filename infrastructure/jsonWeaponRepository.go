@@ -10,7 +10,7 @@ import (
 
 type JsonWeaponRepository struct {
 	filepath   string
-	weaponList *[]domain.Weapon
+	weaponList []domain.Weapon
 }
 
 func NewJsonWeaponRepository(filepath string) (*JsonWeaponRepository, error) {
@@ -36,7 +36,7 @@ func NewJsonWeaponRepository(filepath string) (*JsonWeaponRepository, error) {
 
 	return &JsonWeaponRepository{
 		filepath:   filepath,
-		weaponList: &weaponList,
+		weaponList: weaponList,
 	}, nil
 }
 
@@ -54,20 +54,20 @@ func SaveWeaponListAsJson(filepath string, weaponList *[]domain.Weapon) error {
 	return nil
 }
 
-func (jsonWeaponRepository JsonWeaponRepository) GetAll() *[]domain.Weapon {
-	return jsonWeaponRepository.weaponList
+func (jsonWeaponRepository JsonWeaponRepository) GetCopiesOfAll() *[]domain.Weapon {
+	copiedWeaponList := jsonWeaponRepository.weaponList
+	return &copiedWeaponList
 }
 
-func (jsonWeaponRepository JsonWeaponRepository) GetByName(name string) (*domain.Weapon, error) {
+func (jsonWeaponRepository JsonWeaponRepository) GetCopyByName(name string) (*domain.Weapon, error) {
 	if jsonWeaponRepository.weaponList == nil {
 		err := fmt.Errorf("no weapons have been found, please run the init command first")
 		return nil, err
 	}
 
-	weaponList := *jsonWeaponRepository.weaponList
-	for i, weapon := range weaponList {
+	for _, weapon := range jsonWeaponRepository.weaponList {
 		if strings.EqualFold(weapon.Name, name) {
-			return &weaponList[i], nil // Use index to point to actual object, not the temporary copy of the loop
+			return &weapon, nil
 		}
 	}
 

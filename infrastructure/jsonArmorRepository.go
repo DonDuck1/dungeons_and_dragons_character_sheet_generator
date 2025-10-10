@@ -10,7 +10,7 @@ import (
 
 type JsonArmorRepository struct {
 	filepath  string
-	armorList *[]domain.Armor
+	armorList []domain.Armor
 }
 
 func NewJsonArmorRepository(filepath string) (*JsonArmorRepository, error) {
@@ -36,7 +36,7 @@ func NewJsonArmorRepository(filepath string) (*JsonArmorRepository, error) {
 
 	return &JsonArmorRepository{
 		filepath:  filepath,
-		armorList: &armorList,
+		armorList: armorList,
 	}, nil
 }
 
@@ -54,20 +54,27 @@ func SaveArmorListAsJson(filepath string, armorList *[]domain.Armor) error {
 	return nil
 }
 
-func (jsonArmorRepository JsonArmorRepository) GetAll() *[]domain.Armor {
-	return jsonArmorRepository.armorList
+func (jsonArmorRepository JsonArmorRepository) GetCopiesOfAll() *[]domain.Armor {
+	deepCopiedArmorList := make([]domain.Armor, len(jsonArmorRepository.armorList))
+
+	for i, armor := range jsonArmorRepository.armorList {
+		deepCopiedArmorList[i] = armor.GetDeepCopy()
+	}
+
+	return &deepCopiedArmorList
 }
 
-func (jsonArmorRepository JsonArmorRepository) GetByName(name string) (*domain.Armor, error) {
+func (jsonArmorRepository JsonArmorRepository) GetCopyByName(name string) (*domain.Armor, error) {
 	if jsonArmorRepository.armorList == nil {
 		err := fmt.Errorf("no armor has been found, please run the init command first")
 		return nil, err
 	}
 
-	armorList := *jsonArmorRepository.armorList
-	for i, armor := range armorList {
+	for _, armor := range jsonArmorRepository.armorList {
 		if strings.EqualFold(armor.Name, name) {
-			return &armorList[i], nil // Use index to point to actual object, not the temporary copy of the loop
+			deepCopiedArmor := armor.GetDeepCopy()
+
+			return &deepCopiedArmor, nil
 		}
 	}
 

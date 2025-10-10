@@ -26,3 +26,14 @@ func (armor Armor) GetArmorClassModifierOfArmor(dexterityModifier int) int {
 
 	return armor.BaseArmorClass + armorMaxDexterityModifier
 }
+
+func (armor Armor) GetDeepCopy() Armor {
+	var deepCopiedArmorDexterityModifier *ArmorDexterityModifier
+
+	if armor.ArmorDexterityModifier != nil {
+		deepCopiedArmorDexterityModifier = armor.ArmorDexterityModifier.GetDeepCopy()
+	}
+
+	return NewArmor(armor.Name, armor.BaseArmorClass, deepCopiedArmorDexterityModifier)
+
+}

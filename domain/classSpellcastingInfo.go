@@ -23,3 +23,13 @@ func NewClassSpellcastingInfo(maxKnownCantrips int, maxKnownSpells *int, maxPrep
 		SpellAttackBonus:    spellAttackBonus,
 	}
 }
+
+func (classSpellcastingInfo ClassSpellcastingInfo) GetHighestSpellSlotLevel() int {
+	for i, spellSlotAmount := range classSpellcastingInfo.SpellSlotAmount {
+		if spellSlotAmount == 0 {
+			return i
+		}
+	}
+
+	return 9
+}

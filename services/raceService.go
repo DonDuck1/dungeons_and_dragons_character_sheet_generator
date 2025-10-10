@@ -1,11 +1,13 @@
 package services
 
 import (
+	"dungeons_and_dragons_character_sheet_generator/domain"
 	"dungeons_and_dragons_character_sheet_generator/infrastructure"
 	"encoding/json"
 	"fmt"
 	"log"
 	"os"
+	"strings"
 )
 
 type RaceService struct {
@@ -14,6 +16,63 @@ type RaceService struct {
 
 func NewRaceService(dndApiGateway *infrastructure.DndApiGateway) *RaceService {
 	return &RaceService{dndApiGateway: dndApiGateway}
+}
+
+func CreateRaceFromdndApiRaceWithSubRaces(chosenRaceName string, dndApiRaceWithSubRaces infrastructure.DndApiRaceWithSubRaces) (*domain.Race, error) {
+	raceAbilityScoreImprovements := []domain.AbilityScoreImprovement{}
+	for _, dndApiAbilityBonus := range dndApiRaceWithSubRaces.AbilityBonusList {
+		abilityScoreImprovement, err := dndApiAbilityBonus.AsAbilityScoreImprovement()
+		if err != nil {
+			return nil, err
+		}
+		raceAbilityScoreImprovements = append(raceAbilityScoreImprovements, *abilityScoreImprovement)
+	}
+
+	var chosenDndApiSubRace *infrastructure.DndApiSubRace
+	for _, subRace := range dndApiRaceWithSubRaces.SubRaceList {
+		if strings.EqualFold(subRace.Name, chosenRaceName) {
+			chosenDndApiSubRace = &subRace
+		}
+	}
+
+	if dndApiRaceWithSubRaces.AbilityBonusOptions != nil {
+		optionalRaceAbilityScoreImprovements := []domain.AbilityScoreImprovement{}
+		for _, dndApiOptionalAbilityBonus := range dndApiRaceWithSubRaces.AbilityBonusOptions.From.Options {
+			optionalAbilityScoreImprovement, err := dndApiOptionalAbilityBonus.AsAbilityScoreImprovement()
+			if err != nil {
+				return nil, err
+			}
+
+			optionalRaceAbilityScoreImprovements = append(optionalRaceAbilityScoreImprovements, *optionalAbilityScoreImprovement)
+		}
+		optionalAbilityScoreImprovementList := domain.NewOptionalAbilityScoreImprovementList(optionalRaceAbilityScoreImprovements, dndApiRaceWithSubRaces.AbilityBonusOptions.Choose)
+
+		chosenOptionalRaceAbilityScoreImprovements := optionalAbilityScoreImprovementList.ChooseRandomAbilityScoreImprovements()
+		raceAbilityScoreImprovements = append(raceAbilityScoreImprovements, chosenOptionalRaceAbilityScoreImprovements...)
+	}
+
+	if chosenDndApiSubRace == nil {
+		race := domain.NewRace(
+			dndApiRaceWithSubRaces.Name,
+			raceAbilityScoreImprovements,
+			nil,
+		)
+
+		return &race, nil
+	}
+
+	chosenSubRace, err := chosenDndApiSubRace.AsSubRace()
+	if err != nil {
+		return nil, err
+	}
+
+	race := domain.NewRace(
+		dndApiRaceWithSubRaces.Name,
+		raceAbilityScoreImprovements,
+		chosenSubRace,
+	)
+
+	return &race, nil
 }
 
 func (raceService *RaceService) InitialiseRaces() {

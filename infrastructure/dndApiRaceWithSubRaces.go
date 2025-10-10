@@ -1,10 +1,5 @@
 package infrastructure
 
-import (
-	"dungeons_and_dragons_character_sheet_generator/domain"
-	"strings"
-)
-
 type DndApiRaceWithSubRaces struct {
 	Index               string                        `json:"index"`
 	Name                string                        `json:"name"`
@@ -32,59 +27,28 @@ func NewDndApiRaceWithSubRaces(
 	}
 }
 
-func (dndApiRaceWithSubRaces DndApiRaceWithSubRaces) AsRace(chosenRaceName string) (*domain.Race, error) {
-	raceAbilityScoreImprovements := []domain.AbilityScoreImprovement{}
-	for _, dndApiAbilityBonus := range dndApiRaceWithSubRaces.AbilityBonusList {
-		abilityScoreImprovement, err := dndApiAbilityBonus.AsAbilityScoreImprovement()
-		if err != nil {
-			return nil, err
-		}
-		raceAbilityScoreImprovements = append(raceAbilityScoreImprovements, *abilityScoreImprovement)
-	}
-
-	var chosenDndApiSubRace *DndApiSubRace
-	for i, subRace := range dndApiRaceWithSubRaces.SubRaceList {
-		if strings.EqualFold(subRace.Name, chosenRaceName) {
-			chosenDndApiSubRace = &dndApiRaceWithSubRaces.SubRaceList[i] // Use index to point to actual object, not the temporary copy of the loop
-		}
-	}
-
+func (dndApiRaceWithSubRaces DndApiRaceWithSubRaces) GetDeepCopy() DndApiRaceWithSubRaces {
+	var deepCopiedAbilityBonusOptions *DndApiRaceAbilityScoreChoice
 	if dndApiRaceWithSubRaces.AbilityBonusOptions != nil {
-		optionalRaceAbilityScoreImprovements := []domain.AbilityScoreImprovement{}
-		for _, dndApiOptionalAbilityBonus := range dndApiRaceWithSubRaces.AbilityBonusOptions.From.Options {
-			optionalAbilityScoreImprovement, err := dndApiOptionalAbilityBonus.AsAbilityScoreImprovement()
-			if err != nil {
-				return nil, err
-			}
+		value := dndApiRaceWithSubRaces.AbilityBonusOptions.GetDeepCopy()
+		deepCopiedAbilityBonusOptions = &value
+	}
 
-			optionalRaceAbilityScoreImprovements = append(optionalRaceAbilityScoreImprovements, *optionalAbilityScoreImprovement)
+	var deepCopiedSubRaceReferences *[]DndApiReference
+	if dndApiRaceWithSubRaces.SubRaceReferences != nil {
+		value := make([]DndApiReference, len(*dndApiRaceWithSubRaces.SubRaceReferences))
+		for i, subRaceReference := range *dndApiRaceWithSubRaces.SubRaceReferences {
+			value[i] = subRaceReference.GetDeepCopy()
 		}
-		optionalAbilityScoreImprovementList := domain.NewOptionalAbilityScoreImprovementList(optionalRaceAbilityScoreImprovements, dndApiRaceWithSubRaces.AbilityBonusOptions.Choose)
-
-		chosenOptionalRaceAbilityScoreImprovements := optionalAbilityScoreImprovementList.ChooseRandomAbilityScoreImprovements()
-		raceAbilityScoreImprovements = append(raceAbilityScoreImprovements, chosenOptionalRaceAbilityScoreImprovements...)
+		deepCopiedSubRaceReferences = &value
 	}
 
-	if chosenDndApiSubRace == nil {
-		race := domain.NewRace(
-			dndApiRaceWithSubRaces.Name,
-			raceAbilityScoreImprovements,
-			nil,
-		)
-
-		return &race, nil
-	}
-
-	chosenSubRace, err := chosenDndApiSubRace.AsSubRace()
-	if err != nil {
-		return nil, err
-	}
-
-	race := domain.NewRace(
+	return NewDndApiRaceWithSubRaces(
+		dndApiRaceWithSubRaces.Index,
 		dndApiRaceWithSubRaces.Name,
-		raceAbilityScoreImprovements,
-		chosenSubRace,
+		dndApiRaceWithSubRaces.AbilityBonusList,
+		deepCopiedAbilityBonusOptions,
+		deepCopiedSubRaceReferences,
+		dndApiRaceWithSubRaces.SubRaceList,
 	)
-
-	return &race, nil
 }

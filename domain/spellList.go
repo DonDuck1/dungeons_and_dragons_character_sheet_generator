@@ -23,3 +23,31 @@ func (spellList SpellList) GetPreparedSpells() []Spell {
 
 	return preparedSpells
 }
+
+func (spellList *SpellList) GetAmountOfKnownCantrips() int {
+	amountOfKnownCantrips := 0
+
+	for _, spell := range spellList.Spells {
+		if spell.Level == 0 {
+			amountOfKnownCantrips += 1
+		}
+	}
+
+	return amountOfKnownCantrips
+}
+
+func (spellList *SpellList) GetAmountOfKnownSpells() int {
+	amountOfKnownSpells := 0
+
+	for _, spell := range spellList.Spells {
+		if spell.Level != 0 {
+			amountOfKnownSpells += 1
+		}
+	}
+
+	return amountOfKnownSpells
+}
+
+func (spellList *SpellList) AddSpell(spell Spell) {
+	spellList.Spells = append(spellList.Spells, spell)
+}

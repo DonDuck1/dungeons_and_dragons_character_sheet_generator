@@ -1,7 +1,6 @@
 package infrastructure
 
 import (
-	"dungeons_and_dragons_character_sheet_generator/domain"
 	"encoding/json"
 	"fmt"
 	"os"
@@ -9,8 +8,8 @@ import (
 )
 
 type JsonSpellRepository struct {
-	filepath string
-	spells   *[]domain.Spell
+	filepath     string
+	dndApiSpells []DndApiSpell
 }
 
 func NewJsonSpellRepository(filepath string) (*JsonSpellRepository, error) {
@@ -29,18 +28,18 @@ func NewJsonSpellRepository(filepath string) (*JsonSpellRepository, error) {
 		return nil, err
 	}
 
-	var spells []domain.Spell
-	if err := json.Unmarshal(fileBytes, &spells); err != nil {
+	var dndApiSpells []DndApiSpell
+	if err := json.Unmarshal(fileBytes, &dndApiSpells); err != nil {
 		return nil, err
 	}
 
 	return &JsonSpellRepository{
-		filepath: filepath,
-		spells:   &spells,
+		filepath:     filepath,
+		dndApiSpells: dndApiSpells,
 	}, nil
 }
 
-func SaveSpellsAsJson(filepath string, spells *[]domain.Spell) error {
+func SaveSpellsAsJson(filepath string, spells *[]DndApiSpell) error {
 	jsonBytes, err := json.MarshalIndent(spells, "", "  ")
 	if err != nil {
 		return err
@@ -54,20 +53,20 @@ func SaveSpellsAsJson(filepath string, spells *[]domain.Spell) error {
 	return nil
 }
 
-func (jsonSpellRepository JsonSpellRepository) GetAll() *[]domain.Spell {
-	return jsonSpellRepository.spells
+func (jsonSpellRepository JsonSpellRepository) GetCopiesOfAll() *[]DndApiSpell {
+	copiedDndApiSpells := jsonSpellRepository.dndApiSpells
+	return &copiedDndApiSpells
 }
 
-func (jsonSpellRepository JsonSpellRepository) GetByName(name string) (*domain.Spell, error) {
-	if jsonSpellRepository.spells == nil {
+func (jsonSpellRepository JsonSpellRepository) GetCopyByName(name string) (*DndApiSpell, error) {
+	if jsonSpellRepository.dndApiSpells == nil {
 		err := fmt.Errorf("no spells have been found, please run the init command first")
 		return nil, err
 	}
 
-	spells := *jsonSpellRepository.spells
-	for i, spell := range spells {
-		if strings.EqualFold(spell.Name, name) {
-			return &spells[i], nil // Use index to point to actual object, not the temporary copy of the loop
+	for _, dndApiSpell := range jsonSpellRepository.dndApiSpells {
+		if strings.EqualFold(dndApiSpell.Name, name) {
+			return &dndApiSpell, nil
 		}
 	}
 

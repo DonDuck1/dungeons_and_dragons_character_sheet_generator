@@ -17,7 +17,17 @@ func NewClassService(dndApiGateway *infrastructure.DndApiGateway) *ClassService 
 	return &ClassService{dndApiGateway: dndApiGateway}
 }
 
-func CreateClass(name domain.ClassName, level int, proficiencyBonus int, abilityScoreList domain.AbilityScoreList, dndApiClassWithLevels *infrastructure.DndApiClassWithLevels) domain.Class {
+func CreateClassFromDndApiClassWithLevels(dndApiClassWithLevels *infrastructure.DndApiClassWithLevels, level int, proficiencyBonus int, abilityScoreList domain.AbilityScoreList) domain.Class {
+	if dndApiClassWithLevels == nil {
+		err := fmt.Errorf("dndApiClassWithLevels provided is a nil value")
+		log.Fatal(err)
+	}
+
+	mainClassTypedName, err := domain.ClassNameFromUntypedPotentialClassName(dndApiClassWithLevels.Name)
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	dndApiClassLevel, err := dndApiClassWithLevels.GetClassLevelByLevel(level)
 	if err != nil {
 		log.Fatal(err)
@@ -81,7 +91,7 @@ func CreateClass(name domain.ClassName, level int, proficiencyBonus int, ability
 
 		spellAttackBonus := proficiencyBonus + spellcastingAbilityScore.Modifier
 
-		switch name {
+		switch mainClassTypedName {
 		case domain.BARD:
 			classSpellcastingInfoValue := domain.NewClassSpellcastingInfo(
 				maxKnownCantrips,
@@ -212,7 +222,7 @@ func CreateClass(name domain.ClassName, level int, proficiencyBonus int, ability
 	}
 
 	return domain.NewClass(
-		name,
+		mainClassTypedName,
 		level,
 		skillProficiencies,
 		classSpellcastingInfo,

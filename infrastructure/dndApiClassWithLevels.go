@@ -53,3 +53,25 @@ func (dndApiClassWithLevels *DndApiClassWithLevels) GetClassLevelByLevel(level i
 	err := fmt.Errorf("could not find class level struct for level %d", level)
 	return nil, err
 }
+
+func (dndApiClassWithLevels DndApiClassWithLevels) GetDeepCopy() DndApiClassWithLevels {
+	deepCopiedClassLevelList := make([]DndApiClassLevel, len(dndApiClassWithLevels.ClassLevelList))
+	for i, classLevel := range dndApiClassWithLevels.ClassLevelList {
+		deepCopiedClassLevelList[i] = classLevel.GetDeepCopy()
+	}
+
+	var deepCopiedSpellcasting *DndApiClassSpellcasting
+	if dndApiClassWithLevels.Spellcasting != nil {
+		value := dndApiClassWithLevels.Spellcasting.GetDeepCopy()
+		deepCopiedSpellcasting = &value
+	}
+
+	return NewDndApiClassWithLevels(
+		dndApiClassWithLevels.Index,
+		dndApiClassWithLevels.Name,
+		dndApiClassWithLevels.ProficiencyChoices,
+		dndApiClassWithLevels.ClassLevelsUrl,
+		deepCopiedClassLevelList,
+		deepCopiedSpellcasting,
+	)
+}
