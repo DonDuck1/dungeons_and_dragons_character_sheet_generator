@@ -11,23 +11,35 @@ import (
 )
 
 type CharacterService struct {
+	jsonArmorRepository      *infrastructure.JsonArmorRepository
 	jsonBackgroundRepository *infrastructure.JsonBackgroundRepository
 	jsonCharacterRepository  *infrastructure.JsonCharacterRepository
 	jsonClassRepository      *infrastructure.JsonClassRepository
 	jsonRaceRepository       *infrastructure.JsonRaceRepository
+	jsonShieldRepository     *infrastructure.JsonShieldRepository
+	jsonSpellRepository      *infrastructure.JsonSpellRepository
+	jsonWeaponRepository     *infrastructure.JsonWeaponRepository
 }
 
 func NewCharacterService(
+	jsonArmorRepository *infrastructure.JsonArmorRepository,
 	jsonBackgroundRepository *infrastructure.JsonBackgroundRepository,
 	jsonCharacterRepository *infrastructure.JsonCharacterRepository,
 	jsonClassRepository *infrastructure.JsonClassRepository,
 	jsonRaceRepository *infrastructure.JsonRaceRepository,
+	jsonShieldRepository *infrastructure.JsonShieldRepository,
+	jsonSpellRepository *infrastructure.JsonSpellRepository,
+	jsonWeaponRepository *infrastructure.JsonWeaponRepository,
 ) *CharacterService {
 	return &CharacterService{
+		jsonArmorRepository:      jsonArmorRepository,
 		jsonBackgroundRepository: jsonBackgroundRepository,
 		jsonCharacterRepository:  jsonCharacterRepository,
 		jsonClassRepository:      jsonClassRepository,
 		jsonRaceRepository:       jsonRaceRepository,
+		jsonShieldRepository:     jsonShieldRepository,
+		jsonSpellRepository:      jsonSpellRepository,
+		jsonWeaponRepository:     jsonWeaponRepository,
 	}
 }
 
@@ -92,7 +104,7 @@ func (characterService CharacterService) CreateNewCharacter(
 	skillProficiencies = append(skillProficiencies, background.SkillProficiencies...)
 	skillProficiencyList := domain.NewSkillProficiencyList(&abilityScoreList, skillProficiencies, proficiencyBonus)
 
-	inventory := domain.NewEmptyInventory(race.NumberOfHandSlots)
+	inventory := domain.NewEmptyInventory()
 
 	armorClass := inventory.GetArmorClass(abilityScoreList.Dexterity.Modifier)
 
@@ -216,6 +228,26 @@ func (characterService CharacterService) ViewCharacter(characterName string) {
 	fmt.Printf("  CHA: %d (%+d)\n", character.AbilityScoreList.Charisma.Final_value, character.AbilityScoreList.Charisma.Modifier)
 	fmt.Printf("Proficiency bonus: %+d\n", character.ProficiencyBonus)
 	fmt.Printf("Skill proficiencies: %s\n", strings.Join(proficientSkillProficiencyNames, ", "))
+	if character.Inventory.WeaponSlots.MainHand != nil {
+		if character.Inventory.WeaponSlots.MainHand.TwoHanded {
+			fmt.Printf("Main hand: %+s (two-handed)\n", character.Inventory.WeaponSlots.MainHand.Name)
+		} else {
+			fmt.Printf("Main hand: %+s\n", character.Inventory.WeaponSlots.MainHand.Name)
+		}
+	}
+	if character.Inventory.WeaponSlots.OffHand != nil {
+		if character.Inventory.WeaponSlots.OffHand.TwoHanded {
+			fmt.Printf("Off hand: %+s (two-handed)\n", character.Inventory.WeaponSlots.OffHand.Name)
+		} else {
+			fmt.Printf("Off hand: %+s\n", character.Inventory.WeaponSlots.OffHand.Name)
+		}
+	}
+	if character.Inventory.Armor != nil {
+		fmt.Printf("Armor: %+s\n", character.Inventory.Armor.Name)
+	}
+	if character.Inventory.Shield != nil {
+		fmt.Printf("Shield: %+s\n", character.Inventory.Shield.Name)
+	}
 
 	os.Exit(0)
 }
@@ -241,5 +273,162 @@ func (characterService CharacterService) ListCharacters() {
 		}
 	}
 
+	os.Exit(0)
+}
+
+func (characterService CharacterService) EquipWeaponToCharacter(characterName string, weaponName string, potentialInventoryWeaponSlotName string) {
+	if characterService.jsonCharacterRepository == nil || characterService.jsonWeaponRepository == nil {
+		err := fmt.Errorf("the character service has been created uncorrectly, as a required repository is missing")
+		log.Fatal(err)
+	}
+
+	character, err := characterService.jsonCharacterRepository.GetByName(characterName)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	weapon, err := characterService.jsonWeaponRepository.GetByName(weaponName)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	inventoryWeaponSlotName, err := domain.InventoryWeaponSlotNameFromUntypedPotentialInventoryWeaponSlotName(potentialInventoryWeaponSlotName)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	character.Inventory.AddWeapon(weapon, inventoryWeaponSlotName)
+
+	err = characterService.jsonCharacterRepository.SaveCharacterList()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("Equipped weapon %s to %s\n", weaponName, inventoryWeaponSlotName)
+	os.Exit(0)
+}
+
+func (characterService CharacterService) EquipArmorToCharacter(characterName string, armorName string) {
+	if characterService.jsonCharacterRepository == nil || characterService.jsonArmorRepository == nil {
+		err := fmt.Errorf("the character service has been created uncorrectly, as a required repository is missing")
+		log.Fatal(err)
+	}
+
+	character, err := characterService.jsonCharacterRepository.GetByName(characterName)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	armor, err := characterService.jsonArmorRepository.GetByName(armorName)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	character.Inventory.AddArmor(armor)
+
+	err = characterService.jsonCharacterRepository.SaveCharacterList()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("Equipped armor %s\n", armorName)
+	os.Exit(0)
+}
+
+func (characterService CharacterService) EquipShieldToCharacter(characterName string, shieldName string) {
+	if characterService.jsonCharacterRepository == nil || characterService.jsonShieldRepository == nil {
+		err := fmt.Errorf("the character service has been created uncorrectly, as a required repository is missing")
+		log.Fatal(err)
+	}
+
+	character, err := characterService.jsonCharacterRepository.GetByName(characterName)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	shield, err := characterService.jsonShieldRepository.GetByName(shieldName)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	character.Inventory.AddShield(shield)
+
+	err = characterService.jsonCharacterRepository.SaveCharacterList()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("Equipped shield %s\n", shieldName)
+	os.Exit(0)
+}
+
+func (characterService CharacterService) UnequipWeaponFromCharacter(characterName string, potentialInventoryWeaponSlotName string) {
+	if characterService.jsonCharacterRepository == nil || characterService.jsonWeaponRepository == nil {
+		err := fmt.Errorf("the character service has been created uncorrectly, as a required repository is missing")
+		log.Fatal(err)
+	}
+
+	character, err := characterService.jsonCharacterRepository.GetByName(characterName)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	inventoryWeaponSlotName, err := domain.InventoryWeaponSlotNameFromUntypedPotentialInventoryWeaponSlotName(potentialInventoryWeaponSlotName)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	character.Inventory.RemoveWeapon(inventoryWeaponSlotName)
+
+	err = characterService.jsonCharacterRepository.SaveCharacterList()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("Unequipped weapon from %s of %s\n", inventoryWeaponSlotName, character.Name)
+	os.Exit(0)
+}
+
+func (characterService CharacterService) UnequipArmorFromCharacter(characterName string) {
+	if characterService.jsonCharacterRepository == nil || characterService.jsonArmorRepository == nil {
+		err := fmt.Errorf("the character service has been created uncorrectly, as a required repository is missing")
+		log.Fatal(err)
+	}
+
+	character, err := characterService.jsonCharacterRepository.GetByName(characterName)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	character.Inventory.RemoveArmor()
+
+	err = characterService.jsonCharacterRepository.SaveCharacterList()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("Unequipped armor from %s\n", character.Name)
+	os.Exit(0)
+}
+
+func (characterService CharacterService) UnequipShieldFromCharacter(characterName string) {
+	if characterService.jsonCharacterRepository == nil || characterService.jsonShieldRepository == nil {
+		err := fmt.Errorf("the character service has been created uncorrectly, as a required repository is missing")
+		log.Fatal(err)
+	}
+
+	character, err := characterService.jsonCharacterRepository.GetByName(characterName)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	character.Inventory.RemoveShield()
+
+	err = characterService.jsonCharacterRepository.SaveCharacterList()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("Unequipped shield from %s\n", character.Name)
 	os.Exit(0)
 }

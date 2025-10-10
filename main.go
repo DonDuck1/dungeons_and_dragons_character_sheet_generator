@@ -20,6 +20,9 @@ func usage() {
   go run . equip -name "CHARACTER_NAME" -weapon "WEAPON_NAME" -slot SLOT
   go run . equip -name "CHARACTER_NAME" -armor "ARMOR_NAME"
   go run . equip -name "CHARACTER_NAME" -shield "SHIELD_NAME"
+  go run . unequip-weapon -name "CHARACTER_NAME" -slot SLOT
+  go run . unequip-armor -name "CHARACTER_NAME"
+  go run . unequip-shield -name "CHARACTER_NAME"
   go run . learn-spell -name "CHARACTER_NAME" -spell "SPELL_NAME"
   go run . forget-spell -name "CHARACTER_NAME" -spell "SPELL_NAME"
   go run . prepare-spell -name "CHARACTER_NAME" -spell "SPELL_NAME"
@@ -63,6 +66,11 @@ func main() {
 		os.Exit(0)
 	}
 
+	jsonArmorRepository, err := infrastructure.NewJsonArmorRepository("./data/armor.json")
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	jsonBackgroundRepository, err := infrastructure.NewJsonBackgroundRepository("./data/backgrounds.json")
 	if err != nil {
 		log.Fatal(err)
@@ -83,11 +91,30 @@ func main() {
 		log.Fatal(err)
 	}
 
+	jsonShieldRepository, err := infrastructure.NewJsonShieldRepository("./data/shields.json")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	jsonSpellRepository, err := infrastructure.NewJsonSpellRepository("./data/spells.json")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	jsonWeaponRepository, err := infrastructure.NewJsonWeaponRepository("./data/weapons.json")
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	characterService := services.NewCharacterService(
+		jsonArmorRepository,
 		jsonBackgroundRepository,
 		jsonCharacterRepository,
 		jsonClassRepository,
 		jsonRaceRepository,
+		jsonShieldRepository,
+		jsonSpellRepository,
+		jsonWeaponRepository,
 	)
 
 	switch cmd {
@@ -289,7 +316,119 @@ func main() {
 
 		characterService.DeleteCharacter(*characterName)
 	case "equip":
+		createCmd := flag.NewFlagSet("equip", flag.ExitOnError)
 
+		characterName := createCmd.String("name", "", "character name (required)")
+		weaponName := createCmd.String("weapon", "", "weapon name")
+		inventoryWeaponSlotName := createCmd.String("slot", "", "inventory weapon slot name")
+		armorName := createCmd.String("armor", "", "armor name")
+		shieldName := createCmd.String("shield", "", "shield name")
+
+		err = createCmd.Parse(os.Args[2:])
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		if *characterName == "" {
+			fmt.Println("character name is required")
+			fmt.Println("")
+			createCmd.Usage()
+			os.Exit(2)
+		}
+
+		if *weaponName != "" || *inventoryWeaponSlotName != "" || *armorName != "" || *shieldName != "" {
+			if *weaponName != "" || *inventoryWeaponSlotName != "" {
+				if *weaponName == "" {
+					fmt.Println("weapon name is required")
+					fmt.Println("")
+					createCmd.Usage()
+					os.Exit(2)
+				}
+				if *inventoryWeaponSlotName == "" {
+					fmt.Println("inventory weapon slot name is required")
+					fmt.Println("")
+					createCmd.Usage()
+					os.Exit(2)
+				}
+
+				characterService.EquipWeaponToCharacter(*characterName, *weaponName, *inventoryWeaponSlotName)
+			}
+			if *armorName != "" {
+				characterService.EquipArmorToCharacter(*characterName, *armorName)
+			}
+			if *shieldName != "" {
+				characterService.EquipShieldToCharacter(*characterName, *shieldName)
+			}
+
+			characterService.ViewCharacter(*characterName)
+		} else {
+			fmt.Println("additional parameters are required")
+			fmt.Println("")
+			createCmd.Usage()
+			os.Exit(2)
+		}
+	case "unequip-weapon":
+		createCmd := flag.NewFlagSet("unequip", flag.ExitOnError)
+
+		characterName := createCmd.String("name", "", "character name (required)")
+		inventoryWeaponSlotName := createCmd.String("slot", "", "inventory weapon slot name (required)")
+
+		err = createCmd.Parse(os.Args[2:])
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		if *characterName == "" {
+			fmt.Println("character name is required")
+			fmt.Println("")
+			createCmd.Usage()
+			os.Exit(2)
+		}
+
+		if *inventoryWeaponSlotName == "" {
+			fmt.Println("inventory weapon slot name is required")
+			fmt.Println("")
+			createCmd.Usage()
+			os.Exit(2)
+		}
+
+		characterService.UnequipWeaponFromCharacter(*characterName, *inventoryWeaponSlotName)
+	case "unequip-armor":
+		createCmd := flag.NewFlagSet("unequip", flag.ExitOnError)
+
+		characterName := createCmd.String("name", "", "character name (required)")
+
+		err = createCmd.Parse(os.Args[2:])
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		if *characterName == "" {
+			fmt.Println("character name is required")
+			fmt.Println("")
+			createCmd.Usage()
+			os.Exit(2)
+		}
+
+		characterService.UnequipArmorFromCharacter(*characterName)
+	case "unequip-shield":
+		createCmd := flag.NewFlagSet("unequip", flag.ExitOnError)
+
+		characterName := createCmd.String("name", "", "character name (required)")
+
+		err = createCmd.Parse(os.Args[2:])
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		if *characterName == "" {
+			fmt.Println("character name is required")
+			fmt.Println("")
+			createCmd.Usage()
+			os.Exit(2)
+		}
+
+		characterService.UnequipShieldFromCharacter(*characterName)
 	case "learn-spell":
 
 	case "forget-spell":

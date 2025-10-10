@@ -70,7 +70,6 @@ func (dndApiRaceWithSubRaces DndApiRaceWithSubRaces) AsRace(chosenRaceName strin
 			dndApiRaceWithSubRaces.Name,
 			raceAbilityScoreImprovements,
 			nil,
-			2,
 		)
 
 		return &race, nil
@@ -85,7 +84,6 @@ func (dndApiRaceWithSubRaces DndApiRaceWithSubRaces) AsRace(chosenRaceName strin
 		dndApiRaceWithSubRaces.Name,
 		raceAbilityScoreImprovements,
 		chosenSubRace,
-		2,
 	)
 
 	return &race, nil
