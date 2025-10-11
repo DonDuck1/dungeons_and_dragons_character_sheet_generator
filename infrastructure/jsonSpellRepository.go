@@ -73,3 +73,26 @@ func (jsonSpellRepository JsonSpellRepository) GetCopyByName(name string) (*DndA
 	err := fmt.Errorf("could not find spell with name '%s'", name)
 	return nil, err
 }
+
+func (jsonSpellRepository JsonSpellRepository) GetCopiesByClass(className string) (*[]DndApiSpell, error) {
+	if jsonSpellRepository.dndApiSpells == nil {
+		err := fmt.Errorf("no spells have been found, please run the init command first")
+		return nil, err
+	}
+
+	var copiedSpellsForClass []DndApiSpell
+	for _, dndApiSpell := range jsonSpellRepository.dndApiSpells {
+		for _, dndApiSpellValidClass := range dndApiSpell.Classes {
+			if strings.EqualFold(dndApiSpellValidClass.Name, className) {
+				copiedSpellsForClass = append(copiedSpellsForClass, dndApiSpell)
+			}
+		}
+	}
+
+	if len(copiedSpellsForClass) == 0 {
+		err := fmt.Errorf("no spells found for class %s", className)
+		return nil, err
+	}
+
+	return &copiedSpellsForClass, nil
+}

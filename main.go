@@ -456,7 +456,7 @@ func main() {
 
 		characterService.MakeCharacterLearnSpell(*characterName, *spellName)
 	case "forget-spell":
-		createCmd := flag.NewFlagSet("learn-spell", flag.ExitOnError)
+		createCmd := flag.NewFlagSet("forget-spell", flag.ExitOnError)
 
 		characterName := createCmd.String("name", "", "character name (required)")
 		spellName := createCmd.String("spell", "", "spell name (required)")
@@ -482,7 +482,7 @@ func main() {
 
 		characterService.MakeCharacterForgetSpell(*characterName, *spellName)
 	case "prepare-spell":
-		createCmd := flag.NewFlagSet("learn-spell", flag.ExitOnError)
+		createCmd := flag.NewFlagSet("prepare-spell", flag.ExitOnError)
 
 		characterName := createCmd.String("name", "", "character name (required)")
 		spellName := createCmd.String("spell", "", "spell name (required)")
@@ -507,6 +507,32 @@ func main() {
 		}
 
 		characterService.MakeCharacterPrepareSpell(*characterName, *spellName)
+	case "unprepare-spell":
+		createCmd := flag.NewFlagSet("unprepare-spell", flag.ExitOnError)
+
+		characterName := createCmd.String("name", "", "character name (required)")
+		spellName := createCmd.String("spell", "", "spell name (required)")
+
+		err = createCmd.Parse(os.Args[2:])
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		if *characterName == "" {
+			fmt.Println("character name is required")
+			fmt.Println("")
+			createCmd.Usage()
+			os.Exit(2)
+		}
+
+		if *spellName == "" {
+			fmt.Println("spell name is required")
+			fmt.Println("")
+			createCmd.Usage()
+			os.Exit(2)
+		}
+
+		characterService.MakeCharacterUnprepareSpell(*characterName, *spellName)
 	default:
 		usage()
 		os.Exit(2)

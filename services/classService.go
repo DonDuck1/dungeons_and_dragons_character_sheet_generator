@@ -17,7 +17,7 @@ func NewClassService(dndApiGateway *infrastructure.DndApiGateway) *ClassService 
 	return &ClassService{dndApiGateway: dndApiGateway}
 }
 
-func CreateClassFromDndApiClassWithLevels(dndApiClassWithLevels *infrastructure.DndApiClassWithLevels, level int, proficiencyBonus int, abilityScoreList domain.AbilityScoreList) domain.Class {
+func CreateClassFromDndApiClassWithLevels(dndApiClassWithLevels *infrastructure.DndApiClassWithLevels, level int, proficiencyBonus int, abilityScoreList domain.AbilityScoreList, jsonSpellRepository *infrastructure.JsonSpellRepository) domain.Class {
 	if dndApiClassWithLevels == nil {
 		err := fmt.Errorf("dndApiClassWithLevels provided is a nil value")
 		log.Fatal(err)
@@ -52,7 +52,10 @@ func CreateClassFromDndApiClassWithLevels(dndApiClassWithLevels *infrastructure.
 			maxKnownCantrips = *dndApiClassLevel.Spellcasting.CantripsKnown
 		}
 
-		spellList := domain.NewEmptySpellList()
+		spellList, err := CreateInitialSpellListForClass(mainClassTypedName, jsonSpellRepository)
+		if err != nil {
+			log.Fatal(err)
+		}
 
 		spellSlotAmount := [9]int{
 			dndApiClassLevel.Spellcasting.SpellSlotsLevel1,
@@ -92,92 +95,36 @@ func CreateClassFromDndApiClassWithLevels(dndApiClassWithLevels *infrastructure.
 		spellAttackBonus := proficiencyBonus + spellcastingAbilityScore.Modifier
 
 		switch mainClassTypedName {
-		case domain.BARD:
+		case domain.BARD, domain.RANGER, domain.SORCERER:
+			if spellList == nil {
+				err := fmt.Errorf("a %s should have an initialised spell list", string(mainClassTypedName))
+				log.Fatal(err)
+			}
+
 			classSpellcastingInfoValue := domain.NewClassSpellcastingInfo(
 				maxKnownCantrips,
 				dndApiClassLevel.Spellcasting.SpellsKnown,
 				nil,
-				spellList,
+				*spellList,
 				spellSlotAmount,
 				spellcastingAbilityScore,
 				spellSaveDC,
 				spellAttackBonus,
 			)
 			classSpellcastingInfo = &classSpellcastingInfoValue
-		case domain.CLERIC:
+		case domain.CLERIC, domain.DRUID, domain.PALADIN, domain.WIZARD:
+			if spellList == nil {
+				err := fmt.Errorf("a %s should have an initialised spell list", string(mainClassTypedName))
+				log.Fatal(err)
+			}
+
 			maxPreparedSpells := max(1, spellcastingAbilityScore.Modifier+level)
 
 			classSpellcastingInfoValue := domain.NewClassSpellcastingInfo(
 				maxKnownCantrips,
 				dndApiClassLevel.Spellcasting.SpellsKnown,
 				&maxPreparedSpells,
-				spellList,
-				spellSlotAmount,
-				spellcastingAbilityScore,
-				spellSaveDC,
-				spellAttackBonus,
-			)
-			classSpellcastingInfo = &classSpellcastingInfoValue
-		case domain.DRUID:
-			maxPreparedSpells := max(1, spellcastingAbilityScore.Modifier+level)
-
-			classSpellcastingInfoValue := domain.NewClassSpellcastingInfo(
-				maxKnownCantrips,
-				dndApiClassLevel.Spellcasting.SpellsKnown,
-				&maxPreparedSpells,
-				spellList,
-				spellSlotAmount,
-				spellcastingAbilityScore,
-				spellSaveDC,
-				spellAttackBonus,
-			)
-			classSpellcastingInfo = &classSpellcastingInfoValue
-		case domain.PALADIN:
-			maxPreparedSpells := max(1, spellcastingAbilityScore.Modifier+level)
-
-			classSpellcastingInfoValue := domain.NewClassSpellcastingInfo(
-				maxKnownCantrips,
-				dndApiClassLevel.Spellcasting.SpellsKnown,
-				&maxPreparedSpells,
-				spellList,
-				spellSlotAmount,
-				spellcastingAbilityScore,
-				spellSaveDC,
-				spellAttackBonus,
-			)
-			classSpellcastingInfo = &classSpellcastingInfoValue
-		case domain.RANGER:
-			classSpellcastingInfoValue := domain.NewClassSpellcastingInfo(
-				maxKnownCantrips,
-				dndApiClassLevel.Spellcasting.SpellsKnown,
-				nil,
-				spellList,
-				spellSlotAmount,
-				spellcastingAbilityScore,
-				spellSaveDC,
-				spellAttackBonus,
-			)
-			classSpellcastingInfo = &classSpellcastingInfoValue
-		case domain.SORCERER:
-			classSpellcastingInfoValue := domain.NewClassSpellcastingInfo(
-				maxKnownCantrips,
-				dndApiClassLevel.Spellcasting.SpellsKnown,
-				nil,
-				spellList,
-				spellSlotAmount,
-				spellcastingAbilityScore,
-				spellSaveDC,
-				spellAttackBonus,
-			)
-			classSpellcastingInfo = &classSpellcastingInfoValue
-		case domain.WIZARD:
-			maxPreparedSpells := max(1, spellcastingAbilityScore.Modifier+level)
-
-			classSpellcastingInfoValue := domain.NewClassSpellcastingInfo(
-				maxKnownCantrips,
-				dndApiClassLevel.Spellcasting.SpellsKnown,
-				&maxPreparedSpells,
-				spellList,
+				*spellList,
 				spellSlotAmount,
 				spellcastingAbilityScore,
 				spellSaveDC,
@@ -185,6 +132,11 @@ func CreateClassFromDndApiClassWithLevels(dndApiClassWithLevels *infrastructure.
 			)
 			classSpellcastingInfo = &classSpellcastingInfoValue
 		case domain.WARLOCK:
+			if spellList == nil {
+				err := fmt.Errorf("a warlock should have an initialised spell list")
+				log.Fatal(err)
+			}
+
 			warlockSpellSlotAmount := 0
 			warlockSpellSlotLevel := 0
 
@@ -199,7 +151,7 @@ func CreateClassFromDndApiClassWithLevels(dndApiClassWithLevels *infrastructure.
 			classWarlockCastingInfoValue := domain.NewClassWarlockCastingInfo(
 				maxKnownCantrips,
 				*dndApiClassLevel.Spellcasting.SpellsKnown,
-				spellList,
+				*spellList,
 				warlockSpellSlotAmount,
 				warlockSpellSlotLevel,
 				spellcastingAbilityScore,

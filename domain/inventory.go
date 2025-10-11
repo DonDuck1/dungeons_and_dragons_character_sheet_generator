@@ -73,6 +73,7 @@ func (inventory *Inventory) RemoveWeapon(inventoryWeaponSlotName InventoryWeapon
 		}
 		inventory.OpenHandSlots += inventory.WeaponSlots.MainHand.GetNumberOfOccupiedHandSlots()
 		inventory.WeaponSlots.MainHand = nil
+		return nil
 	case OFF_HAND:
 		if inventory.WeaponSlots.OffHand == nil {
 			err := fmt.Errorf("no weapon equipped in off hand")
@@ -80,6 +81,7 @@ func (inventory *Inventory) RemoveWeapon(inventoryWeaponSlotName InventoryWeapon
 		}
 		inventory.OpenHandSlots += inventory.WeaponSlots.OffHand.GetNumberOfOccupiedHandSlots()
 		inventory.WeaponSlots.OffHand = nil
+		return nil
 	}
 
 	err := fmt.Errorf("no inventory slot with name %s found", inventoryWeaponSlotName)
