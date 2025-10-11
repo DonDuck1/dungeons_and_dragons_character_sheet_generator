@@ -3,9 +3,12 @@ package main
 import (
 	"dungeons_and_dragons_character_sheet_generator/infrastructure"
 	"dungeons_and_dragons_character_sheet_generator/services"
+	"encoding/json"
 	"flag"
 	"fmt"
+	"html/template"
 	"log"
+	"net/http"
 	"os"
 )
 
@@ -26,6 +29,7 @@ func usage() {
   go run . learn-spell -name "CHARACTER_NAME" -spell "SPELL_NAME"
   go run . forget-spell -name "CHARACTER_NAME" -spell "SPELL_NAME"
   go run . prepare-spell -name "CHARACTER_NAME" -spell "SPELL_NAME"
+  go run . serve-html
 
   location: %s
 `, os.Args[0])
@@ -533,6 +537,28 @@ func main() {
 		}
 
 		characterService.MakeCharacterUnprepareSpell(*characterName, *spellName)
+	case "serve-html":
+		characters := *jsonCharacterRepository.GetAll()
+
+		http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./public/charactersheet/static"))))
+
+		http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+			characterSheet, err := template.ParseFiles("./public/charactersheet/charactersheet.html")
+			if err != nil {
+				http.Error(w, "Error loading template", http.StatusInternalServerError)
+				log.Fatal(err)
+			}
+
+			characterSheet.Execute(w, nil)
+		})
+
+		http.HandleFunc("/api/characters", func(w http.ResponseWriter, r *http.Request) {
+			w.Header().Set("Content-Type", "application/json")
+			json.NewEncoder(w).Encode(characters)
+		})
+
+		log.Println("Server started at http://localhost:8080")
+		http.ListenAndServe(":8080", nil)
 	default:
 		usage()
 		os.Exit(2)
