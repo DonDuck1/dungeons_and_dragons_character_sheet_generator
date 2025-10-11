@@ -123,7 +123,7 @@ func main() {
 
 		characterName := createCmd.String("name", "", "character name (required)")
 		potentialRaceName := createCmd.String("race", "", "race name (required)")
-		potentialMainClassName := createCmd.String("class", "", "main class name (required)")
+		potentialClassName := createCmd.String("class", "", "main class name (required)")
 		level := createCmd.Int("level", -999, "main class level")
 		strengthValue := createCmd.Int("str", -999, "strength score value")
 		dexterityValue := createCmd.Int("dex", -999, "dexterity score value")
@@ -151,7 +151,7 @@ func main() {
 			os.Exit(2)
 		}
 
-		if *potentialMainClassName == "" {
+		if *potentialClassName == "" {
 			fmt.Println("class name is required")
 			fmt.Println("")
 			createCmd.Usage()
@@ -238,7 +238,7 @@ func main() {
 		characterService.CreateNewCharacter(
 			*characterName,
 			*potentialRaceName,
-			*potentialMainClassName,
+			*potentialClassName,
 			*level,
 			*strengthValue,
 			*dexterityValue,
@@ -359,14 +359,14 @@ func main() {
 			if *shieldName != "" {
 				characterService.EquipShieldToCharacter(*characterName, *shieldName)
 			}
-
-			characterService.ViewCharacter(*characterName)
 		} else {
 			fmt.Println("additional parameters are required")
 			fmt.Println("")
 			createCmd.Usage()
 			os.Exit(2)
 		}
+
+		os.Exit(0)
 	case "unequip-weapon":
 		createCmd := flag.NewFlagSet("unequip-weapon", flag.ExitOnError)
 

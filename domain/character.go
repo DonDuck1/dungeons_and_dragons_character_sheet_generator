@@ -3,7 +3,7 @@ package domain
 type Character struct {
 	Name                 string
 	Race                 Race
-	MainClass            Class
+	Class                Class
 	Background           Background
 	ProficiencyBonus     int
 	AbilityScoreList     AbilityScoreList
@@ -17,7 +17,7 @@ type Character struct {
 func NewCharacter(
 	name string,
 	race Race,
-	mainClass Class,
+	class Class,
 	background Background,
 	proficiencyBonus int,
 	abilityScoreList AbilityScoreList,
@@ -30,7 +30,7 @@ func NewCharacter(
 	character := Character{
 		Name:                 name,
 		Race:                 race,
-		MainClass:            mainClass,
+		Class:                class,
 		Background:           background,
 		ProficiencyBonus:     proficiencyBonus,
 		AbilityScoreList:     abilityScoreList,

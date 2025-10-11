@@ -13,11 +13,11 @@ func NewEmptyInventory() Inventory {
 	return Inventory{OpenHandSlots: 2, WeaponSlots: NewEmptyInventoryWeaponSlots(), Armor: nil, Shield: nil}
 }
 
-func (inventory Inventory) GetArmorClass(dexterityModifier int) int {
+func (inventory Inventory) GetArmorClass(dexterityModifier int, unarmoredArmorClassModifier int) int {
 	armorClass := 0
 
 	if inventory.Armor == nil {
-		armorClass = 10 + dexterityModifier
+		armorClass = 10 + unarmoredArmorClassModifier
 	} else {
 		armorClass = inventory.Armor.GetArmorClassModifierOfArmor(dexterityModifier)
 	}

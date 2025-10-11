@@ -23,7 +23,7 @@ func CreateClassFromDndApiClassWithLevels(dndApiClassWithLevels *infrastructure.
 		log.Fatal(err)
 	}
 
-	mainClassTypedName, err := domain.ClassNameFromUntypedPotentialClassName(dndApiClassWithLevels.Name)
+	classTypedName, err := domain.ClassNameFromUntypedPotentialClassName(dndApiClassWithLevels.Name)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -44,6 +44,14 @@ func CreateClassFromDndApiClassWithLevels(dndApiClassWithLevels *infrastructure.
 		skillProficiencies = append(skillProficiencies, skillProficiencyName)
 	}
 
+	unarmoredArmorClassAbilityScoreModifierNameList := []domain.AbilityScoreName{domain.DEXTERITY}
+	switch classTypedName {
+	case domain.BARBARIAN:
+		unarmoredArmorClassAbilityScoreModifierNameList = append(unarmoredArmorClassAbilityScoreModifierNameList, domain.CONSTITUTION)
+	case domain.MONK:
+		unarmoredArmorClassAbilityScoreModifierNameList = append(unarmoredArmorClassAbilityScoreModifierNameList, domain.WISDOM)
+	}
+
 	var classSpellcastingInfo *domain.ClassSpellcastingInfo
 	var classWarlockCastingInfo *domain.ClassWarlockCastingInfo
 	if dndApiClassWithLevels.Spellcasting != nil && dndApiClassLevel.Spellcasting != nil {
@@ -52,7 +60,7 @@ func CreateClassFromDndApiClassWithLevels(dndApiClassWithLevels *infrastructure.
 			maxKnownCantrips = *dndApiClassLevel.Spellcasting.CantripsKnown
 		}
 
-		spellList, err := CreateInitialSpellListForClass(mainClassTypedName, jsonSpellRepository)
+		spellList, err := CreateInitialSpellListForClass(classTypedName, jsonSpellRepository)
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -94,10 +102,10 @@ func CreateClassFromDndApiClassWithLevels(dndApiClassWithLevels *infrastructure.
 
 		spellAttackBonus := proficiencyBonus + spellcastingAbilityScore.Modifier
 
-		switch mainClassTypedName {
+		switch classTypedName {
 		case domain.BARD, domain.RANGER, domain.SORCERER:
 			if spellList == nil {
-				err := fmt.Errorf("a %s should have an initialised spell list", string(mainClassTypedName))
+				err := fmt.Errorf("a %s should have an initialised spell list", string(classTypedName))
 				log.Fatal(err)
 			}
 
@@ -114,7 +122,7 @@ func CreateClassFromDndApiClassWithLevels(dndApiClassWithLevels *infrastructure.
 			classSpellcastingInfo = &classSpellcastingInfoValue
 		case domain.CLERIC, domain.DRUID, domain.PALADIN, domain.WIZARD:
 			if spellList == nil {
-				err := fmt.Errorf("a %s should have an initialised spell list", string(mainClassTypedName))
+				err := fmt.Errorf("a %s should have an initialised spell list", string(classTypedName))
 				log.Fatal(err)
 			}
 
@@ -174,9 +182,10 @@ func CreateClassFromDndApiClassWithLevels(dndApiClassWithLevels *infrastructure.
 	}
 
 	return domain.NewClass(
-		mainClassTypedName,
+		classTypedName,
 		level,
 		skillProficiencies,
+		unarmoredArmorClassAbilityScoreModifierNameList,
 		classSpellcastingInfo,
 		classWarlockCastingInfo,
 	)
