@@ -49,7 +49,7 @@
     }
   },
   {
-    "Name": "Half Plate Armor",
+    "Name": "Half Plate",
     "BaseArmorClass": 15,
     "ArmorDexterityModifier": {
       "ArmorMaxDexterityModifier": 2

@@ -70,7 +70,7 @@ func (characterService CharacterService) CreateNewCharacter(
 		log.Fatal(err)
 	}
 
-	race, err := CreateRaceFromdndApiRaceWithSubRaces(potentialRaceName, *dndApiRaceWithSubraces)
+	race, err := CreateRaceFromDndApiRaceWithSubRaces(potentialRaceName, *dndApiRaceWithSubraces)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -234,26 +234,28 @@ func (characterService CharacterService) ViewCharacter(characterName string) {
 	fmt.Printf("Skill proficiencies: %s\n", strings.Join(proficientSkillProficiencyNames, ", "))
 	if character.Inventory.WeaponSlots.MainHand != nil {
 		if character.Inventory.WeaponSlots.MainHand.TwoHanded {
-			fmt.Printf("Main hand: %+s (two-handed)\n", strings.ToLower(character.Inventory.WeaponSlots.MainHand.Name))
+			fmt.Printf("Main hand: %s (two-handed)\n", strings.ToLower(character.Inventory.WeaponSlots.MainHand.Name))
 		} else {
-			fmt.Printf("Main hand: %+s\n", strings.ToLower(character.Inventory.WeaponSlots.MainHand.Name))
+			fmt.Printf("Main hand: %s\n", strings.ToLower(character.Inventory.WeaponSlots.MainHand.Name))
 		}
 	}
 	if character.Inventory.WeaponSlots.OffHand != nil {
 		if character.Inventory.WeaponSlots.OffHand.TwoHanded {
-			fmt.Printf("Off hand: %+s (two-handed)\n", strings.ToLower(character.Inventory.WeaponSlots.OffHand.Name))
+			fmt.Printf("Off hand: %s (two-handed)\n", strings.ToLower(character.Inventory.WeaponSlots.OffHand.Name))
 		} else {
-			fmt.Printf("Off hand: %+s\n", strings.ToLower(character.Inventory.WeaponSlots.OffHand.Name))
+			fmt.Printf("Off hand: %s\n", strings.ToLower(character.Inventory.WeaponSlots.OffHand.Name))
 		}
 	}
 	if character.Inventory.Armor != nil {
-		fmt.Printf("Armor: %+s\n", strings.ToLower(character.Inventory.Armor.Name))
+		fmt.Printf("Armor: %s\n", strings.ToLower(character.Inventory.Armor.Name))
 	}
 	if character.Inventory.Shield != nil {
-		fmt.Printf("Shield: %+s\n", strings.ToLower(character.Inventory.Shield.Name))
+		fmt.Printf("Shield: %s\n", strings.ToLower(character.Inventory.Shield.Name))
 	}
 	if character.Class.ClassSpellcastingInfo != nil {
-		fmt.Println("Spell slots:")
+		if character.Class.ClassSpellcastingInfo.SpellSlotAmount[0] != 0 || character.Class.ClassSpellcastingInfo.MaxKnownCantrips != 0 {
+			fmt.Println("Spell slots:")
+		}
 		if character.Class.ClassSpellcastingInfo.MaxKnownCantrips != 0 {
 			fmt.Printf("  Level 0: %d\n", character.Class.ClassSpellcastingInfo.MaxKnownCantrips)
 		}
@@ -262,13 +264,16 @@ func (characterService CharacterService) ViewCharacter(characterName string) {
 				fmt.Printf("  Level %d: %d\n", i+1, spellSlotLevelAmount)
 			}
 		}
-	}
-	if character.Class.ClassWarlockCastingInfo != nil {
+		fmt.Printf("Spellcasting ability: %s\n", strings.ToLower(string(character.Class.ClassSpellcastingInfo.SpellcastingAbility.Name)))
+		fmt.Printf("Spell save DC: %d\n", character.Class.ClassSpellcastingInfo.SpellSaveDC)
+		fmt.Printf("Spell attack bonus: %+d\n", character.Class.ClassSpellcastingInfo.SpellAttackBonus)
+	} else if character.Class.ClassWarlockCastingInfo != nil {
 		fmt.Println("Spell slots:")
-		if character.Class.ClassWarlockCastingInfo.MaxKnownCantrips != 0 {
-			fmt.Printf("  Level 0: %d\n", character.Class.ClassWarlockCastingInfo.MaxKnownCantrips)
-		}
+		fmt.Printf("  Level 0: %d\n", character.Class.ClassWarlockCastingInfo.MaxKnownCantrips)
 		fmt.Printf("  Level %d: %d\n", character.Class.ClassWarlockCastingInfo.SpellSlotLevel, character.Class.ClassWarlockCastingInfo.SpellSlotAmount)
+		fmt.Printf("Spellcasting ability: %s\n", strings.ToLower(string(character.Class.ClassWarlockCastingInfo.SpellcastingAbility.Name)))
+		fmt.Printf("Spell save DC: %d\n", character.Class.ClassWarlockCastingInfo.SpellSaveDC)
+		fmt.Printf("Spell attack bonus: %+d\n", character.Class.ClassWarlockCastingInfo.SpellAttackBonus)
 	}
 	fmt.Printf("Armor class: %d\n", character.ArmorClass)
 	fmt.Printf("Initiative bonus: %d\n", character.Initiative)

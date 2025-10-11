@@ -18,7 +18,7 @@ func NewRaceService(dndApiGateway *infrastructure.DndApiGateway) *RaceService {
 	return &RaceService{dndApiGateway: dndApiGateway}
 }
 
-func CreateRaceFromdndApiRaceWithSubRaces(chosenRaceName string, dndApiRaceWithSubRaces infrastructure.DndApiRaceWithSubRaces) (*domain.Race, error) {
+func CreateRaceFromDndApiRaceWithSubRaces(chosenRaceName string, dndApiRaceWithSubRaces infrastructure.DndApiRaceWithSubRaces) (*domain.Race, error) {
 	raceAbilityScoreImprovements := []domain.AbilityScoreImprovement{}
 	for _, dndApiAbilityBonus := range dndApiRaceWithSubRaces.AbilityBonusList {
 		abilityScoreImprovement, err := dndApiAbilityBonus.AsAbilityScoreImprovement()
