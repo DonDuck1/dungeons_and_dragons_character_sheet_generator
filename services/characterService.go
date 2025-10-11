@@ -255,18 +255,18 @@ func (characterService CharacterService) ViewCharacter(characterName string) {
 	if character.Class.ClassSpellcastingInfo != nil {
 		if character.Class.ClassSpellcastingInfo.SpellSlotAmount[0] != 0 || character.Class.ClassSpellcastingInfo.MaxKnownCantrips != 0 {
 			fmt.Println("Spell slots:")
-		}
-		if character.Class.ClassSpellcastingInfo.MaxKnownCantrips != 0 {
-			fmt.Printf("  Level 0: %d\n", character.Class.ClassSpellcastingInfo.MaxKnownCantrips)
-		}
-		for i, spellSlotLevelAmount := range character.Class.ClassSpellcastingInfo.SpellSlotAmount {
-			if spellSlotLevelAmount != 0 {
-				fmt.Printf("  Level %d: %d\n", i+1, spellSlotLevelAmount)
+			if character.Class.ClassSpellcastingInfo.MaxKnownCantrips != 0 {
+				fmt.Printf("  Level 0: %d\n", character.Class.ClassSpellcastingInfo.MaxKnownCantrips)
 			}
+			for i, spellSlotLevelAmount := range character.Class.ClassSpellcastingInfo.SpellSlotAmount {
+				if spellSlotLevelAmount != 0 {
+					fmt.Printf("  Level %d: %d\n", i+1, spellSlotLevelAmount)
+				}
+			}
+			fmt.Printf("Spellcasting ability: %s\n", strings.ToLower(string(character.Class.ClassSpellcastingInfo.SpellcastingAbility.Name)))
+			fmt.Printf("Spell save DC: %d\n", character.Class.ClassSpellcastingInfo.SpellSaveDC)
+			fmt.Printf("Spell attack bonus: %+d\n", character.Class.ClassSpellcastingInfo.SpellAttackBonus)
 		}
-		fmt.Printf("Spellcasting ability: %s\n", strings.ToLower(string(character.Class.ClassSpellcastingInfo.SpellcastingAbility.Name)))
-		fmt.Printf("Spell save DC: %d\n", character.Class.ClassSpellcastingInfo.SpellSaveDC)
-		fmt.Printf("Spell attack bonus: %+d\n", character.Class.ClassSpellcastingInfo.SpellAttackBonus)
 	} else if character.Class.ClassWarlockCastingInfo != nil {
 		fmt.Println("Spell slots:")
 		fmt.Printf("  Level 0: %d\n", character.Class.ClassWarlockCastingInfo.MaxKnownCantrips)
