@@ -1,6 +1,6 @@
 function formatNumberWithSign(number) {
-    return (number >= 0 ? "+" : "") + number
-}
+    return (number >= 0 ? "+" : "") + number;
+};
 
 document.addEventListener('DOMContentLoaded', () => {
     const select = document.getElementById('characterSelect');
@@ -244,7 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 raceField.value = character.Race.SubRace.Name;
             } else {
                 raceField.value = character.Race.Name;
-            }
+            };
 
             strengthScoreField.value = character.AbilityScoreList.Strength.FinalValue;
             strengthModField.value = formatNumberWithSign(character.AbilityScoreList.Strength.Modifier);
@@ -325,65 +325,65 @@ document.addEventListener('DOMContentLoaded', () => {
             armorClassField.value = character.ArmorClass;
             initiativeField.value = formatNumberWithSign(character.Initiative);
 
-            let spellcastingInfoText = ""
-            let spellsListText = ""
+            let spellcastingInfoText = "";
+            let spellsListText = "";
 
             if (character.Class.ClassSpellcastingInfo != null) {
-                spellcastingInfoText += "Spellcasting info:\n"
-                spellcastingInfoText += `  Max known cantrips: ${character.Class.ClassSpellcastingInfo.MaxKnownCantrips}\n`
+                spellcastingInfoText += "Spellcasting info:\n";
+                spellcastingInfoText += `  Max known cantrips: ${character.Class.ClassSpellcastingInfo.MaxKnownCantrips}\n`;
                 if (character.Class.ClassSpellcastingInfo.MaxKnownSpells != null) {
-                    spellcastingInfoText += `  Max known spells: ${character.Class.ClassSpellcastingInfo.MaxKnownSpells}\n`
-                }
+                    spellcastingInfoText += `  Max known spells: ${character.Class.ClassSpellcastingInfo.MaxKnownSpells}\n`;
+                };
                 if (character.Class.ClassSpellcastingInfo.MaxPreparedSpells != null) {
-                    spellcastingInfoText += `  Max prepared spells: ${character.Class.ClassSpellcastingInfo.MaxPreparedSpells}\n`
-                }
+                    spellcastingInfoText += `  Max prepared spells: ${character.Class.ClassSpellcastingInfo.MaxPreparedSpells}\n`;
+                };
 
-                spellcastingInfoText += "  Spell slots:\n"
+                spellcastingInfoText += "  Spell slots:\n";
                 character.Class.ClassSpellcastingInfo.SpellSlotAmount.forEach((spellSlotLevelAmount, i) => {
-                    spellcastingInfoText += `    Level ${i + 1}: ${spellSlotLevelAmount}\n`
+                    spellcastingInfoText += `    Level ${i + 1}: ${spellSlotLevelAmount}\n`;
                 });
 
                 if (character.Class.ClassSpellcastingInfo.SpellcastingAbility != null) {
-                    spellcastingInfoText += `  Spellcasting ability: ${character.Class.ClassSpellcastingInfo.SpellcastingAbility.Name}\n`
-                }
+                    spellcastingInfoText += `  Spellcasting ability: ${character.Class.ClassSpellcastingInfo.SpellcastingAbility.Name}\n`;
+                };
 
-                spellcastingInfoText += `  Spell save DC: ${character.Class.ClassSpellcastingInfo.SpellSaveDC}\n`
-                spellcastingInfoText += `  Spell attack bonus: ${formatNumberWithSign(character.Class.ClassSpellcastingInfo.SpellAttackBonus)}\n\n`
+                spellcastingInfoText += `  Spell save DC: ${character.Class.ClassSpellcastingInfo.SpellSaveDC}\n`;
+                spellcastingInfoText += `  Spell attack bonus: ${formatNumberWithSign(character.Class.ClassSpellcastingInfo.SpellAttackBonus)}\n\n`;
             
-                spellsListText += "Spells:\n"
+                spellsListText += "Spells:\n";
                 character.Class.ClassSpellcastingInfo.SpellList.Spells.forEach((spell, i) => {
                     if (spell.Prepared) {
-                        spellsListText += `${spell.Name}\n`
-                        spellsListText += `  Level: ${spell.Level}\n`
-                        spellsListText += `  School: ${spell.School}\n`
-                        spellsListText += `  Range: ${spell.SpellRange}\n\n`
-                    }
+                        spellsListText += `${spell.Name}\n`;
+                        spellsListText += `  Level: ${spell.Level}\n`;
+                        spellsListText += `  School: ${spell.School}\n`;
+                        spellsListText += `  Range: ${spell.SpellRange}\n\n`;
+                    };
                 });
             }
 
             if (character.Class.ClassWarlockCastingInfo != null) {
-                spellcastingInfoText += "Warlock casting info:\n"
-                spellcastingInfoText += `  Max known cantrips: ${character.Class.ClassWarlockCastingInfo.MaxKnownCantrips}\n`
-                spellcastingInfoText += `  Max known spells: ${character.Class.ClassWarlockCastingInfo.MaxKnownSpells}\n`
+                spellcastingInfoText += "Warlock casting info:\n";
+                spellcastingInfoText += `  Max known cantrips: ${character.Class.ClassWarlockCastingInfo.MaxKnownCantrips}\n`;
+                spellcastingInfoText += `  Max known spells: ${character.Class.ClassWarlockCastingInfo.MaxKnownSpells}\n`;
 
-                spellcastingInfoText += "  Spell slots:\n"
-                spellcastingInfoText += `    Level ${character.Class.ClassWarlockCastingInfo.SpellSlotLevel}: ${character.Class.ClassWarlockCastingInfo.SpellSlotAmount}\n`
+                spellcastingInfoText += "  Spell slots:\n";
+                spellcastingInfoText += `    Level ${character.Class.ClassWarlockCastingInfo.SpellSlotLevel}: ${character.Class.ClassWarlockCastingInfo.SpellSlotAmount}\n`;
 
                 if (character.Class.ClassWarlockCastingInfo.SpellcastingAbility != null) {
-                    spellcastingInfoText += `  Spellcasting ability: ${character.Class.ClassWarlockCastingInfo.SpellcastingAbility.Name}\n`
-                }
+                    spellcastingInfoText += `  Spellcasting ability: ${character.Class.ClassWarlockCastingInfo.SpellcastingAbility.Name}\n`;
+                };
 
-                spellcastingInfoText += `  Spell save DC: ${character.Class.ClassWarlockCastingInfo.SpellSaveDC}\n`
-                spellcastingInfoText += `  Spell attack bonus: ${formatNumberWithSign(character.Class.ClassWarlockCastingInfo.SpellAttackBonus)}\n\n`
+                spellcastingInfoText += `  Spell save DC: ${character.Class.ClassWarlockCastingInfo.SpellSaveDC}\n`;
+                spellcastingInfoText += `  Spell attack bonus: ${formatNumberWithSign(character.Class.ClassWarlockCastingInfo.SpellAttackBonus)}\n\n`;
             
-                spellsListText += "Warlock spells:\n"
+                spellsListText += "Warlock spells:\n";
                 character.Class.ClassWarlockCastingInfo.SpellList.Spells.forEach((spell, i) => {
                     if (spell.Prepared) {
-                        spellsListText += `${spell.Name}\n`
-                        spellsListText += `  Level: ${spell.Level}\n`
-                        spellsListText += `  School: ${spell.School}\n`
-                        spellsListText += `  Range: ${spell.SpellRange}\n\n`
-                    }
+                        spellsListText += `${spell.Name}\n`;
+                        spellsListText += `  Level: ${spell.Level}\n`;
+                        spellsListText += `  School: ${spell.School}\n`;
+                        spellsListText += `  Range: ${spell.SpellRange}\n\n`;
+                    };
                 });
             }
 
@@ -393,34 +393,34 @@ document.addEventListener('DOMContentLoaded', () => {
             let equipmentListText = "";
 
             if (character.Inventory.WeaponSlots.MainHand != null) {
-                equipmentListText += `Main hand: ${character.Inventory.WeaponSlots.MainHand.Name}`
+                equipmentListText += `Main hand: ${character.Inventory.WeaponSlots.MainHand.Name}`;
                 if (character.Inventory.WeaponSlots.MainHand.TwoHanded) {
-                    equipmentListText += " (two-handed)\n"
+                    equipmentListText += " (two-handed)\n";
                 } else {
-                    equipmentListText += "\n"
-                }
-                equipmentListText += `  Category: ${character.Inventory.WeaponSlots.MainHand.WeaponCategory}\n`
-                equipmentListText += `  Normal range: ${character.Inventory.WeaponSlots.MainHand.NormalRange} feet\n\n`
-            }
+                    equipmentListText += "\n";
+                };
+                equipmentListText += `  Category: ${character.Inventory.WeaponSlots.MainHand.WeaponCategory}\n`;
+                equipmentListText += `  Normal range: ${character.Inventory.WeaponSlots.MainHand.NormalRange} feet\n\n`;
+            };
 
             if (character.Inventory.WeaponSlots.OffHand != null) {
-                equipmentListText += `Off hand: ${character.Inventory.WeaponSlots.OffHand.Name}`
+                equipmentListText += `Off hand: ${character.Inventory.WeaponSlots.OffHand.Name}`;
                 if (character.Inventory.WeaponSlots.OffHand.TwoHanded) {
-                    equipmentListText += " (two-handed)\n"
+                    equipmentListText += " (two-handed)\n";
                 } else {
-                    equipmentListText += "\n"
-                }
-                equipmentListText += `  Category: ${character.Inventory.WeaponSlots.OffHand.WeaponCategory}\n`
-                equipmentListText += `  Normal range: ${character.Inventory.WeaponSlots.OffHand.NormalRange} feet\n\n`
-            }
+                    equipmentListText += "\n";
+                };
+                equipmentListText += `  Category: ${character.Inventory.WeaponSlots.OffHand.WeaponCategory}\n`;
+                equipmentListText += `  Normal range: ${character.Inventory.WeaponSlots.OffHand.NormalRange} feet\n\n`;
+            };
 
             if (character.Inventory.Armor != null) {
-                equipmentListText += `Armor: ${character.Inventory.Armor.Name}\n\n`
-            }
+                equipmentListText += `Armor: ${character.Inventory.Armor.Name}\n\n`;
+            };
 
             if (character.Inventory.Shield != null) {
-                equipmentListText += `Shield: ${character.Inventory.Shield.Name}\n\n`
-            }
+                equipmentListText += `Shield: ${character.Inventory.Shield.Name}\n\n`;
+            };
 
             equipmentListTextArea.value = equipmentListText;
         };
