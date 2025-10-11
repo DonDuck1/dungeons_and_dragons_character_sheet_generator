@@ -245,14 +245,18 @@ func (characterService CharacterService) ViewCharacter(characterName string) {
 	}
 	if character.MainClass.ClassSpellcastingInfo != nil {
 		fmt.Println("Spell slots:")
-		fmt.Printf("  Level 0: %d\n", character.MainClass.ClassSpellcastingInfo.MaxKnownCantrips)
+		if character.MainClass.ClassSpellcastingInfo.MaxKnownCantrips != 0 {
+			fmt.Printf("  Level 0: %d\n", character.MainClass.ClassSpellcastingInfo.MaxKnownCantrips)
+		}
 		for i, spellSlotLevelAmount := range character.MainClass.ClassSpellcastingInfo.SpellSlotAmount {
 			fmt.Printf("  Level %d: %d\n", i+1, spellSlotLevelAmount)
 		}
 	}
 	if character.MainClass.ClassWarlockCastingInfo != nil {
 		fmt.Println("Spell slots:")
-		fmt.Printf("  Level 0: %d\n", character.MainClass.ClassWarlockCastingInfo.MaxKnownCantrips)
+		if character.MainClass.ClassWarlockCastingInfo.MaxKnownCantrips != 0 {
+			fmt.Printf("  Level 0: %d\n", character.MainClass.ClassWarlockCastingInfo.MaxKnownCantrips)
+		}
 		fmt.Printf("  Level %d: %d\n", character.MainClass.ClassWarlockCastingInfo.SpellSlotLevel, character.MainClass.ClassWarlockCastingInfo.SpellSlotAmount)
 	}
 
