@@ -40,7 +40,7 @@ func (class Class) GetMaxHitPointsFromClass(constitutionModifier int) int {
 	maxHitPoints := class.HitDie + constitutionModifier
 
 	for i := class.Level - 1; i > 0; i-- {
-		maxHitPoints += (class.HitDie / 2) + 1 + constitutionModifier
+		maxHitPoints += max((class.HitDie/2)+1+constitutionModifier, 1)
 	}
 
 	return maxHitPoints
