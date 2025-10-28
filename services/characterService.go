@@ -116,6 +116,8 @@ func (characterService CharacterService) CreateNewCharacter(
 
 	passivePerception := 10 + skillProficiencyList.Perception.Modifier
 
+	maxHitPoints := class.GetMaxHitPointsFromClass(abilityScoreList.Constitution.Modifier) + race.GetMaxHitPointsFromRace(level)
+
 	character := domain.NewCharacter(
 		characterName,
 		*race,
@@ -128,6 +130,7 @@ func (characterService CharacterService) CreateNewCharacter(
 		initiative,
 		passivePerception,
 		inventory,
+		maxHitPoints,
 	)
 
 	characterService.jsonCharacterRepository.AddCharacter(character)

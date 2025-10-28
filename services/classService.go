@@ -183,6 +183,7 @@ func CreateClassFromDndApiClassWithLevels(dndApiClassWithLevels *infrastructure.
 
 	return domain.NewClass(
 		classTypedName,
+		dndApiClassWithLevels.HitDie,
 		level,
 		skillProficiencies,
 		unarmoredArmorClassAbilityScoreModifierNameList,
@@ -338,6 +339,7 @@ func (classService *ClassService) InitialiseClasses() {
 		dndApiClassWithLevels := infrastructure.NewDndApiClassWithLevels(
 			dndApiClass.Index,
 			dndApiClass.Name,
+			dndApiClass.HitDie,
 			dndApiClass.ProficiencyChoices,
 			dndApiClass.ClassLevelsUrl,
 			dndApiClassLevelsList[i],

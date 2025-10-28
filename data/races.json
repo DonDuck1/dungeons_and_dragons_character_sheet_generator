@@ -63,6 +63,13 @@
             },
             "bonus": 1
           }
+        ],
+        "racial_traits": [
+          {
+            "index": "dwarven-toughness",
+            "name": "Dwarven Toughness",
+            "url": "/api/2014/traits/dwarven-toughness"
+          }
         ]
       }
     ]
@@ -106,6 +113,23 @@
             },
             "bonus": 1
           }
+        ],
+        "racial_traits": [
+          {
+            "index": "elf-weapon-training",
+            "name": "Elf Weapon Training",
+            "url": "/api/2014/traits/elf-weapon-training"
+          },
+          {
+            "index": "high-elf-cantrip",
+            "name": "High Elf Cantrip",
+            "url": "/api/2014/traits/high-elf-cantrip"
+          },
+          {
+            "index": "extra-language",
+            "name": "Extra Language",
+            "url": "/api/2014/traits/extra-language"
+          }
         ]
       }
     ]
@@ -148,6 +172,18 @@
               "url": "/api/2014/ability-scores/con"
             },
             "bonus": 1
+          }
+        ],
+        "racial_traits": [
+          {
+            "index": "artificers-lore",
+            "name": "Artificer's Lore",
+            "url": "/api/2014/traits/artificers-lore"
+          },
+          {
+            "index": "tinker",
+            "name": "Tinker",
+            "url": "/api/2014/traits/tinker"
           }
         ]
       }
@@ -279,6 +315,13 @@
               "url": "/api/2014/ability-scores/cha"
             },
             "bonus": 1
+          }
+        ],
+        "racial_traits": [
+          {
+            "index": "naturally-stealthy",
+            "name": "Naturally Stealthy",
+            "url": "/api/2014/traits/naturally-stealthy"
           }
         ]
       }

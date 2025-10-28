@@ -2,6 +2,7 @@ package domain
 
 type Class struct {
 	Name                                            ClassName
+	HitDie                                          int
 	Level                                           int
 	SkillProficiencies                              []SkillProficiencyName
 	UnarmoredArmorClassAbilityScoreModifierNameList []AbilityScoreName
@@ -11,6 +12,7 @@ type Class struct {
 
 func NewClass(
 	name ClassName,
+	hitDie int,
 	level int,
 	skillProficiencies []SkillProficiencyName,
 	unarmoredArmorClassAbilityScoreModifierNameList []AbilityScoreName,
@@ -25,10 +27,21 @@ func NewClass(
 
 	return Class{
 		Name:               name,
+		HitDie:             hitDie,
 		Level:              level,
 		SkillProficiencies: skillProficiencies,
 		UnarmoredArmorClassAbilityScoreModifierNameList: unarmoredArmorClassAbilityScoreModifierNameList,
 		ClassSpellcastingInfo:                           classSpellcastingInfo,
 		ClassWarlockCastingInfo:                         classWarlockCastingInfo,
 	}
+}
+
+func (class Class) GetMaxHitPointsFromClass(constitutionModifier int) int {
+	maxHitPoints := class.HitDie + constitutionModifier
+
+	for i := class.Level - 1; i > 0; i-- {
+		maxHitPoints += (class.HitDie / 2) + 1 + constitutionModifier
+	}
+
+	return maxHitPoints
 }

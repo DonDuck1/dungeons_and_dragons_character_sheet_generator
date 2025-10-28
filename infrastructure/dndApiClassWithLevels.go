@@ -8,6 +8,7 @@ import (
 type DndApiClassWithLevels struct {
 	Index              string                         `json:"index"`
 	Name               string                         `json:"name"`
+	HitDie             int                            `json:"hit_die"`
 	ProficiencyChoices []DndApiClassProficiencyChoice `json:"proficiency_choices"`
 	ClassLevelsUrl     string                         `json:"class_levels_url"`
 	ClassLevelList     []DndApiClassLevel             `json:"class_level_list"`
@@ -17,6 +18,7 @@ type DndApiClassWithLevels struct {
 func NewDndApiClassWithLevels(
 	index string,
 	name string,
+	hitDie int,
 	proficiencyChoices []DndApiClassProficiencyChoice,
 	classLevelsUrl string,
 	classLevelList []DndApiClassLevel,
@@ -25,6 +27,7 @@ func NewDndApiClassWithLevels(
 	return DndApiClassWithLevels{
 		Index:              index,
 		Name:               name,
+		HitDie:             hitDie,
 		ProficiencyChoices: proficiencyChoices,
 		ClassLevelsUrl:     classLevelsUrl,
 		ClassLevelList:     classLevelList,
@@ -69,6 +72,7 @@ func (dndApiClassWithLevels DndApiClassWithLevels) GetDeepCopy() DndApiClassWith
 	return NewDndApiClassWithLevels(
 		dndApiClassWithLevels.Index,
 		dndApiClassWithLevels.Name,
+		dndApiClassWithLevels.HitDie,
 		dndApiClassWithLevels.ProficiencyChoices,
 		dndApiClassWithLevels.ClassLevelsUrl,
 		deepCopiedClassLevelList,

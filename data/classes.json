@@ -2,6 +2,7 @@
   {
     "index": "barbarian",
     "name": "Barbarian",
+    "hit_die": 12,
     "proficiency_choices": [
       {
         "choose": 2,
@@ -261,6 +262,7 @@
   {
     "index": "bard",
     "name": "Bard",
+    "hit_die": 8,
     "proficiency_choices": [
       {
         "choose": 3,
@@ -927,6 +929,7 @@
   {
     "index": "cleric",
     "name": "Cleric",
+    "hit_die": 8,
     "proficiency_choices": [
       {
         "choose": 2,
@@ -1425,6 +1428,7 @@
   {
     "index": "druid",
     "name": "Druid",
+    "hit_die": 8,
     "proficiency_choices": [
       {
         "choose": 2,
@@ -1944,6 +1948,7 @@
   {
     "index": "fighter",
     "name": "Fighter",
+    "hit_die": 10,
     "proficiency_choices": [
       {
         "choose": 2,
@@ -2217,6 +2222,7 @@
   {
     "index": "monk",
     "name": "Monk",
+    "hit_die": 8,
     "proficiency_choices": [
       {
         "choose": 2,
@@ -2497,6 +2503,7 @@
   {
     "index": "paladin",
     "name": "Paladin",
+    "hit_die": 10,
     "proficiency_choices": [
       {
         "choose": 2,
@@ -3002,6 +3009,7 @@
   {
     "index": "ranger",
     "name": "Ranger",
+    "hit_die": 10,
     "proficiency_choices": [
       {
         "choose": 3,
@@ -3521,6 +3529,7 @@
   {
     "index": "rogue",
     "name": "Rogue",
+    "hit_die": 8,
     "proficiency_choices": [
       {
         "choose": 4,
@@ -3815,6 +3824,7 @@
   {
     "index": "sorcerer",
     "name": "Sorcerer",
+    "hit_die": 6,
     "proficiency_choices": [
       {
         "choose": 2,
@@ -4320,6 +4330,7 @@
   {
     "index": "warlock",
     "name": "Warlock",
+    "hit_die": 8,
     "proficiency_choices": [
       {
         "choose": 2,
@@ -4832,6 +4843,7 @@
   {
     "index": "wizard",
     "name": "Wizard",
+    "hit_die": 6,
     "proficiency_choices": [
       {
         "choose": 2,

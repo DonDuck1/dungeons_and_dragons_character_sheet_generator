@@ -1,5 +1,7 @@
 package domain
 
+import "strings"
+
 type Race struct {
 	Name                     string
 	AbilityScoreImprovements []AbilityScoreImprovement
@@ -18,4 +20,18 @@ func (race Race) GetChosenAbilityScoreImprovements() []AbilityScoreImprovement {
 	}
 
 	return abilityScoreImprovements
+}
+
+func (race Race) GetMaxHitPointsFromRace(characterLevel int) int {
+	maxHitPoints := 0
+
+	if race.SubRace != nil {
+		for _, SubRacialTrait := range race.SubRace.RacialTraits {
+			if strings.EqualFold(SubRacialTrait.Name, "Dwarven Toughness") {
+				maxHitPoints += characterLevel
+			}
+		}
+	}
+
+	return maxHitPoints
 }

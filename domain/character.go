@@ -12,6 +12,7 @@ type Character struct {
 	Initiative           int
 	PassivePerception    int
 	Inventory            Inventory
+	MaxHitPoints         int
 }
 
 func NewCharacter(
@@ -26,6 +27,7 @@ func NewCharacter(
 	initiative int,
 	passivePerception int,
 	inventory Inventory,
+	maxHitPoints int,
 ) *Character {
 	character := Character{
 		Name:                 name,
@@ -39,6 +41,7 @@ func NewCharacter(
 		Initiative:           initiative,
 		PassivePerception:    passivePerception,
 		Inventory:            inventory,
+		MaxHitPoints:         maxHitPoints,
 	}
 
 	return &character

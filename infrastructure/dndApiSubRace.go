@@ -7,6 +7,7 @@ type DndApiSubRace struct {
 	Name             string               `json:"name"`
 	Race             DndApiReference      `json:"race"`
 	AbilityBonusList []DndApiAbilityBonus `json:"ability_bonuses"`
+	RacialTraitList  []DndApiReference    `json:"racial_traits"`
 }
 
 func (dndApiSubRace DndApiSubRace) AsSubRace() (*domain.SubRace, error) {
@@ -19,6 +20,12 @@ func (dndApiSubRace DndApiSubRace) AsSubRace() (*domain.SubRace, error) {
 		abilityScoreImprovements = append(abilityScoreImprovements, *abilityScoreImprovement)
 	}
 
-	subRace := domain.NewSubRace(dndApiSubRace.Name, abilityScoreImprovements)
+	racialTraits := []domain.RacialTrait{}
+	for _, dndApiRacialTrait := range dndApiSubRace.RacialTraitList {
+		racialTrait := domain.NewRacialTrait(dndApiRacialTrait.Name)
+		racialTraits = append(racialTraits, racialTrait)
+	}
+
+	subRace := domain.NewSubRace(dndApiSubRace.Name, abilityScoreImprovements, racialTraits)
 	return &subRace, nil
 }
