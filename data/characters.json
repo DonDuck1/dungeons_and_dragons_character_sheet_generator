@@ -1,1 +1,320 @@
-[]
+[
+  {
+    "Name": "Test case 2",
+    "Race": {
+      "Name": "Dwarf",
+      "AbilityScoreImprovements": [
+        {
+          "AbilityScoreName": "Constitution",
+          "Value": 2
+        }
+      ],
+      "SubRace": {
+        "Name": "Hill Dwarf",
+        "AbilityScoreImprovements": [
+          {
+            "AbilityScoreName": "Wisdom",
+            "Value": 1
+          }
+        ],
+        "RacialTraits": [
+          {
+            "Name": "Dwarven Toughness"
+          }
+        ]
+      }
+    },
+    "Class": {
+      "Name": "Barbarian",
+      "HitDie": 12,
+      "Level": 6,
+      "SkillProficiencies": [
+        "Animal Handling",
+        "Athletics"
+      ],
+      "UnarmoredArmorClassAbilityScoreModifierNameList": [
+        "Dexterity",
+        "Constitution"
+      ],
+      "ClassSpellcastingInfo": null,
+      "ClassWarlockCastingInfo": null
+    },
+    "Background": {
+      "Name": "Acolyte",
+      "SkillProficiencies": [
+        "Insight",
+        "Religion"
+      ]
+    },
+    "ProficiencyBonus": 3,
+    "AbilityScoreList": {
+      "Strength": {
+        "Name": "Strength",
+        "BaseValue": 10,
+        "FinalValue": 10,
+        "Modifier": 0
+      },
+      "Dexterity": {
+        "Name": "Dexterity",
+        "BaseValue": 10,
+        "FinalValue": 10,
+        "Modifier": 0
+      },
+      "Constitution": {
+        "Name": "Constitution",
+        "BaseValue": 10,
+        "FinalValue": 12,
+        "Modifier": 1
+      },
+      "Intelligence": {
+        "Name": "Intelligence",
+        "BaseValue": 10,
+        "FinalValue": 10,
+        "Modifier": 0
+      },
+      "Wisdom": {
+        "Name": "Wisdom",
+        "BaseValue": 10,
+        "FinalValue": 11,
+        "Modifier": 0
+      },
+      "Charisma": {
+        "Name": "Charisma",
+        "BaseValue": 10,
+        "FinalValue": 10,
+        "Modifier": 0
+      }
+    },
+    "SkillProficiencyList": {
+      "Acrobatics": {
+        "Name": "Acrobatics",
+        "Proficient": false,
+        "TimesProficiencyIsApplied": 0,
+        "RelatedAbilityScore": {
+          "Name": "Dexterity",
+          "BaseValue": 10,
+          "FinalValue": 10,
+          "Modifier": 0
+        },
+        "Modifier": 0
+      },
+      "AnimalHandling": {
+        "Name": "Animal Handling",
+        "Proficient": true,
+        "TimesProficiencyIsApplied": 1,
+        "RelatedAbilityScore": {
+          "Name": "Wisdom",
+          "BaseValue": 10,
+          "FinalValue": 11,
+          "Modifier": 0
+        },
+        "Modifier": 3
+      },
+      "Arcana": {
+        "Name": "Arcana",
+        "Proficient": false,
+        "TimesProficiencyIsApplied": 0,
+        "RelatedAbilityScore": {
+          "Name": "Intelligence",
+          "BaseValue": 10,
+          "FinalValue": 10,
+          "Modifier": 0
+        },
+        "Modifier": 0
+      },
+      "Athletics": {
+        "Name": "Athletics",
+        "Proficient": true,
+        "TimesProficiencyIsApplied": 1,
+        "RelatedAbilityScore": {
+          "Name": "Strength",
+          "BaseValue": 10,
+          "FinalValue": 10,
+          "Modifier": 0
+        },
+        "Modifier": 3
+      },
+      "Deception": {
+        "Name": "Deception",
+        "Proficient": false,
+        "TimesProficiencyIsApplied": 0,
+        "RelatedAbilityScore": {
+          "Name": "Charisma",
+          "BaseValue": 10,
+          "FinalValue": 10,
+          "Modifier": 0
+        },
+        "Modifier": 0
+      },
+      "History": {
+        "Name": "History",
+        "Proficient": false,
+        "TimesProficiencyIsApplied": 0,
+        "RelatedAbilityScore": {
+          "Name": "Intelligence",
+          "BaseValue": 10,
+          "FinalValue": 10,
+          "Modifier": 0
+        },
+        "Modifier": 0
+      },
+      "Insight": {
+        "Name": "Insight",
+        "Proficient": true,
+        "TimesProficiencyIsApplied": 1,
+        "RelatedAbilityScore": {
+          "Name": "Wisdom",
+          "BaseValue": 10,
+          "FinalValue": 11,
+          "Modifier": 0
+        },
+        "Modifier": 3
+      },
+      "Intimidation": {
+        "Name": "Intimidation",
+        "Proficient": false,
+        "TimesProficiencyIsApplied": 0,
+        "RelatedAbilityScore": {
+          "Name": "Charisma",
+          "BaseValue": 10,
+          "FinalValue": 10,
+          "Modifier": 0
+        },
+        "Modifier": 0
+      },
+      "Investigation": {
+        "Name": "Investigation",
+        "Proficient": false,
+        "TimesProficiencyIsApplied": 0,
+        "RelatedAbilityScore": {
+          "Name": "Intelligence",
+          "BaseValue": 10,
+          "FinalValue": 10,
+          "Modifier": 0
+        },
+        "Modifier": 0
+      },
+      "Medicine": {
+        "Name": "Medicine",
+        "Proficient": false,
+        "TimesProficiencyIsApplied": 0,
+        "RelatedAbilityScore": {
+          "Name": "Wisdom",
+          "BaseValue": 10,
+          "FinalValue": 11,
+          "Modifier": 0
+        },
+        "Modifier": 0
+      },
+      "Nature": {
+        "Name": "Nature",
+        "Proficient": false,
+        "TimesProficiencyIsApplied": 0,
+        "RelatedAbilityScore": {
+          "Name": "Intelligence",
+          "BaseValue": 10,
+          "FinalValue": 10,
+          "Modifier": 0
+        },
+        "Modifier": 0
+      },
+      "Perception": {
+        "Name": "Perception",
+        "Proficient": false,
+        "TimesProficiencyIsApplied": 0,
+        "RelatedAbilityScore": {
+          "Name": "Wisdom",
+          "BaseValue": 10,
+          "FinalValue": 11,
+          "Modifier": 0
+        },
+        "Modifier": 0
+      },
+      "Performance": {
+        "Name": "Performance",
+        "Proficient": false,
+        "TimesProficiencyIsApplied": 0,
+        "RelatedAbilityScore": {
+          "Name": "Charisma",
+          "BaseValue": 10,
+          "FinalValue": 10,
+          "Modifier": 0
+        },
+        "Modifier": 0
+      },
+      "Persuasion": {
+        "Name": "Persuasion",
+        "Proficient": false,
+        "TimesProficiencyIsApplied": 0,
+        "RelatedAbilityScore": {
+          "Name": "Charisma",
+          "BaseValue": 10,
+          "FinalValue": 10,
+          "Modifier": 0
+        },
+        "Modifier": 0
+      },
+      "Religion": {
+        "Name": "Religion",
+        "Proficient": true,
+        "TimesProficiencyIsApplied": 1,
+        "RelatedAbilityScore": {
+          "Name": "Intelligence",
+          "BaseValue": 10,
+          "FinalValue": 10,
+          "Modifier": 0
+        },
+        "Modifier": 3
+      },
+      "SleightOfHand": {
+        "Name": "Sleight of Hand",
+        "Proficient": false,
+        "TimesProficiencyIsApplied": 0,
+        "RelatedAbilityScore": {
+          "Name": "Dexterity",
+          "BaseValue": 10,
+          "FinalValue": 10,
+          "Modifier": 0
+        },
+        "Modifier": 0
+      },
+      "Stealth": {
+        "Name": "Stealth",
+        "Proficient": false,
+        "TimesProficiencyIsApplied": 0,
+        "RelatedAbilityScore": {
+          "Name": "Dexterity",
+          "BaseValue": 10,
+          "FinalValue": 10,
+          "Modifier": 0
+        },
+        "Modifier": 0
+      },
+      "Survival": {
+        "Name": "Survival",
+        "Proficient": false,
+        "TimesProficiencyIsApplied": 0,
+        "RelatedAbilityScore": {
+          "Name": "Wisdom",
+          "BaseValue": 10,
+          "FinalValue": 11,
+          "Modifier": 0
+        },
+        "Modifier": 0
+      }
+    },
+    "ArmorClass": 11,
+    "Initiative": 0,
+    "PassivePerception": 10,
+    "Inventory": {
+      "OpenHandSlots": 2,
+      "WeaponSlots": {
+        "MainHand": null,
+        "OffHand": null
+      },
+      "Armor": null,
+      "Shield": null
+    },
+    "MaxHitPoints": 59
+  }
+]

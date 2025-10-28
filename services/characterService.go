@@ -168,6 +168,8 @@ func (characterService CharacterService) ChangeLevelOfCharacter(characterName st
 
 	character.PassivePerception = 10 + character.SkillProficiencyList.Perception.Modifier
 
+	character.MaxHitPoints = character.Class.GetMaxHitPointsFromClass(character.AbilityScoreList.Constitution.Modifier) + character.Race.GetMaxHitPointsFromRace(level)
+
 	err = characterService.jsonCharacterRepository.SaveCharacterList()
 	if err != nil {
 		log.Fatal(err)
@@ -281,6 +283,7 @@ func (characterService CharacterService) ViewCharacter(characterName string) {
 	fmt.Printf("Armor class: %d\n", character.ArmorClass)
 	fmt.Printf("Initiative bonus: %d\n", character.Initiative)
 	fmt.Printf("Passive perception: %d\n", character.PassivePerception)
+	fmt.Printf("Max hit points: %d\n", character.MaxHitPoints)
 
 	os.Exit(0)
 }
