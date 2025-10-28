@@ -228,9 +228,11 @@ document.addEventListener('DOMContentLoaded', () => {
             armorClassField.value = "";
             initiativeField.value = "";
 
+            maxHpField.value = "";
+
             otherProfsTextArea.value = "";
 
-            featuresTextArea = ""
+            featuresTextArea.value = ""
 
             equipmentListTextArea.value = "";
         } else {
@@ -325,6 +327,8 @@ document.addEventListener('DOMContentLoaded', () => {
             armorClassField.value = character.ArmorClass;
             initiativeField.value = formatNumberWithSign(character.Initiative);
 
+            maxHpField.value = character.MaxHitPoints;
+
             let spellcastingInfoText = "";
             let spellsListText = "";
 
@@ -388,6 +392,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             otherProfsTextArea.value = spellcastingInfoText;
+
             featuresTextArea.value = spellsListText;
 
             let equipmentListText = "";
