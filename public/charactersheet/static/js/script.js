@@ -35,6 +35,8 @@ function getSpellcastingInfoTextForNormalSpellcaster(classSpellcastingInfo) {
 
     spellcastingInfoText += `  Spell save DC: ${classSpellcastingInfo.SpellSaveDC}\n`;
     spellcastingInfoText += `  Spell attack bonus: ${formatNumberWithSign(classSpellcastingInfo.SpellAttackBonus)}\n\n`;
+
+    return spellcastingInfoText
 }
 
 
