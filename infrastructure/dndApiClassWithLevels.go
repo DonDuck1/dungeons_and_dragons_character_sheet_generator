@@ -15,6 +15,10 @@ type DndApiClassWithLevels struct {
 	Spellcasting       *DndApiClassSpellcasting       `json:"spellcasting"`
 }
 
+const (
+	NO_CLASS_LEVEL_STRUCT_WITH_LEVEL string = "could not find class level struct for level %d"
+)
+
 func NewDndApiClassWithLevels(
 	index string,
 	name string,
@@ -53,7 +57,7 @@ func (dndApiClassWithLevels *DndApiClassWithLevels) GetClassLevelByLevel(level i
 		}
 	}
 
-	err := fmt.Errorf("could not find class level struct for level %d", level)
+	err := fmt.Errorf(NO_CLASS_LEVEL_STRUCT_WITH_LEVEL, level)
 	return nil, err
 }
 

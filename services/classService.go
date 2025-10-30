@@ -4,6 +4,7 @@ import (
 	"dungeons_and_dragons_character_sheet_generator/domain"
 	"dungeons_and_dragons_character_sheet_generator/infrastructure"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"log"
 	"os"
@@ -13,22 +14,177 @@ type ClassService struct {
 	dndApiGateway *infrastructure.DndApiGateway
 }
 
+const (
+	NIL_DND_API_CLASS_WITH_LEVELS              string = "dndApiClassWithLevels provided is a nil value"
+	INITIALISED_SPELL_LIST_REQUIRED            string = "a %s should have an initialised spell list"
+	INITIALISED_SPELL_LIST_REQUIRED_WARLOCK    string = "a warlock should have an initialised spell list"
+	UNKNOWN_CLASS_WITH_SPELLCASTING            string = "unknown class (with spellcasting) detected, character creation cannot continue"
+	SPELLCASTING_NOT_DEFINED_PER_LEVEL         string = "according to the API, the class has spellcasting, but the spellcasting is not defined per level; character creation cannot continue"
+	NON_SPELLCASTER_HAS_SPELLCASTING_PER_LEVEL string = "according to the API, the class does not have spellcasting, but the (non-existent) spellcasting is somehow actually defined per level; character creation cannot continue"
+)
+
 func NewClassService(dndApiGateway *infrastructure.DndApiGateway) *ClassService {
 	return &ClassService{dndApiGateway: dndApiGateway}
 }
 
-func CreateClassFromDndApiClassWithLevels(dndApiClassWithLevels *infrastructure.DndApiClassWithLevels, level int, proficiencyBonus int, abilityScoreList domain.AbilityScoreList, jsonSpellRepository *infrastructure.JsonSpellRepository) domain.Class {
-	if dndApiClassWithLevels == nil {
-		err := fmt.Errorf("dndApiClassWithLevels provided is a nil value")
-		log.Fatal(err)
+func getSpellSlotAmountFromDndApiClassLevelSpellcasting(dndApiClassLevelSpellcasting *infrastructure.DndApiClassLevelSpellcasting) [9]int {
+	spellSlotAmount := [9]int{
+		dndApiClassLevelSpellcasting.SpellSlotsLevel1,
+		dndApiClassLevelSpellcasting.SpellSlotsLevel2,
+		dndApiClassLevelSpellcasting.SpellSlotsLevel3,
+		dndApiClassLevelSpellcasting.SpellSlotsLevel4,
+		dndApiClassLevelSpellcasting.SpellSlotsLevel5,
+		0,
+		0,
+		0,
+		0,
+	}
+	if dndApiClassLevelSpellcasting.SpellSlotsLevel6 != nil {
+		spellSlotAmount[5] = *dndApiClassLevelSpellcasting.SpellSlotsLevel6
+	}
+	if dndApiClassLevelSpellcasting.SpellSlotsLevel7 != nil {
+		spellSlotAmount[6] = *dndApiClassLevelSpellcasting.SpellSlotsLevel7
+	}
+	if dndApiClassLevelSpellcasting.SpellSlotsLevel8 != nil {
+		spellSlotAmount[7] = *dndApiClassLevelSpellcasting.SpellSlotsLevel8
+	}
+	if dndApiClassLevelSpellcasting.SpellSlotsLevel9 != nil {
+		spellSlotAmount[8] = *dndApiClassLevelSpellcasting.SpellSlotsLevel9
 	}
 
-	classTypedName, err := domain.ClassNameFromUntypedPotentialClassName(dndApiClassWithLevels.Name)
+	return spellSlotAmount
+}
+
+func getWarlockSpellSlotInfo(spellSlotAmount [9]int) (int, int) {
+	warlockSpellSlotAmount := 0
+	warlockSpellSlotLevel := 0
+
+	for i, levelSpellSlotAmount := range spellSlotAmount {
+		if levelSpellSlotAmount != 0 {
+			warlockSpellSlotAmount = levelSpellSlotAmount
+			warlockSpellSlotLevel = i + 1
+			break
+		}
+	}
+
+	return warlockSpellSlotAmount, warlockSpellSlotLevel
+}
+
+func createCastingInfoFromDndApiClassWithLevels(dndApiClassWithLevels *infrastructure.DndApiClassWithLevels, level int, classTypedName domain.ClassName, jsonSpellRepository *infrastructure.JsonSpellRepository, abilityScoreList domain.AbilityScoreList, proficiencyBonus int) (*domain.ClassSpellcastingInfo, *domain.ClassWarlockCastingInfo) {
+	var classSpellcastingInfo *domain.ClassSpellcastingInfo
+	var classWarlockCastingInfo *domain.ClassWarlockCastingInfo
+
+	dndApiClassLevel, err := dndApiClassWithLevels.GetClassLevelByLevel(level)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	dndApiClassLevel, err := dndApiClassWithLevels.GetClassLevelByLevel(level)
+	if dndApiClassWithLevels.Spellcasting != nil && dndApiClassLevel.Spellcasting != nil {
+		maxKnownCantrips := 0
+		if dndApiClassLevel.Spellcasting.CantripsKnown != nil {
+			maxKnownCantrips = *dndApiClassLevel.Spellcasting.CantripsKnown
+		}
+
+		spellList, err := CreateInitialSpellListForClass(classTypedName, jsonSpellRepository)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		spellSlotAmount := getSpellSlotAmountFromDndApiClassLevelSpellcasting(dndApiClassLevel.Spellcasting)
+
+		spellcastingAbilityScoreName, err := dndApiClassWithLevels.Spellcasting.GetSpellcastingAbilityAsAbilityScoreName()
+		if err != nil {
+			log.Fatal(err)
+		}
+		spellcastingAbilityScore, err := abilityScoreList.GetByName(*spellcastingAbilityScoreName)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		spellSaveDC := 8 + proficiencyBonus + spellcastingAbilityScore.Modifier
+
+		spellAttackBonus := proficiencyBonus + spellcastingAbilityScore.Modifier
+
+		switch classTypedName {
+		case domain.BARD, domain.RANGER, domain.SORCERER:
+			if spellList == nil {
+				err := fmt.Errorf(INITIALISED_SPELL_LIST_REQUIRED, string(classTypedName))
+				log.Fatal(err)
+			}
+
+			classSpellcastingInfoValue := domain.NewClassSpellcastingInfo(
+				maxKnownCantrips,
+				dndApiClassLevel.Spellcasting.SpellsKnown,
+				nil,
+				*spellList,
+				spellSlotAmount,
+				spellcastingAbilityScore,
+				spellSaveDC,
+				spellAttackBonus,
+			)
+			classSpellcastingInfo = &classSpellcastingInfoValue
+		case domain.CLERIC, domain.DRUID, domain.PALADIN, domain.WIZARD:
+			if spellList == nil {
+				err := fmt.Errorf(INITIALISED_SPELL_LIST_REQUIRED, string(classTypedName))
+				log.Fatal(err)
+			}
+
+			maxPreparedSpells := max(1, spellcastingAbilityScore.Modifier+level)
+
+			classSpellcastingInfoValue := domain.NewClassSpellcastingInfo(
+				maxKnownCantrips,
+				dndApiClassLevel.Spellcasting.SpellsKnown,
+				&maxPreparedSpells,
+				*spellList,
+				spellSlotAmount,
+				spellcastingAbilityScore,
+				spellSaveDC,
+				spellAttackBonus,
+			)
+			classSpellcastingInfo = &classSpellcastingInfoValue
+		case domain.WARLOCK:
+			if spellList == nil {
+				err := errors.New(INITIALISED_SPELL_LIST_REQUIRED_WARLOCK)
+				log.Fatal(err)
+			}
+
+			warlockSpellSlotAmount, warlockSpellSlotLevel := getWarlockSpellSlotInfo(spellSlotAmount)
+
+			classWarlockCastingInfoValue := domain.NewClassWarlockCastingInfo(
+				maxKnownCantrips,
+				*dndApiClassLevel.Spellcasting.SpellsKnown,
+				*spellList,
+				warlockSpellSlotAmount,
+				warlockSpellSlotLevel,
+				spellcastingAbilityScore,
+				spellSaveDC,
+				spellAttackBonus,
+			)
+			classWarlockCastingInfo = &classWarlockCastingInfoValue
+		case domain.BARBARIAN, domain.FIGHTER, domain.MONK, domain.ROGUE:
+			fmt.Println("class should not have spellcasting, but it does according to the API. The API will be ignored in this case")
+		default:
+			err = errors.New(UNKNOWN_CLASS_WITH_SPELLCASTING)
+			log.Fatal(err)
+		}
+	} else if dndApiClassWithLevels.Spellcasting != nil {
+		err := errors.New(SPELLCASTING_NOT_DEFINED_PER_LEVEL)
+		log.Fatal(err)
+	} else if dndApiClassLevel.Spellcasting != nil {
+		err := errors.New(NON_SPELLCASTER_HAS_SPELLCASTING_PER_LEVEL)
+		log.Fatal(err)
+	}
+
+	return classSpellcastingInfo, classWarlockCastingInfo
+}
+
+func CreateClassFromDndApiClassWithLevels(dndApiClassWithLevels *infrastructure.DndApiClassWithLevels, level int, proficiencyBonus int, abilityScoreList domain.AbilityScoreList, jsonSpellRepository *infrastructure.JsonSpellRepository) domain.Class {
+	if dndApiClassWithLevels == nil {
+		err := errors.New(NIL_DND_API_CLASS_WITH_LEVELS)
+		log.Fatal(err)
+	}
+
+	classTypedName, err := domain.ClassNameFromUntypedPotentialClassName(dndApiClassWithLevels.Name)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -52,134 +208,7 @@ func CreateClassFromDndApiClassWithLevels(dndApiClassWithLevels *infrastructure.
 		unarmoredArmorClassAbilityScoreModifierNameList = append(unarmoredArmorClassAbilityScoreModifierNameList, domain.WISDOM)
 	}
 
-	var classSpellcastingInfo *domain.ClassSpellcastingInfo
-	var classWarlockCastingInfo *domain.ClassWarlockCastingInfo
-	if dndApiClassWithLevels.Spellcasting != nil && dndApiClassLevel.Spellcasting != nil {
-		maxKnownCantrips := 0
-		if dndApiClassLevel.Spellcasting.CantripsKnown != nil {
-			maxKnownCantrips = *dndApiClassLevel.Spellcasting.CantripsKnown
-		}
-
-		spellList, err := CreateInitialSpellListForClass(classTypedName, jsonSpellRepository)
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		spellSlotAmount := [9]int{
-			dndApiClassLevel.Spellcasting.SpellSlotsLevel1,
-			dndApiClassLevel.Spellcasting.SpellSlotsLevel2,
-			dndApiClassLevel.Spellcasting.SpellSlotsLevel3,
-			dndApiClassLevel.Spellcasting.SpellSlotsLevel4,
-			dndApiClassLevel.Spellcasting.SpellSlotsLevel5,
-			0,
-			0,
-			0,
-			0,
-		}
-		if dndApiClassLevel.Spellcasting.SpellSlotsLevel6 != nil {
-			spellSlotAmount[5] = *dndApiClassLevel.Spellcasting.SpellSlotsLevel6
-		}
-		if dndApiClassLevel.Spellcasting.SpellSlotsLevel7 != nil {
-			spellSlotAmount[6] = *dndApiClassLevel.Spellcasting.SpellSlotsLevel7
-		}
-		if dndApiClassLevel.Spellcasting.SpellSlotsLevel8 != nil {
-			spellSlotAmount[7] = *dndApiClassLevel.Spellcasting.SpellSlotsLevel8
-		}
-		if dndApiClassLevel.Spellcasting.SpellSlotsLevel9 != nil {
-			spellSlotAmount[8] = *dndApiClassLevel.Spellcasting.SpellSlotsLevel9
-		}
-
-		spellcastingAbilityScoreName, err := dndApiClassWithLevels.Spellcasting.GetSpellcastingAbilityAsAbilityScoreName()
-		if err != nil {
-			log.Fatal(err)
-		}
-		spellcastingAbilityScore, err := abilityScoreList.GetByName(*spellcastingAbilityScoreName)
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		spellSaveDC := 8 + proficiencyBonus + spellcastingAbilityScore.Modifier
-
-		spellAttackBonus := proficiencyBonus + spellcastingAbilityScore.Modifier
-
-		switch classTypedName {
-		case domain.BARD, domain.RANGER, domain.SORCERER:
-			if spellList == nil {
-				err := fmt.Errorf("a %s should have an initialised spell list", string(classTypedName))
-				log.Fatal(err)
-			}
-
-			classSpellcastingInfoValue := domain.NewClassSpellcastingInfo(
-				maxKnownCantrips,
-				dndApiClassLevel.Spellcasting.SpellsKnown,
-				nil,
-				*spellList,
-				spellSlotAmount,
-				spellcastingAbilityScore,
-				spellSaveDC,
-				spellAttackBonus,
-			)
-			classSpellcastingInfo = &classSpellcastingInfoValue
-		case domain.CLERIC, domain.DRUID, domain.PALADIN, domain.WIZARD:
-			if spellList == nil {
-				err := fmt.Errorf("a %s should have an initialised spell list", string(classTypedName))
-				log.Fatal(err)
-			}
-
-			maxPreparedSpells := max(1, spellcastingAbilityScore.Modifier+level)
-
-			classSpellcastingInfoValue := domain.NewClassSpellcastingInfo(
-				maxKnownCantrips,
-				dndApiClassLevel.Spellcasting.SpellsKnown,
-				&maxPreparedSpells,
-				*spellList,
-				spellSlotAmount,
-				spellcastingAbilityScore,
-				spellSaveDC,
-				spellAttackBonus,
-			)
-			classSpellcastingInfo = &classSpellcastingInfoValue
-		case domain.WARLOCK:
-			if spellList == nil {
-				err := fmt.Errorf("a warlock should have an initialised spell list")
-				log.Fatal(err)
-			}
-
-			warlockSpellSlotAmount := 0
-			warlockSpellSlotLevel := 0
-
-			for i, levelSpellSlotAmount := range spellSlotAmount {
-				if levelSpellSlotAmount != 0 {
-					warlockSpellSlotAmount = levelSpellSlotAmount
-					warlockSpellSlotLevel = i + 1
-					break
-				}
-			}
-
-			classWarlockCastingInfoValue := domain.NewClassWarlockCastingInfo(
-				maxKnownCantrips,
-				*dndApiClassLevel.Spellcasting.SpellsKnown,
-				*spellList,
-				warlockSpellSlotAmount,
-				warlockSpellSlotLevel,
-				spellcastingAbilityScore,
-				spellSaveDC,
-				spellAttackBonus,
-			)
-			classWarlockCastingInfo = &classWarlockCastingInfoValue
-		case domain.BARBARIAN, domain.FIGHTER, domain.MONK, domain.ROGUE:
-			fmt.Println("class should not have spellcasting, but it does according to the API. The API will be ignored in this case")
-		default:
-			err = fmt.Errorf("unknown class (with spellcasting) detected, character creation cannot continue")
-			log.Fatal(err)
-		}
-	} else if dndApiClassWithLevels.Spellcasting != nil {
-		err = fmt.Errorf("according to the API, the class has spellcasting, but the spellcasting is not defined per level; character creation cannot continue")
-		log.Fatal(err)
-	} else if dndApiClassLevel.Spellcasting != nil {
-		err = fmt.Errorf("according to the API, the class does not have spellcasting, but the (non-existent) spellcasting is somehow actually defined per level; character creation cannot continue")
-		log.Fatal(err)
-	}
+	classSpellcastingInfo, classWarlockCastingInfo := createCastingInfoFromDndApiClassWithLevels(dndApiClassWithLevels, level, classTypedName, jsonSpellRepository, abilityScoreList, proficiencyBonus)
 
 	return domain.NewClass(
 		classTypedName,
@@ -206,29 +235,7 @@ func EditClass(class *domain.Class, level int, proficiencyBonus int, abilityScor
 			maxKnownCantrips = *dndApiClassLevel.Spellcasting.CantripsKnown
 		}
 
-		spellSlotAmount := [9]int{
-			dndApiClassLevel.Spellcasting.SpellSlotsLevel1,
-			dndApiClassLevel.Spellcasting.SpellSlotsLevel2,
-			dndApiClassLevel.Spellcasting.SpellSlotsLevel3,
-			dndApiClassLevel.Spellcasting.SpellSlotsLevel4,
-			dndApiClassLevel.Spellcasting.SpellSlotsLevel5,
-			0,
-			0,
-			0,
-			0,
-		}
-		if dndApiClassLevel.Spellcasting.SpellSlotsLevel6 != nil {
-			spellSlotAmount[5] = *dndApiClassLevel.Spellcasting.SpellSlotsLevel6
-		}
-		if dndApiClassLevel.Spellcasting.SpellSlotsLevel7 != nil {
-			spellSlotAmount[6] = *dndApiClassLevel.Spellcasting.SpellSlotsLevel7
-		}
-		if dndApiClassLevel.Spellcasting.SpellSlotsLevel8 != nil {
-			spellSlotAmount[7] = *dndApiClassLevel.Spellcasting.SpellSlotsLevel8
-		}
-		if dndApiClassLevel.Spellcasting.SpellSlotsLevel9 != nil {
-			spellSlotAmount[8] = *dndApiClassLevel.Spellcasting.SpellSlotsLevel9
-		}
+		spellSlotAmount := getSpellSlotAmountFromDndApiClassLevelSpellcasting(dndApiClassLevel.Spellcasting)
 
 		if class.ClassSpellcastingInfo != nil {
 			spellcastingAbilityModifier := class.ClassSpellcastingInfo.SpellcastingAbility.Modifier
@@ -252,16 +259,7 @@ func EditClass(class *domain.Class, level int, proficiencyBonus int, abilityScor
 		} else if class.ClassWarlockCastingInfo != nil {
 			spellcastingAbilityModifier := class.ClassWarlockCastingInfo.SpellcastingAbility.Modifier
 
-			warlockSpellSlotAmount := 0
-			warlockSpellSlotLevel := 0
-
-			for i, levelSpellSlotAmount := range spellSlotAmount {
-				if levelSpellSlotAmount != 0 {
-					warlockSpellSlotAmount = levelSpellSlotAmount
-					warlockSpellSlotLevel = i + 1
-					break
-				}
-			}
+			warlockSpellSlotAmount, warlockSpellSlotLevel := getWarlockSpellSlotInfo(spellSlotAmount)
 
 			spellSaveDC := 8 + proficiencyBonus + spellcastingAbilityModifier
 
@@ -279,6 +277,36 @@ func EditClass(class *domain.Class, level int, proficiencyBonus int, abilityScor
 	}
 }
 
+func getDndApiClassListFromResponses(bodies [][]byte) []infrastructure.DndApiClass {
+	dndApiClassList := []infrastructure.DndApiClass{}
+	for _, body := range bodies {
+		var dndApiClass infrastructure.DndApiClass
+		err := json.Unmarshal(body, &dndApiClass)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		dndApiClassList = append(dndApiClassList, dndApiClass)
+	}
+
+	return dndApiClassList
+}
+
+func getDndApiClassWithLevelsListFromResponses(bodies [][]byte) [][]infrastructure.DndApiClassLevel {
+	dndApiClassLevelsList := [][]infrastructure.DndApiClassLevel{}
+	for _, body := range bodies {
+		var dndApiClassLevels []infrastructure.DndApiClassLevel
+		err := json.Unmarshal(body, &dndApiClassLevels)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		dndApiClassLevelsList = append(dndApiClassLevelsList, dndApiClassLevels)
+	}
+
+	return dndApiClassLevelsList
+}
+
 func (classService *ClassService) InitialiseClasses() {
 	body, err := classService.dndApiGateway.Get("/api/2014/classes")
 	if err != nil {
@@ -294,6 +322,7 @@ func (classService *ClassService) InitialiseClasses() {
 	for _, result := range dndApiReferenceList.Results {
 		endpoints = append(endpoints, result.Url)
 	}
+
 	bodies, errors := classService.dndApiGateway.GetMultipleOrdered(endpoints)
 	if len(errors) != 0 {
 		for _, err := range errors {
@@ -301,21 +330,14 @@ func (classService *ClassService) InitialiseClasses() {
 		}
 		os.Exit(1)
 	}
-	dndApiClassList := []infrastructure.DndApiClass{}
-	for _, body := range bodies {
-		var dndApiClass infrastructure.DndApiClass
-		err = json.Unmarshal(body, &dndApiClass)
-		if err != nil {
-			log.Fatal(err)
-		}
 
-		dndApiClassList = append(dndApiClassList, dndApiClass)
-	}
+	dndApiClassList := getDndApiClassListFromResponses(bodies)
 
 	endpoints = []string{}
 	for _, dndApiClass := range dndApiClassList {
 		endpoints = append(endpoints, dndApiClass.ClassLevelsUrl)
 	}
+
 	bodies, errors = classService.dndApiGateway.GetMultipleOrdered(endpoints)
 	if len(errors) != 0 {
 		for _, err := range errors {
@@ -323,16 +345,8 @@ func (classService *ClassService) InitialiseClasses() {
 		}
 		os.Exit(1)
 	}
-	dndApiClassLevelsList := [][]infrastructure.DndApiClassLevel{}
-	for _, body := range bodies {
-		var dndApiClassLevels []infrastructure.DndApiClassLevel
-		err = json.Unmarshal(body, &dndApiClassLevels)
-		if err != nil {
-			log.Fatal(err)
-		}
 
-		dndApiClassLevelsList = append(dndApiClassLevelsList, dndApiClassLevels)
-	}
+	dndApiClassLevelsList := getDndApiClassWithLevelsListFromResponses(bodies)
 
 	dndApiClassWithLevelsList := []infrastructure.DndApiClassWithLevels{}
 	for i, dndApiClass := range dndApiClassList {

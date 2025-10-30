@@ -22,6 +22,11 @@ const (
 	WIZARD    ClassName = "Wizard"
 )
 
+const (
+	NO_CLASS_WITH_INDEX string = "no class with index '%s' found"
+	NO_CLASS_WITH_NAME  string = "no class with name '%s' found"
+)
+
 func ClassNameFromApiIndex(index string) (ClassName, error) {
 	switch index {
 	case "barbarian":
@@ -49,7 +54,7 @@ func ClassNameFromApiIndex(index string) (ClassName, error) {
 	case "wizard":
 		return WIZARD, nil
 	default:
-		return WIZARD, fmt.Errorf("no class with index '%s' found", index)
+		return WIZARD, fmt.Errorf(NO_CLASS_WITH_INDEX, index)
 	}
 }
 
@@ -80,6 +85,6 @@ func ClassNameFromUntypedPotentialClassName(name string) (ClassName, error) {
 	case "wizard":
 		return WIZARD, nil
 	default:
-		return WIZARD, fmt.Errorf("no class with name '%s' found", name)
+		return WIZARD, fmt.Errorf(NO_CLASS_WITH_NAME, name)
 	}
 }

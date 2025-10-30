@@ -3,6 +3,7 @@ package services
 import (
 	"dungeons_and_dragons_character_sheet_generator/domain"
 	"dungeons_and_dragons_character_sheet_generator/infrastructure"
+	"errors"
 	"fmt"
 	"log"
 	"math"
@@ -20,6 +21,28 @@ type CharacterService struct {
 	jsonSpellRepository      *infrastructure.JsonSpellRepository
 	jsonWeaponRepository     *infrastructure.JsonWeaponRepository
 }
+
+const (
+	CHARACTER_SERVICE_REQUIRED_REPOSITORY_MISSING string = "the character service has been created uncorrectly, as a required repository is missing"
+	NOT_UNIQUE_CHARACTER_NAME                     string = "another character with the same name already exists"
+	WRONGLY_INITIALISED_SPELLCASTER               string = "a %s should be able to spellcast, but somehow wasn't initialised that way"
+	UNINITIALISED_KNOWN_SPELLS_LIMIT              string = "a %s should have a limit of known spells, but somehow wasn't initialised that way"
+	UNITIALISED_PREPARED_SPELLS_LIMIT             string = "a %s should have a limit of prepared spells, but somehow wasn't initialised that way"
+	REACHED_LIMIT_OF_PREPARED_SPELLS              string = "%s has already reached their limit of prepared spells"
+	ALREADY_KNOWS_SPELL                           string = "%s already knows spell %s"
+	REACHED_LIMIT_OF_CANTRIPS                     string = "%s has already reached their limit of known cantrips"
+	REACHED_LIMIT_OF_KNOWN_SPELLS                 string = "%s has already reached their limit of known spells"
+	SPELL_LEVEL_TOO_HIGH                          string = "the spell has higher level than the available spell slots"
+	SPELL_INVALID_FOR_CLASS                       string = "the spell cannot be used by class %s"
+	WRONGLY_INITIALISED_WARLOCK                   string = "a Warlock should be able to spellcast, but somehow wasn't initialised that way"
+	PREPARED_CASTER_CAN_NOT_LEARN                 string = "this class prepares spells and can't learn them"
+	CAN_NOT_CAST_SPELLS                           string = "this class can't cast spells"
+	PREPARED_CASTER_CAN_NOT_FORGET                string = "this class prepares spells and can't forget them"
+	CANTRIP_CAN_NOT_BE_PREPARED                   string = "%s is a cantrip and cannot be prepared, only learnt or forgotten"
+	LEARNED_CASTER_CAN_NOT_PREPARE                string = "this class learns spells and can't prepare them"
+	SPELL_ALREADY_PREPARED                        string = "%s is already prepared"
+	SPELL_ALREADY_UNPREPARED                      string = "%s is already unprepared"
+)
 
 func NewCharacterService(
 	jsonArmorRepository *infrastructure.JsonArmorRepository,
@@ -56,12 +79,12 @@ func (characterService CharacterService) CreateNewCharacter(
 	charismaValue int,
 ) {
 	if characterService.jsonBackgroundRepository == nil || characterService.jsonCharacterRepository == nil || characterService.jsonClassRepository == nil || characterService.jsonRaceRepository == nil || characterService.jsonSpellRepository == nil {
-		err := fmt.Errorf("the character service has been created uncorrectly, as a required repository is missing")
+		err := errors.New(CHARACTER_SERVICE_REQUIRED_REPOSITORY_MISSING)
 		log.Fatal(err)
 	}
 
 	if !characterService.jsonCharacterRepository.IsCharacterNameUnique(characterName) {
-		err := fmt.Errorf("another character with the same name already exists")
+		err := errors.New(NOT_UNIQUE_CHARACTER_NAME)
 		log.Fatal(err)
 	}
 
@@ -145,7 +168,7 @@ func (characterService CharacterService) CreateNewCharacter(
 
 func (characterService CharacterService) ChangeLevelOfCharacter(characterName string, level int) {
 	if characterService.jsonCharacterRepository == nil || characterService.jsonClassRepository == nil {
-		err := fmt.Errorf("the character service has been created uncorrectly, as a required repository is missing")
+		err := errors.New(CHARACTER_SERVICE_REQUIRED_REPOSITORY_MISSING)
 		log.Fatal(err)
 	}
 
@@ -181,7 +204,7 @@ func (characterService CharacterService) ChangeLevelOfCharacter(characterName st
 
 func (characterService CharacterService) DeleteCharacter(characterName string) {
 	if characterService.jsonCharacterRepository == nil {
-		err := fmt.Errorf("the character service has been created uncorrectly, as a required repository is missing")
+		err := errors.New(CHARACTER_SERVICE_REQUIRED_REPOSITORY_MISSING)
 		log.Fatal(err)
 	}
 
@@ -199,9 +222,59 @@ func (characterService CharacterService) DeleteCharacter(characterName string) {
 	os.Exit(0)
 }
 
+func printInventory(inventory domain.Inventory) {
+	if inventory.WeaponSlots.MainHand != nil {
+		if inventory.WeaponSlots.MainHand.TwoHanded {
+			fmt.Printf("Main hand: %s (two-handed)\n", strings.ToLower(inventory.WeaponSlots.MainHand.Name))
+		} else {
+			fmt.Printf("Main hand: %s\n", strings.ToLower(inventory.WeaponSlots.MainHand.Name))
+		}
+	}
+	if inventory.WeaponSlots.OffHand != nil {
+		if inventory.WeaponSlots.OffHand.TwoHanded {
+			fmt.Printf("Off hand: %s (two-handed)\n", strings.ToLower(inventory.WeaponSlots.OffHand.Name))
+		} else {
+			fmt.Printf("Off hand: %s\n", strings.ToLower(inventory.WeaponSlots.OffHand.Name))
+		}
+	}
+	if inventory.Armor != nil {
+		fmt.Printf("Armor: %s\n", strings.ToLower(inventory.Armor.Name))
+	}
+	if inventory.Shield != nil {
+		fmt.Printf("Shield: %s\n", strings.ToLower(inventory.Shield.Name))
+	}
+}
+
+func printClassCastingInfo(class domain.Class) {
+	if class.ClassSpellcastingInfo != nil {
+		if class.ClassSpellcastingInfo.SpellSlotAmount[0] != 0 || class.ClassSpellcastingInfo.MaxKnownCantrips != 0 {
+			fmt.Println("Spell slots:")
+			if class.ClassSpellcastingInfo.MaxKnownCantrips != 0 {
+				fmt.Printf("  Level 0: %d\n", class.ClassSpellcastingInfo.MaxKnownCantrips)
+			}
+			for i, spellSlotLevelAmount := range class.ClassSpellcastingInfo.SpellSlotAmount {
+				if spellSlotLevelAmount != 0 {
+					fmt.Printf("  Level %d: %d\n", i+1, spellSlotLevelAmount)
+				}
+			}
+			fmt.Printf("Spellcasting ability: %s\n", strings.ToLower(string(class.ClassSpellcastingInfo.SpellcastingAbility.Name)))
+			fmt.Printf("Spell save DC: %d\n", class.ClassSpellcastingInfo.SpellSaveDC)
+			fmt.Printf("Spell attack bonus: %+d\n", class.ClassSpellcastingInfo.SpellAttackBonus)
+		}
+	}
+	if class.ClassWarlockCastingInfo != nil {
+		fmt.Println("Spell slots:")
+		fmt.Printf("  Level 0: %d\n", class.ClassWarlockCastingInfo.MaxKnownCantrips)
+		fmt.Printf("  Level %d: %d\n", class.ClassWarlockCastingInfo.SpellSlotLevel, class.ClassWarlockCastingInfo.SpellSlotAmount)
+		fmt.Printf("Spellcasting ability: %s\n", strings.ToLower(string(class.ClassWarlockCastingInfo.SpellcastingAbility.Name)))
+		fmt.Printf("Spell save DC: %d\n", class.ClassWarlockCastingInfo.SpellSaveDC)
+		fmt.Printf("Spell attack bonus: %+d\n", class.ClassWarlockCastingInfo.SpellAttackBonus)
+	}
+}
+
 func (characterService CharacterService) ViewCharacter(characterName string) {
 	if characterService.jsonCharacterRepository == nil {
-		err := fmt.Errorf("the character service has been created uncorrectly, as a required repository is missing")
+		err := errors.New(CHARACTER_SERVICE_REQUIRED_REPOSITORY_MISSING)
 		log.Fatal(err)
 	}
 
@@ -237,49 +310,8 @@ func (characterService CharacterService) ViewCharacter(characterName string) {
 	fmt.Printf("  CHA: %d (%+d)\n", character.AbilityScoreList.Charisma.FinalValue, character.AbilityScoreList.Charisma.Modifier)
 	fmt.Printf("Proficiency bonus: %+d\n", character.ProficiencyBonus)
 	fmt.Printf("Skill proficiencies: %s\n", strings.Join(proficientSkillProficiencyNames, ", "))
-	if character.Inventory.WeaponSlots.MainHand != nil {
-		if character.Inventory.WeaponSlots.MainHand.TwoHanded {
-			fmt.Printf("Main hand: %s (two-handed)\n", strings.ToLower(character.Inventory.WeaponSlots.MainHand.Name))
-		} else {
-			fmt.Printf("Main hand: %s\n", strings.ToLower(character.Inventory.WeaponSlots.MainHand.Name))
-		}
-	}
-	if character.Inventory.WeaponSlots.OffHand != nil {
-		if character.Inventory.WeaponSlots.OffHand.TwoHanded {
-			fmt.Printf("Off hand: %s (two-handed)\n", strings.ToLower(character.Inventory.WeaponSlots.OffHand.Name))
-		} else {
-			fmt.Printf("Off hand: %s\n", strings.ToLower(character.Inventory.WeaponSlots.OffHand.Name))
-		}
-	}
-	if character.Inventory.Armor != nil {
-		fmt.Printf("Armor: %s\n", strings.ToLower(character.Inventory.Armor.Name))
-	}
-	if character.Inventory.Shield != nil {
-		fmt.Printf("Shield: %s\n", strings.ToLower(character.Inventory.Shield.Name))
-	}
-	if character.Class.ClassSpellcastingInfo != nil {
-		if character.Class.ClassSpellcastingInfo.SpellSlotAmount[0] != 0 || character.Class.ClassSpellcastingInfo.MaxKnownCantrips != 0 {
-			fmt.Println("Spell slots:")
-			if character.Class.ClassSpellcastingInfo.MaxKnownCantrips != 0 {
-				fmt.Printf("  Level 0: %d\n", character.Class.ClassSpellcastingInfo.MaxKnownCantrips)
-			}
-			for i, spellSlotLevelAmount := range character.Class.ClassSpellcastingInfo.SpellSlotAmount {
-				if spellSlotLevelAmount != 0 {
-					fmt.Printf("  Level %d: %d\n", i+1, spellSlotLevelAmount)
-				}
-			}
-			fmt.Printf("Spellcasting ability: %s\n", strings.ToLower(string(character.Class.ClassSpellcastingInfo.SpellcastingAbility.Name)))
-			fmt.Printf("Spell save DC: %d\n", character.Class.ClassSpellcastingInfo.SpellSaveDC)
-			fmt.Printf("Spell attack bonus: %+d\n", character.Class.ClassSpellcastingInfo.SpellAttackBonus)
-		}
-	} else if character.Class.ClassWarlockCastingInfo != nil {
-		fmt.Println("Spell slots:")
-		fmt.Printf("  Level 0: %d\n", character.Class.ClassWarlockCastingInfo.MaxKnownCantrips)
-		fmt.Printf("  Level %d: %d\n", character.Class.ClassWarlockCastingInfo.SpellSlotLevel, character.Class.ClassWarlockCastingInfo.SpellSlotAmount)
-		fmt.Printf("Spellcasting ability: %s\n", strings.ToLower(string(character.Class.ClassWarlockCastingInfo.SpellcastingAbility.Name)))
-		fmt.Printf("Spell save DC: %d\n", character.Class.ClassWarlockCastingInfo.SpellSaveDC)
-		fmt.Printf("Spell attack bonus: %+d\n", character.Class.ClassWarlockCastingInfo.SpellAttackBonus)
-	}
+	printInventory(character.Inventory)
+	printClassCastingInfo(character.Class)
 	fmt.Printf("Armor class: %d\n", character.ArmorClass)
 	fmt.Printf("Initiative bonus: %d\n", character.Initiative)
 	fmt.Printf("Passive perception: %d\n", character.PassivePerception)
@@ -290,7 +322,7 @@ func (characterService CharacterService) ViewCharacter(characterName string) {
 
 func (characterService CharacterService) ListCharacters() {
 	if characterService.jsonCharacterRepository == nil {
-		err := fmt.Errorf("the character service has been created uncorrectly, as a required repository is missing")
+		err := errors.New(CHARACTER_SERVICE_REQUIRED_REPOSITORY_MISSING)
 		log.Fatal(err)
 	}
 
@@ -314,7 +346,7 @@ func (characterService CharacterService) ListCharacters() {
 
 func (characterService CharacterService) EquipWeaponToCharacter(characterName string, weaponName string, potentialInventoryWeaponSlotName string) {
 	if characterService.jsonCharacterRepository == nil || characterService.jsonWeaponRepository == nil {
-		err := fmt.Errorf("the character service has been created uncorrectly, as a required repository is missing")
+		err := errors.New(CHARACTER_SERVICE_REQUIRED_REPOSITORY_MISSING)
 		log.Fatal(err)
 	}
 
@@ -348,7 +380,7 @@ func (characterService CharacterService) EquipWeaponToCharacter(characterName st
 
 func (characterService CharacterService) EquipArmorToCharacter(characterName string, armorName string) {
 	if characterService.jsonCharacterRepository == nil || characterService.jsonArmorRepository == nil {
-		err := fmt.Errorf("the character service has been created uncorrectly, as a required repository is missing")
+		err := errors.New(CHARACTER_SERVICE_REQUIRED_REPOSITORY_MISSING)
 		log.Fatal(err)
 	}
 
@@ -388,7 +420,7 @@ func (characterService CharacterService) EquipArmorToCharacter(characterName str
 
 func (characterService CharacterService) EquipShieldToCharacter(characterName string, shieldName string) {
 	if characterService.jsonCharacterRepository == nil || characterService.jsonShieldRepository == nil {
-		err := fmt.Errorf("the character service has been created uncorrectly, as a required repository is missing")
+		err := errors.New(CHARACTER_SERVICE_REQUIRED_REPOSITORY_MISSING)
 		log.Fatal(err)
 	}
 
@@ -428,7 +460,7 @@ func (characterService CharacterService) EquipShieldToCharacter(characterName st
 
 func (characterService CharacterService) UnequipWeaponFromCharacter(characterName string, potentialInventoryWeaponSlotName string) {
 	if characterService.jsonCharacterRepository == nil || characterService.jsonWeaponRepository == nil {
-		err := fmt.Errorf("the character service has been created uncorrectly, as a required repository is missing")
+		err := errors.New(CHARACTER_SERVICE_REQUIRED_REPOSITORY_MISSING)
 		log.Fatal(err)
 	}
 
@@ -458,7 +490,7 @@ func (characterService CharacterService) UnequipWeaponFromCharacter(characterNam
 
 func (characterService CharacterService) UnequipArmorFromCharacter(characterName string) {
 	if characterService.jsonCharacterRepository == nil || characterService.jsonArmorRepository == nil {
-		err := fmt.Errorf("the character service has been created uncorrectly, as a required repository is missing")
+		err := errors.New(CHARACTER_SERVICE_REQUIRED_REPOSITORY_MISSING)
 		log.Fatal(err)
 	}
 
@@ -494,7 +526,7 @@ func (characterService CharacterService) UnequipArmorFromCharacter(characterName
 
 func (characterService CharacterService) UnequipShieldFromCharacter(characterName string) {
 	if characterService.jsonCharacterRepository == nil || characterService.jsonShieldRepository == nil {
-		err := fmt.Errorf("the character service has been created uncorrectly, as a required repository is missing")
+		err := errors.New(CHARACTER_SERVICE_REQUIRED_REPOSITORY_MISSING)
 		log.Fatal(err)
 	}
 
@@ -528,9 +560,118 @@ func (characterService CharacterService) UnequipShieldFromCharacter(characterNam
 	os.Exit(0)
 }
 
+func makeLearnedSpellcasterLearnSpell(character *domain.Character, spell *domain.Spell, spellName string) {
+	if character.Class.ClassSpellcastingInfo == nil {
+		err := fmt.Errorf(WRONGLY_INITIALISED_SPELLCASTER, character.Class.Name)
+		log.Fatal(err)
+	}
+
+	if character.Class.ClassSpellcastingInfo.MaxKnownSpells == nil {
+		err := fmt.Errorf(UNINITIALISED_KNOWN_SPELLS_LIMIT, character.Class.Name)
+		log.Fatal(err)
+	}
+
+	existingSpell, _ := character.Class.ClassSpellcastingInfo.SpellList.GetByName(spellName)
+	if existingSpell != nil {
+		err := fmt.Errorf(ALREADY_KNOWS_SPELL, character.Name, spellName)
+		log.Fatal(err)
+	}
+
+	if spell.Level == 0 {
+		if character.Class.ClassSpellcastingInfo.MaxKnownCantrips <= character.Class.ClassSpellcastingInfo.SpellList.GetAmountOfKnownCantrips() {
+			err := fmt.Errorf(REACHED_LIMIT_OF_CANTRIPS, character.Name)
+			log.Fatal(err)
+		}
+	} else {
+		if *character.Class.ClassSpellcastingInfo.MaxKnownSpells <= character.Class.ClassSpellcastingInfo.SpellList.GetAmountOfKnownSpells() {
+			err := fmt.Errorf(REACHED_LIMIT_OF_KNOWN_SPELLS, character.Name)
+			log.Fatal(err)
+		}
+	}
+
+	if character.Class.ClassSpellcastingInfo.GetHighestSpellSlotLevel() < spell.Level {
+		err := errors.New(SPELL_LEVEL_TOO_HIGH)
+		log.Fatal(err)
+	}
+
+	if !spell.CanBeUsedByClass(character.Class.Name) {
+		err := fmt.Errorf(SPELL_INVALID_FOR_CLASS, character.Class.Name)
+		log.Fatal(err)
+	}
+
+	character.Class.ClassSpellcastingInfo.SpellList.AddSpell(*spell)
+}
+
+func makeWarlockLearnSpell(character *domain.Character, spell *domain.Spell, spellName string) {
+	if character.Class.ClassWarlockCastingInfo == nil {
+		err := errors.New(WRONGLY_INITIALISED_WARLOCK)
+		log.Fatal(err)
+	}
+
+	existingSpell, _ := character.Class.ClassWarlockCastingInfo.SpellList.GetByName(spellName)
+	if existingSpell != nil {
+		err := fmt.Errorf(ALREADY_KNOWS_SPELL, character.Name, spellName)
+		log.Fatal(err)
+	}
+
+	if spell.Level == 0 {
+		if character.Class.ClassWarlockCastingInfo.MaxKnownCantrips <= character.Class.ClassWarlockCastingInfo.SpellList.GetAmountOfKnownCantrips() {
+			err := fmt.Errorf(REACHED_LIMIT_OF_CANTRIPS, character.Name)
+			log.Fatal(err)
+		}
+	} else {
+		if character.Class.ClassWarlockCastingInfo.MaxKnownSpells <= character.Class.ClassWarlockCastingInfo.SpellList.GetAmountOfKnownSpells() {
+			err := fmt.Errorf(REACHED_LIMIT_OF_KNOWN_SPELLS, character.Name)
+			log.Fatal(err)
+		}
+	}
+
+	if character.Class.ClassWarlockCastingInfo.SpellSlotLevel < spell.Level {
+		err := errors.New(SPELL_LEVEL_TOO_HIGH)
+		log.Fatal(err)
+	}
+
+	if !spell.CanBeUsedByClass(character.Class.Name) {
+		err := fmt.Errorf(SPELL_INVALID_FOR_CLASS, character.Class.Name)
+		log.Fatal(err)
+	}
+
+	character.Class.ClassWarlockCastingInfo.SpellList.AddSpell(*spell)
+}
+
+func makePreparedSpellcasterLearnSpell(character *domain.Character, spell *domain.Spell, spellName string) {
+	if character.Class.ClassSpellcastingInfo == nil {
+		err := fmt.Errorf(WRONGLY_INITIALISED_SPELLCASTER, character.Class.Name)
+		log.Fatal(err)
+	}
+
+	if spell.Level != 0 {
+		err := errors.New(PREPARED_CASTER_CAN_NOT_LEARN)
+		log.Fatal(err)
+	}
+
+	existingSpell, _ := character.Class.ClassSpellcastingInfo.SpellList.GetByName(spellName)
+	if existingSpell != nil {
+		err := fmt.Errorf(ALREADY_KNOWS_SPELL, character.Name, spellName)
+		log.Fatal(err)
+	}
+
+	if character.Class.ClassSpellcastingInfo.MaxKnownCantrips <= character.Class.ClassSpellcastingInfo.SpellList.GetAmountOfKnownCantrips() {
+		err := fmt.Errorf(REACHED_LIMIT_OF_CANTRIPS, character.Name)
+		log.Fatal(err)
+	}
+
+	if !spell.CanBeUsedByClass(character.Class.Name) {
+		err := fmt.Errorf(SPELL_INVALID_FOR_CLASS, character.Class.Name)
+		log.Fatal(err)
+	}
+
+	character.Class.ClassSpellcastingInfo.SpellList.AddSpell(*spell)
+}
+
 func (characterService CharacterService) MakeCharacterLearnSpell(characterName string, spellName string) {
 	if characterService.jsonCharacterRepository == nil || characterService.jsonSpellRepository == nil {
-		err := fmt.Errorf("the character service has been created uncorrectly, as a required repository is missing")
+		err := errors.New(CHARACTER_SERVICE_REQUIRED_REPOSITORY_MISSING)
 		log.Fatal(err)
 	}
 
@@ -551,113 +692,16 @@ func (characterService CharacterService) MakeCharacterLearnSpell(characterName s
 
 	switch character.Class.Name {
 	case domain.BARD, domain.RANGER, domain.SORCERER:
-		if character.Class.ClassSpellcastingInfo == nil {
-			err := fmt.Errorf("a %s should be able to spellcast, but somehow wasn't initialised that way", character.Class.Name)
-			log.Fatal(err)
-		}
-
-		if character.Class.ClassSpellcastingInfo.MaxKnownSpells == nil {
-			err := fmt.Errorf("a %s should have a limit of known spells, but somehow wasn't initialised that way", character.Class.Name)
-			log.Fatal(err)
-		}
-
-		existingSpell, _ := character.Class.ClassSpellcastingInfo.SpellList.GetByName(spellName)
-		if existingSpell != nil {
-			err := fmt.Errorf("%s already knows spell %s", character.Name, spellName)
-			log.Fatal(err)
-		}
-
-		if spell.Level == 0 {
-			if character.Class.ClassSpellcastingInfo.MaxKnownCantrips <= character.Class.ClassSpellcastingInfo.SpellList.GetAmountOfKnownCantrips() {
-				err := fmt.Errorf("%s has already reached their limit of known cantrips", character.Name)
-				log.Fatal(err)
-			}
-		} else {
-			if *character.Class.ClassSpellcastingInfo.MaxKnownSpells <= character.Class.ClassSpellcastingInfo.SpellList.GetAmountOfKnownSpells() {
-				err := fmt.Errorf("%s has already reached their limit of known spells", character.Name)
-				log.Fatal(err)
-			}
-		}
-
-		if character.Class.ClassSpellcastingInfo.GetHighestSpellSlotLevel() < spell.Level {
-			err := fmt.Errorf("the spell has higher level than the available spell slots")
-			log.Fatal(err)
-		}
-
-		if !spell.CanBeUsedByClass(character.Class.Name) {
-			err := fmt.Errorf("the spell cannot be used by class %s", character.Class.Name)
-			log.Fatal(err)
-		}
-
-		character.Class.ClassSpellcastingInfo.SpellList.AddSpell(*spell)
+		makeLearnedSpellcasterLearnSpell(character, spell, spellName)
 	case domain.WARLOCK:
-		if character.Class.ClassWarlockCastingInfo == nil {
-			err := fmt.Errorf("a Warlock should be able to spellcast, but somehow wasn't initialised that way")
-			log.Fatal(err)
-		}
-
-		existingSpell, _ := character.Class.ClassWarlockCastingInfo.SpellList.GetByName(spellName)
-		if existingSpell != nil {
-			err := fmt.Errorf("%s already knows spell %s", character.Name, spellName)
-			log.Fatal(err)
-		}
-
-		if spell.Level == 0 {
-			if character.Class.ClassWarlockCastingInfo.MaxKnownCantrips <= character.Class.ClassWarlockCastingInfo.SpellList.GetAmountOfKnownCantrips() {
-				err := fmt.Errorf("%s has already reached their limit of known cantrips", character.Name)
-				log.Fatal(err)
-			}
-		} else {
-			if character.Class.ClassWarlockCastingInfo.MaxKnownSpells <= character.Class.ClassWarlockCastingInfo.SpellList.GetAmountOfKnownSpells() {
-				err := fmt.Errorf("%s has already reached their limit of known spells", character.Name)
-				log.Fatal(err)
-			}
-		}
-
-		if character.Class.ClassWarlockCastingInfo.SpellSlotLevel < spell.Level {
-			err := fmt.Errorf("the spell has higher level than the available spell slots")
-			log.Fatal(err)
-		}
-
-		if !spell.CanBeUsedByClass(character.Class.Name) {
-			err := fmt.Errorf("the spell cannot be used by class %s", character.Class.Name)
-			log.Fatal(err)
-		}
-
-		character.Class.ClassWarlockCastingInfo.SpellList.AddSpell(*spell)
+		makeWarlockLearnSpell(character, spell, spellName)
 	case domain.CLERIC, domain.DRUID, domain.WIZARD:
-		if character.Class.ClassSpellcastingInfo == nil {
-			err := fmt.Errorf("a %s should be able to spellcast, but somehow wasn't initialised that way", character.Class.Name)
-			log.Fatal(err)
-		}
-
-		if spell.Level != 0 {
-			err := fmt.Errorf("this class prepares spells and can't learn them")
-			log.Fatal(err)
-		}
-
-		existingSpell, _ := character.Class.ClassSpellcastingInfo.SpellList.GetByName(spellName)
-		if existingSpell != nil {
-			err := fmt.Errorf("%s already knows spell %s", character.Name, spellName)
-			log.Fatal(err)
-		}
-
-		if character.Class.ClassSpellcastingInfo.MaxKnownCantrips <= character.Class.ClassSpellcastingInfo.SpellList.GetAmountOfKnownCantrips() {
-			err := fmt.Errorf("%s has already reached their limit of known cantrips", character.Name)
-			log.Fatal(err)
-		}
-
-		if !spell.CanBeUsedByClass(character.Class.Name) {
-			err := fmt.Errorf("the spell cannot be used by class %s", character.Class.Name)
-			log.Fatal(err)
-		}
-
-		character.Class.ClassSpellcastingInfo.SpellList.AddSpell(*spell)
+		makePreparedSpellcasterLearnSpell(character, spell, spellName)
 	case domain.PALADIN:
-		err := fmt.Errorf("this class prepares spells and can't learn them")
+		err := errors.New(PREPARED_CASTER_CAN_NOT_LEARN)
 		log.Fatal(err)
 	case domain.BARBARIAN, domain.FIGHTER, domain.MONK, domain.ROGUE:
-		err := fmt.Errorf("this class can't cast spells")
+		err := errors.New(CAN_NOT_CAST_SPELLS)
 		log.Fatal(err)
 	}
 
@@ -670,9 +714,46 @@ func (characterService CharacterService) MakeCharacterLearnSpell(characterName s
 	os.Exit(0)
 }
 
+func makeLearnedSpellcasterForgetSpell(character *domain.Character, spellName string) {
+	if character.Class.ClassSpellcastingInfo == nil {
+		err := fmt.Errorf(WRONGLY_INITIALISED_SPELLCASTER, character.Class.Name)
+		log.Fatal(err)
+	}
+
+	character.Class.ClassSpellcastingInfo.SpellList.ForgetSpell(spellName)
+}
+
+func makeWarlockForgetSpell(character *domain.Character, spellName string) {
+	if character.Class.ClassWarlockCastingInfo == nil {
+		err := errors.New(WRONGLY_INITIALISED_WARLOCK)
+		log.Fatal(err)
+	}
+
+	character.Class.ClassWarlockCastingInfo.SpellList.ForgetSpell(spellName)
+}
+
+func makePreparedSpellcasterForgetSpell(character *domain.Character, spellName string, jsonSpellRepository *infrastructure.JsonSpellRepository) {
+	dndApiSpell, err := jsonSpellRepository.GetCopyByName(spellName)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if dndApiSpell.Level != 0 {
+		err := errors.New(PREPARED_CASTER_CAN_NOT_FORGET)
+		log.Fatal(err)
+	}
+
+	if character.Class.ClassSpellcastingInfo == nil {
+		err := fmt.Errorf(WRONGLY_INITIALISED_SPELLCASTER, character.Class.Name)
+		log.Fatal(err)
+	}
+
+	character.Class.ClassSpellcastingInfo.SpellList.ForgetSpell(spellName)
+}
+
 func (characterService CharacterService) MakeCharacterForgetSpell(characterName string, spellName string) {
 	if characterService.jsonCharacterRepository == nil {
-		err := fmt.Errorf("the character service has been created uncorrectly, as a required repository is missing")
+		err := errors.New(CHARACTER_SERVICE_REQUIRED_REPOSITORY_MISSING)
 		log.Fatal(err)
 	}
 
@@ -683,41 +764,16 @@ func (characterService CharacterService) MakeCharacterForgetSpell(characterName 
 
 	switch character.Class.Name {
 	case domain.BARD, domain.RANGER, domain.SORCERER:
-		if character.Class.ClassSpellcastingInfo == nil {
-			err := fmt.Errorf("a %s should be able to spellcast, but somehow wasn't initialised that way", character.Class.Name)
-			log.Fatal(err)
-		}
-
-		character.Class.ClassSpellcastingInfo.SpellList.ForgetSpell(spellName)
+		makeLearnedSpellcasterForgetSpell(character, spellName)
 	case domain.WARLOCK:
-		if character.Class.ClassWarlockCastingInfo == nil {
-			err := fmt.Errorf("a Warlock should be able to spellcast, but somehow wasn't initialised that way")
-			log.Fatal(err)
-		}
-
-		character.Class.ClassWarlockCastingInfo.SpellList.ForgetSpell(spellName)
+		makeWarlockForgetSpell(character, spellName)
 	case domain.CLERIC, domain.DRUID, domain.WIZARD:
-		dndApiSpell, err := characterService.jsonSpellRepository.GetCopyByName(spellName)
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		if dndApiSpell.Level != 0 {
-			err := fmt.Errorf("this class prepares spells and can't forget them")
-			log.Fatal(err)
-		}
-
-		if character.Class.ClassSpellcastingInfo == nil {
-			err := fmt.Errorf("a %s should be able to spellcast, but somehow wasn't initialised that way", character.Class.Name)
-			log.Fatal(err)
-		}
-
-		character.Class.ClassSpellcastingInfo.SpellList.ForgetSpell(spellName)
+		makePreparedSpellcasterForgetSpell(character, spellName, characterService.jsonSpellRepository)
 	case domain.PALADIN:
-		err := fmt.Errorf("this class prepares spells and can't forget them")
+		err := errors.New(PREPARED_CASTER_CAN_NOT_FORGET)
 		log.Fatal(err)
 	case domain.BARBARIAN, domain.FIGHTER, domain.MONK, domain.ROGUE:
-		err := fmt.Errorf("this class can't cast spells")
+		err := errors.New(CAN_NOT_CAST_SPELLS)
 		log.Fatal(err)
 	}
 
@@ -730,9 +786,48 @@ func (characterService CharacterService) MakeCharacterForgetSpell(characterName 
 	os.Exit(0)
 }
 
+func makePreparedSpellcasterPrepareSpell(character *domain.Character, spellName string) {
+	if character.Class.ClassSpellcastingInfo == nil {
+		err := fmt.Errorf(WRONGLY_INITIALISED_SPELLCASTER, character.Class.Name)
+		log.Fatal(err)
+	}
+
+	spell, err := character.Class.ClassSpellcastingInfo.SpellList.GetByName(spellName)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if character.Class.ClassSpellcastingInfo.MaxPreparedSpells == nil {
+		err := fmt.Errorf(UNITIALISED_PREPARED_SPELLS_LIMIT, character.Class.Name)
+		log.Fatal(err)
+	}
+
+	if *character.Class.ClassSpellcastingInfo.MaxPreparedSpells <= character.Class.ClassSpellcastingInfo.SpellList.GetAmountOfPreparedSpells() {
+		err := fmt.Errorf(REACHED_LIMIT_OF_PREPARED_SPELLS, character.Name)
+		log.Fatal(err)
+	}
+
+	if character.Class.ClassSpellcastingInfo.GetHighestSpellSlotLevel() < spell.Level {
+		err := errors.New(SPELL_LEVEL_TOO_HIGH)
+		log.Fatal(err)
+	}
+
+	if !spell.CanBeUsedByClass(character.Class.Name) {
+		err := fmt.Errorf(SPELL_INVALID_FOR_CLASS, character.Class.Name)
+		log.Fatal(err)
+	}
+
+	if spell.Prepared {
+		err := fmt.Errorf(SPELL_ALREADY_PREPARED, spellName)
+		log.Fatal(err)
+	}
+
+	spell.Prepared = true
+}
+
 func (characterService CharacterService) MakeCharacterPrepareSpell(characterName string, spellName string) {
 	if characterService.jsonCharacterRepository == nil || characterService.jsonSpellRepository == nil {
-		err := fmt.Errorf("the character service has been created uncorrectly, as a required repository is missing")
+		err := errors.New(CHARACTER_SERVICE_REQUIRED_REPOSITORY_MISSING)
 		log.Fatal(err)
 	}
 
@@ -747,53 +842,18 @@ func (characterService CharacterService) MakeCharacterPrepareSpell(characterName
 	}
 
 	if dndApiSpell.Level == 0 {
-		err := fmt.Errorf("%s is a cantrip and cannot be prepared, only learnt or forgotten", spellName)
+		err := fmt.Errorf(CANTRIP_CAN_NOT_BE_PREPARED, spellName)
 		log.Fatal(err)
 	}
 
 	switch character.Class.Name {
 	case domain.CLERIC, domain.DRUID, domain.PALADIN, domain.WIZARD:
-		if character.Class.ClassSpellcastingInfo == nil {
-			err := fmt.Errorf("a %s should be able to spellcast, but somehow wasn't initialised that way", character.Class.Name)
-			log.Fatal(err)
-		}
-
-		spell, err := character.Class.ClassSpellcastingInfo.SpellList.GetByName(spellName)
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		if character.Class.ClassSpellcastingInfo.MaxPreparedSpells == nil {
-			err := fmt.Errorf("a %s should have a limit of prepared spells, but somehow wasn't initialised that way", character.Class.Name)
-			log.Fatal(err)
-		}
-
-		if *character.Class.ClassSpellcastingInfo.MaxPreparedSpells <= character.Class.ClassSpellcastingInfo.SpellList.GetAmountOfPreparedSpells() {
-			err := fmt.Errorf("%s has already reached their limit of prepared spells", character.Name)
-			log.Fatal(err)
-		}
-
-		if character.Class.ClassSpellcastingInfo.GetHighestSpellSlotLevel() < spell.Level {
-			err := fmt.Errorf("the spell has higher level than the available spell slots")
-			log.Fatal(err)
-		}
-
-		if !spell.CanBeUsedByClass(character.Class.Name) {
-			err := fmt.Errorf("the spell cannot be used by class %s", character.Class.Name)
-			log.Fatal(err)
-		}
-
-		if spell.Prepared {
-			err := fmt.Errorf("%s is already prepared", spellName)
-			log.Fatal(err)
-		}
-
-		spell.Prepared = true
+		makePreparedSpellcasterPrepareSpell(character, spellName)
 	case domain.BARD, domain.RANGER, domain.SORCERER, domain.WARLOCK:
-		err := fmt.Errorf("this class learns spells and can't prepare them")
+		err := errors.New(LEARNED_CASTER_CAN_NOT_PREPARE)
 		log.Fatal(err)
 	case domain.BARBARIAN, domain.FIGHTER, domain.MONK, domain.ROGUE:
-		err := fmt.Errorf("this class can't cast spells")
+		err := errors.New(CAN_NOT_CAST_SPELLS)
 		log.Fatal(err)
 	}
 
@@ -806,9 +866,28 @@ func (characterService CharacterService) MakeCharacterPrepareSpell(characterName
 	os.Exit(0)
 }
 
+func makePreparedSpellcasterUnprepareSpell(class *domain.Class, spellName string) {
+	if class.ClassSpellcastingInfo == nil {
+		err := fmt.Errorf(WRONGLY_INITIALISED_SPELLCASTER, class.Name)
+		log.Fatal(err)
+	}
+
+	spell, err := class.ClassSpellcastingInfo.SpellList.GetByName(spellName)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if !spell.Prepared {
+		err := fmt.Errorf(SPELL_ALREADY_UNPREPARED, spellName)
+		log.Fatal(err)
+	}
+
+	spell.Prepared = false
+}
+
 func (characterService CharacterService) MakeCharacterUnprepareSpell(characterName string, spellName string) {
 	if characterService.jsonCharacterRepository == nil || characterService.jsonSpellRepository == nil {
-		err := fmt.Errorf("the character service has been created uncorrectly, as a required repository is missing")
+		err := errors.New(CHARACTER_SERVICE_REQUIRED_REPOSITORY_MISSING)
 		log.Fatal(err)
 	}
 
@@ -823,33 +902,18 @@ func (characterService CharacterService) MakeCharacterUnprepareSpell(characterNa
 	}
 
 	if dndApiSpell.Level == 0 {
-		err := fmt.Errorf("%s is a cantrip and cannot be prepared, only learnt or forgotten", spellName)
+		err := fmt.Errorf(CANTRIP_CAN_NOT_BE_PREPARED, spellName)
 		log.Fatal(err)
 	}
 
 	switch character.Class.Name {
 	case domain.CLERIC, domain.DRUID, domain.PALADIN, domain.WIZARD:
-		if character.Class.ClassSpellcastingInfo == nil {
-			err := fmt.Errorf("a %s should be able to spellcast, but somehow wasn't initialised that way", character.Class.Name)
-			log.Fatal(err)
-		}
-
-		spell, err := character.Class.ClassSpellcastingInfo.SpellList.GetByName(spellName)
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		if !spell.Prepared {
-			err := fmt.Errorf("%s is already unprepared", spellName)
-			log.Fatal(err)
-		}
-
-		spell.Prepared = false
+		makePreparedSpellcasterUnprepareSpell(&character.Class, spellName)
 	case domain.BARD, domain.RANGER, domain.SORCERER, domain.WARLOCK:
-		err := fmt.Errorf("this class learns spells and can't prepare them")
+		err := errors.New(LEARNED_CASTER_CAN_NOT_PREPARE)
 		log.Fatal(err)
 	case domain.BARBARIAN, domain.FIGHTER, domain.MONK, domain.ROGUE:
-		err := fmt.Errorf("this class can't cast spells")
+		err := errors.New(CAN_NOT_CAST_SPELLS)
 		log.Fatal(err)
 	}
 

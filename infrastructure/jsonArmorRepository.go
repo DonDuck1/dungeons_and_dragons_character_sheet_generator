@@ -3,6 +3,7 @@ package infrastructure
 import (
 	"dungeons_and_dragons_character_sheet_generator/domain"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"os"
 	"strings"
@@ -12,6 +13,11 @@ type JsonArmorRepository struct {
 	filepath  string
 	armorList []domain.Armor
 }
+
+const (
+	UNINITIALISED_ARMOR_JSON string = "armor JSON has not been initialised, run the 'main.go init' command first"
+	NO_ARMOR_WITH_NAME       string = "could not find armor with name '%s'"
+)
 
 func NewJsonArmorRepository(filepath string) (*JsonArmorRepository, error) {
 	_, err := os.Stat(filepath)
@@ -25,7 +31,7 @@ func NewJsonArmorRepository(filepath string) (*JsonArmorRepository, error) {
 	}
 
 	if len(fileBytes) == 0 {
-		err := fmt.Errorf("armor JSON has not been initialised, run the 'main.go init' command first")
+		err := errors.New(UNINITIALISED_ARMOR_JSON)
 		return nil, err
 	}
 
@@ -66,7 +72,7 @@ func (jsonArmorRepository JsonArmorRepository) GetCopiesOfAll() *[]domain.Armor 
 
 func (jsonArmorRepository JsonArmorRepository) GetCopyByName(name string) (*domain.Armor, error) {
 	if jsonArmorRepository.armorList == nil {
-		err := fmt.Errorf("no armor has been found, please run the init command first")
+		err := errors.New(UNINITIALISED_ARMOR_JSON)
 		return nil, err
 	}
 
@@ -78,6 +84,6 @@ func (jsonArmorRepository JsonArmorRepository) GetCopyByName(name string) (*doma
 		}
 	}
 
-	err := fmt.Errorf("could not find armor with name '%s'", name)
+	err := fmt.Errorf(NO_ARMOR_WITH_NAME, name)
 	return nil, err
 }

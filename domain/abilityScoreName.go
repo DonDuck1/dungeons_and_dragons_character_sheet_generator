@@ -13,6 +13,10 @@ const (
 	CHARISMA     AbilityScoreName = "Charisma"
 )
 
+const (
+	NO_ABILITY_SCORE_WITH_INDEX string = "no ability score with index '%s' found"
+)
+
 func AbilityScoreNameFromApiIndex(index string) (AbilityScoreName, error) {
 	switch index {
 	case "str":
@@ -28,6 +32,6 @@ func AbilityScoreNameFromApiIndex(index string) (AbilityScoreName, error) {
 	case "cha":
 		return CHARISMA, nil
 	default:
-		return CHARISMA, fmt.Errorf("no ability score with index '%s' found", index)
+		return CHARISMA, fmt.Errorf(NO_ABILITY_SCORE_WITH_INDEX, index)
 	}
 }

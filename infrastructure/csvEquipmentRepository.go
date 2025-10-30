@@ -12,6 +12,10 @@ type CsvEquipmentRepository struct {
 	equipmentList *[]CsvEquipment
 }
 
+const (
+	NO_EQUIPMENT_WITH_TYPE string = "could not find equipment of type '%s'"
+)
+
 func NewCsvEquipmentRepository(filepath string) (*CsvEquipmentRepository, error) {
 	_, err := os.Stat(filepath)
 	if err != nil {
@@ -68,10 +72,10 @@ func (csvEquipmentRepository CsvEquipmentRepository) GetByEquipmentType(equipmen
 		}
 	}
 
-	if !(len(relevantEquipmentList) == 0) {
+	if len(relevantEquipmentList) != 0 {
 		return &relevantEquipmentList, nil
 	}
 
-	err := fmt.Errorf("could not find equipment of type '%s'", equipmentType)
+	err := fmt.Errorf(NO_EQUIPMENT_WITH_TYPE, equipmentType)
 	return nil, err
 }

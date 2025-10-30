@@ -3,6 +3,7 @@ package infrastructure
 import (
 	"dungeons_and_dragons_character_sheet_generator/domain"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"math/rand/v2"
 	"os"
@@ -13,6 +14,11 @@ type JsonBackgroundRepository struct {
 	filepath       string
 	backgroundList []domain.Background
 }
+
+const (
+	UNINITIALISED_BACKGROUND_JSON string = "background JSON has not been initialised, run the 'main.go init' command first"
+	NO_BACKGROUND_WITH_NAME       string = "could not find background with name '%s'"
+)
 
 func NewJsonBackgroundRepository(filepath string) (*JsonBackgroundRepository, error) {
 	_, err := os.Stat(filepath)
@@ -26,7 +32,7 @@ func NewJsonBackgroundRepository(filepath string) (*JsonBackgroundRepository, er
 	}
 
 	if len(fileBytes) == 0 {
-		err := fmt.Errorf("background JSON has not been initialised, run the 'main.go init' command first")
+		err := errors.New(UNINITIALISED_BACKGROUND_JSON)
 		return nil, err
 	}
 
@@ -62,7 +68,7 @@ func (jsonBackgroundRepository JsonBackgroundRepository) GetCopiesOfAll() *[]dom
 
 func (jsonBackgroundRepository JsonBackgroundRepository) GetCopyByName(name string) (*domain.Background, error) {
 	if jsonBackgroundRepository.backgroundList == nil {
-		err := fmt.Errorf("no backgrounds have been found, please run the init command first")
+		err := errors.New(UNINITIALISED_BACKGROUND_JSON)
 		return nil, err
 	}
 
@@ -72,16 +78,13 @@ func (jsonBackgroundRepository JsonBackgroundRepository) GetCopyByName(name stri
 		}
 	}
 
-	err := fmt.Errorf("could not find background with name '%s'", name)
+	err := fmt.Errorf(NO_BACKGROUND_WITH_NAME, name)
 	return nil, err
 }
 
 func (jsonBackgroundRepository JsonBackgroundRepository) GetRandomCopy() (*domain.Background, error) {
-	if jsonBackgroundRepository.backgroundList == nil {
-		err := fmt.Errorf("no backgrounds have been found, please run the init command first")
-		return nil, err
-	} else if len(jsonBackgroundRepository.backgroundList) == 0 {
-		err := fmt.Errorf("no backgrounds have been found, please re-run the init command")
+	if len(jsonBackgroundRepository.backgroundList) == 0 {
+		err := errors.New(UNINITIALISED_BACKGROUND_JSON)
 		return nil, err
 	}
 

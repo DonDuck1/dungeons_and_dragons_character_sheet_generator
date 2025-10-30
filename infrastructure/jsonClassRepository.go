@@ -2,6 +2,7 @@ package infrastructure
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"os"
 	"strings"
@@ -11,6 +12,11 @@ type JsonClassRepository struct {
 	filepath                  string
 	dndApiClassWithLevelsList []DndApiClassWithLevels
 }
+
+const (
+	UNINITIALISED_CLASS_JSON string = "class JSON has not been initialised, run the 'main.go init' command first"
+	NO_CLASS_WITH_NAME       string = "could not find class with name '%s'"
+)
 
 func NewJsonClassRepository(filepath string) (*JsonClassRepository, error) {
 	_, err := os.Stat(filepath)
@@ -24,7 +30,7 @@ func NewJsonClassRepository(filepath string) (*JsonClassRepository, error) {
 	}
 
 	if len(fileBytes) == 0 {
-		err := fmt.Errorf("class JSON has not been initialised, run the 'main.go init' command first")
+		err := errors.New(UNINITIALISED_CLASS_JSON)
 		return nil, err
 	}
 
@@ -64,7 +70,7 @@ func (jsonClassRepository JsonClassRepository) GetCopiesOfAll() *[]DndApiClassWi
 
 func (jsonClassRepository JsonClassRepository) GetCopyByName(name string) (*DndApiClassWithLevels, error) {
 	if jsonClassRepository.dndApiClassWithLevelsList == nil {
-		err := fmt.Errorf("no class has been found, please run the init command first")
+		err := errors.New(UNINITIALISED_CLASS_JSON)
 		return nil, err
 	}
 
@@ -76,6 +82,6 @@ func (jsonClassRepository JsonClassRepository) GetCopyByName(name string) (*DndA
 		}
 	}
 
-	err := fmt.Errorf("could not find class with name '%s'", name)
+	err := fmt.Errorf(NO_CLASS_WITH_NAME, name)
 	return nil, err
 }

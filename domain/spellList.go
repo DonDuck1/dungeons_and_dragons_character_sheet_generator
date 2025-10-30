@@ -9,6 +9,10 @@ type SpellList struct {
 	Spells []Spell
 }
 
+const (
+	SPELL_NOT_FOUND string = "spell \"%s\" not found"
+)
+
 func NewEmptySpellList() SpellList {
 	spells := []Spell{}
 	return SpellList{Spells: spells}
@@ -61,7 +65,7 @@ func (spellList *SpellList) GetByName(spellName string) (*Spell, error) {
 		}
 	}
 
-	err := fmt.Errorf("spell \"%s\" not found", spellName)
+	err := fmt.Errorf(SPELL_NOT_FOUND, spellName)
 	return nil, err
 }
 
@@ -77,6 +81,6 @@ func (spellList *SpellList) ForgetSpell(spellName string) error {
 		}
 	}
 
-	err := fmt.Errorf("spell \"%s\" not found", spellName)
+	err := fmt.Errorf(SPELL_NOT_FOUND, spellName)
 	return err
 }

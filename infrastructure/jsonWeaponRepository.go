@@ -3,6 +3,7 @@ package infrastructure
 import (
 	"dungeons_and_dragons_character_sheet_generator/domain"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"os"
 	"strings"
@@ -12,6 +13,11 @@ type JsonWeaponRepository struct {
 	filepath   string
 	weaponList []domain.Weapon
 }
+
+const (
+	UNINITIALISED_WEAPON_JSON string = "weapon JSON has not been initialised, run the 'main.go init' command first"
+	NO_WEAPON_WITH_NAME       string = "could not find weapon with name '%s'"
+)
 
 func NewJsonWeaponRepository(filepath string) (*JsonWeaponRepository, error) {
 	_, err := os.Stat(filepath)
@@ -25,7 +31,7 @@ func NewJsonWeaponRepository(filepath string) (*JsonWeaponRepository, error) {
 	}
 
 	if len(fileBytes) == 0 {
-		err := fmt.Errorf("weapon JSON has not been initialised, run the 'main.go init' command first")
+		err := errors.New(UNINITIALISED_WEAPON_JSON)
 		return nil, err
 	}
 
@@ -61,7 +67,7 @@ func (jsonWeaponRepository JsonWeaponRepository) GetCopiesOfAll() *[]domain.Weap
 
 func (jsonWeaponRepository JsonWeaponRepository) GetCopyByName(name string) (*domain.Weapon, error) {
 	if jsonWeaponRepository.weaponList == nil {
-		err := fmt.Errorf("no weapons have been found, please run the init command first")
+		err := errors.New(UNINITIALISED_WEAPON_JSON)
 		return nil, err
 	}
 
@@ -71,6 +77,6 @@ func (jsonWeaponRepository JsonWeaponRepository) GetCopyByName(name string) (*do
 		}
 	}
 
-	err := fmt.Errorf("could not find weapon with name '%s'", name)
+	err := fmt.Errorf(NO_WEAPON_WITH_NAME, name)
 	return nil, err
 }

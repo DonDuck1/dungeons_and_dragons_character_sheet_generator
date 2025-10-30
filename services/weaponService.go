@@ -20,6 +20,20 @@ func NewWeaponService(csvEquipmentRepository *infrastructure.CsvEquipmentReposit
 	return &WeaponService{csvEquipmentRepository: csvEquipmentRepository, dndApiGateway: dndApiGateway}
 }
 
+func getWeaponListFromResponses(bodies [][]byte) []domain.Weapon {
+	weaponList := []domain.Weapon{}
+	for _, body := range bodies {
+		var dndApiWeapon infrastructure.DndApiWeapon
+		err := json.Unmarshal(body, &dndApiWeapon)
+		if err != nil {
+			log.Fatal(err)
+		}
+		weaponList = append(weaponList, dndApiWeapon.AsWeapon())
+	}
+
+	return weaponList
+}
+
 func (weaponService *WeaponService) InitialiseWeapons() {
 	csvWeaponList, err := weaponService.csvEquipmentRepository.GetByEquipmentType("Weapon")
 	if err != nil {
@@ -62,15 +76,7 @@ func (weaponService *WeaponService) InitialiseWeapons() {
 		os.Exit(1)
 	}
 
-	weaponList := []domain.Weapon{}
-	for _, body := range bodies {
-		var dndApiWeapon infrastructure.DndApiWeapon
-		err = json.Unmarshal(body, &dndApiWeapon)
-		if err != nil {
-			log.Fatal(err)
-		}
-		weaponList = append(weaponList, dndApiWeapon.AsWeapon())
-	}
+	weaponList := getWeaponListFromResponses(bodies)
 
 	infrastructure.SaveWeaponListAsJson("./data/weapons.json", &weaponList)
 }

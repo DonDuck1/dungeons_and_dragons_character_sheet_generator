@@ -12,6 +12,10 @@ const (
 	OFF_HAND  InventoryWeaponSlotName = "Off hand"
 )
 
+const (
+	NO_WEAPON_SLOT_WITH_NAME string = "no weapon hand slot with name '%s' found"
+)
+
 func InventoryWeaponSlotNameFromUntypedPotentialInventoryWeaponSlotName(name string) (InventoryWeaponSlotName, error) {
 	switch strings.ToLower(name) {
 	case "main hand":
@@ -19,6 +23,6 @@ func InventoryWeaponSlotNameFromUntypedPotentialInventoryWeaponSlotName(name str
 	case "off hand":
 		return OFF_HAND, nil
 	default:
-		return OFF_HAND, fmt.Errorf("no weapon hand slot with name '%s' found", name)
+		return OFF_HAND, fmt.Errorf(NO_WEAPON_SLOT_WITH_NAME, name)
 	}
 }

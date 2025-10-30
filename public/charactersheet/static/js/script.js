@@ -1,6 +1,154 @@
+/**
+ * Format number with sign
+ *
+ * @param {number} number
+ */
 function formatNumberWithSign(number) {
     return (number >= 0 ? "+" : "") + number;
 };
+
+/**
+ * Sets up spellcasting info text based on the class spellcasting info of the character
+ *
+ * @param {character.Class.ClassSpellcastingInfo} classSpellcastingInfo
+ *
+ * @returns {string}
+ */
+function getSpellcastingInfoTextForNormalSpellcaster(classSpellcastingInfo) {
+    spellcastingInfoText = "Spellcasting info:\n";
+    spellcastingInfoText += `  Max known cantrips: ${classSpellcastingInfo.MaxKnownCantrips}\n`;
+    if (classSpellcastingInfo.MaxKnownSpells != null) {
+        spellcastingInfoText += `  Max known spells: ${classSpellcastingInfo.MaxKnownSpells}\n`;
+    };
+    if (classSpellcastingInfo.MaxPreparedSpells != null) {
+        spellcastingInfoText += `  Max prepared spells: ${classSpellcastingInfo.MaxPreparedSpells}\n`;
+    };
+
+    spellcastingInfoText += "  Spell slots:\n";
+    for (const [i, spellSlotLevelAmount] of classSpellcastingInfo.SpellSlotAmount.entries()) {
+        spellcastingInfoText += `    Level ${i + 1}: ${spellSlotLevelAmount}\n`;
+    };
+
+    if (classSpellcastingInfo.SpellcastingAbility != null) {
+        spellcastingInfoText += `  Spellcasting ability: ${classSpellcastingInfo.SpellcastingAbility.Name}\n`;
+    };
+
+    spellcastingInfoText += `  Spell save DC: ${classSpellcastingInfo.SpellSaveDC}\n`;
+    spellcastingInfoText += `  Spell attack bonus: ${formatNumberWithSign(classSpellcastingInfo.SpellAttackBonus)}\n\n`;
+}
+
+
+/**
+ * Sets up spellcasting info text based on the class warlock casting info of the character
+ *
+ * @param {character.Class.ClassWarlockCastingInfo} classWarlockCastingInfo
+ *
+ * @returns {string}
+ */
+function getSpellcastingInfoTextForWarlock(classWarlockCastingInfo) {
+    spellcastingInfoText = "Warlock casting info:\n";
+    spellcastingInfoText += `  Max known cantrips: ${classWarlockCastingInfo.MaxKnownCantrips}\n`;
+    spellcastingInfoText += `  Max known spells: ${classWarlockCastingInfo.MaxKnownSpells}\n`;
+
+    spellcastingInfoText += "  Spell slots:\n";
+    spellcastingInfoText += `    Level ${classWarlockCastingInfo.SpellSlotLevel}: ${classWarlockCastingInfo.SpellSlotAmount}\n`;
+
+    if (classWarlockCastingInfo.SpellcastingAbility != null) {
+        spellcastingInfoText += `  Spellcasting ability: ${classWarlockCastingInfo.SpellcastingAbility.Name}\n`;
+    };
+
+    spellcastingInfoText += `  Spell save DC: ${classWarlockCastingInfo.SpellSaveDC}\n`;
+    spellcastingInfoText += `  Spell attack bonus: ${formatNumberWithSign(classWarlockCastingInfo.SpellAttackBonus)}\n\n`;
+
+    return spellcastingInfoText
+}
+
+/**
+ * Sets up spell list text based on the normal spells of the character
+ *
+ * @param {character.Class.ClassSpellcastingInfo.SpellList.Spells} spells
+ *
+ * @returns {string}
+ */
+function getSpellListTextForNormalSpellcaster(spells) {
+    spellsListText = "Spells:\n";
+
+    for (const spell of spells) {
+        if (spell.Prepared) {
+            spellListText += `${spell.Name}\n`;
+            spellListText += `  Level: ${spell.Level}\n`;
+            spellListText += `  School: ${spell.School}\n`;
+            spellListText += `  Range: ${spell.SpellRange}\n\n`;
+        };
+    };
+
+    return spellListText
+}
+
+/**
+ * Sets up spell list text based on the warlock spells of the character
+ *
+ * @param {character.Class.ClassWarlockCastingInfo.SpellList.Spells} spells
+ *
+ * @returns {string}
+ */
+function getSpellListTextForWarlock(spells) {
+    spellListText = "Warlock spells:\n";
+
+    for (const spell of spells) {
+        if (spell.Prepared) {
+            spellListText += `${spell.Name}\n`;
+            spellListText += `  Level: ${spell.Level}\n`;
+            spellListText += `  School: ${spell.School}\n`;
+            spellListText += `  Range: ${spell.SpellRange}\n\n`;
+        };
+    };
+
+    return spellListText
+}
+
+/**
+ * Sets up equipment list text based on the inventory of the character
+ *
+ * @param {character.Inventory} inventory
+ *
+ * @returns {string}
+ */
+function getEquipmentListText(inventory) {
+    let equipmentListText = "";
+
+    if (inventory.WeaponSlots.MainHand != null) {
+        equipmentListText += `Main hand: ${inventory.WeaponSlots.MainHand.Name}`;
+        if (inventory.WeaponSlots.MainHand.TwoHanded) {
+            equipmentListText += " (two-handed)\n";
+        } else {
+            equipmentListText += "\n";
+        };
+        equipmentListText += `  Category: ${inventory.WeaponSlots.MainHand.WeaponCategory}\n`;
+        equipmentListText += `  Normal range: ${inventory.WeaponSlots.MainHand.NormalRange} feet\n\n`;
+    };
+
+    if (inventory.WeaponSlots.OffHand != null) {
+        equipmentListText += `Off hand: ${inventory.WeaponSlots.OffHand.Name}`;
+        if (inventory.WeaponSlots.OffHand.TwoHanded) {
+            equipmentListText += " (two-handed)\n";
+        } else {
+            equipmentListText += "\n";
+        };
+        equipmentListText += `  Category: ${inventory.WeaponSlots.OffHand.WeaponCategory}\n`;
+        equipmentListText += `  Normal range: ${inventory.WeaponSlots.OffHand.NormalRange} feet\n\n`;
+    };
+
+    if (inventory.Armor != null) {
+        equipmentListText += `Armor: ${inventory.Armor.Name}\n\n`;
+    };
+
+    if (inventory.Shield != null) {
+        equipmentListText += `Shield: ${inventory.Shield.Name}\n\n`;
+    };
+
+    return equipmentListText
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     const select = document.getElementById('characterSelect');
@@ -8,10 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const characterNameField = document.getElementById('charName');
     const classLevelField = document.getElementById('classLevel');
     const backgroundField = document.getElementById('background');
-    const playerNameField = document.getElementById('playerName');
     const raceField = document.getElementById('race');
-    const alignmentField = document.getElementById('alignment');
-    const experiencePointsField = document.getElementById('experiencePoints');
 
     const strengthScoreField = document.getElementById('strengthScore');
     const strengthModField = document.getElementById('strengthMod');
@@ -26,21 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const charismaScoreField = document.getElementById('charismaScore');
     const charismaModField = document.getElementById('charismaMod');
 
-    const inspirationCheckbox = document.getElementById('inspiration');
     const proficiencyBonusField = document.getElementById('proficiencyBonus');
-
-    const strengthSaveField = document.getElementById('strengthSave');
-    const strengthSaveProfCheckbox = document.getElementById('strengthSaveProf');
-    const dexteritySaveField = document.getElementById('dexteritySave');
-    const dexteritySaveProfCheckbox = document.getElementById('dexteritySaveProf');
-    const constitutionSaveField = document.getElementById('constitutionSave');
-    const constitutionSaveProfCheckbox = document.getElementById('constitutionSaveProf');
-    const wisdomSaveField = document.getElementById('wisdomSave');
-    const wisdomSaveProfCheckbox = document.getElementById('wisdomSaveProf');
-    const intelligenceSaveField = document.getElementById('intelligenceSave');
-    const intelligenceSaveProfCheckbox = document.getElementById('intelligenceSaveProf');
-    const charismaSaveField = document.getElementById('charismaSave');
-    const charismaSaveProf = document.getElementById('charismaSaveProf');
 
     const acrobaticsField = document.getElementById('acrobatics');
     const acrobaticsProfCheckbox = document.getElementById('acrobaticsProf');
@@ -85,44 +216,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const armorClassField = document.getElementById('ac');
     const initiativeField = document.getElementById('initiative');
-    const speedField = document.getElementById('speed');
 
     const maxHpField = document.getElementById('maxHp');
-    const currentHpField = document.getElementById('currentHp');
-    const tempHpField = document.getElementById('tempHp');
 
-    const totalHdField = document.getElementById('totalHd');
-    const remainingHdField = document.getElementById('remainingHd');
-
-    const deathSuccess1Checkbox = document.getElementById('deathSuccess1');
-    const deathSuccess2Checkbox = document.getElementById('deathSuccess2');
-    const deathSuccess3Checkbox = document.getElementById('deathSuccess3');
-    const deathFail1Checkbox = document.getElementById('deathFail1');
-    const deathFail2Checkbox = document.getElementById('deathFail2');
-    const deathFail3Checkbox = document.getElementById('deathFail3');
-
-    const atkName1Field = document.getElementById('atkName1');
-    const atkBonus1Field = document.getElementById('atkBonus1');
-    const atkDamage1Field = document.getElementById('atkDamage1');
-    const atkName2Field = document.getElementById('atkName2');
-    const atkBonus2Field = document.getElementById('atkBonus2');
-    const atkDamage2Field = document.getElementById('atkDamage2');
-    const atkName3Field = document.getElementById('atkName3');
-    const atkBonus3Field = document.getElementById('atkBonus3');
-    const atkDamage3Field = document.getElementById('atkDamage3');
-    const otherAttacksAndSpellcastingTextArea = document.getElementById('otherAttacksAndSpellcasting');
-
-    const copperPiecesField = document.getElementById('cp');
-    const silverPiecesField = document.getElementById('sp');
-    const electrumPiecesField = document.getElementById('ep');
-    const goldPiecesField = document.getElementById('gp');
-    const platinumPiecesField = document.getElementById('pp');
     const equipmentListTextArea = document.getElementById('equipmentList');
 
-    const personalityTextArea = document.getElementById('personality');
-    const idealsTextArea = document.getElementById('ideals');
-    const bondsTextArea = document.getElementById('bonds');
-    const flawsTextArea = document.getElementById('flaws');
     const featuresTextArea = document.getElementById('features');
 
     let characters = [];
@@ -132,18 +230,18 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             characters = data;
 
-            characters.forEach((character, i) => {
+            for (const character of characters) {
                 const option = document.createElement('option');
                 option.value = character.Name;
 
-                if (character.Race.SubRace != null) {
-                    option.textContent = `${character.Name}, Lv${character.Class.Level} ${character.Class.Name}, ${character.Race.SubRace.Name}, ${character.Background.Name}`;
-                } else {
+                if (character.Race.SubRace == null) {
                     option.textContent = `${character.Name}, Lv${character.Class.Level} ${character.Class.Name}, ${character.Race.Name}, ${character.Background.Name}`;
+                } else {
+                    option.textContent = `${character.Name}, Lv${character.Class.Level} ${character.Class.Name}, ${character.Race.SubRace.Name}, ${character.Background.Name}`;
                 };
                 
                 select.appendChild(option);
-            });
+            };
         });
 
     select.addEventListener('change', () => {
@@ -248,10 +346,10 @@ document.addEventListener('DOMContentLoaded', () => {
             classLevelField.value = `Lv${character.Class.Level} ${character.Class.Name}`;
             backgroundField.value = character.Background.Name;
 
-            if (character.Race.SubRace != null) {
-                raceField.value = character.Race.SubRace.Name;
-            } else {
+            if (character.Race.SubRace == null) {
                 raceField.value = character.Race.Name;
+            } else {
+                raceField.value = character.Race.SubRace.Name;
             };
 
             strengthScoreField.value = character.AbilityScoreList.Strength.FinalValue;
@@ -336,102 +434,23 @@ document.addEventListener('DOMContentLoaded', () => {
             maxHpField.value = character.MaxHitPoints;
 
             let spellcastingInfoText = "";
-            let spellsListText = "";
+            let spellListText = "";
 
             if (character.Class.ClassSpellcastingInfo != null) {
-                spellcastingInfoText += "Spellcasting info:\n";
-                spellcastingInfoText += `  Max known cantrips: ${character.Class.ClassSpellcastingInfo.MaxKnownCantrips}\n`;
-                if (character.Class.ClassSpellcastingInfo.MaxKnownSpells != null) {
-                    spellcastingInfoText += `  Max known spells: ${character.Class.ClassSpellcastingInfo.MaxKnownSpells}\n`;
-                };
-                if (character.Class.ClassSpellcastingInfo.MaxPreparedSpells != null) {
-                    spellcastingInfoText += `  Max prepared spells: ${character.Class.ClassSpellcastingInfo.MaxPreparedSpells}\n`;
-                };
-
-                spellcastingInfoText += "  Spell slots:\n";
-                character.Class.ClassSpellcastingInfo.SpellSlotAmount.forEach((spellSlotLevelAmount, i) => {
-                    spellcastingInfoText += `    Level ${i + 1}: ${spellSlotLevelAmount}\n`;
-                });
-
-                if (character.Class.ClassSpellcastingInfo.SpellcastingAbility != null) {
-                    spellcastingInfoText += `  Spellcasting ability: ${character.Class.ClassSpellcastingInfo.SpellcastingAbility.Name}\n`;
-                };
-
-                spellcastingInfoText += `  Spell save DC: ${character.Class.ClassSpellcastingInfo.SpellSaveDC}\n`;
-                spellcastingInfoText += `  Spell attack bonus: ${formatNumberWithSign(character.Class.ClassSpellcastingInfo.SpellAttackBonus)}\n\n`;
-            
-                spellsListText += "Spells:\n";
-                character.Class.ClassSpellcastingInfo.SpellList.Spells.forEach((spell, i) => {
-                    if (spell.Prepared) {
-                        spellsListText += `${spell.Name}\n`;
-                        spellsListText += `  Level: ${spell.Level}\n`;
-                        spellsListText += `  School: ${spell.School}\n`;
-                        spellsListText += `  Range: ${spell.SpellRange}\n\n`;
-                    };
-                });
+                spellcastingInfoText += getSpellcastingInfoTextForNormalSpellcaster(character.Class.ClassSpellcastingInfo)
+                spellListText += getSpellListTextForNormalSpellcaster(character.Class.ClassSpellcastingInfo.SpellList.Spells)
             }
 
             if (character.Class.ClassWarlockCastingInfo != null) {
-                spellcastingInfoText += "Warlock casting info:\n";
-                spellcastingInfoText += `  Max known cantrips: ${character.Class.ClassWarlockCastingInfo.MaxKnownCantrips}\n`;
-                spellcastingInfoText += `  Max known spells: ${character.Class.ClassWarlockCastingInfo.MaxKnownSpells}\n`;
-
-                spellcastingInfoText += "  Spell slots:\n";
-                spellcastingInfoText += `    Level ${character.Class.ClassWarlockCastingInfo.SpellSlotLevel}: ${character.Class.ClassWarlockCastingInfo.SpellSlotAmount}\n`;
-
-                if (character.Class.ClassWarlockCastingInfo.SpellcastingAbility != null) {
-                    spellcastingInfoText += `  Spellcasting ability: ${character.Class.ClassWarlockCastingInfo.SpellcastingAbility.Name}\n`;
-                };
-
-                spellcastingInfoText += `  Spell save DC: ${character.Class.ClassWarlockCastingInfo.SpellSaveDC}\n`;
-                spellcastingInfoText += `  Spell attack bonus: ${formatNumberWithSign(character.Class.ClassWarlockCastingInfo.SpellAttackBonus)}\n\n`;
-            
-                spellsListText += "Warlock spells:\n";
-                character.Class.ClassWarlockCastingInfo.SpellList.Spells.forEach((spell, i) => {
-                    if (spell.Prepared) {
-                        spellsListText += `${spell.Name}\n`;
-                        spellsListText += `  Level: ${spell.Level}\n`;
-                        spellsListText += `  School: ${spell.School}\n`;
-                        spellsListText += `  Range: ${spell.SpellRange}\n\n`;
-                    };
-                });
+                spellcastingInfoText += getSpellcastingInfoTextForWarlock(character.Class.ClassWarlockCastingInfo)
+                spellListText += getSpellListTextForWarlock(character.Class.ClassWarlockCastingInfo.SpellList.Spells)
             }
 
             otherProfsTextArea.value = spellcastingInfoText;
 
-            featuresTextArea.value = spellsListText;
+            featuresTextArea.value = spellListText;
 
-            let equipmentListText = "";
-
-            if (character.Inventory.WeaponSlots.MainHand != null) {
-                equipmentListText += `Main hand: ${character.Inventory.WeaponSlots.MainHand.Name}`;
-                if (character.Inventory.WeaponSlots.MainHand.TwoHanded) {
-                    equipmentListText += " (two-handed)\n";
-                } else {
-                    equipmentListText += "\n";
-                };
-                equipmentListText += `  Category: ${character.Inventory.WeaponSlots.MainHand.WeaponCategory}\n`;
-                equipmentListText += `  Normal range: ${character.Inventory.WeaponSlots.MainHand.NormalRange} feet\n\n`;
-            };
-
-            if (character.Inventory.WeaponSlots.OffHand != null) {
-                equipmentListText += `Off hand: ${character.Inventory.WeaponSlots.OffHand.Name}`;
-                if (character.Inventory.WeaponSlots.OffHand.TwoHanded) {
-                    equipmentListText += " (two-handed)\n";
-                } else {
-                    equipmentListText += "\n";
-                };
-                equipmentListText += `  Category: ${character.Inventory.WeaponSlots.OffHand.WeaponCategory}\n`;
-                equipmentListText += `  Normal range: ${character.Inventory.WeaponSlots.OffHand.NormalRange} feet\n\n`;
-            };
-
-            if (character.Inventory.Armor != null) {
-                equipmentListText += `Armor: ${character.Inventory.Armor.Name}\n\n`;
-            };
-
-            if (character.Inventory.Shield != null) {
-                equipmentListText += `Shield: ${character.Inventory.Shield.Name}\n\n`;
-            };
+            const equipmentListText = getEquipmentListText(character.Inventory);
 
             equipmentListTextArea.value = equipmentListText;
         };

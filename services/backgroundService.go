@@ -17,6 +17,25 @@ func NewBackgroundService(dndApiGateway *infrastructure.DndApiGateway) *Backgrou
 	return &BackgroundService{dndApiGateway: dndApiGateway}
 }
 
+func getBackgroundListFromResponses(bodies [][]byte) []domain.Background {
+	backgroundList := []domain.Background{}
+	for _, body := range bodies {
+		var dndApiBackground infrastructure.DndApiBackground
+		err := json.Unmarshal(body, &dndApiBackground)
+		if err != nil {
+			log.Fatal(err)
+		}
+		background, err := dndApiBackground.AsBackground()
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		backgroundList = append(backgroundList, *background)
+	}
+
+	return backgroundList
+}
+
 func (backgroundService *BackgroundService) InitialiseBackgrounds() {
 	body, err := backgroundService.dndApiGateway.Get("/api/2014/backgrounds")
 	if err != nil {
@@ -41,20 +60,7 @@ func (backgroundService *BackgroundService) InitialiseBackgrounds() {
 		os.Exit(1)
 	}
 
-	backgroundList := []domain.Background{}
-	for _, body := range bodies {
-		var dndApiBackground infrastructure.DndApiBackground
-		err = json.Unmarshal(body, &dndApiBackground)
-		if err != nil {
-			log.Fatal(err)
-		}
-		background, err := dndApiBackground.AsBackground()
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		backgroundList = append(backgroundList, *background)
-	}
+	backgroundList := getBackgroundListFromResponses(bodies)
 
 	infrastructure.SaveBackgroundListAsJson("./data/backgrounds.json", &backgroundList)
 }

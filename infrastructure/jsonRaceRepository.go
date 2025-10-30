@@ -2,6 +2,7 @@ package infrastructure
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"os"
 	"strings"
@@ -11,6 +12,11 @@ type JsonRaceRepository struct {
 	filepath                   string
 	dndApiRaceWithSubRacesList []DndApiRaceWithSubRaces
 }
+
+const (
+	UNINITIALISED_RACE_JSON string = "race JSON has not been initialised, run the 'main.go init' command first"
+	NO_RACE_WITH_NAME       string = "could not find race with name '%s'"
+)
 
 func NewJsonRaceRepository(filepath string) (*JsonRaceRepository, error) {
 	_, err := os.Stat(filepath)
@@ -24,7 +30,7 @@ func NewJsonRaceRepository(filepath string) (*JsonRaceRepository, error) {
 	}
 
 	if len(fileBytes) == 0 {
-		err := fmt.Errorf("race JSON has not been initialised, run the 'main.go init' command first")
+		err := errors.New(UNINITIALISED_RACE_JSON)
 		return nil, err
 	}
 
@@ -64,7 +70,7 @@ func (jsonRaceRepository JsonRaceRepository) GetCopiesOfAll() *[]DndApiRaceWithS
 
 func (jsonRaceRepository JsonRaceRepository) GetCopyByName(name string) (*DndApiRaceWithSubRaces, error) {
 	if jsonRaceRepository.dndApiRaceWithSubRacesList == nil {
-		err := fmt.Errorf("no races have been found, please run the init command first")
+		err := errors.New(UNINITIALISED_RACE_JSON)
 		return nil, err
 	}
 
@@ -81,6 +87,6 @@ func (jsonRaceRepository JsonRaceRepository) GetCopyByName(name string) (*DndApi
 		}
 	}
 
-	err := fmt.Errorf("could not find race with name '%s'", name)
+	err := fmt.Errorf(NO_RACE_WITH_NAME, name)
 	return nil, err
 }

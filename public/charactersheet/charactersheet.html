@@ -311,7 +311,7 @@
             <div class="hitdice">
               <div>
                 <div class="total">
-                  <label onclick="totalhd_clicked()" for="totalHd">Total</label>
+                  <label for="totalHd">Total</label>
                   <input id="totalHd" name="totalHd" placeholder="2d10" type="text" />
                 </div>
                 <div class="remaining">
@@ -323,20 +323,20 @@
             <div class="deathsaves">
               <div>
                 <div class="label">
-                  <label>Death Saves</label>
+                  <label for="marks">Death Saves</label>
                 </div>
-                <div class="marks">
+                <div name="marks" class="marks">
                   <div class="deathsuccesses">
-                    <label>Successes</label>
-                    <div class="bubbles">
+                    <label for="successBubbles">Successes</label>
+                    <div name="successBubbles" class="bubbles">
                       <input id="deathSuccess1" name="deathSuccess1" type="checkbox" />
                       <input id="deathSuccess2" name="deathSuccess2" type="checkbox" />
                       <input id="deathSuccess3" name="deathSuccess3" type="checkbox" />
                     </div>
                   </div>
                   <div class="deathfails">
-                    <label>Failures</label>
-                    <div class="bubbles">
+                    <label for="failureBubbles">Failures</label>
+                    <div name="failureBubbles" class="bubbles">
                       <input id="deathFail1" name="deathFail1" type="checkbox" />
                       <input id="deathFail2" name="deathFail2" type="checkbox" />
                       <input id="deathFail3" name="deathFail3" type="checkbox" />
@@ -348,7 +348,7 @@
           </section>
           <section class="attacksandspellcasting">
             <div>
-              <label>Attacks & Spellcasting</label>
+              <label for="otherAttacksAndSpellcasting">Attacks & Spellcasting</label>
               <table>
                 <thead>
                   <tr>
@@ -404,7 +404,7 @@
           </section>
           <section class="equipment">
             <div>
-              <label>Equipment</label>
+              <label for="equipmentList">Equipment</label>
               <div class="money">
                 <ul>
                   <li>

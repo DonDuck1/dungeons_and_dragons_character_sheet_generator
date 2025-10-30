@@ -25,6 +25,10 @@ const (
 	SURVIVAL        SkillProficiencyName = "Survival"
 )
 
+const (
+	NO_SKILL_PROFICIENCY_WITH_INDEX string = "no skill proficiency with index '%s' found"
+)
+
 func SkillProficiencyNameFromApiIndex(index string) (SkillProficiencyName, error) {
 	switch index {
 	case "skill-acrobatics":
@@ -64,6 +68,6 @@ func SkillProficiencyNameFromApiIndex(index string) (SkillProficiencyName, error
 	case "skill-survival":
 		return SURVIVAL, nil
 	default:
-		return SURVIVAL, fmt.Errorf("no skill proficiency with index '%s' found", index)
+		return SURVIVAL, fmt.Errorf(NO_SKILL_PROFICIENCY_WITH_INDEX, index)
 	}
 }

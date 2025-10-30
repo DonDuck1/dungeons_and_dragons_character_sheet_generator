@@ -20,6 +20,36 @@ func NewArmorAndShieldService(csvEquipmentRepository *infrastructure.CsvEquipmen
 	return &ArmorAndShieldService{csvEquipmentRepository: csvEquipmentRepository, dndApiGateway: dndApiGateway}
 }
 
+func getShieldListAndArmorListFromResponses(bodies [][]byte) ([]domain.Shield, []domain.Armor) {
+	shieldList := []domain.Shield{}
+	armorList := []domain.Armor{}
+	for _, body := range bodies {
+		var dndApiArmorOrShield infrastructure.DndApiArmorOrShield
+		err := json.Unmarshal(body, &dndApiArmorOrShield)
+		if err != nil {
+			log.Fatal(err)
+		}
+		if dndApiArmorOrShield.IsShield() {
+			shield, err := dndApiArmorOrShield.AsShield()
+			if err != nil {
+				log.Fatal(err)
+			}
+			shieldList = append(shieldList, *shield)
+		} else {
+			armor, err := dndApiArmorOrShield.AsArmor()
+			if err != nil {
+				log.Fatal(err)
+			}
+			if strings.EqualFold(armor.Name, "Half Plate Armor") {
+				armor.Name = "Half Plate" // Required to hard-code this due to failing test on CodeGrade that uses "half plate" as input
+			}
+			armorList = append(armorList, *armor)
+		}
+	}
+
+	return shieldList, armorList
+}
+
 func (armorAndShieldService *ArmorAndShieldService) InitialiseArmorAndShields() {
 	csvArmorAndShieldList, err := armorAndShieldService.csvEquipmentRepository.GetByEquipmentType("Armor")
 	if err != nil {
@@ -62,31 +92,7 @@ func (armorAndShieldService *ArmorAndShieldService) InitialiseArmorAndShields() 
 		os.Exit(1)
 	}
 
-	shieldList := []domain.Shield{}
-	armorList := []domain.Armor{}
-	for _, body := range bodies {
-		var dndApiArmorOrShield infrastructure.DndApiArmorOrShield
-		err = json.Unmarshal(body, &dndApiArmorOrShield)
-		if err != nil {
-			log.Fatal(err)
-		}
-		if dndApiArmorOrShield.IsShield() {
-			shield, err := dndApiArmorOrShield.AsShield()
-			if err != nil {
-				log.Fatal(err)
-			}
-			shieldList = append(shieldList, *shield)
-		} else {
-			armor, err := dndApiArmorOrShield.AsArmor()
-			if err != nil {
-				log.Fatal(err)
-			}
-			if strings.EqualFold(armor.Name, "Half Plate Armor") {
-				armor.Name = "Half Plate" // Required to hard-code this due to failing test on CodeGrade that uses "half plate" as input
-			}
-			armorList = append(armorList, *armor)
-		}
-	}
+	shieldList, armorList := getShieldListAndArmorListFromResponses(bodies)
 
 	infrastructure.SaveShieldListAsJson("./data/shields.json", &shieldList)
 	infrastructure.SaveArmorListAsJson("./data/armor.json", &armorList)

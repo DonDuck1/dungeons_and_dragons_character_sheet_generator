@@ -75,6 +75,36 @@ func CreateRaceFromDndApiRaceWithSubRaces(chosenRaceName string, dndApiRaceWithS
 	return &race, nil
 }
 
+func getDndApiRaceListFromResponses(bodies [][]byte) []infrastructure.DndApiRace {
+	dndApiRaceList := []infrastructure.DndApiRace{}
+	for _, body := range bodies {
+		var dndApiRace infrastructure.DndApiRace
+		err := json.Unmarshal(body, &dndApiRace)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		dndApiRaceList = append(dndApiRaceList, dndApiRace)
+	}
+
+	return dndApiRaceList
+}
+
+func getDndApiSubRaceListFromResponses(bodies [][]byte) []infrastructure.DndApiSubRace {
+	dndApiSubRaceList := []infrastructure.DndApiSubRace{}
+	for _, body := range bodies {
+		var dndApiSubRace infrastructure.DndApiSubRace
+		err := json.Unmarshal(body, &dndApiSubRace)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		dndApiSubRaceList = append(dndApiSubRaceList, dndApiSubRace)
+	}
+
+	return dndApiSubRaceList
+}
+
 func (raceService *RaceService) InitialiseRaces() {
 	body, err := raceService.dndApiGateway.Get("/api/2014/races")
 	if err != nil {
@@ -90,6 +120,7 @@ func (raceService *RaceService) InitialiseRaces() {
 	for _, result := range dndApiReferenceList.Results {
 		endpoints = append(endpoints, result.Url)
 	}
+
 	bodies, errors := raceService.dndApiGateway.GetMultipleOrdered(endpoints)
 	if len(errors) != 0 {
 		for _, err := range errors {
@@ -97,16 +128,8 @@ func (raceService *RaceService) InitialiseRaces() {
 		}
 		os.Exit(1)
 	}
-	dndApiRaceList := []infrastructure.DndApiRace{}
-	for _, body := range bodies {
-		var dndApiRace infrastructure.DndApiRace
-		err := json.Unmarshal(body, &dndApiRace)
-		if err != nil {
-			log.Fatal(err)
-		}
 
-		dndApiRaceList = append(dndApiRaceList, dndApiRace)
-	}
+	dndApiRaceList := getDndApiRaceListFromResponses(bodies)
 
 	dndApiRaceWithSubRacesList := []infrastructure.DndApiRaceWithSubRaces{}
 	for _, dndApiRace := range dndApiRaceList {
@@ -122,16 +145,8 @@ func (raceService *RaceService) InitialiseRaces() {
 			}
 			os.Exit(1)
 		}
-		dndApiSubRaceList := []infrastructure.DndApiSubRace{}
-		for _, body := range bodies {
-			var dndApiSubRace infrastructure.DndApiSubRace
-			err := json.Unmarshal(body, &dndApiSubRace)
-			if err != nil {
-				log.Fatal(err)
-			}
 
-			dndApiSubRaceList = append(dndApiSubRaceList, dndApiSubRace)
-		}
+		dndApiSubRaceList := getDndApiSubRaceListFromResponses(bodies)
 
 		dndApiRaceWithSubRaces := infrastructure.NewDndApiRaceWithSubRaces(
 			dndApiRace.Index,

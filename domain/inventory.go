@@ -1,6 +1,9 @@
 package domain
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 type Inventory struct {
 	OpenHandSlots int
@@ -8,6 +11,19 @@ type Inventory struct {
 	Armor         *Armor
 	Shield        *Shield
 }
+
+const (
+	MAIN_HAND_OCCUPIED           string = "main hand already occupied"
+	OFF_HAND_OCCUPIED            string = "off hand already occupied"
+	INSUFFICIENT_OPEN_HAND_SLOTS string = "not enough open hand slots, %d more open hand slots are required"
+	NO_WEAPON_IN_MAIN_HAND       string = "no weapon equipped in main hand"
+	NO_WEAPON_IN_OFF_HAND        string = "no weapon equipped in off hand"
+	NO_INVENTORY_SLOT_WITH_NAME  string = "no inventory slot with name %s found"
+	ALREADY_EQUIPPED_ARMOR       string = "character already has armor ('%s') equipped, please remove it first"
+	NO_ARMOR_EQUIPPED            string = "no armor has been equipped yet"
+	ALREADY_EQUIPPED_SHIELD      string = "character already has a shield ('%s') equipped, please remove it first"
+	NO_SHIELD_EQUIPPED           string = "no shield has been equipped yet"
+)
 
 func NewEmptyInventory() Inventory {
 	return Inventory{OpenHandSlots: 2, WeaponSlots: NewEmptyInventoryWeaponSlots(), Armor: nil, Shield: nil}
@@ -22,7 +38,7 @@ func (inventory Inventory) GetArmorClass(dexterityModifier int, unarmoredArmorCl
 		armorClass = inventory.Armor.GetArmorClassModifierOfArmor(dexterityModifier)
 	}
 
-	if !(inventory.Shield == nil) {
+	if inventory.Shield != nil {
 		armorClass += inventory.Shield.ArmorClassModifier
 	}
 
@@ -35,7 +51,7 @@ func (inventory *Inventory) AddWeapon(weapon *Weapon, inventoryWeaponSlotName In
 	switch inventoryWeaponSlotName {
 	case MAIN_HAND:
 		if inventory.WeaponSlots.MainHand != nil {
-			err := fmt.Errorf("main hand already occupied")
+			err := errors.New(MAIN_HAND_OCCUPIED)
 			return err
 		}
 
@@ -47,7 +63,7 @@ func (inventory *Inventory) AddWeapon(weapon *Weapon, inventoryWeaponSlotName In
 		}
 	case OFF_HAND:
 		if inventory.WeaponSlots.OffHand != nil {
-			err := fmt.Errorf("off hand already occupied")
+			err := errors.New(OFF_HAND_OCCUPIED)
 			return err
 		}
 
@@ -60,7 +76,7 @@ func (inventory *Inventory) AddWeapon(weapon *Weapon, inventoryWeaponSlotName In
 	}
 
 	missingOpenHandSlots := requiredOpenHandSlots - inventory.OpenHandSlots
-	err := fmt.Errorf("not enough open hand slots, %d more open hand slots are required", missingOpenHandSlots)
+	err := fmt.Errorf(INSUFFICIENT_OPEN_HAND_SLOTS, missingOpenHandSlots)
 	return err
 }
 
@@ -68,7 +84,7 @@ func (inventory *Inventory) RemoveWeapon(inventoryWeaponSlotName InventoryWeapon
 	switch inventoryWeaponSlotName {
 	case MAIN_HAND:
 		if inventory.WeaponSlots.MainHand == nil {
-			err := fmt.Errorf("no weapon equipped in main hand")
+			err := errors.New(NO_WEAPON_IN_MAIN_HAND)
 			return err
 		}
 		inventory.OpenHandSlots += inventory.WeaponSlots.MainHand.GetNumberOfOccupiedHandSlots()
@@ -76,7 +92,7 @@ func (inventory *Inventory) RemoveWeapon(inventoryWeaponSlotName InventoryWeapon
 		return nil
 	case OFF_HAND:
 		if inventory.WeaponSlots.OffHand == nil {
-			err := fmt.Errorf("no weapon equipped in off hand")
+			err := errors.New(NO_WEAPON_IN_OFF_HAND)
 			return err
 		}
 		inventory.OpenHandSlots += inventory.WeaponSlots.OffHand.GetNumberOfOccupiedHandSlots()
@@ -84,7 +100,7 @@ func (inventory *Inventory) RemoveWeapon(inventoryWeaponSlotName InventoryWeapon
 		return nil
 	}
 
-	err := fmt.Errorf("no inventory slot with name %s found", inventoryWeaponSlotName)
+	err := fmt.Errorf(NO_INVENTORY_SLOT_WITH_NAME, inventoryWeaponSlotName)
 	return err
 }
 
@@ -94,13 +110,13 @@ func (inventory *Inventory) AddArmor(armor *Armor) error {
 		return nil
 	}
 
-	err := fmt.Errorf("character already has armor ('%s') equipped, please remove it first", inventory.Armor.Name)
+	err := fmt.Errorf(ALREADY_EQUIPPED_ARMOR, inventory.Armor.Name)
 	return err
 }
 
 func (inventory *Inventory) RemoveArmor() error {
 	if inventory.Armor == nil {
-		err := fmt.Errorf("no armor has been equipped yet")
+		err := errors.New(NO_ARMOR_EQUIPPED)
 		return err
 	}
 
@@ -118,18 +134,18 @@ func (inventory *Inventory) AddShield(shield *Shield) error {
 			return nil
 		}
 
-		err := fmt.Errorf("character already has a shield ('%s') equipped, please remove it first", inventory.Shield.Name)
+		err := fmt.Errorf(ALREADY_EQUIPPED_SHIELD, inventory.Shield.Name)
 		return err
 	}
 
 	missingOpenHandSlots := requiredOpenHandSlots - inventory.OpenHandSlots
-	err := fmt.Errorf("not enough open hand slots, %d more open hand slots are required", missingOpenHandSlots)
+	err := fmt.Errorf(INSUFFICIENT_OPEN_HAND_SLOTS, missingOpenHandSlots)
 	return err
 }
 
 func (inventory *Inventory) RemoveShield() error {
 	if inventory.Shield == nil {
-		err := fmt.Errorf("no shield has been equipped yet")
+		err := errors.New(NO_SHIELD_EQUIPPED)
 		return err
 	}
 

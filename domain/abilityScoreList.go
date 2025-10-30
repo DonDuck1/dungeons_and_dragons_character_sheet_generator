@@ -11,6 +11,10 @@ type AbilityScoreList struct {
 	Charisma     AbilityScore
 }
 
+const (
+	NO_ABILITY_SCORE_WITH_NAME string = "no ability score with name '%s' found"
+)
+
 func NewAbilityScoreList(
 	abilityScoreValueList AbilityScoreValueList,
 	abilityScoreImprovementList AbilityScoreImprovementList,
@@ -58,7 +62,7 @@ func (abilityScoreList *AbilityScoreList) GetByName(abilityScoreName AbilityScor
 	case CHARISMA:
 		return &abilityScoreList.Charisma, nil
 	default:
-		err := fmt.Errorf("no ability score with name '%s' found", abilityScoreName)
+		err := fmt.Errorf(NO_ABILITY_SCORE_WITH_NAME, abilityScoreName)
 		return nil, err
 	}
 }

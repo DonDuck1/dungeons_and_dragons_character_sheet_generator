@@ -3,6 +3,7 @@ package infrastructure
 import (
 	"dungeons_and_dragons_character_sheet_generator/domain"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"os"
 	"strings"
@@ -12,6 +13,11 @@ type JsonCharacterRepository struct {
 	filepath      string
 	characterList *domain.CharacterList
 }
+
+const (
+	CHARACTER_NOT_FOUND      string = "character \"%s\" not found"
+	NO_CHARACTER_CREATED_YET string = "no characters have been found, please create one first"
+)
 
 func NewJsonCharacterRepository(filepath string) (*JsonCharacterRepository, error) {
 	_, err := os.Stat(filepath)
@@ -74,7 +80,7 @@ func (jsonCharacterRepository *JsonCharacterRepository) GetAll() *[]domain.Chara
 
 func (jsonCharacterRepository *JsonCharacterRepository) GetByName(name string) (*domain.Character, error) {
 	if jsonCharacterRepository.characterList == nil {
-		err := fmt.Errorf("no characters have been found, please create one first")
+		err := errors.New(NO_CHARACTER_CREATED_YET)
 		return nil, err
 	}
 
@@ -84,7 +90,7 @@ func (jsonCharacterRepository *JsonCharacterRepository) GetByName(name string) (
 		}
 	}
 
-	err := fmt.Errorf("character \"%s\" not found", name)
+	err := fmt.Errorf(CHARACTER_NOT_FOUND, name)
 	return nil, err
 }
 

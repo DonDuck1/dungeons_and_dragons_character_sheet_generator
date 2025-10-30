@@ -17,6 +17,11 @@ type DndApiGateway struct {
 	rateLimiter *rate.Limiter
 }
 
+const (
+	NON_200_RESPONSE string = "non-200 response: %d"
+	REQUEST_FAILED   string = "request failed for %s: %w"
+)
+
 func NewDndApiGateway(baseUrl string) *DndApiGateway {
 	return &DndApiGateway{
 		baseUrl: baseUrl,
@@ -40,7 +45,7 @@ func (dndApiGateway *DndApiGateway) Get(endpoint string) ([]byte, error) {
 	defer response.Body.Close()
 
 	if response.StatusCode != http.StatusOK {
-		err := fmt.Errorf("non-200 response: %d", response.StatusCode)
+		err := fmt.Errorf(NON_200_RESPONSE, response.StatusCode)
 		return nil, err
 	}
 
@@ -68,7 +73,7 @@ func (dndApiGateway *DndApiGateway) GetMultipleOrdered(endpoints []string) ([][]
 			body, err := dndApiGateway.Get(endpoint)
 			if err != nil {
 				mu.Lock()
-				errors = append(errors, fmt.Errorf("request failed for %s: %w", endpoint, err))
+				errors = append(errors, fmt.Errorf(REQUEST_FAILED, endpoint, err))
 				mu.Unlock()
 				return
 			}
@@ -99,7 +104,7 @@ func (dndApiGateway *DndApiGateway) GetMultipleUnordered(endpoints []string) ([]
 			defer mu.Unlock()
 
 			if err != nil {
-				errors = append(errors, fmt.Errorf("request failed for %s: %w", endpoint, err))
+				errors = append(errors, fmt.Errorf(REQUEST_FAILED, endpoint, err))
 			} else {
 				bodies = append(bodies, body)
 			}

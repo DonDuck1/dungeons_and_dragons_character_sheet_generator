@@ -5,6 +5,10 @@ import (
 	"testing"
 )
 
+const (
+	UNEXPECTED_RESULT string = "expected %+v, got %+v"
+)
+
 func TestCreateAbilityScoreListWithImprovements(t *testing.T) {
 	expected := AbilityScoreList{
 		Strength: AbilityScore{
@@ -58,6 +62,6 @@ func TestCreateAbilityScoreListWithImprovements(t *testing.T) {
 	abilityScoreList := NewAbilityScoreList(abilityScoreValueList, abilityScoreImprovementList)
 
 	if !reflect.DeepEqual(expected, abilityScoreList) {
-		t.Errorf("expected %+v, got %+v", expected, abilityScoreList)
+		t.Errorf(UNEXPECTED_RESULT, expected, abilityScoreList)
 	}
 }

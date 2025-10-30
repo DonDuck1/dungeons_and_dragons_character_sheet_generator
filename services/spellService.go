@@ -4,6 +4,7 @@ import (
 	"dungeons_and_dragons_character_sheet_generator/domain"
 	"dungeons_and_dragons_character_sheet_generator/infrastructure"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"log"
 	"os"
@@ -12,6 +13,11 @@ import (
 type SpellService struct {
 	dndApiGateway *infrastructure.DndApiGateway
 }
+
+const (
+	JSON_SPELL_REPOSITORY_IS_NIL string = "jsonSpellRepository is required, but has been provided as nil value"
+	UNKNOWN_CLASS_FOR_SPELL_LIST string = "unknown class provided for creating initial spell list"
+)
 
 func NewSpellService(dndApiGateway *infrastructure.DndApiGateway) *SpellService {
 	return &SpellService{dndApiGateway: dndApiGateway}
@@ -42,7 +48,7 @@ func CreateSpellFromDndApiSpell(dndApiSpell infrastructure.DndApiSpell, prepared
 
 func CreateInitialSpellListForClass(className domain.ClassName, jsonSpellRepository *infrastructure.JsonSpellRepository) (*domain.SpellList, error) {
 	if jsonSpellRepository == nil {
-		err := fmt.Errorf("jsonSpellRepository is required, but has been provided as nil value")
+		err := errors.New(JSON_SPELL_REPOSITORY_IS_NIL)
 		return nil, err
 	}
 
@@ -76,8 +82,23 @@ func CreateInitialSpellListForClass(className domain.ClassName, jsonSpellReposit
 		return nil, nil
 	}
 
-	err := fmt.Errorf("unknown class provided for creating initial spell list")
+	err := errors.New(UNKNOWN_CLASS_FOR_SPELL_LIST)
 	return nil, err
+}
+
+func getDndApiSpellsFromResponses(bodies [][]byte) []infrastructure.DndApiSpell {
+	dndApiSpells := []infrastructure.DndApiSpell{}
+	for _, body := range bodies {
+		var dndApiSpell infrastructure.DndApiSpell
+		err := json.Unmarshal(body, &dndApiSpell)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		dndApiSpells = append(dndApiSpells, dndApiSpell)
+	}
+
+	return dndApiSpells
 }
 
 func (spellService *SpellService) InitialiseSpells() {
@@ -104,16 +125,7 @@ func (spellService *SpellService) InitialiseSpells() {
 		os.Exit(1)
 	}
 
-	dndApiSpells := []infrastructure.DndApiSpell{}
-	for _, body := range bodies {
-		var dndApiSpell infrastructure.DndApiSpell
-		err = json.Unmarshal(body, &dndApiSpell)
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		dndApiSpells = append(dndApiSpells, dndApiSpell)
-	}
+	dndApiSpells := getDndApiSpellsFromResponses(bodies)
 
 	infrastructure.SaveSpellsAsJson("./data/spells.json", &dndApiSpells)
 }

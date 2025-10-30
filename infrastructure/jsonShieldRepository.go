@@ -3,6 +3,7 @@ package infrastructure
 import (
 	"dungeons_and_dragons_character_sheet_generator/domain"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"os"
 	"strings"
@@ -12,6 +13,11 @@ type JsonShieldRepository struct {
 	filepath   string
 	shieldList []domain.Shield
 }
+
+const (
+	UNINITIALISED_SHIELD_JSON string = "shield JSON has not been initialised, run the 'main.go init' command first"
+	NO_SHIELD_WITH_NAME       string = "could not find shield with name '%s'"
+)
 
 func NewJsonShieldRepository(filepath string) (*JsonShieldRepository, error) {
 	_, err := os.Stat(filepath)
@@ -25,7 +31,7 @@ func NewJsonShieldRepository(filepath string) (*JsonShieldRepository, error) {
 	}
 
 	if len(fileBytes) == 0 {
-		err := fmt.Errorf("shield JSON has not been initialised, run the 'main.go init' command first")
+		err := errors.New(UNINITIALISED_SHIELD_JSON)
 		return nil, err
 	}
 
@@ -61,7 +67,7 @@ func (jsonShieldRepository JsonShieldRepository) GetCopiesOfAll() *[]domain.Shie
 
 func (jsonShieldRepository JsonShieldRepository) GetCopyByName(name string) (*domain.Shield, error) {
 	if jsonShieldRepository.shieldList == nil {
-		err := fmt.Errorf("no shields have been found, please run the init command first")
+		err := errors.New(UNINITIALISED_SHIELD_JSON)
 		return nil, err
 	}
 
@@ -71,6 +77,6 @@ func (jsonShieldRepository JsonShieldRepository) GetCopyByName(name string) (*do
 		}
 	}
 
-	err := fmt.Errorf("could not find shield with name '%s'", name)
+	err := fmt.Errorf(NO_SHIELD_WITH_NAME, name)
 	return nil, err
 }

@@ -9,6 +9,10 @@ type CharacterList struct {
 	Characters []Character
 }
 
+const (
+	CHARACTER_NOT_FOUND string = "character \"%s\" not found"
+)
+
 func NewEmptyCharacterList() CharacterList {
 	characters := []Character{}
 	return CharacterList{Characters: characters}
@@ -39,6 +43,6 @@ func (characterList *CharacterList) DeleteCharacter(characterName string) error 
 		}
 	}
 
-	err := fmt.Errorf("character \"%s\" not found", characterName)
+	err := fmt.Errorf(CHARACTER_NOT_FOUND, characterName)
 	return err
 }
