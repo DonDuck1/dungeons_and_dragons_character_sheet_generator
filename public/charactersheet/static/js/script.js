@@ -135,7 +135,13 @@ document.addEventListener('DOMContentLoaded', () => {
             characters.forEach((character, i) => {
                 const option = document.createElement('option');
                 option.value = character.Name;
-                option.textContent = `${character.Name}, Lv${character.Class.Level} ${character.Class.Name}, ${character.Race.Name}, ${character.Background.Name}`;
+
+                if (character.Race.SubRace != null) {
+                    option.textContent = `${character.Name}, Lv${character.Class.Level} ${character.Class.Name}, ${character.Race.SubRace.Name}, ${character.Background.Name}`;
+                } else {
+                    option.textContent = `${character.Name}, Lv${character.Class.Level} ${character.Class.Name}, ${character.Race.Name}, ${character.Background.Name}`;
+                };
+                
                 select.appendChild(option);
             });
         });

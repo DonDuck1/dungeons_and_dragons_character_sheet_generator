@@ -116,7 +116,7 @@ func (characterService CharacterService) CreateNewCharacter(
 
 	passivePerception := 10 + skillProficiencyList.Perception.Modifier
 
-	maxHitPoints := class.GetMaxHitPointsFromClass(abilityScoreList.Constitution.Modifier) + race.GetMaxHitPointsFromRace(level)
+	maxHitPoints := calculateMaxHitPoints(class, abilityScoreList.Constitution.Modifier, *race)
 
 	character := domain.NewCharacter(
 		characterName,
@@ -168,7 +168,7 @@ func (characterService CharacterService) ChangeLevelOfCharacter(characterName st
 
 	character.PassivePerception = 10 + character.SkillProficiencyList.Perception.Modifier
 
-	character.MaxHitPoints = character.Class.GetMaxHitPointsFromClass(character.AbilityScoreList.Constitution.Modifier) + character.Race.GetMaxHitPointsFromRace(level)
+	character.MaxHitPoints = calculateMaxHitPoints(character.Class, character.AbilityScoreList.Constitution.Modifier, character.Race)
 
 	err = characterService.jsonCharacterRepository.SaveCharacterList()
 	if err != nil {
@@ -860,4 +860,15 @@ func (characterService CharacterService) MakeCharacterUnprepareSpell(characterNa
 
 	fmt.Printf("Unprepared spell %s\n", spellName)
 	os.Exit(0)
+}
+
+func calculateMaxHitPoints(class domain.Class, constitutionModifier int, race domain.Race) int {
+	maxHitPoints := class.GetStartingMaxHitPointsFromClass(constitutionModifier) + race.GetStartingMaxHitPointsFromRace(class.Level)
+	maxHitPointsPerLevel := max(class.GetMaxHitPointsPerLevelFromClass(constitutionModifier)+race.GetMaxHitPointsPerLevelFromRace(class.Level), 1)
+
+	for i := class.Level - 1; i > 0; i-- {
+		maxHitPoints += maxHitPointsPerLevel
+	}
+
+	return maxHitPoints
 }

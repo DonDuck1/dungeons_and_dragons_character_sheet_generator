@@ -22,16 +22,18 @@ func (race Race) GetChosenAbilityScoreImprovements() []AbilityScoreImprovement {
 	return abilityScoreImprovements
 }
 
-func (race Race) GetMaxHitPointsFromRace(characterLevel int) int {
-	maxHitPoints := 0
+func (race Race) GetStartingMaxHitPointsFromRace(characterLevel int) int {
+	return race.GetMaxHitPointsPerLevelFromRace(characterLevel)
+}
 
+func (race Race) GetMaxHitPointsPerLevelFromRace(characterLevel int) int {
 	if race.SubRace != nil {
 		for _, SubRacialTrait := range race.SubRace.RacialTraits {
 			if strings.EqualFold(SubRacialTrait.Name, "Dwarven Toughness") {
-				maxHitPoints += characterLevel
+				return 1
 			}
 		}
 	}
 
-	return maxHitPoints
+	return 0
 }
