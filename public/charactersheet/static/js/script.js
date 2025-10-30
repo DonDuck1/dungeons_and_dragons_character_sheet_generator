@@ -15,7 +15,7 @@ function formatNumberWithSign(number) {
  * @returns {string}
  */
 function getSpellcastingInfoTextForNormalSpellcaster(classSpellcastingInfo) {
-    spellcastingInfoText = "Spellcasting info:\n";
+    let spellcastingInfoText = "Spellcasting info:\n";
     spellcastingInfoText += `  Max known cantrips: ${classSpellcastingInfo.MaxKnownCantrips}\n`;
     if (classSpellcastingInfo.MaxKnownSpells != null) {
         spellcastingInfoText += `  Max known spells: ${classSpellcastingInfo.MaxKnownSpells}\n`;
@@ -46,7 +46,7 @@ function getSpellcastingInfoTextForNormalSpellcaster(classSpellcastingInfo) {
  * @returns {string}
  */
 function getSpellcastingInfoTextForWarlock(classWarlockCastingInfo) {
-    spellcastingInfoText = "Warlock casting info:\n";
+    let spellcastingInfoText = "Warlock casting info:\n";
     spellcastingInfoText += `  Max known cantrips: ${classWarlockCastingInfo.MaxKnownCantrips}\n`;
     spellcastingInfoText += `  Max known spells: ${classWarlockCastingInfo.MaxKnownSpells}\n`;
 
@@ -71,7 +71,7 @@ function getSpellcastingInfoTextForWarlock(classWarlockCastingInfo) {
  * @returns {string}
  */
 function getSpellListTextForNormalSpellcaster(spells) {
-    spellsListText = "Spells:\n";
+    let spellListText = "Spells:\n";
 
     for (const spell of spells) {
         if (spell.Prepared) {
@@ -93,7 +93,7 @@ function getSpellListTextForNormalSpellcaster(spells) {
  * @returns {string}
  */
 function getSpellListTextForWarlock(spells) {
-    spellListText = "Warlock spells:\n";
+    let spellListText = "Warlock spells:\n";
 
     for (const spell of spells) {
         if (spell.Prepared) {
